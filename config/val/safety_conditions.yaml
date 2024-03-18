@@ -1,0 +1,14 @@
+# safety conditions for Valkyrie robot in different environments
+household:
+  conditions:
+    - name: test1
+      likelihood: 1
+      consequence: 2
+lunar_habitat:
+  conditions:
+    - name: test2
+      likelihood: 2
+      consequence: 3
+    - name: test3
+      likelihood: 4
+      consequence: 5

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--***********************************************************
+	Process Safety Conditions
+	Emily Sheetz, NSTGRO VTE 2024
+
+	run either:
+		$ roslaunch safety_aware_reasoning process_safety_conditions.launch
+		OR
+		$ rosrun safety_aware_reasoning process_safety_conditions.py
+************************************************************-->
+<launch>
+	<arg name="robot" default="val"/>
+	<arg name="env" default="lunar_habitat"/>
+
+	<node pkg="safety_aware_reasoning" type="process_safety_conditions.py" name="ProcessSafetyConditions" output="screen">
+		<param name="robot" value="$(arg robot)"/>
+		<param name="environment" value="$(arg env)"/>
+	</node>
+</launch>
