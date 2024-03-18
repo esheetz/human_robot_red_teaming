@@ -9,6 +9,8 @@ Accept user input about safety conditions and likelihood/consequence scores
 - [ ] method for inputting/formatting info about robot's action space of risk mitigating actions and/or task actions
 - [ ] error checking on inputting action space information for robot
 - [ ] formatting action space for later
+- [ ] input safety conditions for real (not just tests for development purposes)
+- [ ] input action spaces for real (not just tests for development purposes)
 
 Red teaming for data extension
 - [ ] randomly generate combinations of conditions
