@@ -63,7 +63,10 @@ include_directories ("${PROJECT_SOURCE_DIR}")
 #-----------------------------------------------------------------------
 # TODO
 install(PROGRAMS
-  scripts/test.py
+  scripts/likelihood_consequence_risk.py
+  scripts/safety_condition.py
+  scripts/process_safety_conditions.py
+  scripts/test.py # TODO remove?
   DESTINATION lib/${PROJECT_NAME} #${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 message("installed python scripts!")

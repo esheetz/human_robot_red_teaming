@@ -5,6 +5,7 @@ Emily Sheetz, NSTGRO VTE 2024
 """
 
 import rospy
+from process_safety_conditions import SafetyConditionReader
 
 if __name__ == '__main__':
     # initialize node
@@ -12,6 +13,8 @@ if __name__ == '__main__':
 
     # create reporter node
     # reporter_node = SafetyExceptionReporterNode()
+
+    safety_reader = SafetyConditionReader()
 
     print("Created node!")
 

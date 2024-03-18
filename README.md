@@ -4,8 +4,8 @@
 
 Accept user input about safety conditions and likelihood/consequence scores
 - [ ] method for inputting/formatting info about conditions, likelihood/consequence scores
-- [ ] error checking on inputting this information for robot
-- [ ] computing risk=probability x impact and safety=1-risk
+- [x] error checking on inputting condition likelihood/consequence information for robot
+- [x] computing risk=probability x impact and safety=1-risk
 - [ ] method for inputting/formatting info about robot's action space of risk mitigating actions and/or task actions
 - [ ] error checking on inputting this information for robot
 - [ ] formatting action space for later
