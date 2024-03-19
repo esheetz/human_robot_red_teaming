@@ -1,4 +1,4 @@
-# safety conditions for Valkyrie robot in different environments
+# risky conditions for Valkyrie robot in different environments
 household:
   conditions:
     - name: test1

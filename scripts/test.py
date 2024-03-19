@@ -5,7 +5,7 @@ Emily Sheetz, NSTGRO VTE 2024
 """
 
 import rospy
-from process_safety_conditions import SafetyConditionReader
+from risky_condition_reader import RiskyConditionReader
 
 if __name__ == '__main__':
     # initialize node
@@ -14,7 +14,7 @@ if __name__ == '__main__':
     # create reporter node
     # reporter_node = SafetyExceptionReporterNode()
 
-    safety_reader = SafetyConditionReader()
+    reader = RiskyConditionReader()
 
     print("Created node!")
 
@@ -22,4 +22,4 @@ if __name__ == '__main__':
     while not rospy.is_shutdown():
         rospy.spin()
 
-    rospy.loginfo("[Safety Exception Reporter Node] Node stopped, all done!") # TODO
+    rospy.loginfo("[Test Node] Node stopped, all done!") # TODO

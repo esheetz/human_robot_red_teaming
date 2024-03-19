@@ -1,11 +1,11 @@
 """
-Safety Condition Class
+Risky Condition Class
 Emily Sheetz, NSTGRO VTE 2024
 """
 
 from likelihood_consequence_risk import LikelihoodLevels, ConsequenceClasses, RiskScores
 
-class SafetyCondition:
+class RiskyCondition:
     def __init__(self, name="unnamed_condition",
                        likelihood=LikelihoodLevels.get_max(),
                        consequence=ConsequenceClasses.get_max()):

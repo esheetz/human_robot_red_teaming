@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!--***********************************************************
-	Process Safety Conditions
+	Risky Condition Reader
 	Emily Sheetz, NSTGRO VTE 2024
 
 	run either:
-		$ roslaunch safety_aware_reasoning process_safety_conditions.launch
+		$ roslaunch safety_aware_reasoning risky_condition_reader.launch
 		OR
-		$ rosrun safety_aware_reasoning process_safety_conditions.py
+		$ rosrun safety_aware_reasoning risky_condition_reader.py
 ************************************************************-->
 <launch>
 	<arg name="robot" default="val"/>
 	<arg name="env" default="lunar_habitat"/>
 
-	<node pkg="safety_aware_reasoning" type="process_safety_conditions.py" name="ProcessSafetyConditions" output="screen">
+	<node pkg="safety_aware_reasoning" type="risky_condition_reader.py" name="RiskyConditionReader" output="screen">
 		<param name="robot" value="$(arg robot)"/>
 		<param name="environment" value="$(arg env)"/>
 	</node>

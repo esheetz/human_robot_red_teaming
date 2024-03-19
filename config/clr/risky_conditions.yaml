@@ -1,4 +1,4 @@
-# safety conditions for ChonkUR L. Rail-E (CLR) in different environments
+# risky conditions for ChonkUR L. Rail-E (CLR) in different environments
 household:
   conditions:
     - name: test0
