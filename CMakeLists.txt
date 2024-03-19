@@ -65,7 +65,7 @@ include_directories ("${PROJECT_SOURCE_DIR}")
 install(PROGRAMS
   scripts/likelihood_consequence_risk.py
   scripts/safety_condition.py
-  scripts/process_safety_conditions.py
+  scripts/safety_condition_reader.py
   scripts/test.py # TODO remove?
   DESTINATION lib/${PROJECT_NAME} #${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
