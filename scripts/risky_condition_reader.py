@@ -11,7 +11,8 @@ import rospy
 import os
 import yaml
 
-from likelihood_consequence_risk import LikelihoodLevels, ConsequenceClasses
+from yaml_state_action_space_checks import YAMLStateActionSpaceChecks as YAMLChecks
+
 from risky_condition import RiskyCondition
 
 class RiskyConditionReader:
@@ -61,7 +62,7 @@ class RiskyConditionReader:
         self.risky_conditions = []
 
         # verify YAML file exists
-        valid_path = self.error_check_yaml_existence()
+        valid_path = YAMLChecks.check_yaml_existence(self.risky_condition_full_path)
         if not valid_path:
             print("ERROR: risky condition file " + self.risky_condition_full_path + " does not exist")
             self.valid_conditions = False
@@ -72,7 +73,7 @@ class RiskyConditionReader:
         yaml_dict = yaml.load(fo, Loader=yaml.FullLoader)
 
         # error check YAML file formatting
-        valid_yaml = self.error_check_yaml_formatting(yaml_dict)
+        valid_yaml = YAMLChecks.check_risky_condition_yaml_formatting(yaml_dict, self.environment_name)
         if not valid_yaml:
             print("ERROR: risky condition file " + self.risky_condition_full_path + " is poorly formatted")
             self.valid_conditions = False
@@ -90,7 +91,7 @@ class RiskyConditionReader:
             cond = conditions[i]
 
             # check valid values for risky condition
-            valid_condition = self.error_check_valid_condition_values(cond, i, len(conditions))
+            valid_condition = YAMLChecks.check_valid_risky_condition_values(cond, i, len(conditions))
             self.valid_conditions = self.valid_conditions and valid_condition
 
             # create risky condition
@@ -105,74 +106,6 @@ class RiskyConditionReader:
 
     def check_valid_conditions(self):
         return self.valid_conditions
-
-    ######################################
-    ### RISKY CONDITION ERROR CHECKING ###
-    ######################################
-
-    def error_check_yaml_existence(self):
-        # check if YAML file exists and is a file
-        return (os.path.exists(self.risky_condition_full_path) and
-                os.path.isfile(self.risky_condition_full_path))
-
-    def error_check_yaml_formatting(self, yaml_dict):
-        # check if environment exists
-        if self.environment_name not in yaml_dict.keys():
-            print("ERROR: environment " + self.environment_name + " does not exist in risky conditions file")
-            return False
-
-        # check for list of conditions
-        if 'conditions' not in yaml_dict[self.environment_name].keys():
-            print("ERROR: environment " + self.environment_name + " has no risky conditions defined under key 'conditions'")
-            return False
-
-        # get number of conditions
-        num_conds = len(yaml_dict[self.environment_name]['conditions'])
-
-        # initialize valid condition flag
-        valid_conditions = True
-
-        # check each condition in list
-        for i in range(num_conds):
-            # get condition
-            condition = yaml_dict[self.environment_name]['conditions'][i]
-
-            # check for name
-            if 'name' not in condition.keys():
-                print("ERROR: risky condition " + str(i) + " of " + str(num_conds) + " does not have a name")
-                valid_conditions = False
-
-            # check for likelihood
-            if 'likelihood' not in condition.keys():
-                print("ERROR: risky condition " + str(i) + " of " + str(num_conds) + " does not have a likelihood value")
-                valid_conditions = False
-
-            # check for consequence
-            if 'consequence' not in condition.keys():
-                print("ERROR: risky condition " + str(i) + " of " + str(num_conds) + " does not have a consequence value")
-                valid_conditions = False
-
-        return valid_conditions
-
-    def error_check_valid_condition_values(self, cond, i, num_conds):
-        # initialize valid values flag
-        valid_values = True
-
-        # check for valid name
-        if not type(cond['name']) == str:
-            print("WARN: non-string name for risky condition " + str(i) + " of " + str(num_conds))
-            valid_values = False
-
-        # check for valid likelihood and consequence scores
-        if not LikelihoodLevels.valid_value(cond['likelihood']):
-            print("WARN: invalid likelihood value for risky condition " + str(i) + " of " + str(num_conds))
-            valid_values = False
-
-        if not ConsequenceClasses.valid_value(cond['consequence']):
-            print("WARN: invalid consequence value for risky condition " + str(i) + " of " + str(num_conds))
-            valid_values = False
-
-        return valid_values
 
     ################################
     ### RISKY CONDITION PRINTING ###
