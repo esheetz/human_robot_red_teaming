@@ -117,7 +117,7 @@ class RiskyConditionReader:
 
         # print starting message
         print()
-        print("Read " + str(num_conds) + " risky conditions for robot " + self.robot_name.upper() + " in " + self.environment_name.upper() + " environment")        
+        print("Read " + str(num_conds) + " risky conditions for robot " + self.robot_name.upper() + " in " + self.environment_name.upper() + " environment")
 
         for i in range(num_conds):
             # get condition
@@ -152,7 +152,7 @@ if __name__ == '__main__':
     # initialize node
     rospy.init_node(node_name)
 
-    # create risky condition reader with default values
+    # create risky condition reader
     rospy.loginfo("[Risky Condition Reader] Creating risky condition reader...")
     risky_reader = RiskyConditionReader(robot=robot_name, environment=env_name)
 

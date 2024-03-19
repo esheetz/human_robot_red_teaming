@@ -66,6 +66,9 @@ install(PROGRAMS
   scripts/likelihood_consequence_risk.py
   scripts/risky_condition.py
   scripts/risky_condition_reader.py
+  scripts/risk_mitigating_action.py
+  scripts/risk_mitigating_action_reader.py
+  scripts/yaml_state_action_space_checks.py
   scripts/test.py # TODO remove?
   DESTINATION lib/${PROJECT_NAME} #${CATKIN_PACKAGE_SHARE_DESTINATION}
 )

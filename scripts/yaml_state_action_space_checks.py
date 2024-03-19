@@ -83,3 +83,49 @@ class YAMLStateActionSpaceChecks:
             valid_values = False
 
         return valid_values
+
+    ######################################
+    ### ACTION SPACE FORMATTING CHECKS ###
+    ######################################
+
+    @staticmethod
+    def check_risk_mitigating_action_yaml_formatting(yaml_dict, env_name):
+        # check if environment exists
+        if env_name not in yaml_dict.keys():
+            print("ERROR: environment " + env_name + " does not exist in risk mitigating actions file")
+            return False
+
+        # check for list of actions
+        if 'actions' not in yaml_dict[env_name].keys():
+            print("ERROR: environment " + env_name + " has no risk mitigating actions defined under key 'actions'")
+            return False
+
+        # get number of actions
+        num_acts = len(yaml_dict[env_name]['actions'])
+
+        # initialize valid action flag
+        valid_actions = True
+
+        # check each action in list
+        for i in range(num_acts):
+            # get action
+            action = yaml_dict[env_name]['actions'][i]
+
+            # check for name
+            if 'name' not in action.keys():
+                print("ERROR: risk mitigating action " + str(i) + " of " + str(num_acts) + " does not have a name")
+                valid_actions = False
+
+        return valid_actions
+
+    @staticmethod
+    def check_valid_risk_mitigating_action_values(act_dict, i, num_acts):
+        # initialize valid values flag
+        valid_values = True
+
+        # check for valid name
+        if not type(act_dict['name']) == str:
+            print("WARN: non-string name for risk mitigating action " + str(i) + " of " + str(num_acts))
+            valid_values = False
+
+        return valid_values
