@@ -1,0 +1,6 @@
+# risk mitigating actions for CLR robot in different environments
+household:
+  actions:
+    - name: action9
+    - name: action10
+    - name: action11

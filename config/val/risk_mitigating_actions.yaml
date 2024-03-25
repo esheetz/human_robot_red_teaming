@@ -1,0 +1,10 @@
+# risk mitigating actions for Valkyrie robot in different environments
+household:
+  actions:
+    - name: action0
+    - name: action1
+    - name: action2
+lunar_habitat:
+  actions:
+    - name: action3
+    - name: action4
