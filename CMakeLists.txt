@@ -68,7 +68,8 @@ install(PROGRAMS
   scripts/risky_condition_reader.py
   scripts/risk_mitigating_action.py
   scripts/risk_mitigating_action_reader.py
-  scripts/yaml_state_action_space_checks.py
+  scripts/risk_mitigating_policy_starter_reader.py
+  scripts/yaml_formatting_checks.py
   scripts/test.py # TODO remove?
   DESTINATION lib/${PROJECT_NAME} #${CATKIN_PACKAGE_SHARE_DESTINATION}
 )

@@ -1,0 +1,5 @@
+# risk mitigating policy data for CLR robot in different environments
+household:
+  policy_data:
+    - conditions: [test0]
+      action: action10
