@@ -49,7 +49,7 @@ class YAMLChecks:
             # check for each key in list element
             for elem_key in list_elem_keys:
                 if elem_key not in elem.keys():
-                    print("ERROR: " + file_nickname + " " + str(i) + " of " + str(num_elems) + " does not have a " + elem_key)
+                    print("ERROR: " + file_nickname + " " + str(i) + " of " + str(num_elems) + " does not have key " + elem_key)
                     valid_elems = False
 
         return valid_elems
@@ -121,21 +121,39 @@ class YAMLActionSpaceChecks(YAMLChecks):
 
 
 
-########################################
-### POLICY STARTER FORMATTING CHECKS ###
-########################################
+#####################################
+### POLICY DATA FORMATTING CHECKS ###
+#####################################
 
-class YAMLPolicyStarterChecks(YAMLChecks):
+class YAMLPolicyDataChecks(YAMLChecks):
 
     @staticmethod
-    def check_risk_mitigating_policy_starter_yaml_formatting(yaml_dict, env_name):
-        return YAMLChecks.check_yaml_formatting(file_nickname="risk mitigating policy starter",
+    def check_risk_mitigating_policy_data_yaml_formatting(yaml_dict, env_name):
+        return YAMLChecks.check_yaml_formatting(file_nickname="risk mitigating policy data",
                                                 yaml_dict=yaml_dict,
                                                 env_name=env_name,
-                                                list_key="policy_starter",
+                                                list_key="policy_data",
                                                 list_elem_keys=["conditions", "action"])
 
     @staticmethod
-    def check_valid_risk_mitigating_policy_starter_values(pol_dict, i, num_pols):
-        # TODO
-        return False
+    def check_valid_risk_mitigating_policy_data_values(pol_dict, i, num_pols):
+        # initialize valid values flag
+        valid_values = True
+
+        # check for valid conditions
+        if not type(pol_dict['conditions']) == list:
+            print("WARN: non-list conditions for policy data " + str(i) + " of " + str(num_pols))
+            valid_values = False
+
+        # check for valid condition types
+        for cond in pol_dict['conditions']:
+            if not type(cond) == str:
+                print("WARN: non-string condition for policy data " + str(i) + " of " + str(num_pols))
+                valid_values = False
+
+        # check for valid action
+        if not type(pol_dict['action']) == str:
+            print("WARN: non-string action for policy data " + str(i) + " of " + str(num_pols))
+            valid_values = False
+
+        return valid_values
