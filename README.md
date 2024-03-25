@@ -3,9 +3,12 @@
 ## TODOs
 
 Red teaming for data extension
-- [ ] format data for initial condition and mitigating action combos
+- [x] format data for initial condition and mitigating action combos
+- [x] read in human-generated data
 - [ ] randomly generate combinations of conditions
 - [ ] ask user for input on which mitigating action to take, error checking on input/suggestion
+- [ ] check for multiples in generated conditions and in user input for mitigating action
+- [ ] write to YAML file
 - [ ] add to running training dataset
 
 Model creation
