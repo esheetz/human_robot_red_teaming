@@ -2,15 +2,6 @@
 
 ## TODOs
 
-Accept user input about risky conditions and likelihood/consequence scores
-- [x] method for inputting/formatting info about conditions, likelihood/consequence scores
-- [x] error checking on inputting condition likelihood/consequence information for robot
-- [x] computing risk=probability x impact and safety=1-risk
-- [x] rename everything from safety conditions to risky conditions
-- [x] method for inputting/formatting info about robot's action space of risk mitigating actions and/or task actions
-- [x] error checking on inputting action space information for robot
-- [x] formatting action space for later
-
 Red teaming for data extension
 - [ ] format data for initial condition and mitigating action combos
 - [ ] randomly generate combinations of conditions
