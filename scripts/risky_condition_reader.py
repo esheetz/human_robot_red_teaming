@@ -11,7 +11,7 @@ import rospy
 import os
 import yaml
 
-from yaml_state_action_space_checks import YAMLStateActionSpaceChecks as YAMLChecks
+from yaml_formatting_checks import YAMLStateSpaceChecks as YAMLChecks
 
 from risky_condition import RiskyCondition
 
