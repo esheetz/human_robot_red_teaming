@@ -10,15 +10,16 @@ Accept user input about risky conditions and likelihood/consequence scores
 - [x] method for inputting/formatting info about robot's action space of risk mitigating actions and/or task actions
 - [x] error checking on inputting action space information for robot
 - [x] formatting action space for later
-- [ ] input risky conditions for real (not just tests for development purposes)
-- [ ] input action spaces for real (not just tests for development purposes)
 
 Red teaming for data extension
+- [ ] format data for initial condition and mitigating action combos
 - [ ] randomly generate combinations of conditions
 - [ ] ask user for input on which mitigating action to take, error checking on input/suggestion
 - [ ] add to running training dataset
 
 Model creation
+- [ ] input risky conditions for real (not just tests for development purposes)
+- [ ] input action spaces for real (not just tests for development purposes)
 - [ ] logistic regression analysis (combined, CLR only, Val only, household only, lunar only, CLR/household, CLR/lunar, Val/household, Val/lunar)
 - [ ] model training and validation
 - [ ] save models for later use
