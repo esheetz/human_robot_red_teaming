@@ -102,6 +102,9 @@ class RiskyConditionReader:
             # add risky condition to list
             self.risky_conditions.append(risky_cond)
 
+        # close file
+        fo.close()
+
         return
 
     def check_valid_conditions(self):

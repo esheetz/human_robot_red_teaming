@@ -100,6 +100,9 @@ class RiskMitigatingActionReader:
             # add risk mitigating action to list
             self.risk_mitigating_actions.append(risk_act)
 
+        # close file
+        fo.close()
+
         return
 
     def check_valid_actions(self):
