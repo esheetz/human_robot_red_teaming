@@ -7,11 +7,11 @@ import os
 
 from likelihood_consequence_risk import LikelihoodLevels, ConsequenceClasses
 
-class YAMLStateActionSpaceChecks:
+###########################
+### YAML FILE EXISTENCE ###
+###########################
 
-    ###########################
-    ### YAML FILE EXISTENCE ###
-    ###########################
+class YAMLChecks:
 
     @staticmethod
     def check_yaml_existence(yaml_file_path):
@@ -19,9 +19,13 @@ class YAMLStateActionSpaceChecks:
         return (os.path.exists(yaml_file_path) and
                 os.path.isfile(yaml_file_path))
 
-    #####################################
-    ### STATE SPACE FORMATTING CHECKS ###
-    #####################################
+
+
+#####################################
+### STATE SPACE FORMATTING CHECKS ###
+#####################################
+
+class YAMLStateSpaceChecks(YAMLChecks):
 
     @staticmethod
     def check_risky_condition_yaml_formatting(yaml_dict, env_name):
@@ -84,9 +88,13 @@ class YAMLStateActionSpaceChecks:
 
         return valid_values
 
-    ######################################
-    ### ACTION SPACE FORMATTING CHECKS ###
-    ######################################
+
+
+######################################
+### ACTION SPACE FORMATTING CHECKS ###
+######################################
+
+class YAMLActionSpaceChecks(YAMLChecks):
 
     @staticmethod
     def check_risk_mitigating_action_yaml_formatting(yaml_dict, env_name):
@@ -129,3 +137,13 @@ class YAMLStateActionSpaceChecks:
             valid_values = False
 
         return valid_values
+
+
+
+########################################
+### POLICY STARTER FORMATTING CHECKS ###
+########################################
+
+class YAMLPolicyStarterChecks(YAMLChecks):
+    pass
+    # TODO
