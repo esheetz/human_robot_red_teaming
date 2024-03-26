@@ -76,6 +76,7 @@ install(PROGRAMS
   # YAML CHECKING HELPER CLASSES
   scripts/yaml_formatting_checks.py
   # RED TEAMING CLASSES/SCRIPTS
+  scripts/red_team_policy.py
   scripts/red_team_data_extension.py
   scripts/test.py # TODO remove?
   DESTINATION lib/${PROJECT_NAME} #${CATKIN_PACKAGE_SHARE_DESTINATION}
