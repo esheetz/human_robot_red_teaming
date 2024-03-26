@@ -5,6 +5,9 @@
 Red teaming for data extension
 - [x] format data for initial condition and mitigating action combos
 - [x] read in human-generated data
+- [x] refactor into risk mitigating policy data point class for checking duplicates?
+- [x] add risky condition and risk action helper for checking if something exists in list
+- [x] initialize red team node with state/action spaces and initial policy
 - [ ] randomly generate combinations of conditions
 - [ ] ask user for input on which mitigating action to take, error checking on input/suggestion
 - [ ] check for multiples in generated conditions and in user input for mitigating action

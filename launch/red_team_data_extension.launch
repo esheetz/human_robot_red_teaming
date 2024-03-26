@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--***********************************************************
+	Red Team Data Extension
+	Emily Sheetz, NSTGRO VTE 2024
+
+	run either:
+		$ roslaunch safety_aware_reasoning red_team_data_extension.launch
+		OR
+		$ rosrun safety_aware_reasoning red_team_data_extension.py
+************************************************************-->
+<launch>
+	<arg name="robot" default="val"/>
+	<arg name="env" default="lunar_habitat"/>
+
+	<node pkg="safety_aware_reasoning" type="red_team_data_extension.py" name="RedTeamDataExension" output="screen">
+		<param name="robot" value="$(arg robot)"/>
+		<param name="environment" value="$(arg env)"/>
+	</node>
+</launch>
