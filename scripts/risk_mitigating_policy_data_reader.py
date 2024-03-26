@@ -13,6 +13,8 @@ import yaml
 
 from yaml_formatting_checks import YAMLPolicyDataChecks as YAMLChecks
 
+from risk_mitigating_policy_data_point import RiskMitigatingPolicyDataPoint
+
 class RiskMitigatingPolicyDataReader:
     def __init__(self, robot="val", environment="lunar_habitat", human_gen_data=True):
         # set internal parameters
@@ -99,23 +101,23 @@ class RiskMitigatingPolicyDataReader:
             self.valid_policy = self.valid_policy and valid_policy
 
             # create policy
-            risk_pol = (tuple([str(cond) for cond in pol['conditions']]), str(pol['action']))
-            risk_conds, risk_act = risk_pol
+            risk_pol = RiskMitigatingPolicyDataPoint(conditions=pol['conditions'], action=pol['action'])
+            risk_conds = risk_pol.get_policy_data_point_condition_names()
+            risk_act = risk_pol.get_policy_data_point_action_name()
 
-            # check duplicates
-            if risk_conds in self.risk_mitigating_policy.keys():
-                # check if action is the same
-                if risk_act != self.risk_mitigating_policy[risk_conds]:
-                    print("ERROR: found duplicate conditions with different actions; please resolve conflict in risk mitigating policy data file " + self.risk_mitigating_policy_data_full_path)
-                    print("    Conditions:", risk_conds)
-                    print("    Action:", self.risk_mitigating_policy[risk_conds])
-                    print("    Found new action:", risk_act)
-                    self.valid_policy = False
+            # check for conflicting data point already in policy
+            conflict, risk_act, policy_risk_act = risk_pol.check_and_get_conflicting_data_point(self.risk_mitigating_policy)
+            if conflict:
+                print("ERROR: found duplicate conditions with different actions; please resolve conflict in risk mitigating policy data file " + self.risk_mitigating_policy_data_full_path)
+                print("    Conditions:", risk_conds)
+                print("    Action:", policy_risk_act)
+                print("    Found new action:", risk_act)
+                self.valid_policy = False
                 # do not add duplicate conditions into dictionary
                 continue
 
             # add policy data to dictionary
-            self.risk_mitigating_policy[risk_conds] = risk_act
+            self.risk_mitigating_policy[risk_conds] = risk_pol
 
         # close file
         fo.close()
@@ -138,9 +140,12 @@ class RiskMitigatingPolicyDataReader:
         print("Read " + str(num_pols) + " risk mitigating policy data points for robot " + self.robot_name.upper() + " in " + self.environment_name.upper() + " environment")
 
         i = 0
-        for conds in self.risk_mitigating_policy.keys():
-            # get action
-            act = self.risk_mitigating_policy[conds]
+        for pol_conds in self.risk_mitigating_policy.keys():
+            # get policy data point
+            pol_data_point = self.risk_mitigating_policy[pol_conds]
+            # get conditions and action
+            conds = pol_data_point.get_policy_data_point_condition_names()
+            act = pol_data_point.get_policy_data_point_action_name()
             # print info
             print("    Policy Data Point " + str(i) + " of " + str(num_pols) + ":")
             print("        conditions:")

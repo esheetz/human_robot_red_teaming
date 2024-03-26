@@ -3,3 +3,9 @@ household:
   policy_data:
     - conditions: [test0]
       action: action10
+lunar_habitat:
+  policy_data:
+    - conditions: [test0]
+      action: action11
+    - conditions: [test0]
+      action: action9

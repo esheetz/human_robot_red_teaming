@@ -1,4 +1,4 @@
-# risk mitigating policy starter for Valkyrie robot in different environments
+# risk mitigating policy data for Valkyrie robot in different environments
 household:
   policy_data:
     - conditions: [test1]
