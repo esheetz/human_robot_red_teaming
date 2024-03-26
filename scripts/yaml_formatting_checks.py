@@ -21,6 +21,22 @@ class YAMLChecks:
         return (os.path.exists(yaml_file_path) and
                 os.path.isfile(yaml_file_path))
 
+    # CHECK NON-EMPTY YAML FILE
+
+    @staticmethod
+    def check_yaml_nonempty(yaml_file_path):
+        # check if given YAML file exists
+        if YAMLChecks.check_yaml_existence(yaml_file_path):
+            # check if given YAML file is non-empty
+            fo = open(yaml_file_path)
+            lines = fo.readlines()
+            num_lines = len(lines)
+            fo.close()
+            return (num_lines != 0)
+        else:
+            # file does not exist
+            return False
+
     # CHECK YAML FORMATTING
 
     @staticmethod

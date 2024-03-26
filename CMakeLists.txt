@@ -63,13 +63,20 @@ include_directories ("${PROJECT_SOURCE_DIR}")
 #-----------------------------------------------------------------------
 # TODO
 install(PROGRAMS
+  # STATE SPACE CLASSES/SCRIPTS
   scripts/likelihood_consequence_risk.py
   scripts/risky_condition.py
   scripts/risky_condition_reader.py
+  # ACTION SPACE CLASSES/SCRIPTS
   scripts/risk_mitigating_action.py
   scripts/risk_mitigating_action_reader.py
-  scripts/risk_mitigating_policy_starter_reader.py
+  # POLICY CLASSES/SCRIPTS
+  scripts/risk_mitigating_policy_data_point.py
+  scripts/risk_mitigating_policy_data_reader.py
+  # YAML CHECKING HELPER CLASSES
   scripts/yaml_formatting_checks.py
+  # RED TEAMING CLASSES/SCRIPTS
+  scripts/red_team_data_extension.py
   scripts/test.py # TODO remove?
   DESTINATION lib/${PROJECT_NAME} #${CATKIN_PACKAGE_SHARE_DESTINATION}
 )

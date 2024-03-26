@@ -58,6 +58,29 @@ class RiskMitigatingPolicyDataPoint:
             print("WARN: unrecognized policy type: " + type(policy) + " ; assuming no conflicting actions")
             return False
 
+    ###########################################
+    ### VALIDATE AGAINST STATE/ACTION SPACE ###
+    ###########################################
+
+    def validate_data_point(self, state_space_names, action_space_names):
+        return (self.validate_data_point_state_space(state_space_names) and
+                self.validate_data_point_action_space(action_space_names))
+
+    def validate_data_point_state_space(self, state_space_names):
+        for cond in self.conditions:
+            if cond not in state_space_names:
+                print("ERROR: condition " + cond + " not in state space: ", state_space_names)
+                return False
+        # if we get here, every condition exists in state space
+        return True
+
+    def validate_data_point_action_space(self, action_space_names):
+        if self.action not in action_space_names:
+            print("ERROR: action " + self.action + " not in action space: ", action_space_names)
+            return False
+        # if we get here, action exists in action space
+        return True
+
     ##########################################################
     ### PRIVATE HELPERS FOR CHECKING DUPLICATED CONDITIONS ###
     ##########################################################
