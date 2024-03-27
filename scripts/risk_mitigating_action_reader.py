@@ -11,7 +11,7 @@ import rospy
 import os
 import yaml
 
-from yaml_state_action_space_checks import YAMLStateActionSpaceChecks as YAMLChecks
+from yaml_formatting_checks import YAMLActionSpaceChecks as YAMLChecks
 
 from risk_mitigating_action import RiskMitigatingAction
 
@@ -49,6 +49,18 @@ class RiskMitigatingActionReader:
 
     def get_risk_mitigating_actions(self):
         return self.risk_mitigating_actions
+
+    def get_risk_mitigating_action_names(self):
+        return [act.get_action_name() for act in self.risk_mitigating_actions]
+
+    def get_risk_mitigating_action_with_name(self, action_name):
+        # look through actions
+        for act in self.risk_mitigating_actions:
+            # check name
+            if act.get_action_name() == action_name:
+                return act
+        # if we get here, no action in list has given name
+        return None
 
     def get_num_risk_mitigating_actions(self):
         return len(self.risk_mitigating_actions)
@@ -99,6 +111,9 @@ class RiskMitigatingActionReader:
 
             # add risk mitigating action to list
             self.risk_mitigating_actions.append(risk_act)
+
+        # close file
+        fo.close()
 
         return
 

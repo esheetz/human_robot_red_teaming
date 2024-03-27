@@ -4,6 +4,12 @@ household:
     - name: test1
       likelihood: 1
       consequence: 2
+    - name: test4
+      likelihood: 2
+      consequence: 3
+    - name: test5
+      likelihood: 3
+      consequence: 4
 lunar_habitat:
   conditions:
     - name: test2

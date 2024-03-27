@@ -11,7 +11,7 @@ import rospy
 import os
 import yaml
 
-from yaml_state_action_space_checks import YAMLStateActionSpaceChecks as YAMLChecks
+from yaml_formatting_checks import YAMLStateSpaceChecks as YAMLChecks
 
 from risky_condition import RiskyCondition
 
@@ -49,6 +49,18 @@ class RiskyConditionReader:
 
     def get_risky_conditions(self):
         return self.risky_conditions
+
+    def get_risky_condition_names(self):
+        return [cond.get_condition_name() for cond in self.risky_conditions]
+
+    def get_risky_condition_with_name(self, condition_name):
+        # look through risky conditions
+        for cond in self.risky_conditions:
+            # check name
+            if cond.get_condition_name() == condition_name:
+                return cond
+        # if we get here, no condition in list has given name
+        return None
 
     def get_num_risky_conditions(self):
         return len(self.risky_conditions)
@@ -101,6 +113,9 @@ class RiskyConditionReader:
 
             # add risky condition to list
             self.risky_conditions.append(risky_cond)
+
+        # close file
+        fo.close()
 
         return
 

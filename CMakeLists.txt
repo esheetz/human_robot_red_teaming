@@ -61,15 +61,22 @@ include_directories ("${PROJECT_SOURCE_DIR}")
 #-----------------------------------------------------------------------
 #     Python Executable Installation
 #-----------------------------------------------------------------------
-# TODO
 install(PROGRAMS
+  # YAML CHECKING HELPER CLASSES
+  scripts/yaml_formatting_checks.py
+  # STATE SPACE CLASSES/SCRIPTS
   scripts/likelihood_consequence_risk.py
   scripts/risky_condition.py
   scripts/risky_condition_reader.py
+  # ACTION SPACE CLASSES/SCRIPTS
   scripts/risk_mitigating_action.py
   scripts/risk_mitigating_action_reader.py
-  scripts/yaml_state_action_space_checks.py
-  scripts/test.py # TODO remove?
+  # POLICY CLASSES/SCRIPTS
+  scripts/risk_mitigating_policy_data_point.py
+  scripts/risk_mitigating_policy_data_reader.py
+  # RED TEAMING CLASSES/SCRIPTS
+  scripts/red_team_policy.py
+  scripts/red_team_data_extension.py
   DESTINATION lib/${PROJECT_NAME} #${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 message("installed python scripts!")
