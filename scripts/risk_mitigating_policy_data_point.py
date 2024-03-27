@@ -7,7 +7,7 @@ class RiskMitigatingPolicyDataPoint:
     def __init__(self, conditions=[],
                        action="unnamed_action"):
         # set internal parameters
-        self.conditions = tuple([str(i) for i in conditions])
+        self.conditions = tuple(sorted([str(i) for i in conditions]))
         self.action = str(action)
 
     #######################
