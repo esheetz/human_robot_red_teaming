@@ -1,15 +1,23 @@
-# risk mitigating policy data for Valkyrie robot in different environments
 household:
   policy_data:
-    - conditions: [test1]
-      action: action0
-    - conditions: [test4]
-      action: action1
-    - conditions: [test5]
-      action: action2
+  - conditions:
+    - test1
+    action: action0
+  - conditions:
+    - test4
+    action: action1
+  - conditions:
+    - test5
+    action: action2
 lunar_habitat:
   policy_data:
-    - conditions: [test2]
-      action: action4
-    - conditions: [test3]
-      action: action3
+  - conditions:
+    - test2
+    action: action4
+  - conditions:
+    - test3
+    action: action3
+  - conditions:
+    - test2
+    - test3
+    action: action4

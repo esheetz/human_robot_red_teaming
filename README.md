@@ -11,8 +11,8 @@ Red teaming for data extension
 - [x] randomly generate combinations of conditions
 - [x] ask user for input on which mitigating action to take, error checking on input/suggestion
 - [x] check for multiples in generated conditions and in user input for mitigating action
-- [ ] write to YAML file
-- [ ] add to running training dataset
+- [x] write to YAML file
+- [x] add to running training dataset
 
 Model creation
 - [ ] input risky conditions for real (not just tests for development purposes)

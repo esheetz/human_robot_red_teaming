@@ -11,6 +11,7 @@ from copy import deepcopy
 import yaml
 
 from yaml_formatting_checks import YAMLChecks
+from yaml_formatting_checks import YAMLPolicyDataChecks as YAMLPolicy
 
 # import state space, action space, and policy data point classes
 from risky_condition import RiskyCondition
@@ -118,9 +119,23 @@ class RedTeamPolicy:
     #################################
 
     def write_policy_to_file(self):
-        # TODO NOT IMPLEMENTED
+        # format policy data as YAML list
+        yaml_policy_list = YAMLPolicy.format_policy_as_yaml_list(self.policy_data)
+
+        # open YAML file in read mode and load dict
+        fo = open(self.red_team_data_full_path, 'r')
+        yaml_dict = yaml.load(fo, Loader=yaml.FullLoader)
+        fo.close()
+
+        # modify dictionary with policy data
+        yaml_dict[self.environment_name]['policy_data'] = yaml_policy_list
+
+        # open YAML file in write mode and dump dict
+        fo = open(self.red_team_data_full_path, 'w')
+        yaml.dump(yaml_dict, fo, default_flow_style=False, sort_keys=False)
+        fo.close()
+
         return
-    # yaml dump?
 
     #######################################
     ### INITIALIZATION HELPER FUNCTIONS ###

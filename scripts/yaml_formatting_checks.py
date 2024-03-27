@@ -173,3 +173,24 @@ class YAMLPolicyDataChecks(YAMLChecks):
             valid_values = False
 
         return valid_values
+
+    @staticmethod
+    def format_policy_as_yaml_list(policy_dict):
+        # initialize list of policy data points
+        policy_data_points = []
+
+        # loop through given policy dictionary
+        for conds in policy_dict:
+            # get condition from dictionary
+            policy_point = policy_dict[conds]
+
+            # create dictionary for data point
+            point_dict = {
+                "conditions" : list(policy_point.get_policy_data_point_condition_names()),
+                "action" : policy_point.get_policy_data_point_action_name()
+            }
+
+            # add data point to list
+            policy_data_points.append(point_dict)
+
+        return policy_data_points

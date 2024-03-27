@@ -90,6 +90,9 @@ class RedTeamDataExtension:
         # get random conditions
         scenario = random.sample(state_space, k)
 
+        # make sure conditions are in sorted order
+        scenario.sort()
+
         return scenario
 
     #############################
@@ -155,8 +158,7 @@ class RedTeamDataExtension:
         self.red_team.update_policy(pol_point)
 
         # check if policy needs to be written to file
-        if (self.get_points_generated() % self.save_new_policy_points) == 0:
-            print("DEBUG: generated", self.get_points_generated(), "points, started with", self.num_starting_points, "points") # TODO remove this
+        if (self.get_points_generated() != 0) and ((self.get_points_generated() % self.save_new_policy_points) == 0):
             self.write_policy_to_file()
 
         return
