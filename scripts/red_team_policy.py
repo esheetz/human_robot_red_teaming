@@ -60,6 +60,18 @@ class RedTeamPolicy:
     def get_environment_name(self):
         return self.environment_name
 
+    def get_state_space(self):
+        return self.state_space_reader.get_risky_condition_names()
+
+    def get_risky_condition_with_name(self, condition_name):
+        return self.state_space_reader.get_risky_condition_with_name(condition_name)
+
+    def get_action_space(self):
+        return self.action_space_reader.get_risk_mitigating_action_names()
+
+    def get_risk_mitigating_action_with_name(self, action_name):
+        return self.action_space_reader.get_risk_mitigating_action_with_name(action_name)
+
     def get_red_team_data_file_path(self):
         return self.red_team_data_full_path
 
@@ -91,6 +103,24 @@ class RedTeamPolicy:
             self.valid_policy = self.__red_team_policy_includes_human_policy()
 
         return
+
+    ##########################
+    ### UPDATE POLICY DATA ###
+    ##########################
+
+    def update_policy(self, policy_data_point):
+        # add data point to policy
+        self.policy_data[policy_data_point.get_policy_data_point_condition_names()] = policy_data_point
+        return
+
+    #################################
+    ### WRITE POLICY DATA TO FILE ###
+    #################################
+
+    def write_policy_to_file(self):
+        # TODO NOT IMPLEMENTED
+        return
+    # yaml dump?
 
     #######################################
     ### INITIALIZATION HELPER FUNCTIONS ###
