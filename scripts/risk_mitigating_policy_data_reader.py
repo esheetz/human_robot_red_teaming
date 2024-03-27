@@ -74,7 +74,7 @@ class RiskMitigatingPolicyDataReader:
             self.valid_policy = False
             return
 
-        # open YAML file an dload dict
+        # open YAML file and load dict
         fo = open(self.risk_mitigating_policy_data_full_path)
         yaml_dict = yaml.load(fo, Loader=yaml.FullLoader)
 
