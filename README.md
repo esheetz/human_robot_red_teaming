@@ -2,6 +2,24 @@
 
 ## TODOs
 
+Consequence state space
+- [ ] input consequence state space
+- [ ] error check consequence state space
+- [ ] update policy/utility info with state space
+- [ ] make sure everything in code is named appropriately
+- [ ] ask user for input on state space
+- [ ] add querying state space info to red team data extension
+
+Counter-factual red teaming
+- [ ] rename red teamed data files to indicate both RS generation and CFA generation
+- [ ] add support to red team node to do both RS and CFA modes
+- [ ] randomly select risky scenario
+- [ ] randomly select risk mitigating action
+- [ ] ask user for input on state space
+- [ ] error checking on user input
+- [ ] check for multiples? may not be necessary
+- [ ] write to YAML file
+
 Model creation
 - [ ] input risky conditions for real (not just tests for development purposes)
 - [ ] input action spaces for real (not just tests for development purposes)
