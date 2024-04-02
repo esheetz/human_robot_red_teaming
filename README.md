@@ -5,6 +5,8 @@
 Consequence state space
 - [ ] input consequence state space
 - [ ] error check consequence state space
+- [ ] update condition info with state space
+- [ ] update consequence to match project formulation?
 - [ ] update policy/utility info with state space
 - [ ] make sure everything in code is named appropriately
 - [ ] ask user for input on state space
