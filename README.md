@@ -3,10 +3,10 @@
 ## TODOs
 
 Consequence state space
-- [ ] input consequence state space - TESTING NEEDED
-- [ ] error check consequence state space - TESTING NEEDED
-- [ ] update condition info with state space - TESTING NEEDED
-- [ ] update consequence to match project formulation
+- [x] input consequence state space
+- [x] error check consequence state space
+- [x] update condition info with state space
+- [ ] update consequence/risk/safety computation to match project formulation
 - [ ] update risk calculation to match project formulation (unnormalized consequence)
 - [ ] make sure everything in code is named appropriately (policy -> utility)
 - [ ] update policy/utility info with state space (update data points)
