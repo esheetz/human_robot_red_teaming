@@ -174,7 +174,7 @@ class YAMLPolicyDataChecks(YAMLChecks):
                                                 yaml_dict=yaml_dict,
                                                 env_name=env_name,
                                                 list_key="policy_data",
-                                                list_elem_keys=["conditions", "action"])
+                                                list_elem_keys=["conditions", "consequences_before_action", "action", "consequences_after_action"])
 
     @staticmethod
     def check_valid_risk_mitigating_policy_data_values(pol_dict, i, num_pols):
@@ -196,6 +196,24 @@ class YAMLPolicyDataChecks(YAMLChecks):
         if not type(pol_dict['action']) == str:
             print("WARN: non-string action for policy data " + str(i) + " of " + str(num_pols))
             valid_values = False
+
+        # check for valid consequences
+        if not type(pol_dict['consequences_before_action']) == list:
+            print("WARN: non-list consequences before action for policy data " + str(i) + " of " + str(num_pols))
+            valid_values = False
+        if not type(pol_dict['consequences_after_action']) == list:
+            print("WARN: non-list consequences after action for policy data " + str(i) + " of " + str(num_pols))
+            valid_values = False
+
+        # check for valid consequence types
+        for conseq in pol_dict['consequences_before_action']:
+            if not type(conseq) == str:
+                print("WARN: non-string consequence before action for policy data " + str(i) + " of " + str(num_pols))
+                valid_values = False
+        for conseq in pol_dict['consequences_after_action']:
+            if not type(conseq) == str:
+                print("WARN: non-string consequence after action for policy data " + str(i) + " of " + str(num_pols))
+                valid_values = False
 
         return valid_values
 

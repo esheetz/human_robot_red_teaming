@@ -101,9 +101,13 @@ class RiskMitigatingPolicyDataReader:
             self.valid_policy = self.valid_policy and valid_policy
 
             # create policy
-            risk_pol = RiskMitigatingPolicyDataPoint(conditions=pol['conditions'], action=pol['action'])
+            risk_pol = RiskMitigatingPolicyDataPoint(conditions=pol['conditions'],
+                                                     consequences_before_action=pol['consequences_before_action'],
+                                                     action=pol['action'],
+                                                     consequences_after_action=pol['consequences_after_action'])
             risk_conds = risk_pol.get_policy_data_point_condition_names()
             risk_act = risk_pol.get_policy_data_point_action_name()
+            risk_conseq_bef, risk_conseq_aft = risk_pol.get_policy_data_point_consequence_names()
 
             # check for conflicting data point already in policy
             conflict, risk_act, policy_risk_act = risk_pol.check_and_get_conflicting_data_point(self.risk_mitigating_policy)
@@ -146,12 +150,25 @@ class RiskMitigatingPolicyDataReader:
             # get conditions and action
             conds = pol_data_point.get_policy_data_point_condition_names()
             act = pol_data_point.get_policy_data_point_action_name()
+            conseq_bef, conseq_aft = pol_data_point.get_policy_data_point_consequence_names()
             # print info
             print("    Policy Data Point " + str(i) + " of " + str(num_pols) + ":")
             print("        conditions:")
             for cond in conds:
                 print("          - " + cond)
+            if len(conseq_bef) == 0:
+                print("        consequences before action: NONE")
+            else:
+                print("        consequences before action:")
+                for conseq in conseq_bef:
+                    print("          - " + conseq)
             print("        action: " + act)
+            if len(conseq_aft) == 0:
+                print("        consequences after action: NONE")
+            else:
+                print("        consequences after action:")
+                for conseq in conseq_aft:
+                    print("          - " + conseq)
             i += 1
         print()
 
