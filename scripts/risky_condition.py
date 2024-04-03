@@ -60,21 +60,35 @@ class RiskyCondition:
     def get_risk_score_name(self):
         return self.risk_score_name
 
+    def get_matrix_risk_score(self):
+        return self.matrix_risk_score
+
+    def get_matrix_risk_score_name(self):
+        return self.matrix_risk_score_name
+
     def get_safety_score(self):
         return self.safety_score
+
+    def get_matrix_safety_score(self):
+        return self.matrix_safety_score
 
     ##########################
     ### RISK/SAFETY SCORES ###
     ##########################
 
     def compute_risk_score(self):
-        # compute risk score [0,1]
+        # compute risk score
         self.risk_score = RiskScores.compute_risk_score(self.likelihood, self.consequence)
         # get corresponding risk score name
-        self.risk_score_name = RiskScores.get_score_name(self.risk_score)
+        self.risk_score_name = RiskScores.get_score_name(self.likelihood, self.consequence)
+        # compute (somewhat more interpretable) risk assessment matrix score and name
+        self.matrix_risk_score = RiskScores.compute_matrix_risk_score(self.likelihood, self.consequence)
+        self.matrix_risk_score_name = RiskScores.get_matrix_score_name(self.matrix_risk_score)
         return
 
     def compute_safety_score(self):
-        # compute safety score [0,1] based on risk score
+        # compute safety score [0,1) based on risk score
         self.safety_score = RiskScores.compute_safety_score(self.likelihood, self.consequence)
+        # compute (somewhat more interpretable) safety score
+        self.matrix_safety_score = RiskScores.compute_matrix_safety_score(self.likelihood, self.consequence)
         return

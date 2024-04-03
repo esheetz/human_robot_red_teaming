@@ -148,9 +148,9 @@ class RiskyConditionReader:
             print("        predicted future consequence states:")
             for state in conseq_states:
                 print("            - " + state)
-            print("        RISK LEVEL: " + cond.get_risk_score_name().upper())
-            print("            risk score: " + str(cond.get_risk_score()))
-            print("            safety score: " + str(cond.get_safety_score()))
+            print("        RISK ASSESSMENT MATRIX (RAM) RISK LEVEL: " + cond.get_matrix_risk_score_name().upper())
+            print("            RAM risk score: " + str(cond.get_matrix_risk_score()))
+            print("            RAM safety score: " + str(cond.get_matrix_safety_score()))
         print()
 
         return

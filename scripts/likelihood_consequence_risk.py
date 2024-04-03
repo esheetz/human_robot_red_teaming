@@ -172,11 +172,18 @@ class RiskScores:
         return "unknown"
 
     @staticmethod
-    def get_score_name(risk : float) -> str:
+    def get_matrix_score_name(risk : float) -> str:
         # un-normalize risk
         raw_risk = int(risk * RiskScores.get_max())
 
         return RiskScores.get_raw_score_name(raw_risk)
+
+    @staticmethod
+    def get_score_name(likelihood : int, consequence : int) -> str:
+        # compute risk according to risk assessment matrix
+        matrix_risk = RiskScores.compute_matrix_risk_score(likelihood, consequence)
+
+        return RiskScores.get_matrix_score_name(matrix_risk)
 
     @staticmethod
     def compute_raw_risk_score(likelihood : int, consequence : int) -> int:
@@ -187,7 +194,7 @@ class RiskScores:
         return likelihood * consequence
 
     @staticmethod
-    def compute_risk_score(likelihood : int, consequence : int) -> float:
+    def compute_matrix_risk_score(likelihood : int, consequence : int) -> float:
         raw_risk = RiskScores.compute_raw_risk_score(likelihood, consequence)
 
         # normalized risk score
@@ -196,11 +203,32 @@ class RiskScores:
         return risk
 
     @staticmethod
+    def compute_risk_score(likelihood : int, consequence : int) -> float:
+        # error check
+        likelihood = LikelihoodLevels.error_check(likelihood)
+        consequence = ConsequenceClasses.error_check(consequence)
+
+        # turn likelihood into probability in [0,1]
+        norm_likelihood = likelihood / LikelihoodLevels.get_max()
+
+        return norm_likelihood * consequence
+
+    @staticmethod
+    def compute_matrix_safety_score(likelihood : int, consequence : int) -> float:
+        # compute risk
+        risk = RiskScores.compute_matrix_risk_score(likelihood, consequence)
+
+        # compute safety
+        safety = 1.0 - risk
+
+        return safety
+
+    @staticmethod
     def compute_safety_score(likelihood : int, consequence : int) -> float:
         # compute risk
         risk = RiskScores.compute_risk_score(likelihood, consequence)
 
         # compute safety
-        safety = 1.0 - risk
+        safety = 1 / risk
 
         return safety
