@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--***********************************************************
+	Consequence State Reader
+	Emily Sheetz, NSTGRO VTE 2024
+
+	run either:
+		$ roslaunch safety_aware_reasoning consequence_state_reader.launch
+		OR
+		$ rosrun safety_aware_reasoning consequence_state_reader.py
+************************************************************-->
+<launch>
+	<arg name="robot" default="val"/>
+	<arg name="env" default="lunar_habitat"/>
+
+	<node pkg="safety_aware_reasoning" type="consequence_state_reader.py" name="ConsequenceStateReader" output="screen">
+		<param name="robot" value="$(arg robot)"/>
+		<param name="environment" value="$(arg env)"/>
+	</node>
+</launch>

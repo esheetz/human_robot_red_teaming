@@ -32,7 +32,7 @@ find_package(catkin REQUIRED COMPONENTS
 # generate messages
 #add_message_files(
 #  FILES
-#  
+#
 #)
 
 # dependencies for generated messages
@@ -65,6 +65,8 @@ install(PROGRAMS
   # YAML CHECKING HELPER CLASSES
   scripts/yaml_formatting_checks.py
   # STATE SPACE CLASSES/SCRIPTS
+  scripts/consequence_state.py
+  scripts/consequence_state_reader.py
   scripts/likelihood_consequence_risk.py
   scripts/risky_condition.py
   scripts/risky_condition_reader.py
