@@ -5,11 +5,10 @@
 Consequence state space
 - [x] input consequence state space
 - [x] error check consequence state space
-- [x] update condition info with state space
-- [ ] update consequence/risk/safety computation to match project formulation
-- [ ] update risk calculation to match project formulation (unnormalized consequence)
-- [ ] make sure everything in code is named appropriately (policy -> utility)
-- [ ] update policy/utility info with state space (update data points)
+- [x] update condition info with state space (update data point class, reader, YAML checks, and YAML)
+- [x] update consequence/risk/safety computation to match project formulation
+- [x] make sure everything in code is named appropriately (policy -> utility)
+- [ ] update policy data points info with state space (update data point class, reader, YAML checks, and YAML)
 - [ ] add querying state space info to red team data extension
 - [ ] ask user for input on state space (CSL of consequence states)
 - [ ] error checking on user input

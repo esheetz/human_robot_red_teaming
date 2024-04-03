@@ -333,12 +333,12 @@ def run_red_team_data_extension_node():
     # verify initialization and policy
     if red_team.check_initialized() and red_team.check_valid_policy():
         rospy.loginfo("[Red Team Data Extension] Successfully initialized human-robot red team data extension node!")
-        rospy.loginfo("[Red Team Data Extension] Initial human-robot red team policy is valid!")
+        rospy.loginfo("[Red Team Data Extension] Initial human-robot red team data is valid!")
     else:
         if not red_team.check_initialized():
             rospy.logerr("[Red Team Data Extension] Could not initialize human-robot red team data extension node")
         if not red_team.check_valid_policy():
-            rospy.logerr("[Red Team Data Extension] Initial human-robot red team policy is invalid")
+            rospy.logerr("[Red Team Data Extension] Initial human-robot red team data is invalid")
         # exit with error
         sys.exit(1)
     print()
