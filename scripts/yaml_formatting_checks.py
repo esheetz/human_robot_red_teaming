@@ -79,6 +79,26 @@ class YAMLChecks:
 class YAMLStateSpaceChecks(YAMLChecks):
 
     @staticmethod
+    def check_consequence_state_yaml_formatting(yaml_dict, env_name):
+        return YAMLChecks.check_yaml_formatting(file_nickname="consequence state",
+                                                yaml_dict=yaml_dict,
+                                                env_name=env_name,
+                                                list_key="consequences",
+                                                list_elem_keys=["name"])
+
+    @staticmethod
+    def check_valid_consequence_state_values(state_dict, i, num_states):
+        # initialize valid values flag
+        valid_values = True
+
+        # check for valid name
+        if not type(state_dict['name']) == str:
+            print("WARN: non-string name for consequence state " + str(i) + " of " + str(num_states))
+            valid_values = False
+
+        return valid_values
+
+    @staticmethod
     def check_risky_condition_yaml_formatting(yaml_dict, env_name):
         return YAMLChecks.check_yaml_formatting(file_nickname="risky condition",
                                                 yaml_dict=yaml_dict,
