@@ -13,13 +13,15 @@ import yaml
 from yaml_formatting_checks import YAMLChecks
 from yaml_formatting_checks import YAMLPolicyDataChecks as YAMLPolicy
 
-# import state space, action space, and policy data point classes
+# import state space, consequence space, action space, and policy data point classes
 from risky_condition import RiskyCondition
+from consequence_state import ConsequenceState
 from risk_mitigating_action import RiskMitigatingAction
 from risk_mitigating_policy_data_point import RiskMitigatingPolicyDataPoint
 
-# import state space, action space, and policy data readers
+# import state space, consequence space, action space, and policy data readers
 from risky_condition_reader import RiskyConditionReader
+from consequence_state_reader import ConsequenceStateReader
 from risk_mitigating_action_reader import RiskMitigatingActionReader
 from risk_mitigating_policy_data_reader import RiskMitigatingPolicyDataReader
 
@@ -32,6 +34,8 @@ class RedTeamPolicy:
         # initialize readers
         self.state_space_reader = RiskyConditionReader(robot=self.robot_name,
                                                        environment=self.environment_name)
+        self.consequence_state_space_reader = ConsequenceStateReader(robot=self.robot_name,
+                                                                     environment=self.environment_name)
         self.action_space_reader = RiskMitigatingActionReader(robot=self.robot_name,
                                                               environment=self.environment_name)
         self.policy_starter_reader = RiskMitigatingPolicyDataReader(robot=self.robot_name,
@@ -67,6 +71,12 @@ class RedTeamPolicy:
     def get_risky_condition_with_name(self, condition_name):
         return self.state_space_reader.get_risky_condition_with_name(condition_name)
 
+    def get_consequence_state_space(self):
+        return self.consequence_state_reader.get_consequence_state_names()
+
+    def get_consequence_state_with_name(self, consequence_name):
+        return self.consequence_state_reader.get_consequence_state_with_name(consequence_name)
+
     def get_action_space(self):
         return self.action_space_reader.get_risk_mitigating_action_names()
 
@@ -91,9 +101,15 @@ class RedTeamPolicy:
         self.initialized = True
 
         # initialize spaces
+        self.__initialize_consequence_state_space()
         self.__initialize_state_space()
         self.__initialize_action_space()
-        self.__initialize_policies()        
+        self.__initialize_policies()
+
+        # error check state space against consequence state space
+        valid_states = self.__check_state_space_against_consequence_space()
+        if not valid_states:
+            return
 
         # error check policies against state and action spaces
         valid_policies = self.__check_policies_against_state_action_spaces()
@@ -151,6 +167,16 @@ class RedTeamPolicy:
             rospy.loginfo("[Red Team Data Extension] Successfully initialized state space!")
         return
 
+    def __initialize_consequence_state_space(self):
+        # process consequence state space
+        self.consequence_state_space_reader.process_consequence_states()
+        if not self.consequence_state_space_reader.check_valid_states():
+            rospy.logerr("[Red Team Data Extension] Could not initialize consequence state space")
+            self.initialized = False
+        else:
+            rospy.loginfo("[Red Team Data Extension] Successfully initialized consequence state space!")
+        return
+
     def __initialize_action_space(self):
         # process action space
         self.action_space_reader.process_risk_mitigating_actions()
@@ -201,21 +227,41 @@ class RedTeamPolicy:
 
         return
 
+    def __check_state_space_against_consequence_space(self):
+        # get names of consequences
+        consequence_state_space_names = self.consequence_state_space_reader.get_consequence_state_names()
+
+        # get state space
+        state_space = self.state_space_reader.get_risky_conditions()
+
+        # look through state space
+        for condition in state_space:
+            # check condition against consequence space
+            valid_condition = condition.validate_condition(consequence_state_space)
+            if not valid_condition:
+                rospy.logerr("[Red Team Data Extension] Invalid risky condition; consequences not in consequence space; please resolve manually")
+                return False
+
+        return True
+
     def __check_policies_against_state_action_spaces(self):
         # get names of conditions and actions
         state_space_names = self.state_space_reader.get_risky_condition_names()
+        consequence_state_space_names = self.consequence_state_space_reader.get_consequence_state_names()
         action_space_names = self.action_space_reader.get_risk_mitigating_action_names()
 
         # check human-generated policy
         valid_human_gen_policy = self.__check_policy_against_state_action_spaces("human-generated",
-                                                                                   self.policy_starter_reader.get_risk_mitigating_policy_data(),
-                                                                                   state_space_names,
-                                                                                   action_space_names)
+                                                                                 self.policy_starter_reader.get_risk_mitigating_policy_data(),
+                                                                                 state_space_names,
+                                                                                 action_space_names,
+                                                                                 consequence_state_space_names)
         # check red team policy
         valid_red_team_policy = self.__check_policy_against_state_action_spaces("red team generated",
-                                                                                   self.red_team_policy_reader.get_risk_mitigating_policy_data(),
-                                                                                   state_space_names,
-                                                                                   action_space_names)
+                                                                                self.red_team_policy_reader.get_risk_mitigating_policy_data(),
+                                                                                state_space_names,
+                                                                                action_space_names,
+                                                                                consequence_state_space_names)
 
         # check valid policies
         valid_policies = valid_human_gen_policy and valid_red_team_policy
@@ -227,15 +273,19 @@ class RedTeamPolicy:
 
         return valid_policies
 
-    def __check_policy_against_state_action_spaces(self, policy_nickname : str, policy : dict, state_space : list, action_space : list):
+    def __check_policy_against_state_action_spaces(self, policy_nickname : str,
+                                                         policy : dict,
+                                                         state_space : list,
+                                                         action_space : list,
+                                                         conseq_space : list):
         # look through policy
         for conds in policy.keys():
             # get policy data point
             pol_data_point = policy[conds]
             # check data point against state and action spaces
-            valid_data_point = pol_data_point.validate_data_point(state_space, action_space)
+            valid_data_point = pol_data_point.validate_data_point(state_space, action_space, conseq_space)
             if not valid_data_point:
-                rospy.logerr("[Red Team Data Extension] Invalid %s policy data point; conditions and action not in state/action spaces; please resolve manually", policy_nickname)
+                rospy.logerr("[Red Team Data Extension] Invalid %s policy data point; conditions, consequences, action not in state/action spaces; please resolve manually", policy_nickname)
                 return False
 
         return True
