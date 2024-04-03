@@ -4,17 +4,22 @@ household:
     - name: test1
       likelihood: 1
       consequence: 2
+      consequence_states: [disaster1]
     - name: test4
       likelihood: 2
       consequence: 3
+      consequence_states: [disaster1, disaster2]
     - name: test5
       likelihood: 3
       consequence: 4
+      consequence_states: [disaster3, disaster4, disaster5]
 lunar_habitat:
   conditions:
     - name: test2
       likelihood: 2
       consequence: 3
+      consequence_states: [disaster7, disaster6]
     - name: test3
       likelihood: 4
       consequence: 5
+      consequence_states: [disaster8, disaster9]

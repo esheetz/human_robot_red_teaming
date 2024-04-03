@@ -104,7 +104,7 @@ class YAMLStateSpaceChecks(YAMLChecks):
                                                 yaml_dict=yaml_dict,
                                                 env_name=env_name,
                                                 list_key="conditions",
-                                                list_elem_keys=["name","likelihood","consequence"])
+                                                list_elem_keys=["name","likelihood","consequence","consequence_states"])
 
     @staticmethod
     def check_valid_risky_condition_values(cond_dict, i, num_conds):
@@ -114,6 +114,11 @@ class YAMLStateSpaceChecks(YAMLChecks):
         # check for valid name
         if not type(cond_dict['name']) == str:
             print("WARN: non-string name for risky condition " + str(i) + " of " + str(num_conds))
+            valid_values = False
+
+        # check for valid consequence states
+        if not type(cond_dict['consequence_states']) == list:
+            print("WARN: non-list consequence states for risky condition " + str(i) + " of " + str(num_conds))
             valid_values = False
 
         # check for valid likelihood and consequence scores

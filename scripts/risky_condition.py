@@ -8,9 +8,11 @@ from likelihood_consequence_risk import LikelihoodLevels, ConsequenceClasses, Ri
 class RiskyCondition:
     def __init__(self, name="unnamed_condition",
                        likelihood=LikelihoodLevels.get_max(),
-                       consequence=ConsequenceClasses.get_max()):
+                       consequence=ConsequenceClasses.get_max(),
+                       consequence_states=[]):
         # set internal parameters
         self.name = str(name)
+        self.consequence_states = tuple(sorted([str(i) for i in consequence_states]))
 
         # set given likelihood and consequence values
         self.set_likelihood_level(likelihood)
@@ -26,6 +28,9 @@ class RiskyCondition:
 
     def get_condition_name(self):
         return self.name
+
+    def get_consequence_states(self):
+        return self.consequence_states
 
     def set_likelihood_level(self, likelihood):
         # error check likelihood value
