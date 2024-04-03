@@ -3,14 +3,18 @@
 ## TODOs
 
 Consequence state space
-- [ ] input consequence state space
-- [ ] error check consequence state space
-- [ ] update condition info with state space
-- [ ] update consequence to match project formulation?
-- [ ] update policy/utility info with state space
-- [ ] make sure everything in code is named appropriately
-- [ ] ask user for input on state space
+- [ ] input consequence state space - TESTING NEEDED
+- [ ] error check consequence state space - TESTING NEEDED
+- [ ] update condition info with state space - TESTING NEEDED
+- [ ] update consequence to match project formulation
+- [ ] update risk calculation to match project formulation (unnormalized consequence)
+- [ ] make sure everything in code is named appropriately (policy -> utility)
+- [ ] update policy/utility info with state space (update data points)
 - [ ] add querying state space info to red team data extension
+- [ ] ask user for input on state space (CSL of consequence states)
+- [ ] error checking on user input
+- [ ] check for multiples? conflicting state spaces?
+- [ ] write to YAML file
 
 Counter-factual red teaming
 - [ ] rename red teamed data files to indicate both RS generation and CFA generation
