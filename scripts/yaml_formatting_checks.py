@@ -230,7 +230,9 @@ class YAMLPolicyDataChecks(YAMLChecks):
             # create dictionary for data point
             point_dict = {
                 "conditions" : list(policy_point.get_policy_data_point_condition_names()),
-                "action" : policy_point.get_policy_data_point_action_name()
+                "consequences_before_action" : list(policy_point.get_policy_data_point_consequences_before_action_names()),
+                "action" : policy_point.get_policy_data_point_action_name(),
+                "consequences_after_action" : list(policy_point.get_policy_data_point_consequences_after_action_names())
             }
 
             # add data point to list
