@@ -92,3 +92,15 @@ class RiskyCondition:
         # compute (somewhat more interpretable) safety score
         self.matrix_safety_score = RiskScores.compute_matrix_safety_score(self.likelihood, self.consequence)
         return
+
+    ################################################
+    ### VALIDATE AGAINST CONSEQUENCE STATE SPACE ###
+    ################################################
+
+    def validate_condition(self, consequence_space_names):
+        for state in self.consequence_states:
+            if state not in consequence_space_names:
+                print("ERROR: consequence " + state + " not in consequence state space: ", consequence_space_names)
+                return False
+        # if we get here, every consequence exists in consequence space
+        return True
