@@ -2,22 +2,50 @@ household:
   policy_data:
   - conditions:
     - test1
+    consequences_before_action:
+    - disaster1
     action: action0
+    consequences_after_action: []
   - conditions:
     - test4
+    consequences_before_action:
+    - disaster1
+    - disaster2
     action: action1
+    consequences_after_action:
+    - disaster2
   - conditions:
     - test5
+    consequences_before_action:
+    - disaster3
+    - disaster4
+    - disaster5
     action: action2
+    consequences_after_action:
+    - disaster3
 lunar_habitat:
   policy_data:
   - conditions:
     - test2
+    consequences_before_action:
+    - disaster6
+    - disaster7
     action: action4
+    consequences_after_action: []
   - conditions:
     - test3
+    consequences_before_action:
+    - disaster8
+    - disaster9
     action: action3
+    consequences_after_action: []
   - conditions:
     - test2
     - test3
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    - disaster8
+    - disaster9
     action: action4
+    consequences_after_action: []

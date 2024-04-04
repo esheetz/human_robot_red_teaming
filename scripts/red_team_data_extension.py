@@ -143,32 +143,13 @@ class RedTeamDataExtension:
 
         # get action
         action = action_space[action_idx]
+        self.print_got_action_message(action)
 
-        # get consequences after action input from user
-        conseq_idxs = self.get_consequence_input(red_team_conditions, red_team_consequences, action, conseq_space)
-
-        # verify consequences are not None
-        if conseq_idxs is None:
-            # no valid consequences received, check whether skipping scenario or quitting data generation
-            if self.continue_data_generation:
-                # skipping scenario
-                self.print_skip_message()
-                return
-            else:
-                # quitting
-                return
-
-        # get consequences
-        conseqs = [conseq_space[i] for i in conseq_idxs]
-
-        # create policy data point
-        pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions,
-                                                  consequences_before_action=red_team_consequences,
-                                                  action=action,
-                                                  consequences_after_action=conseqs)
+        # create temporary policy data point
+        temp_pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions, action=action)
 
         # check for duplicates already in policy
-        conflict, point_act, pol_act = pol_point.check_and_get_conflicting_data_point(self.red_team.policy_data)
+        conflict, point_act, pol_act = temp_pol_point.check_and_get_conflicting_data_point(self.red_team.policy_data)
         if conflict:
             # report conflict
             self.print_action_conflict_message(red_team_conditions, point_act, pol_act)
@@ -189,29 +170,33 @@ class RedTeamDataExtension:
 
             # get action
             action = action_space[action_idx]
+            self.print_got_action_message(action)
 
-            # get consequences after action input from user
-            conseq_idxs = self.get_consequence_input(red_team_conditions, red_team_consequences, action, conseq_space)
+        # get consequences after action input from user
+        conseq_idxs = self.get_consequence_input(red_team_conditions, red_team_consequences, action, conseq_space)
 
-            # verify consequences are not None
-            if conseq_idxs is None:
-                # no valid consequences received, check whether skipping scenario or quitting data generation
-                if self.continue_data_generation:
-                    # skipping scenario
-                    self.print_skip_message()
-                    return
-                else:
-                    # quitting
-                    return
+        # verify consequences are not None
+        if conseq_idxs is None:
+            # no valid consequences received, check whether skipping scenario or quitting data generation
+            if self.continue_data_generation:
+                # skipping scenario
+                self.print_skip_message()
+                return
+            else:
+                # quitting
+                return
 
-            # get consequences
-            conseqs = [conseq_space[i] for i in conseq_idxs]
+        # get consequences
+        conseqs = [conseq_space[i] for i in conseq_idxs]
+        self.print_got_consequences_message(conseqs)
 
-            # create policy data point
-            pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions,
-                                                      consequences_before_action=red_team_consequences,
-                                                      action=action,
-                                                      consequences_after_action=conseqs)
+        # TODO check for and resolve conflicts in post action consequences; policy should be indexed by both conditions and consequences
+
+        # create policy data point
+        pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions,
+                                                  consequences_before_action=red_team_consequences,
+                                                  action=action,
+                                                  consequences_after_action=conseqs)
 
         # update policy
         self.print_update_policy_message(red_team_conditions, red_team_consequences, action, conseqs)
@@ -268,7 +253,8 @@ class RedTeamDataExtension:
         print("        Consequence state space:")
         for i in range(len(conseq_space)):
             print("          " + str(i) + ". " + conseq_space[i])
-        print("          " + str(len(conseq_space)) + ". [SKIP THIS SCENARIO]")
+        print("          " + str(len(conseq_space)) + ". [NO REMAINING CONSEQUENCES]")
+        print("          " + str(len(conseq_space)+1) + ". [SKIP THIS SCENARIO]")
         print("    [type 'exit()' to quit]")
         print()
         return
@@ -280,13 +266,25 @@ class RedTeamDataExtension:
 
     def print_separator(self):
         print()
-        print("====================================================================================================")
+        print()
+        print()
+        print("==============================================================================================================")
+        print("==============================================================================================================")
+        print("==============================================================================================================")
+        print()
+        print()
+        print()
+        return
+
+    def print_substep_separator(self):
+        print()
+        print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
         print()
         return
 
     def print_skip_message(self):
         print("    *** Skipping this red teamed scenario, no new data points generated...")
-        print()
+        self.print_separator()
         return
 
     def print_action_conflict_message(self, red_team_conditions, point_act, pol_act):
@@ -299,13 +297,23 @@ class RedTeamDataExtension:
         print()
         return
 
+    def print_got_action_message(self, action):
+        print("    *** Great! Got action:", action)
+        self.print_substep_separator()
+        return
+
+    def print_got_consequences_message(self, conseqs):
+        print("    *** Great! Got consequences:", conseqs)
+        self.print_substep_separator()
+        return
+
     def print_update_policy_message(self, red_team_conditions, red_team_consequences, action, conseqs):
         print("    *** Great! Updating policy!")
         print("            Conditions:", red_team_conditions)
         print("            Consequences before action:", red_team_consequences)
         print("            Action:", action)
         print("            Consequences after action:", conseqs)
-        print()
+        self.print_separator()
         return
 
     ############################################################
@@ -359,7 +367,7 @@ class RedTeamDataExtension:
 
     def prompt_user_input_action(self):
         val = input("    Action number: ")
-        self.print_separator()
+        self.print_substep_separator()
         return val
 
     def validate_action_index(self, val, action_space):
@@ -402,7 +410,7 @@ class RedTeamDataExtension:
             self.print_consequences(conseq_space)
 
             # ask for user input
-            quit, skip, action_idx = self.get_user_input_consequences(conseq_space)
+            quit, skip, conseq_idxs = self.get_user_input_consequences(conseq_space)
 
             # check result
             if quit:
@@ -410,7 +418,7 @@ class RedTeamDataExtension:
                 return None
             if skip:
                 return None
-            if action_idx is None:
+            if conseq_idxs is None:
                 self.print_try_again_message()
                 continue
 
@@ -435,7 +443,7 @@ class RedTeamDataExtension:
 
     def prompt_user_input_consequences(self):
         val = input("    Consequence numbers: ")
-        self.print_separator()
+        self.print_substep_separator()
         return val
 
     def validate_consequence_indices(self, val, conseq_space):
@@ -452,14 +460,32 @@ class RedTeamDataExtension:
 
         # check indices
         for int_val in int_vals:
-            if (int_val < 0) or (int_val > len(conseq_space)):
-                print("    *** INVALID INPUT: received " + str(int_val) + ", but must be in range [0," + str(len(conseq_space)) + "]")
+            if (int_val < 0) or (int_val > len(conseq_space)+1):
+                print("    *** INVALID INPUT: received " + str(int_val) + ", but must be in range [0," + str(len(conseq_space)+1) + "]")
                 print()
                 return None, None
             elif int_val == len(conseq_space):
-                return True, None
+                if len(int_vals) == 1:
+                    # only selected no consequences, so no consequences
+                    return False, []
+                else:
+                    print("    *** INVALID INPUT: received " + str(int_val) + " (no consequences) as part of list of " + str(len(int_vals)) + " options; if no consequences, only provide one number; otherwise, provide list of consequence numbers")
+                    print()
+                    return None, None
+            elif int_val == (len(conseq_space)+1):
+                if len(int_vals) == 1:
+                    # only selected skip, so skip
+                    return True, None
+                else:
+                    print("    *** INVALID INPUT: received " + str(int_val) + " (skip) as part of list of " + str(len(int_vals)) + " options; if skipping, only provide skip number; otherwise, provide list of consequence numbers")
+                    print()
+                    return None, None
             else:
-                return False, int_vals
+                # valid int received
+                continue
+
+        # if we get here, all ints are valid
+        return False, int_vals
 
     ###########################
     ### SAVE POLICY TO FILE ###

@@ -72,10 +72,10 @@ class RedTeamPolicy:
         return self.state_space_reader.get_risky_condition_with_name(condition_name)
 
     def get_consequence_state_space(self):
-        return self.consequence_state_reader.get_consequence_state_names()
+        return self.consequence_state_space_reader.get_consequence_state_names()
 
     def get_consequence_state_with_name(self, consequence_name):
-        return self.consequence_state_reader.get_consequence_state_with_name(consequence_name)
+        return self.consequence_state_space_reader.get_consequence_state_with_name(consequence_name)
 
     def get_action_space(self):
         return self.action_space_reader.get_risk_mitigating_action_names()
@@ -237,7 +237,7 @@ class RedTeamPolicy:
         # look through state space
         for condition in state_space:
             # check condition against consequence space
-            valid_condition = condition.validate_condition(consequence_state_space)
+            valid_condition = condition.validate_condition(consequence_state_space_names)
             if not valid_condition:
                 rospy.logerr("[Red Team Data Extension] Invalid risky condition; consequences not in consequence space; please resolve manually")
                 return False
