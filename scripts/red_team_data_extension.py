@@ -11,18 +11,25 @@ import random
 
 from yaml_formatting_checks import YAMLChecks
 
-# import state space, action space, and policy data point classes
+# import state space, consequence space, action space, and policy data point classes
 from risky_condition import RiskyCondition
+from consequence_state import ConsequenceState
 from risk_mitigating_action import RiskMitigatingAction
 from risk_mitigating_policy_data_point import RiskMitigatingPolicyDataPoint
 
-# import state space, action space, and policy data readers
+# import state space, consequence space, action space, and policy data readers
 from risky_condition_reader import RiskyConditionReader
+from consequence_state_reader import ConsequenceStateReader
 from risk_mitigating_action_reader import RiskMitigatingActionReader
 from risk_mitigating_policy_data_reader import RiskMitigatingPolicyDataReader
 
 # import red team
 from red_team_policy import RedTeamPolicy
+
+# import command line tools
+from red_team_command_line_tools import RedTeamCommandLinePrinting as CLP
+from red_team_command_line_tools import UserInputActionProcessing as UIAction
+from red_team_command_line_tools import UserInputConsequenceProcessing as UIConseq
 
 class RedTeamDataExtension:
     def __init__(self, robot="val", environment="lunar_habitat", num_points=10, max_conds=-1):
@@ -79,7 +86,7 @@ class RedTeamDataExtension:
     ### RED TEAM SCENARIO GENERATION ###
     ####################################
 
-    def get_random_red_teamed_scenario(self, state_space):
+    def get_random_red_teamed_scenario(self, state_space, consequence_space):
         # set bounds for number of conditions to be generated
         lower_bound = 1
         upper_bound = self.max_conds_per_point if (self.max_conds_per_point != -1) else len(state_space)
@@ -93,7 +100,24 @@ class RedTeamDataExtension:
         # make sure conditions are in sorted order
         scenario.sort()
 
-        return scenario
+        # get all corresponding consequences
+        conseq_set = set()
+        for condition_name in scenario:
+            # get condition
+            condition = self.red_team.get_risky_condition_with_name(condition_name)
+            # get consequences
+            consequences = condition.get_consequence_states()
+            # add each consequence to set
+            for conseq in consequences:
+                conseq_set.add(conseq)
+
+        # convert to list
+        scenario_consequences = list(conseq_set)
+
+        # make sure consequences are in sorted order
+        scenario_consequences.sort()
+
+        return scenario, scenario_consequences
 
     #############################
     ### DATA POINT GENERATION ###
@@ -102,59 +126,36 @@ class RedTeamDataExtension:
     def generate_new_data_point(self):
         # get state and action space
         state_space = self.red_team.get_state_space()
+        conseq_space = self.red_team.get_consequence_state_space()
         action_space = self.red_team.get_action_space()
 
         # generate random scenario
-        red_team_conditions = self.get_random_red_teamed_scenario(state_space)
+        red_team_conditions, red_team_consequences = self.get_random_red_teamed_scenario(state_space, conseq_space)
 
-        # get scenario input from user
-        action_idx = self.get_scenario_input(red_team_conditions, action_space)
+        # get action from user input and resolve conflicts (if necessary)
+        output = UIAction.get_action_from_user_and_resolve_conflicts(self.red_team, red_team_conditions, red_team_consequences, action_space)
+        # unpack
+        self.continue_data_generation, abort, action = output
+        # check if abourting this data point
+        if abort:
+            return
 
-        # verify action is not None
-        if action_idx is None:
-            # no valid action received, check whether skipping scenario or quitting data generation
-            if self.continue_data_generation:
-                # skipping scenario
-                self.print_skip_message()
-                return
-            else:
-                # quitting
-                return
-
-        # get action
-        action = action_space[action_idx]
+        # get consequences from user input and resolve conflicts (if necessary)
+        output = UIConseq.get_consequences_from_user_and_resolve_conflicts(self.red_team, red_team_conditions, red_team_consequences, action, conseq_space)
+        # unpack
+        self.continue_data_generation, abort, conseqs = output
+        # check if aborting this data point
+        if abort:
+            return
 
         # create policy data point
-        pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions, action=action)
-
-        # check for duplicates already in policy
-        conflict, point_act, pol_act = pol_point.check_and_get_conflicting_data_point(self.red_team.policy_data)
-        if conflict:
-            # report conflict
-            self.print_action_conflict_message(red_team_conditions, point_act, pol_act)
-
-            # get scenario input from user
-            action_idx = self.get_scenario_input(red_team_conditions, action_space)
-
-            # verify action is not None
-            if action_idx is None:
-                # no valid action received, check whether skipping scenario or quitting data generation
-                if self.continue_data_generation:
-                    # skipping scenario
-                    self.print_skip_message()
-                    return
-                else:
-                    # quitting
-                    return
-
-            # get action
-            action = action_space[action_idx]
-
-            # create policy data point
-            pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions, action=action)
+        pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions,
+                                                  consequences_before_action=red_team_consequences,
+                                                  action=action,
+                                                  consequences_after_action=conseqs)
 
         # update policy
-        self.print_update_policy_message(red_team_conditions, action)
+        CLP.print_update_policy_message(red_team_conditions, red_team_consequences, action, conseqs)
         self.red_team.update_policy(pol_point)
 
         # check if policy needs to be written to file
@@ -162,135 +163,6 @@ class RedTeamDataExtension:
             self.write_policy_to_file()
 
         return
-
-    ################
-    ### PRINTING ###
-    ################
-
-    def print_red_teamed_scenario(self, scenario):
-        print("    What should the robot do when the following risk conditions exist in the current state?")
-        print("        Conditions:")
-        for condition_name in scenario:
-            # get condition from state space
-            condition = self.red_team.get_risky_condition_with_name(condition_name)
-            print("          - " + condition_name + "    [ " +
-                  "L=" + str(condition.get_likelihood_level()) +
-                  ", C=" + str(condition.get_consequence_class()) +
-                  ", Risk=" + str(condition.get_risk_score()) +
-                  " (" + condition.get_risk_score_name() + ") ]")
-        print()
-        return
-
-    def print_actions(self, action_space):
-        print("    Please select the number of the appropriate action to take in this state:")
-        print("        Robot's risk mitigating action space:")
-        for i in range(len(action_space)):
-            print("          " + str(i) + ". " + action_space[i])
-        print("          " + str(len(action_space)) + ". [SKIP THIS SCENARIO]")
-        print("    [type 'exit()' to quit]")
-        print()
-        return
-
-    def print_skip_message(self):
-        print("    *** Skipping this red teamed scenario, no new data points generated...")
-        print()
-        return
-
-    def print_action_conflict_message(self, red_team_conditions, point_act, pol_act):
-        print("    *** ERROR: this scenario is already in red teamed policy with different action")
-        print("            Conditions:", red_team_conditions)
-        print("            Just entered action:", point_act)
-        print("            Action in stored policy:", pol_act)
-        print("    Let's resolve this conflict now.")
-        print("    NOTE: your next selection will overwrite the stored policy value.")
-        print()
-        return
-
-    def print_update_policy_message(self, red_team_conditions, action):
-        print("    *** Great! Updating policy!")
-        print("            Conditions:", red_team_conditions)
-        print("            Action:", action)
-        print()
-        return
-
-    #############################
-    ### USER INPUT PROCESSING ###
-    #############################
-
-    def get_scenario_input(self, red_team_conditions, action_space):
-        # initialize loop flag and action index
-        got_valid_action = False
-        action_idx = None
-
-        # keep asking until valid input received
-        while not got_valid_action:
-            # print scenario
-            self.print_red_teamed_scenario(red_team_conditions)
-
-            # print possible actions
-            self.print_actions(action_space)
-
-            # ask for user input
-            quit, skip, action_idx = self.get_user_input(action_space)
-
-            # check result
-            if quit:
-                self.continue_data_generation = False
-                return None
-            if skip:
-                return None
-            if action_idx is None:
-                print("    Please try again.")
-                print()
-                continue
-
-            # valid action received
-            break
-
-        # return action index
-        return action_idx
-
-    def get_user_input(self, action_space):
-        # prompt user for input
-        val = self.prompt_user_input()
-
-        # check for quit
-        if val == "exit()":
-            return True, None, None
-
-        # validate action index
-        skip, action_idx = self.validate_action_index(val, action_space)
-
-        return False, skip, action_idx
-
-    def prompt_user_input(self):
-        val = input("    Action number: ")
-        print()
-        print("====================================================================================================")
-        print()
-        return val
-
-    def validate_action_index(self, val, action_space):
-        # initialize value
-        int_val = None
-
-        # try to convert to int
-        try:
-            int_val = int(val)
-        except:
-            print("    *** INVALID INPUT: " + val + " cannot be converted to an integer.")
-            print()
-            return None, None
-
-        # check indices
-        if (int_val < 0) or (int_val > len(action_space)):
-            print("    *** INVALID INPUT: received " + val + ", but must be in range [0," + str(len(action_space)) + "]")
-            print()
-            return None, None
-        elif int_val == len(action_space):
-            return True, None
-        else:
-            return False, int_val
 
     ###########################
     ### SAVE POLICY TO FILE ###
@@ -329,16 +201,16 @@ def run_red_team_data_extension_node():
                                     max_conds=max_conds_per_point)
     rospy.loginfo("[Red Team Data Extension] Initializing human-robot red team data extension node...")
     red_team.initialize_red_team()
-    
+
     # verify initialization and policy
     if red_team.check_initialized() and red_team.check_valid_policy():
         rospy.loginfo("[Red Team Data Extension] Successfully initialized human-robot red team data extension node!")
-        rospy.loginfo("[Red Team Data Extension] Initial human-robot red team policy is valid!")
+        rospy.loginfo("[Red Team Data Extension] Initial human-robot red team data is valid!")
     else:
         if not red_team.check_initialized():
             rospy.logerr("[Red Team Data Extension] Could not initialize human-robot red team data extension node")
         if not red_team.check_valid_policy():
-            rospy.logerr("[Red Team Data Extension] Initial human-robot red team policy is invalid")
+            rospy.logerr("[Red Team Data Extension] Initial human-robot red team data is invalid")
         # exit with error
         sys.exit(1)
     print()

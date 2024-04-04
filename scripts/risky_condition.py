@@ -8,9 +8,11 @@ from likelihood_consequence_risk import LikelihoodLevels, ConsequenceClasses, Ri
 class RiskyCondition:
     def __init__(self, name="unnamed_condition",
                        likelihood=LikelihoodLevels.get_max(),
-                       consequence=ConsequenceClasses.get_max()):
+                       consequence=ConsequenceClasses.get_max(),
+                       consequence_states=[]):
         # set internal parameters
         self.name = str(name)
+        self.consequence_states = tuple(sorted([str(i) for i in consequence_states]))
 
         # set given likelihood and consequence values
         self.set_likelihood_level(likelihood)
@@ -26,6 +28,9 @@ class RiskyCondition:
 
     def get_condition_name(self):
         return self.name
+
+    def get_consequence_states(self):
+        return self.consequence_states
 
     def set_likelihood_level(self, likelihood):
         # error check likelihood value
@@ -55,21 +60,47 @@ class RiskyCondition:
     def get_risk_score_name(self):
         return self.risk_score_name
 
+    def get_matrix_risk_score(self):
+        return self.matrix_risk_score
+
+    def get_matrix_risk_score_name(self):
+        return self.matrix_risk_score_name
+
     def get_safety_score(self):
         return self.safety_score
+
+    def get_matrix_safety_score(self):
+        return self.matrix_safety_score
 
     ##########################
     ### RISK/SAFETY SCORES ###
     ##########################
 
     def compute_risk_score(self):
-        # compute risk score [0,1]
+        # compute risk score
         self.risk_score = RiskScores.compute_risk_score(self.likelihood, self.consequence)
         # get corresponding risk score name
-        self.risk_score_name = RiskScores.get_score_name(self.risk_score)
+        self.risk_score_name = RiskScores.get_score_name(self.likelihood, self.consequence)
+        # compute (somewhat more interpretable) risk assessment matrix score and name
+        self.matrix_risk_score = RiskScores.compute_matrix_risk_score(self.likelihood, self.consequence)
+        self.matrix_risk_score_name = RiskScores.get_matrix_score_name(self.matrix_risk_score)
         return
 
     def compute_safety_score(self):
-        # compute safety score [0,1] based on risk score
+        # compute safety score [0,1) based on risk score
         self.safety_score = RiskScores.compute_safety_score(self.likelihood, self.consequence)
+        # compute (somewhat more interpretable) safety score
+        self.matrix_safety_score = RiskScores.compute_matrix_safety_score(self.likelihood, self.consequence)
         return
+
+    ################################################
+    ### VALIDATE AGAINST CONSEQUENCE STATE SPACE ###
+    ################################################
+
+    def validate_condition(self, consequence_space_names):
+        for state in self.consequence_states:
+            if state not in consequence_space_names:
+                print("ERROR: consequence " + state + " not in consequence state space: ", consequence_space_names)
+                return False
+        # if we get here, every consequence exists in consequence space
+        return True

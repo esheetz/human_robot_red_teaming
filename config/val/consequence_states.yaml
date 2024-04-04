@@ -1,0 +1,14 @@
+# consequence states for Valkyrie robot in different environments
+household:
+  consequences:
+    - name: disaster1
+    - name: disaster2
+    - name: disaster3
+    - name: disaster4
+    - name: disaster5
+lunar_habitat:
+  consequences:
+    - name: disaster6
+    - name: disaster7
+    - name: disaster8
+    - name: disaster9

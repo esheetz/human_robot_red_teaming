@@ -5,10 +5,14 @@ Emily Sheetz, NSTGRO VTE 2024
 
 class RiskMitigatingPolicyDataPoint:
     def __init__(self, conditions=[],
-                       action="unnamed_action"):
+                       consequences_before_action=[],
+                       action="unnamed_action",
+                       consequences_after_action=[]):
         # set internal parameters
         self.conditions = tuple(sorted([str(i) for i in conditions]))
+        self.consequences_before_action = tuple(sorted([str(i) for i in consequences_before_action]))
         self.action = str(action)
+        self.consequences_after_action = tuple(sorted([str(i) for i in consequences_after_action]))
 
     #######################
     ### GETTERS/SETTERS ###
@@ -20,9 +24,21 @@ class RiskMitigatingPolicyDataPoint:
     def get_policy_data_point_action_name(self):
         return self.action
 
-    ###################################
-    ### CHECK DUPLICATED CONDITIONS ###
-    ###################################
+    def get_policy_data_point_consequences_before_action_names(self):
+        return self.consequences_before_action
+
+    def get_policy_data_point_consequences_after_action_names(self):
+        return self.consequences_after_action
+
+    def get_policy_data_point_consequence_names(self):
+        return (self.consequences_before_action, self.consequences_after_action)
+
+    def get_policy_data_point_dictionary_key(self):
+        return (self.conditions, self.consequences_before_action)
+
+    ################################################################
+    ### CHECK DUPLICATED CONDITIONS / CONSEQUENCES BEFORE ACTION ###
+    ################################################################
 
     def check_data_point_duplicated(self, policy):
         # check policy type
@@ -38,33 +54,58 @@ class RiskMitigatingPolicyDataPoint:
     ### CHECK CONFLICTING ACTIONS ###
     #################################
 
-    def check_and_get_conflicting_data_point(self, policy):
+    def check_and_get_conflicting_data_point_action(self, policy):
         # check policy type
         if type(policy) == dict:
-            return self.__check_and_get_conflicting_data_point_policy(policy)
+            return self.__check_and_get_conflicting_data_point_action_policy(policy)
         elif type(policy) == RiskMitigatingPolicyDataPoint:
             return self.__check_and_get_conflicting_data_point_action(policy)
         else:
             print("WARN: unrecognized policy type: " + type(policy) + " ; assuming no conflicting actions to get")
             return False, None, None
 
-    def check_conflicting_data_point(self, policy):
+    def check_conflicting_data_point_action(self, policy):
         # check policy type
         if type(policy) == dict:
-            return self.__check_conflicting_data_point_policy(policy)
+            return self.__check_conflicting_data_point_action_policy(policy)
         elif type(policy) == RiskMitigatingPolicyDataPoint:
             return self.__check_conflicting_data_point_action(policy)
         else:
             print("WARN: unrecognized policy type: " + type(policy) + " ; assuming no conflicting actions")
             return False
 
-    ###########################################
-    ### VALIDATE AGAINST STATE/ACTION SPACE ###
-    ###########################################
+    ###################################################
+    ### CHECK CONFLICTING CONSEQUENCES AFTER ACTION ###
+    ###################################################
 
-    def validate_data_point(self, state_space_names, action_space_names):
+    def check_and_get_conflicting_data_point_consequences(self, policy):
+        # check policy type
+        if type(policy) == dict:
+            return self.__check_and_get_conflicting_data_point_consequences_policy(policy)
+        elif type(policy) == RiskMitigatingPolicyDataPoint:
+            return self.__check_and_get_conflicting_data_point_consequences(policy)
+        else:
+            print("WARN: unrecognized policy type: " + type(policy) + " ; assuming no conflicting consequences to get")
+            return False, None, None
+
+    def check_conflicting_data_point_consequences(self, policy):
+        # check policy type
+        if type(policy) == dict:
+            return self.__check_conflicting_data_point_consequences_policy(policy)
+        elif type(policy) == RiskMitigatingPolicyDataPoint:
+            return self.__check_conflicting_data_point_consequences(policy)
+        else:
+            print("WARN: unrecognized policy type: " + type(policy) + " ; assuming no conflicting consequences")
+            return False
+
+    ############################################
+    ### VALIDATE AGAINST STATE/ACTION SPACES ###
+    ############################################
+
+    def validate_data_point(self, state_space_names, action_space_names, consequence_space_names):
         return (self.validate_data_point_state_space(state_space_names) and
-                self.validate_data_point_action_space(action_space_names))
+                self.validate_data_point_action_space(action_space_names) and
+                self.validate_data_point_consequence_space(consequence_space_names))
 
     def validate_data_point_state_space(self, state_space_names):
         for cond in self.conditions:
@@ -81,31 +122,46 @@ class RiskMitigatingPolicyDataPoint:
         # if we get here, action exists in action space
         return True
 
+    def validate_data_point_consequence_space(self, consequence_space_names):
+        # check before action consequences
+        for conseq in self.consequences_before_action:
+            if conseq not in consequence_space_names:
+                print("ERROR: consequence " + conseq + " not in consequence space: ", consequence_space_names)
+                return False
+        # check after action consequences
+        for conseq in self.consequences_after_action:
+            if conseq not in consequence_space_names:
+                print("ERROR: consequence " + conseq + " not in consequence space: ", consequence_space_names)
+        # if we get here, ever consequence exists in consequence space
+        return True
+
     ##########################################################
     ### PRIVATE HELPERS FOR CHECKING DUPLICATED CONDITIONS ###
     ##########################################################
 
     def __check_data_point_in_policy(self, policy : dict):
         # check if data point is contained in given policy
-        return self.conditions in policy.keys()
+        return self.get_policy_data_point_dictionary_key() in policy.keys()
 
     def __check_data_point_conditions(self, policy_data_point): # policy_data_point : RiskMitigatingPolicyDataPoint
         # check if conditions are the same
-        return self.conditions == policy_data_point.get_policy_data_point_condition_names()
+        return self.get_policy_data_point_dictionary_key() == policy_data_point.get_policy_data_point_dictionary_key()
 
     ########################################################
     ### PRIVATE HELPERS FOR CHECKING CONFLICTING ACTIONS ###
     ########################################################
 
-    def __check_and_get_conflicting_data_point_policy(self, policy : dict):
+    def __check_and_get_conflicting_data_point_action_policy(self, policy : dict):
         # check if data point has same conditions but different action from data points in given policy
         conflict = (self.__check_data_point_in_policy(policy) and
-                    (self.__check_conflicting_data_point_action(policy[self.conditions])))
+                    (self.__check_conflicting_data_point_action(policy[self.get_policy_data_point_dictionary_key()])))
 
         # check conflict and return actions accordingly
         if conflict:
             # return conflicting actions
-            return (conflict, self.action, policy[self.conditions].get_policy_data_point_action_name())
+            return (conflict,
+                    self.action,
+                    policy[self.get_policy_data_point_dictionary_key()].get_policy_data_point_action_name())
         else:
             # no conflicting actions
             return (conflict, None, None)
@@ -118,15 +174,59 @@ class RiskMitigatingPolicyDataPoint:
         # check conflict and return actions accordingly
         if conflict:
             # return conflicting actions
-            return (conflict, self.action, policy_data_point.get_policy_data_point_action_name())
+            return (conflict,
+                    self.action,
+                    policy_data_point.get_policy_data_point_action_name())
         else:
             # no conflicting actions
             return (conflict, None, None)
 
-    def __check_conflicting_data_point_policy(self, policy : dict):
-        conflict, _, _ = self.__check_and_get_conflicting_data_point_policy(policy)
+    def __check_conflicting_data_point_action_policy(self, policy : dict):
+        conflict, _, _ = self.__check_and_get_conflicting_data_point_action_policy(policy)
         return conflict
 
     def __check_conflicting_data_point_action(self, policy_data_point): # policy_data_point : RiskMitigatingPolicyDataPoint
         conflict, _, _ = self.__check_and_get_conflicting_data_point_action(policy_data_point)
+        return conflict
+
+    ##########################################################################
+    ### PRIVATE HELPERS FOR CHECKING CONFLICTING CONSEQUENCES AFTER ACTION ###
+    ##########################################################################
+
+    def __check_and_get_conflicting_data_point_consequences_policy(self, policy : dict):
+        # check if data point has same key but different consequences from data points in given policy
+        conflict = (self.__check_data_point_in_policy(policy) and
+                    (self.__check_conflicting_data_point_consequences(policy[self.get_policy_data_point_dictionary_key()])))
+
+        # check conflict and return consequences accordingly
+        if conflict:
+            # return conflicting consequences
+            return (conflict,
+                    self.consequences_after_action,
+                    policy[self.get_policy_data_point_dictionary_key()].get_policy_data_point_consequences_after_action_names())
+        else:
+            # no conflicting consequences
+            return (conflict, None, None)
+
+    def __check_and_get_conflicting_data_point_consequences(self, policy_data_point): # policy_data_point : RiskMitigatingPolicyDataPoint
+        # check if data point has same key but different consequences from given data point
+        conflict = (self.__check_data_point_conditions(policy_data_point) and
+                    (self.consequences_after_action != policy_data_point.get_policy_data_point_consequences_after_action_names()))
+
+        # check conflict and return consequences accordingly
+        if conflict:
+            # return conflicting consequences
+            return (conflict,
+                    self.consequences_after_action,
+                    policy_data_point.get_policy_data_point_consequences_after_action_names())
+        else:
+            # no conflicting consequences
+            return (conflict, None, None)
+
+    def __check_conflicting_data_point_consequences_policy(self, policy : dict):
+        conflict, _, _ = self.__check_and_get_conflicting_data_point_consequences_policy(policy)
+        return conflict
+
+    def __check_conflicting_data_point_consequences(self, policy_data_point): # policy_data_point : RiskMitigatingPolicyDataPoint
+        conflict, _, _ = self.__check_and_get_conflicting_data_point_consequences(policy_data_point)
         return conflict

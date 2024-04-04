@@ -79,12 +79,32 @@ class YAMLChecks:
 class YAMLStateSpaceChecks(YAMLChecks):
 
     @staticmethod
+    def check_consequence_state_yaml_formatting(yaml_dict, env_name):
+        return YAMLChecks.check_yaml_formatting(file_nickname="consequence state",
+                                                yaml_dict=yaml_dict,
+                                                env_name=env_name,
+                                                list_key="consequences",
+                                                list_elem_keys=["name"])
+
+    @staticmethod
+    def check_valid_consequence_state_values(state_dict, i, num_states):
+        # initialize valid values flag
+        valid_values = True
+
+        # check for valid name
+        if not type(state_dict['name']) == str:
+            print("WARN: non-string name for consequence state " + str(i) + " of " + str(num_states))
+            valid_values = False
+
+        return valid_values
+
+    @staticmethod
     def check_risky_condition_yaml_formatting(yaml_dict, env_name):
         return YAMLChecks.check_yaml_formatting(file_nickname="risky condition",
                                                 yaml_dict=yaml_dict,
                                                 env_name=env_name,
                                                 list_key="conditions",
-                                                list_elem_keys=["name","likelihood","consequence"])
+                                                list_elem_keys=["name","likelihood","consequence","consequence_states"])
 
     @staticmethod
     def check_valid_risky_condition_values(cond_dict, i, num_conds):
@@ -94,6 +114,11 @@ class YAMLStateSpaceChecks(YAMLChecks):
         # check for valid name
         if not type(cond_dict['name']) == str:
             print("WARN: non-string name for risky condition " + str(i) + " of " + str(num_conds))
+            valid_values = False
+
+        # check for valid consequence states
+        if not type(cond_dict['consequence_states']) == list:
+            print("WARN: non-list consequence states for risky condition " + str(i) + " of " + str(num_conds))
             valid_values = False
 
         # check for valid likelihood and consequence scores
@@ -149,7 +174,7 @@ class YAMLPolicyDataChecks(YAMLChecks):
                                                 yaml_dict=yaml_dict,
                                                 env_name=env_name,
                                                 list_key="policy_data",
-                                                list_elem_keys=["conditions", "action"])
+                                                list_elem_keys=["conditions", "consequences_before_action", "action", "consequences_after_action"])
 
     @staticmethod
     def check_valid_risk_mitigating_policy_data_values(pol_dict, i, num_pols):
@@ -172,6 +197,24 @@ class YAMLPolicyDataChecks(YAMLChecks):
             print("WARN: non-string action for policy data " + str(i) + " of " + str(num_pols))
             valid_values = False
 
+        # check for valid consequences
+        if not type(pol_dict['consequences_before_action']) == list:
+            print("WARN: non-list consequences before action for policy data " + str(i) + " of " + str(num_pols))
+            valid_values = False
+        if not type(pol_dict['consequences_after_action']) == list:
+            print("WARN: non-list consequences after action for policy data " + str(i) + " of " + str(num_pols))
+            valid_values = False
+
+        # check for valid consequence types
+        for conseq in pol_dict['consequences_before_action']:
+            if not type(conseq) == str:
+                print("WARN: non-string consequence before action for policy data " + str(i) + " of " + str(num_pols))
+                valid_values = False
+        for conseq in pol_dict['consequences_after_action']:
+            if not type(conseq) == str:
+                print("WARN: non-string consequence after action for policy data " + str(i) + " of " + str(num_pols))
+                valid_values = False
+
         return valid_values
 
     @staticmethod
@@ -187,7 +230,9 @@ class YAMLPolicyDataChecks(YAMLChecks):
             # create dictionary for data point
             point_dict = {
                 "conditions" : list(policy_point.get_policy_data_point_condition_names()),
-                "action" : policy_point.get_policy_data_point_action_name()
+                "consequences_before_action" : list(policy_point.get_policy_data_point_consequences_before_action_names()),
+                "action" : policy_point.get_policy_data_point_action_name(),
+                "consequences_after_action" : list(policy_point.get_policy_data_point_consequences_after_action_names())
             }
 
             # add data point to list

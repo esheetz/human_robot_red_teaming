@@ -32,7 +32,7 @@ find_package(catkin REQUIRED COMPONENTS
 # generate messages
 #add_message_files(
 #  FILES
-#  
+#
 #)
 
 # dependencies for generated messages
@@ -65,6 +65,8 @@ install(PROGRAMS
   # YAML CHECKING HELPER CLASSES
   scripts/yaml_formatting_checks.py
   # STATE SPACE CLASSES/SCRIPTS
+  scripts/consequence_state.py
+  scripts/consequence_state_reader.py
   scripts/likelihood_consequence_risk.py
   scripts/risky_condition.py
   scripts/risky_condition_reader.py
@@ -74,8 +76,9 @@ install(PROGRAMS
   # POLICY CLASSES/SCRIPTS
   scripts/risk_mitigating_policy_data_point.py
   scripts/risk_mitigating_policy_data_reader.py
-  # RED TEAMING CLASSES/SCRIPTS
+  # RED TEAMING HELPERS/CLASSES/SCRIPTS
   scripts/red_team_policy.py
+  scripts/red_team_command_line_tools.py
   scripts/red_team_data_extension.py
   DESTINATION lib/${PROJECT_NAME} #${CATKIN_PACKAGE_SHARE_DESTINATION}
 )

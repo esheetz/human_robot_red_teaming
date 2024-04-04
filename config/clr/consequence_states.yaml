@@ -1,0 +1,14 @@
+# consequence states for CLR robot in different environments
+household:
+  consequences:
+    - name: disaster11
+    - name: disaster12
+    - name: disaster13
+    - name: disaster14
+    - name: disaster15
+lunar_habitat:
+  consequences:
+    - name: disaster16
+    - name: disaster17
+    - name: disaster18
+    - name: disaster19

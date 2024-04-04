@@ -109,7 +109,8 @@ class RiskyConditionReader:
             # create risky condition
             risky_cond = RiskyCondition(name=cond['name'],
                                         likelihood=cond['likelihood'],
-                                        consequence=cond['consequence'])
+                                        consequence=cond['consequence'],
+                                        consequence_states=cond['consequence_states'])
 
             # add risky condition to list
             self.risky_conditions.append(risky_cond)
@@ -137,14 +138,19 @@ class RiskyConditionReader:
         for i in range(num_conds):
             # get condition
             cond = self.risky_conditions[i]
+            # get consequence states
+            conseq_states = cond.get_consequence_states()
             # print condition info
             print("    Condition " + str(i) + " of " + str(num_conds) + ":")
             print("        name: " + cond.get_condition_name())
             print("        likelihood: " + str(cond.get_likelihood_level()) + " (" + cond.get_likelihood_level_name() + ")")
             print("        consequence: " + str(cond.get_consequence_class()) + " (" + cond.get_consequence_class_name() + ")")
-            print("        RISK LEVEL: " + cond.get_risk_score_name().upper())
-            print("            risk score: " + str(cond.get_risk_score()))
-            print("            safety score: " + str(cond.get_safety_score()))
+            print("        predicted future consequence states:")
+            for state in conseq_states:
+                print("            - " + state)
+            print("        RISK ASSESSMENT MATRIX (RAM) RISK LEVEL: " + cond.get_matrix_risk_score_name().upper())
+            print("            RAM risk score: " + str(cond.get_matrix_risk_score()))
+            print("            RAM safety score: " + str(cond.get_matrix_safety_score()))
         print()
 
         return
