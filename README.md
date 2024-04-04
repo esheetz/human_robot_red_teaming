@@ -9,11 +9,11 @@ Consequence state space
 - [x] update consequence/risk/safety computation to match project formulation
 - [x] make sure everything in code is named appropriately (policy -> utility)
 - [x] update policy data points info with state space (update data point class, reader, YAML checks, and YAML)
-- [ ] add querying state space info to red team data extension
-- [ ] ask user for input on state space (CSL of consequence states)
-- [ ] error checking on user input
-- [ ] check for multiples? conflicting consequence state spaces between data points? (update policy data point)
-- [ ] write to YAML file
+- [ ] add querying state space info to red team data extension - TESTING NEEDED
+- [ ] ask user for input on state space (CSL of consequence states) - TESTING NEEDED
+- [ ] error checking on user input - TESTING NEEDED
+- [ ] check for multiples? conflicting consequence state spaces between data points? (update policy data point) - TESTING/THINKING NEEDED
+- [ ] write to YAML file - TESTING NEEDED
 
 Counter-factual red teaming
 - [ ] rename red teamed data files to indicate both RS generation and CFA generation
