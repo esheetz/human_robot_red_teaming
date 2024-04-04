@@ -127,72 +127,15 @@ class RedTeamDataExtension:
         # generate random scenario
         red_team_conditions, red_team_consequences = self.get_random_red_teamed_scenario(state_space, conseq_space)
 
-        # get scenario input from user
-        action_idx = self.get_scenario_input(red_team_conditions, red_team_consequences, action_space)
+        # get action from user input and resolve conflicts (if necessary)
+        abort, action = self.get_action_from_user_and_resolve_conflicts(red_team_conditions, red_team_consequences, action_space)
+        if abort:
+            return
 
-        # verify action is not None
-        if action_idx is None:
-            # no valid action received, check whether skipping scenario or quitting data generation
-            if self.continue_data_generation:
-                # skipping scenario
-                self.print_skip_message()
-                return
-            else:
-                # quitting
-                return
-
-        # get action
-        action = action_space[action_idx]
-        self.print_got_action_message(action)
-
-        # create temporary policy data point
-        temp_pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions,
-                                                       consequences_before_action=red_team_consequences,
-                                                       action=action)
-
-        # check for duplicates already in policy
-        conflict, point_act, pol_act = temp_pol_point.check_and_get_conflicting_data_point(self.red_team.policy_data)
-        if conflict:
-            # report conflict
-            self.print_action_conflict_message(red_team_conditions, point_act, pol_act)
-
-            # get scenario input from user
-            action_idx = self.get_scenario_input(red_team_conditions, red_team_consequences, action_space)
-
-            # verify action is not None
-            if action_idx is None:
-                # no valid action received, check whether skipping scenario or quitting data generation
-                if self.continue_data_generation:
-                    # skipping scenario
-                    self.print_skip_message()
-                    return
-                else:
-                    # quitting
-                    return
-
-            # get action
-            action = action_space[action_idx]
-            self.print_got_action_message(action)
-
-        # get consequences after action input from user
-        conseq_idxs = self.get_consequence_input(red_team_conditions, red_team_consequences, action, conseq_space)
-
-        # verify consequences are not None
-        if conseq_idxs is None:
-            # no valid consequences received, check whether skipping scenario or quitting data generation
-            if self.continue_data_generation:
-                # skipping scenario
-                self.print_skip_message()
-                return
-            else:
-                # quitting
-                return
-
-        # get consequences
-        conseqs = [conseq_space[i] for i in conseq_idxs]
-        self.print_got_consequences_message(conseqs)
-
-        # TODO check for and resolve conflicts in post action consequences; policy should be indexed by both conditions and consequences
+        # get consequences from user input and resolve conflicts (if necessary)
+        abort, conseqs = self.get_consequences_from_user_and_resolve_conflicts(red_team_conditions, red_team_consequences, action, conseq_space)
+        if abort:
+            return
 
         # create policy data point
         pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions,
@@ -209,6 +152,127 @@ class RedTeamDataExtension:
             self.write_policy_to_file()
 
         return
+
+    ##################################
+    ### GET ACTION INPUT FROM USER ###
+    ##################################
+
+    def get_action_from_user_and_resolve_conflicts(self, red_team_conditions, red_team_consequences, action_space):
+        # get action from user input
+        abort, action = self.get_action_from_user(red_team_conditions, red_team_consequences, action_space)
+        if abort:
+            return True, None
+
+        # resolve conflicts
+        abort, action = self.resolve_action_conflict(red_team_conditions, red_team_consequences, action_space, action)
+        if abort:
+            return True, None
+
+        return False, action
+
+    def resolve_action_conflict(self, red_team_conditions, red_team_consequences, action_space, action):
+        # create temporary policy data point
+        temp_pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions,
+                                                       consequences_before_action=red_team_consequences,
+                                                       action=action)
+
+        # check for duplicates already in policy
+        conflict, point_act, pol_act = temp_pol_point.check_and_get_conflicting_data_point_action(self.red_team.policy_data)
+        if conflict:
+            # report conflict
+            self.print_action_conflict_message(red_team_conditions, point_act, pol_act)
+
+            # get action from user input
+            abort, action = self.get_action_from_user(red_team_conditions, red_team_consequences, action_space)
+            if abort:
+                return True, None
+
+        return False, action
+
+    def get_action_from_user(self, red_team_conditions, red_team_consequences, action_space):
+        # initialize abort flag
+        abort = False
+
+        # get scenario input from user
+        action_idx = self.get_scenario_input(red_team_conditions, red_team_consequences, action_space)
+
+        # verify action is not None
+        if action_idx is None:
+            # no valid action received, check whether skipping scenario or quitting data generation
+            if self.continue_data_generation:
+                # skipping scenario
+                self.print_skip_message()
+                return True, None
+            else:
+                # quitting
+                return True, None
+
+        # get action
+        action = action_space[action_idx]
+        self.print_got_action_message(action)
+
+        return abort, action
+
+    #######################################
+    ### GET CONSEQUENCE INPUT FROM USER ###
+    #######################################
+
+    def get_consequences_from_user_and_resolve_conflicts(self, red_team_conditions, red_team_consequences, action, conseq_space):
+        # get consequences from user input
+        abort, conseqs = self.get_consequences_from_user(red_team_conditions, red_team_consequences, action, conseq_space)
+        if abort:
+            return True, None
+
+        # resolve conflicts
+        abort, conseqs = self.resolve_consequence_conflict(red_team_conditions, red_team_consequences, action, conseq_space, conseqs)
+        if abort:
+            return True, None
+
+        return False, conseqs
+
+    def resolve_consequence_conflict(self, red_team_conditions, red_team_consequences, action, conseq_space, conseqs):
+        # create temporary policy data point
+        temp_pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions,
+                                                       consequences_before_action=red_team_consequences,
+                                                       action=action,
+                                                       consequences_after_action=conseqs)
+
+        # check for duplicates already in policy
+        conflict, point_conseqs, pol_conseqs = temp_pol_point.check_and_get_conflicting_data_point_consequences(self.red_team.policy_data)
+        if conflict:
+            # report conflict
+            self.print_consequence_conflict_message(red_team_conditions, action, point_conseqs, pol_conseqs)
+
+            # get consequences from user input
+            abort, conseqs = self.get_consequences_from_user(red_team_conditions, red_team_consequences, action, conseq_space)
+            if abort:
+                return True, None
+
+        return False, conseqs
+
+    def get_consequences_from_user(self, red_team_conditions, red_team_consequences, action, conseq_space):
+        # initialize abort flag
+        abort = False
+
+        # get consequences after action input from user
+        conseq_idxs = self.get_consequence_input(red_team_conditions, red_team_consequences, action, conseq_space)
+
+        # verify consequences are not None
+        if conseq_idxs is None:
+            # no valid consequences received, check whether skipping scenario or quitting data generation
+            if self.continue_data_generation:
+                # skipping scenario
+                self.print_skip_message()
+                return True, None
+            else:
+                # quitting
+                return True, None
+
+        # get consequences
+        conseqs = [conseq_space[i] for i in conseq_idxs]
+        self.print_got_consequences_message(conseqs)
+
+        return abort, conseqs
 
     ################
     ### PRINTING ###
@@ -294,6 +358,17 @@ class RedTeamDataExtension:
         print("            Conditions:", red_team_conditions)
         print("            Just entered action:", point_act)
         print("            Action in stored policy:", pol_act)
+        print("    Let's resolve this conflict now.")
+        print("    NOTE: your next selection will overwrite the stored policy value.")
+        print()
+        return
+
+    def print_consequence_conflict_message(self, red_team_conditions, action, point_conseqs, pol_conseqs):
+        print("    *** ERROR: this scenario and action are already in red teamed policy with different post-action consequences")
+        print("            Conditions:", red_team_conditions)
+        print("            Action:", action)
+        print("            Just entered consequences after action:", point_conseqs)
+        print("            Consequences after action in stored policy:", pol_conseqs)
         print("    Let's resolve this conflict now.")
         print("    NOTE: your next selection will overwrite the stored policy value.")
         print()

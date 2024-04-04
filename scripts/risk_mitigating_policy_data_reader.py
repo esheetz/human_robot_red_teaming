@@ -110,12 +110,13 @@ class RiskMitigatingPolicyDataReader:
             risk_conseq_bef, risk_conseq_aft = risk_pol.get_policy_data_point_consequence_names()
 
             # check for conflicting data point already in policy
-            conflict, risk_act, policy_risk_act = risk_pol.check_and_get_conflicting_data_point(self.risk_mitigating_policy)
-            if conflict:
-                print("ERROR: found duplicate conditions with different actions; please resolve conflict in risk mitigating policy data file " + self.risk_mitigating_policy_data_full_path)
+            act_conflict, risk_act, policy_risk_act = risk_pol.check_and_get_conflicting_data_point_action(self.risk_mitigating_policy)
+            conseq_conflict, risk_conseq, policy_risk_conseq = risk_pol.check_and_get_conflicting_data_point_consequences(self.risk_mitigating_policy)
+            if act_conflict or conseq_conflict:
+                print("ERROR: found duplicate conditions with different actions/consequences; please resolve conflict in risk mitigating policy data file " + self.risk_mitigating_policy_data_full_path)
                 print("    Conditions:", risk_conds)
-                print("    Action:", policy_risk_act)
-                print("    Found new action:", risk_act)
+                print("    Action:", policy_risk_act, "    Consequences:", policy_risk_conseq)
+                print("    Found new action:", risk_act, "    New consequences:", risk_conseq)
                 self.valid_policy = False
                 # do not add duplicate conditions into dictionary
                 continue

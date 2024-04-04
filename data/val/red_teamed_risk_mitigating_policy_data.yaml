@@ -38,4 +38,16 @@ lunar_habitat:
     - disaster8
     - disaster9
     action: action3
-    consequences_after_action: []
+    consequences_after_action:
+    - disaster9
+  - conditions:
+    - test2
+    - test3
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action:
+    - disaster8

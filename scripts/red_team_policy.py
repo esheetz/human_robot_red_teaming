@@ -292,7 +292,6 @@ class RedTeamPolicy:
 
         return True
 
-    # TODO UPDATE CONFLICT CHECKS
     def __red_team_policy_includes_human_policy(self):
         # look through human generated policy
         for conds in self.policy_starter_reader.get_risk_mitigating_policy_data().keys():
@@ -300,14 +299,16 @@ class RedTeamPolicy:
             pol_data_point = self.policy_starter_reader.get_risk_mitigating_policy_data()[conds]
             # check if data point already exists in policy
             if pol_data_point.check_data_point_duplicated(self.policy_data):
-                # data point exists in policy, check if actions conflict
-                if pol_data_point.check_conflicting_data_point(self.policy_data):
+                # data point exists in policy, check if actions or consequences conflict
+                if (pol_data_point.check_conflicting_data_point_action(self.policy_data) or
+                    pol_data_point.check_conflicting_data_point_consequences(self.policy_data)):
                     # data point conflicts, get conflicting actions
-                    _, point_act, pol_act = pol_data_point.check_and_get_conflicting_data_point(self.policy_data)
+                    _, point_act, pol_act = pol_data_point.check_and_get_conflicting_data_point_action(self.policy_data)
+                    _, point_con, pol_con = pol_data_point.check_and_get_conflicting_data_point_consequences(self.policy_data)
                     rospy.logerr("[Red Team Data Extension] Conflict between human-generated and red team generated policy; please resolve manually")
                     print("    Conditions:", pol_data_point.get_policy_data_point_condition_names())
-                    print("    Human-generated action:", point_act)
-                    print("    Red team generated action:", pol_act)
+                    print("    Human-generated action:", point_act, "    Human-generated consequences:", point_con)
+                    print("    Red team generated action:", pol_act, "    Red team generated consequences:", pol_con)
                     return False
                 # otherwise, no conflict
             else:

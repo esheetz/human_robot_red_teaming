@@ -13,14 +13,17 @@ Consequence state space
 - [x] ask user for input on state space (CSL of consequence states)
 - [x] error checking on user input
 - [x] modify policy to be stored as (condition,consequence_before) pairs
-- [ ] update policy data point class to check conflicts with after consequence states
-- [ ] in red team data extension node, check for multiples with conflicting after consequence state spaces between data points
+- [x] update policy data point class to check conflicts with after consequence states
+- [x] in red team data extension node, check for multiples with conflicting after consequence state spaces between data points
 - [ ] refactor into Red Team Command Line Tools (RTCLT) with special classes for printing, validating inputs, etc.
 - [x] write to YAML file
 
 Counter-factual red teaming
 - [ ] rename red teamed data files to indicate both RS generation and CFA generation
 - [ ] add support to red team node to do both RS and CFA modes
+- [ ] NOTE that CFA will likely create situations with same (condition,pre-conseq) and different (action,post-conseq), since point of CFA is to understand effects; probably want list instead of dictionary
+- [ ] modify collision changes, add counter-factual policy to red team policy
+- [ ] modify risk mitigating policy reader, support optional collision checking since we expect CFA to have collisions?
 - [ ] randomly select risky scenario
 - [ ] randomly select risk mitigating action
 - [ ] ask user for input on state space
