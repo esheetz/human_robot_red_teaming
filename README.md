@@ -12,11 +12,11 @@ Consequence state space
 - [x] add querying state space info to red team data extension
 - [x] ask user for input on state space (CSL of consequence states)
 - [x] error checking on user input
+- [x] write to YAML file
 - [x] modify policy to be stored as (condition,consequence_before) pairs
 - [x] update policy data point class to check conflicts with after consequence states
 - [x] in red team data extension node, check for multiples with conflicting after consequence state spaces between data points
-- [ ] refactor into Red Team Command Line Tools (RTCLT) with special classes for printing, validating inputs, etc.
-- [x] write to YAML file
+- [x] refactor into Red Team Command Line Tools (RTCLT) with special classes for printing, validating inputs, etc.
 
 Counter-factual red teaming
 - [ ] rename red teamed data files to indicate both RS generation and CFA generation
