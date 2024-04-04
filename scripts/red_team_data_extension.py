@@ -146,7 +146,9 @@ class RedTeamDataExtension:
         self.print_got_action_message(action)
 
         # create temporary policy data point
-        temp_pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions, action=action)
+        temp_pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions,
+                                                       consequences_before_action=red_team_consequences,
+                                                       action=action)
 
         # check for duplicates already in policy
         conflict, point_act, pol_act = temp_pol_point.check_and_get_conflicting_data_point(self.red_team.policy_data)

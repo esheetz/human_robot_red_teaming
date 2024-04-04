@@ -33,6 +33,9 @@ class RiskMitigatingPolicyDataPoint:
     def get_policy_data_point_consequence_names(self):
         return (self.consequences_before_action, self.consequences_after_action)
 
+    def get_policy_data_point_dictionary_key(self):
+        return (self.conditions, self.consequences_before_action)
+
     ###################################
     ### CHECK DUPLICATED CONDITIONS ###
     ###################################
@@ -114,11 +117,11 @@ class RiskMitigatingPolicyDataPoint:
 
     def __check_data_point_in_policy(self, policy : dict):
         # check if data point is contained in given policy
-        return self.conditions in policy.keys()
+        return self.get_policy_data_point_dictionary_key() in policy.keys()
 
     def __check_data_point_conditions(self, policy_data_point): # policy_data_point : RiskMitigatingPolicyDataPoint
         # check if conditions are the same
-        return self.conditions == policy_data_point.get_policy_data_point_condition_names()
+        return self.get_policy_data_point_dictionary_key() == policy_data_point.get_policy_data_point_dictionary_key()
 
     ########################################################
     ### PRIVATE HELPERS FOR CHECKING CONFLICTING ACTIONS ###
@@ -127,12 +130,12 @@ class RiskMitigatingPolicyDataPoint:
     def __check_and_get_conflicting_data_point_policy(self, policy : dict):
         # check if data point has same conditions but different action from data points in given policy
         conflict = (self.__check_data_point_in_policy(policy) and
-                    (self.__check_conflicting_data_point_action(policy[self.conditions])))
+                    (self.__check_conflicting_data_point_action(policy[self.get_policy_data_point_dictionary_key()])))
 
         # check conflict and return actions accordingly
         if conflict:
             # return conflicting actions
-            return (conflict, self.action, policy[self.conditions].get_policy_data_point_action_name())
+            return (conflict, self.action, policy[self.get_policy_data_point_dictionary_key()].get_policy_data_point_action_name())
         else:
             # no conflicting actions
             return (conflict, None, None)

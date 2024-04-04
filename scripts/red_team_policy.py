@@ -126,8 +126,10 @@ class RedTeamPolicy:
     ##########################
 
     def update_policy(self, policy_data_point):
+        # create dictionary key
+        point_key = policy_data_point.get_policy_data_point_dictionary_key()
         # add data point to policy
-        self.policy_data[policy_data_point.get_policy_data_point_condition_names()] = policy_data_point
+        self.policy_data[point_key] = policy_data_point
         return
 
     #################################
@@ -290,6 +292,7 @@ class RedTeamPolicy:
 
         return True
 
+    # TODO UPDATE CONFLICT CHECKS
     def __red_team_policy_includes_human_policy(self):
         # look through human generated policy
         for conds in self.policy_starter_reader.get_risk_mitigating_policy_data().keys():
@@ -309,7 +312,7 @@ class RedTeamPolicy:
                 # otherwise, no conflict
             else:
                 # add data point to policy
-                self.policy_data[pol_data_point.get_policy_data_point_condition_names()] = pol_data_point
+                self.update_policy(pol_data_point)
 
         # if we get here, human-generated policy included in red teamed policy
         rospy.loginfo("[Red Team Data Extension] Human-generated and red team generated policies agree!")

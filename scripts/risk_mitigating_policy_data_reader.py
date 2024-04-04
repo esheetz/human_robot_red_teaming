@@ -121,7 +121,7 @@ class RiskMitigatingPolicyDataReader:
                 continue
 
             # add policy data to dictionary
-            self.risk_mitigating_policy[risk_conds] = risk_pol
+            self.risk_mitigating_policy[risk_pol.get_policy_data_point_dictionary_key()] = risk_pol
 
         # close file
         fo.close()
