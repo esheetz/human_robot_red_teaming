@@ -215,7 +215,6 @@ class RedTeamDataExtension:
 
         # update policy
         self.print_update_policy_message(red_team_conditions, red_team_consequences, action, conseqs)
-        # TODO FUNCTION IMPLEMENTATION
         self.red_team.update_policy(pol_point)
 
         # check if policy needs to be written to file
@@ -246,7 +245,11 @@ class RedTeamDataExtension:
         return
 
     def print_action_and_consequences(self, scenario_consequences, action):
-        # TODO TODO TODO
+        print("    Given the possible future CONSEQUENCES, after the robot takes the RISK MITIGATING ACTION, what future CONSEQUENCES can still occur?")
+        print("        CONSEQUENCES BEFORE ACTION:")
+        for conseq_name in scenario_consequences:
+            print("          - " + conseq_name)
+        print("        RISK MITIGATING ACTION: " + action)
         print()
         return
 
@@ -261,7 +264,12 @@ class RedTeamDataExtension:
         return
 
     def print_consequences(self, conseq_space):
-        # TODO TODO TODO
+        print("    Please select the consequences possible after the action is taken (as a comma separated list of consequence numbers):")
+        print("        Consequence state space:")
+        for i in range(len(conseq_space)):
+            print("          " + str(i) + ". " + conseq_space[i])
+        print("          " + str(len(conseq_space)) + ". [SKIP THIS SCENARIO]")
+        print("    [type 'exit()' to quit]")
         print()
         return
 
@@ -291,10 +299,12 @@ class RedTeamDataExtension:
         print()
         return
 
-    def print_update_policy_message(self, red_team_conditions, action):
+    def print_update_policy_message(self, red_team_conditions, red_team_consequences, action, conseqs):
         print("    *** Great! Updating policy!")
         print("            Conditions:", red_team_conditions)
+        print("            Consequences before action:", red_team_consequences)
         print("            Action:", action)
+        print("            Consequences after action:", conseqs)
         print()
         return
 
@@ -334,6 +344,50 @@ class RedTeamDataExtension:
         # return action index
         return action_idx
 
+    def get_user_input_action(self, action_space):
+        # prompt user for input
+        val = self.prompt_user_input_action()
+
+        # check for quit
+        if val == "exit()":
+            return True, None, None
+
+        # validate action index
+        skip, action_idx = self.validate_action_index(val, action_space)
+
+        return False, skip, action_idx
+
+    def prompt_user_input_action(self):
+        val = input("    Action number: ")
+        self.print_separator()
+        return val
+
+    def validate_action_index(self, val, action_space):
+        # initialize value
+        int_val = None
+
+        # try to convert to int
+        try:
+            int_val = int(val)
+        except:
+            print("    *** INVALID INPUT: " + val + " cannot be converted to an integer.")
+            print()
+            return None, None
+
+        # check indices
+        if (int_val < 0) or (int_val > len(action_space)):
+            print("    *** INVALID INPUT: received " + val + ", but must be in range [0," + str(len(action_space)) + "]")
+            print()
+            return None, None
+        elif int_val == len(action_space):
+            return True, None
+        else:
+            return False, int_val
+
+    ################################################################
+    ### USER INPUT PROCESSING - SELECT CONSEQUENCES GIVEN ACTION ###
+    ################################################################
+
     def get_consequence_input(self, red_team_conditions, red_team_consequences, action, conseq_space):
         # initialize loop flag and consequence indices
         got_valid_consequences = False
@@ -366,19 +420,6 @@ class RedTeamDataExtension:
         # return consequence indices
         return conseq_idxs
 
-    def get_user_input_action(self, action_space):
-        # prompt user for input
-        val = self.prompt_user_input_action()
-
-        # check for quit
-        if val == "exit()":
-            return True, None, None
-
-        # validate action index
-        skip, action_idx = self.validate_action_index(val, action_space)
-
-        return False, skip, action_idx
-
     def get_user_input_consequences(self, conseq_space):
         # prompt user for input
         val = self.prompt_user_input_consequences()
@@ -392,37 +433,10 @@ class RedTeamDataExtension:
 
         return False, skip, conseq_idxs
 
-    def prompt_user_input_action(self):
-        val = input("    Action number: ")
-        self.print_separator()
-        return val
-
     def prompt_user_input_consequences(self):
         val = input("    Consequence numbers: ")
         self.print_separator()
         return val
-
-    def validate_action_index(self, val, action_space):
-        # initialize value
-        int_val = None
-
-        # try to convert to int
-        try:
-            int_val = int(val)
-        except:
-            print("    *** INVALID INPUT: " + val + " cannot be converted to an integer.")
-            print()
-            return None, None
-
-        # check indices
-        if (int_val < 0) or (int_val > len(action_space)):
-            print("    *** INVALID INPUT: received " + val + ", but must be in range [0," + str(len(action_space)) + "]")
-            print()
-            return None, None
-        elif int_val == len(action_space):
-            return True, None
-        else:
-            return False, int_val
 
     def validate_consequence_indices(self, val, conseq_space):
         # initialize value
@@ -446,11 +460,6 @@ class RedTeamDataExtension:
                 return True, None
             else:
                 return False, int_vals
-
-    ################################################################
-    ### USER INPUT PROCESSING - SELECT CONSEQUENCES GIVEN ACTION ###
-    ################################################################
-    # TODO separate functions into headings
 
     ###########################
     ### SAVE POLICY TO FILE ###
@@ -489,7 +498,7 @@ def run_red_team_data_extension_node():
                                     max_conds=max_conds_per_point)
     rospy.loginfo("[Red Team Data Extension] Initializing human-robot red team data extension node...")
     red_team.initialize_red_team()
-    
+
     # verify initialization and policy
     if red_team.check_initialized() and red_team.check_valid_policy():
         rospy.loginfo("[Red Team Data Extension] Successfully initialized human-robot red team data extension node!")
