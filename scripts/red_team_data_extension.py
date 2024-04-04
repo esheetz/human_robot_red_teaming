@@ -26,6 +26,11 @@ from risk_mitigating_policy_data_reader import RiskMitigatingPolicyDataReader
 # import red team
 from red_team_policy import RedTeamPolicy
 
+# import command line tools
+from red_team_command_line_tools import RedTeamCommandLinePrinting as CLP
+from red_team_command_line_tools import UserInputActionProcessing as UIAction
+from red_team_command_line_tools import UserInputConsequenceProcessing as UIConseq
+
 class RedTeamDataExtension:
     def __init__(self, robot="val", environment="lunar_habitat", num_points=10, max_conds=-1):
         # set internal parameters
@@ -128,12 +133,18 @@ class RedTeamDataExtension:
         red_team_conditions, red_team_consequences = self.get_random_red_teamed_scenario(state_space, conseq_space)
 
         # get action from user input and resolve conflicts (if necessary)
-        abort, action = self.get_action_from_user_and_resolve_conflicts(red_team_conditions, red_team_consequences, action_space)
+        output = UIAction.get_action_from_user_and_resolve_conflicts(self.red_team, red_team_conditions, red_team_consequences, action_space)
+        # unpack
+        self.continue_data_generation, abort, action = output
+        # check if abourting this data point
         if abort:
             return
 
         # get consequences from user input and resolve conflicts (if necessary)
-        abort, conseqs = self.get_consequences_from_user_and_resolve_conflicts(red_team_conditions, red_team_consequences, action, conseq_space)
+        output = UIConseq.get_consequences_from_user_and_resolve_conflicts(self.red_team, red_team_conditions, red_team_consequences, action, conseq_space)
+        # unpack
+        self.continue_data_generation, abort, conseqs = output
+        # check if aborting this data point
         if abort:
             return
 
@@ -144,7 +155,7 @@ class RedTeamDataExtension:
                                                   consequences_after_action=conseqs)
 
         # update policy
-        self.print_update_policy_message(red_team_conditions, red_team_consequences, action, conseqs)
+        CLP.print_update_policy_message(red_team_conditions, red_team_consequences, action, conseqs)
         self.red_team.update_policy(pol_point)
 
         # check if policy needs to be written to file
@@ -152,417 +163,6 @@ class RedTeamDataExtension:
             self.write_policy_to_file()
 
         return
-
-    ##################################
-    ### GET ACTION INPUT FROM USER ###
-    ##################################
-
-    def get_action_from_user_and_resolve_conflicts(self, red_team_conditions, red_team_consequences, action_space):
-        # get action from user input
-        abort, action = self.get_action_from_user(red_team_conditions, red_team_consequences, action_space)
-        if abort:
-            return True, None
-
-        # resolve conflicts
-        abort, action = self.resolve_action_conflict(red_team_conditions, red_team_consequences, action_space, action)
-        if abort:
-            return True, None
-
-        return False, action
-
-    def resolve_action_conflict(self, red_team_conditions, red_team_consequences, action_space, action):
-        # create temporary policy data point
-        temp_pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions,
-                                                       consequences_before_action=red_team_consequences,
-                                                       action=action)
-
-        # check for duplicates already in policy
-        conflict, point_act, pol_act = temp_pol_point.check_and_get_conflicting_data_point_action(self.red_team.policy_data)
-        if conflict:
-            # report conflict
-            self.print_action_conflict_message(red_team_conditions, point_act, pol_act)
-
-            # get action from user input
-            abort, action = self.get_action_from_user(red_team_conditions, red_team_consequences, action_space)
-            if abort:
-                return True, None
-
-        return False, action
-
-    def get_action_from_user(self, red_team_conditions, red_team_consequences, action_space):
-        # initialize abort flag
-        abort = False
-
-        # get scenario input from user
-        action_idx = self.get_scenario_input(red_team_conditions, red_team_consequences, action_space)
-
-        # verify action is not None
-        if action_idx is None:
-            # no valid action received, check whether skipping scenario or quitting data generation
-            if self.continue_data_generation:
-                # skipping scenario
-                self.print_skip_message()
-                return True, None
-            else:
-                # quitting
-                return True, None
-
-        # get action
-        action = action_space[action_idx]
-        self.print_got_action_message(action)
-
-        return abort, action
-
-    #######################################
-    ### GET CONSEQUENCE INPUT FROM USER ###
-    #######################################
-
-    def get_consequences_from_user_and_resolve_conflicts(self, red_team_conditions, red_team_consequences, action, conseq_space):
-        # get consequences from user input
-        abort, conseqs = self.get_consequences_from_user(red_team_conditions, red_team_consequences, action, conseq_space)
-        if abort:
-            return True, None
-
-        # resolve conflicts
-        abort, conseqs = self.resolve_consequence_conflict(red_team_conditions, red_team_consequences, action, conseq_space, conseqs)
-        if abort:
-            return True, None
-
-        return False, conseqs
-
-    def resolve_consequence_conflict(self, red_team_conditions, red_team_consequences, action, conseq_space, conseqs):
-        # create temporary policy data point
-        temp_pol_point = RiskMitigatingPolicyDataPoint(conditions=red_team_conditions,
-                                                       consequences_before_action=red_team_consequences,
-                                                       action=action,
-                                                       consequences_after_action=conseqs)
-
-        # check for duplicates already in policy
-        conflict, point_conseqs, pol_conseqs = temp_pol_point.check_and_get_conflicting_data_point_consequences(self.red_team.policy_data)
-        if conflict:
-            # report conflict
-            self.print_consequence_conflict_message(red_team_conditions, action, point_conseqs, pol_conseqs)
-
-            # get consequences from user input
-            abort, conseqs = self.get_consequences_from_user(red_team_conditions, red_team_consequences, action, conseq_space)
-            if abort:
-                return True, None
-
-        return False, conseqs
-
-    def get_consequences_from_user(self, red_team_conditions, red_team_consequences, action, conseq_space):
-        # initialize abort flag
-        abort = False
-
-        # get consequences after action input from user
-        conseq_idxs = self.get_consequence_input(red_team_conditions, red_team_consequences, action, conseq_space)
-
-        # verify consequences are not None
-        if conseq_idxs is None:
-            # no valid consequences received, check whether skipping scenario or quitting data generation
-            if self.continue_data_generation:
-                # skipping scenario
-                self.print_skip_message()
-                return True, None
-            else:
-                # quitting
-                return True, None
-
-        # get consequences
-        conseqs = [conseq_space[i] for i in conseq_idxs]
-        self.print_got_consequences_message(conseqs)
-
-        return abort, conseqs
-
-    ################
-    ### PRINTING ###
-    ################
-
-    def print_red_teamed_scenario(self, scenario, scenario_consequences):
-        print("    What should the robot do when the following RISK CONDITIONS (with possible future CONSEQUENCES) exist in the current state?")
-        print("        RISK CONDITIONS:")
-        for condition_name in scenario:
-            # get condition from state space
-            condition = self.red_team.get_risky_condition_with_name(condition_name)
-            print("          - " + condition_name + "    [ " +
-                  "L=" + str(condition.get_likelihood_level()) +
-                  ", C=" + str(condition.get_consequence_class()) +
-                  ", Risk=" + str(condition.get_matrix_risk_score()) +
-                  " (" + condition.get_matrix_risk_score_name() + ") ]")
-        print("        FUTURE CONSEQUENCES:")
-        for consequence_name in scenario_consequences:
-            print("          - " + consequence_name)
-        print()
-        return
-
-    def print_action_and_consequences(self, scenario_consequences, action):
-        print("    Given the possible future CONSEQUENCES, after the robot takes the RISK MITIGATING ACTION, what future CONSEQUENCES can still occur?")
-        print("        CONSEQUENCES BEFORE ACTION:")
-        for conseq_name in scenario_consequences:
-            print("          - " + conseq_name)
-        print("        RISK MITIGATING ACTION: " + action)
-        print()
-        return
-
-    def print_actions(self, action_space):
-        print("    Please select the number of the appropriate action to take in this state:")
-        print("        Robot's risk mitigating action space:")
-        for i in range(len(action_space)):
-            print("          " + str(i) + ". " + action_space[i])
-        print("          " + str(len(action_space)) + ". [SKIP THIS SCENARIO]")
-        print("    [type 'exit()' to quit]")
-        print()
-        return
-
-    def print_consequences(self, conseq_space):
-        print("    Please select the consequences possible after the action is taken (as a comma separated list of consequence numbers):")
-        print("        Consequence state space:")
-        for i in range(len(conseq_space)):
-            print("          " + str(i) + ". " + conseq_space[i])
-        print("          " + str(len(conseq_space)) + ". [NO REMAINING CONSEQUENCES]")
-        print("          " + str(len(conseq_space)+1) + ". [SKIP THIS SCENARIO]")
-        print("    [type 'exit()' to quit]")
-        print()
-        return
-
-    def print_try_again_message(self):
-        print("    Please try again.")
-        print()
-        return
-
-    def print_separator(self):
-        print()
-        print()
-        print()
-        print("==============================================================================================================")
-        print("==============================================================================================================")
-        print("==============================================================================================================")
-        print()
-        print()
-        print()
-        return
-
-    def print_substep_separator(self):
-        print()
-        print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
-        print()
-        return
-
-    def print_skip_message(self):
-        print("    *** Skipping this red teamed scenario, no new data points generated...")
-        self.print_separator()
-        return
-
-    def print_action_conflict_message(self, red_team_conditions, point_act, pol_act):
-        print("    *** ERROR: this scenario is already in red teamed policy with different action")
-        print("            Conditions:", red_team_conditions)
-        print("            Just entered action:", point_act)
-        print("            Action in stored policy:", pol_act)
-        print("    Let's resolve this conflict now.")
-        print("    NOTE: your next selection will overwrite the stored policy value.")
-        print()
-        return
-
-    def print_consequence_conflict_message(self, red_team_conditions, action, point_conseqs, pol_conseqs):
-        print("    *** ERROR: this scenario and action are already in red teamed policy with different post-action consequences")
-        print("            Conditions:", red_team_conditions)
-        print("            Action:", action)
-        print("            Just entered consequences after action:", point_conseqs)
-        print("            Consequences after action in stored policy:", pol_conseqs)
-        print("    Let's resolve this conflict now.")
-        print("    NOTE: your next selection will overwrite the stored policy value.")
-        print()
-        return
-
-    def print_got_action_message(self, action):
-        print("    *** Great! Got action:", action)
-        self.print_substep_separator()
-        return
-
-    def print_got_consequences_message(self, conseqs):
-        print("    *** Great! Got consequences:", conseqs)
-        self.print_substep_separator()
-        return
-
-    def print_update_policy_message(self, red_team_conditions, red_team_consequences, action, conseqs):
-        print("    *** Great! Updating policy!")
-        print("            Conditions:", red_team_conditions)
-        print("            Consequences before action:", red_team_consequences)
-        print("            Action:", action)
-        print("            Consequences after action:", conseqs)
-        self.print_separator()
-        return
-
-    ############################################################
-    ### USER INPUT PROCESSING - SELECT ACTION GIVEN SCENARIO ###
-    ############################################################
-
-    def get_scenario_input(self, red_team_conditions, red_team_consequences, action_space):
-        # initialize loop flag and action index
-        got_valid_action = False
-        action_idx = None
-
-        # keep asking until valid input received
-        while not got_valid_action:
-            # print scenario
-            self.print_red_teamed_scenario(red_team_conditions, red_team_consequences)
-
-            # print possible actions
-            self.print_actions(action_space)
-
-            # ask for user input
-            quit, skip, action_idx = self.get_user_input_action(action_space)
-
-            # check result
-            if quit:
-                self.continue_data_generation = False
-                return None
-            if skip:
-                return None
-            if action_idx is None:
-                self.print_try_again_message()
-                continue
-
-            # valid action received
-            break
-
-        # return action index
-        return action_idx
-
-    def get_user_input_action(self, action_space):
-        # prompt user for input
-        val = self.prompt_user_input_action()
-
-        # check for quit
-        if val == "exit()":
-            return True, None, None
-
-        # validate action index
-        skip, action_idx = self.validate_action_index(val, action_space)
-
-        return False, skip, action_idx
-
-    def prompt_user_input_action(self):
-        val = input("    Action number: ")
-        self.print_substep_separator()
-        return val
-
-    def validate_action_index(self, val, action_space):
-        # initialize value
-        int_val = None
-
-        # try to convert to int
-        try:
-            int_val = int(val)
-        except:
-            print("    *** INVALID INPUT: " + val + " cannot be converted to an integer.")
-            print()
-            return None, None
-
-        # check indices
-        if (int_val < 0) or (int_val > len(action_space)):
-            print("    *** INVALID INPUT: received " + val + ", but must be in range [0," + str(len(action_space)) + "]")
-            print()
-            return None, None
-        elif int_val == len(action_space):
-            return True, None
-        else:
-            return False, int_val
-
-    ################################################################
-    ### USER INPUT PROCESSING - SELECT CONSEQUENCES GIVEN ACTION ###
-    ################################################################
-
-    def get_consequence_input(self, red_team_conditions, red_team_consequences, action, conseq_space):
-        # initialize loop flag and consequence indices
-        got_valid_consequences = False
-        conseq_idxs = None
-
-        # keep asking until valid input received
-        while not got_valid_consequences:
-            # print scenario
-            self.print_action_and_consequences(red_team_consequences, action)
-
-            # print possible consequences
-            self.print_consequences(conseq_space)
-
-            # ask for user input
-            quit, skip, conseq_idxs = self.get_user_input_consequences(conseq_space)
-
-            # check result
-            if quit:
-                self.continue_data_generation = False
-                return None
-            if skip:
-                return None
-            if conseq_idxs is None:
-                self.print_try_again_message()
-                continue
-
-            # valid consequences received
-            break
-
-        # return consequence indices
-        return conseq_idxs
-
-    def get_user_input_consequences(self, conseq_space):
-        # prompt user for input
-        val = self.prompt_user_input_consequences()
-
-        # check for quit
-        if val == "exit()":
-            return True, None, None
-
-        # validate consequence indices
-        skip, conseq_idxs = self.validate_consequence_indices(val, conseq_space)
-
-        return False, skip, conseq_idxs
-
-    def prompt_user_input_consequences(self):
-        val = input("    Consequence numbers: ")
-        self.print_substep_separator()
-        return val
-
-    def validate_consequence_indices(self, val, conseq_space):
-        # initialize value
-        int_vals = None
-
-        # try to convert comma separated string to list of ints
-        try:
-            int_vals = [int(i) for i in val.split(',')]
-        except:
-            print("    *** INVALID INPUT: " + val + " cannot be converted to a list of integers.")
-            print()
-            return None, None
-
-        # check indices
-        for int_val in int_vals:
-            if (int_val < 0) or (int_val > len(conseq_space)+1):
-                print("    *** INVALID INPUT: received " + str(int_val) + ", but must be in range [0," + str(len(conseq_space)+1) + "]")
-                print()
-                return None, None
-            elif int_val == len(conseq_space):
-                if len(int_vals) == 1:
-                    # only selected no consequences, so no consequences
-                    return False, []
-                else:
-                    print("    *** INVALID INPUT: received " + str(int_val) + " (no consequences) as part of list of " + str(len(int_vals)) + " options; if no consequences, only provide one number; otherwise, provide list of consequence numbers")
-                    print()
-                    return None, None
-            elif int_val == (len(conseq_space)+1):
-                if len(int_vals) == 1:
-                    # only selected skip, so skip
-                    return True, None
-                else:
-                    print("    *** INVALID INPUT: received " + str(int_val) + " (skip) as part of list of " + str(len(int_vals)) + " options; if skipping, only provide skip number; otherwise, provide list of consequence numbers")
-                    print()
-                    return None, None
-            else:
-                # valid int received
-                continue
-
-        # if we get here, all ints are valid
-        return False, int_vals
 
     ###########################
     ### SAVE POLICY TO FILE ###

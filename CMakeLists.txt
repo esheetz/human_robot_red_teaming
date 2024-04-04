@@ -76,8 +76,9 @@ install(PROGRAMS
   # POLICY CLASSES/SCRIPTS
   scripts/risk_mitigating_policy_data_point.py
   scripts/risk_mitigating_policy_data_reader.py
-  # RED TEAMING CLASSES/SCRIPTS
+  # RED TEAMING HELPERS/CLASSES/SCRIPTS
   scripts/red_team_policy.py
+  scripts/red_team_command_line_tools.py
   scripts/red_team_data_extension.py
   DESTINATION lib/${PROJECT_NAME} #${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
