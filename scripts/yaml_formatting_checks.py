@@ -169,15 +169,15 @@ class YAMLActionSpaceChecks(YAMLChecks):
 class YAMLPolicyDataChecks(YAMLChecks):
 
     @staticmethod
-    def check_risk_mitigating_policy_data_yaml_formatting(yaml_dict, env_name):
-        return YAMLChecks.check_yaml_formatting(file_nickname="risk mitigating policy data",
+    def check_policy_data_yaml_formatting(yaml_dict, env_name, file_nickname):
+        return YAMLChecks.check_yaml_formatting(file_nickname=file_nickname,
                                                 yaml_dict=yaml_dict,
                                                 env_name=env_name,
                                                 list_key="policy_data",
                                                 list_elem_keys=["conditions", "consequences_before_action", "action", "consequences_after_action"])
 
     @staticmethod
-    def check_valid_risk_mitigating_policy_data_values(pol_dict, i, num_pols):
+    def check_valid_policy_data_values(pol_dict, i, num_pols):
         # initialize valid values flag
         valid_values = True
 

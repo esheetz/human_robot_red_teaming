@@ -79,7 +79,7 @@ class RiskMitigatingPolicyDataReader:
         yaml_dict = yaml.load(fo, Loader=yaml.FullLoader)
 
         # error check YAML file formatting
-        valid_yaml = YAMLChecks.check_risk_mitigating_policy_data_yaml_formatting(yaml_dict, self.environment_name)
+        valid_yaml = YAMLChecks.check_policy_data_yaml_formatting(yaml_dict, self.environment_name, "risk mitigating policy data")
         if not valid_yaml:
             print("ERROR: risk mitigating policy data file " + self.risk_mitigating_policy_data_full_path + " is poorly formatted")
             self.valid_policy = False
@@ -88,7 +88,7 @@ class RiskMitigatingPolicyDataReader:
         # initialize valid policy flag
         self.valid_policy = True
 
-        # get list of policy data data for environment
+        # get list of policy data for environment
         policy = yaml_dict[self.environment_name]['policy_data']
 
         # process each policy data
@@ -97,7 +97,7 @@ class RiskMitigatingPolicyDataReader:
             pol = policy[i]
 
             # check valid values for policy
-            valid_policy = YAMLChecks.check_valid_risk_mitigating_policy_data_values(pol, i, len(policy))
+            valid_policy = YAMLChecks.check_valid_policy_data_values(pol, i, len(policy))
             self.valid_policy = self.valid_policy and valid_policy
 
             # create policy
