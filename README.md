@@ -7,8 +7,8 @@ Counter-factual red teaming
 - [x] create counter-factual policy data point and reader classes; avoids collision changes needed for risk mitigating policy
 - [x] rename red teamed data files to indicate both RS generation and CFA generation
 - [x] NOTE that CFA will likely create situations with same (condition,pre-conseq) and different (action,post-conseq), since point of CFA is to understand effects; probably want list instead of dictionary
+- [x] add counter-factual policy to red team policy
 - [ ] add support to red team node to do both RS and CFA modes
-- [ ] add counter-factual policy to red team policy
 - [ ] randomly select risky scenario
 - [ ] randomly select risk mitigating action
 - [ ] ask user for input on state space

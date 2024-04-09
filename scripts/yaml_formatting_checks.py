@@ -218,7 +218,18 @@ class YAMLPolicyDataChecks(YAMLChecks):
         return valid_values
 
     @staticmethod
-    def format_policy_as_yaml_list(policy_dict):
+    def format_policy_as_yaml_list(policy):
+        # check type
+        if type(policy) == dict:
+            return YAMLPolicyDataChecks.format_policy_dict_as_yaml_list(policy)
+        elif type(policy) == list:
+            return YAMLPolicyDataChecks.format_policy_list_as_yaml_list(policy)
+        else:
+            print("ERROR: unrecognized policy type " + str(type(policy)) + ", but expected type is dict or list; returning None")
+            return None
+
+    @staticmethod
+    def format_policy_dict_as_yaml_list(policy_dict : dict):
         # initialize list of policy data points
         policy_data_points = []
 
@@ -228,14 +239,36 @@ class YAMLPolicyDataChecks(YAMLChecks):
             policy_point = policy_dict[conds]
 
             # create dictionary for data point
-            point_dict = {
-                "conditions" : list(policy_point.get_policy_data_point_condition_names()),
-                "consequences_before_action" : list(policy_point.get_policy_data_point_consequences_before_action_names()),
-                "action" : policy_point.get_policy_data_point_action_name(),
-                "consequences_after_action" : list(policy_point.get_policy_data_point_consequences_after_action_names())
-            }
+            point_dict = YAMLPolicyDataChecks.format_policy_point_as_yaml_dict(policy_point)
 
             # add data point to list
             policy_data_points.append(point_dict)
 
         return policy_data_points
+
+    @staticmethod
+    def format_policy_list_as_yaml_list(policy_list : list):
+        # initialize list of policy data points
+        policy_data_points = []
+
+        # loop through given policy list
+        for policy_point in policy_list:
+            # create dictionary for point
+            point_dict = YAMLPolicyDataChecks.format_policy_point_as_yaml_dict(policy_point)
+
+            # add data point to list
+            policy_data_points.append(point_dict)
+
+        return policy_data_points
+
+    @staticmethod
+    def format_policy_point_as_yaml_dict(policy_point):
+        # create dictionary for data point
+        point_dict = {
+            "conditions" : list(policy_point.get_policy_data_point_condition_names()),
+            "consequences_before_action" : list(policy_point.get_policy_data_point_consequences_before_action_names()),
+            "action" : policy_point.get_policy_data_point_action_name(),
+            "consequences_after_action" : list(policy_point.get_policy_data_point_consequences_after_action_names())
+        }
+
+        return point_dict
