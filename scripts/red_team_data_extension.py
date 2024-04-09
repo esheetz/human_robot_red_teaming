@@ -32,12 +32,13 @@ from red_team_command_line_tools import UserInputActionProcessing as UIAction
 from red_team_command_line_tools import UserInputConsequenceProcessing as UIConseq
 
 class RedTeamDataExtension:
-    def __init__(self, robot="val", environment="lunar_habitat", num_points=10, max_conds=-1):
+    def __init__(self, robot="val", environment="lunar_habitat", num_points=10, max_conds=-1, counter_factual_mode=False):
         # set internal parameters
         self.robot_name = robot
         self.environment_name = environment
         self.num_red_team_points = num_points
         self.max_conds_per_point = max_conds
+        self.cf_mode = counter_factual_mode
 
         # write policy to file after # of new policy points generated
         self.save_new_policy_points = 10
@@ -60,13 +61,22 @@ class RedTeamDataExtension:
 
     def get_points_generated(self):
         # compute number of new data points generated
-        return self.red_team.get_num_red_team_policy_data() - self.num_starting_points
+        if not self.cf_mode:
+            return self.red_team.get_num_red_team_policy_data() - self.num_starting_points
+        else:
+            return self.red_team.get_num_counter_factual_policy_data() - self.num_starting_points
 
     def check_points_generated(self):
         return (self.get_points_generated() == self.num_red_team_points)
 
     def check_continue_data_generation(self):
         return self.continue_data_generation
+
+    def get_mode_name(self):
+        if not self.cf_mode:
+            return "risky scenario"
+        else:
+            return "counter-factual"
 
     ######################
     ### INITIALIZATION ###
@@ -78,7 +88,10 @@ class RedTeamDataExtension:
 
         # if initialization successful, prep for data generation
         if self.red_team.initialized and self.red_team.valid_policy:
-            self.num_starting_points = self.red_team.get_num_red_team_policy_data()
+            if not self.cf_mode:
+                self.num_starting_points = self.red_team.get_num_red_team_policy_data()
+            else:
+                self.num_starting_points = self.red_team.get_num_counter_factual_policy_data()
             self.continue_data_generation = True
         return
 
@@ -124,6 +137,13 @@ class RedTeamDataExtension:
     #############################
 
     def generate_new_data_point(self):
+        if not self.cf_mode:
+            self.__generate_new_risky_scenario_data_point()
+        else:
+            self.__generate_new_counter_factual_data_point()
+        return
+
+    def __generate_new_risky_scenario_data_point(self):
         # get state and action space
         state_space = self.red_team.get_state_space()
         conseq_space = self.red_team.get_consequence_state_space()
@@ -136,7 +156,7 @@ class RedTeamDataExtension:
         output = UIAction.get_action_from_user_and_resolve_conflicts(self.red_team, red_team_conditions, red_team_consequences, action_space)
         # unpack
         self.continue_data_generation, abort, action = output
-        # check if abourting this data point
+        # check if aborting this data point
         if abort:
             return
 
@@ -164,13 +184,20 @@ class RedTeamDataExtension:
 
         return
 
+    def __generate_new_counter_factual_data_point(self):
+        rospy.logwarn("[Red Team Data Extension] FUNCTION NOT IMPLEMENTED")
+        # TODO IMPLEMENTATION
+
     ###########################
     ### SAVE POLICY TO FILE ###
     ###########################
 
     def write_policy_to_file(self):
         print("*** Writing policy to file...")
-        self.red_team.write_policy_to_file()
+        if not self.cf_mode:
+            self.red_team.write_policy_to_file()
+        else:
+            self.red_team.write_counter_factual_policy_to_file()
         print("*** Policy saved!")
         return
 
@@ -190,6 +217,7 @@ def run_red_team_data_extension_node():
     env_name = rospy.get_param(param_prefix + 'environment', "lunar_habitat")
     num_points = rospy.get_param(param_prefix + 'num_points', 10)
     max_conds_per_point = rospy.get_param(param_prefix + 'max_conds', -1)
+    cf_mode = rospy.get_param(param_prefix + 'counter_factual', False)
 
     # initialize node
     rospy.init_node(node_name)
@@ -198,7 +226,8 @@ def run_red_team_data_extension_node():
     rospy.loginfo("[Red Team Data Extension] Creating human-robot red team data extension node...")
     red_team = RedTeamDataExtension(robot=robot_name, environment=env_name,
                                     num_points=num_points,
-                                    max_conds=max_conds_per_point)
+                                    max_conds=max_conds_per_point,
+                                    counter_factual_mode=cf_mode)
     rospy.loginfo("[Red Team Data Extension] Initializing human-robot red team data extension node...")
     red_team.initialize_red_team()
 
@@ -222,18 +251,18 @@ def run_red_team_data_extension_node():
     while not rospy.is_shutdown() and \
           not red_team.check_points_generated() and \
           red_team.check_continue_data_generation():
-        rospy.loginfo("[Red Team Data Extension] Generating new red teamed data point...")
+        rospy.loginfo("[Red Team Data Extension] Generating new red teamed %s data point...", red_team.get_mode_name())
         print()
         red_team.generate_new_data_point()
         rate.sleep()
 
     # check stopping conditions
     if red_team.check_points_generated():
-        rospy.loginfo("[Red Team Data Extension] Completed generating %d new data points through human-robot red teaming! GO TEAM!",
-                      red_team.get_points_generated())
+        rospy.loginfo("[Red Team Data Extension] Completed generating %d new %s data points through human-robot red teaming! GO TEAM!",
+                      red_team.get_points_generated(), red_team.get_mode_name())
     else:
-        rospy.loginfo("[Red Team Data Extension] Quitting after generating %d new data points through human-robot red teaming. RedTeamwork makes the dream work!",
-                      red_team.get_points_generated())
+        rospy.loginfo("[Red Team Data Extension] Quitting after generating %d new %s data points through human-robot red teaming. RedTeamwork makes the dream work!",
+                      red_team.get_points_generated(), red_team.get_mode_name())
 
     # write final policy to file
     red_team.write_policy_to_file()
@@ -247,4 +276,9 @@ def run_red_team_data_extension_node():
 #####################
 
 if __name__ == '__main__':
+    # debugging
+    # param_names = rospy.get_param_names()
+    # for name in param_names:
+    #     print("***** DEBUG: got param {}".format(name))
+
     run_red_team_data_extension_node()
