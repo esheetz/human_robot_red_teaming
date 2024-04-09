@@ -48,6 +48,6 @@ lunar_habitat:
     - disaster7
     - disaster8
     - disaster9
-    action: action3
+    action: action4
     consequences_after_action:
     - disaster6
