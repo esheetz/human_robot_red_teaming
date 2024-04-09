@@ -75,6 +75,12 @@ class CounterFactualPolicyDataReader:
         fo = open(self.counter_factual_policy_data_full_path)
         yaml_dict = yaml.load(fo, Loader=yaml.FullLoader)
 
+        # verify non-empty dict
+        if yaml_dict is None:
+            print("WARN: counter factual policy data file " + self.counter_factual_policy_data_full_path + " is empty; initializing to empty policy")
+            self.valid_policy = True
+            return
+
         # error check YAML file formatting
         valid_yaml = YAMLChecks.check_policy_data_yaml_formatting(yaml_dict, self.environment_name, "counter factual policy data")
         if not valid_yaml:
