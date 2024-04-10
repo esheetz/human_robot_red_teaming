@@ -185,6 +185,7 @@ class RedTeamPolicy:
         # check if dict exists
         if yaml_dict is None:
             # initialize dictionary
+            yaml_dict = {}
             yaml_dict[self.environment_name] = {}
             yaml_dict[self.environment_name]['policy_data'] = []
 
