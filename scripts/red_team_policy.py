@@ -122,8 +122,12 @@ class RedTeamPolicy:
 
         # make sure human-generated policy data is in red teamed policy
         if valid_policies:
+            # deep copy red teamed risky scenario policy data
             self.policy_data = deepcopy(self.red_team_policy_reader.get_risk_mitigating_policy_data())
+            # make sure human-generated policy data is in red teamed policy
             self.valid_policy = self.__red_team_policy_includes_human_policy()
+            # deep copy counter factual policy data
+            self.cf_policy_data = deepcopy(self.cf_policy_reader.get_counter_factual_policy_data())
 
         return
 

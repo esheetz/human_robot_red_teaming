@@ -1,2 +1,152 @@
 lunar_habitat:
-  policy_data: []
+  policy_data:
+  - conditions:
+    - test2
+    - test3
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action:
+    - disaster6
+  - conditions:
+    - test2
+    - test3
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action:
+    - disaster7
+  - conditions:
+    - test2
+    - test3
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action:
+    - disaster8
+  - conditions:
+    - test2
+    - test3
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action:
+    - disaster9
+  - conditions:
+    - test3
+    consequences_before_action:
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action: []
+  - conditions:
+    - test2
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    action: action3
+    consequences_after_action:
+    - disaster7
+    - disaster8
+  - conditions:
+    - test3
+    consequences_before_action:
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action:
+    - disaster8
+    - disaster9
+  - conditions:
+    - test2
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    action: action3
+    consequences_after_action:
+    - disaster6
+  - conditions:
+    - test3
+    consequences_before_action:
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action:
+    - disaster7
+  - conditions:
+    - test3
+    consequences_before_action:
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action:
+    - disaster8
+  - conditions:
+    - test2
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    action: action3
+    consequences_after_action:
+    - disaster9
+  - conditions:
+    - test3
+    consequences_before_action:
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action: []
+  - conditions:
+    - test3
+    consequences_before_action:
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action:
+    - disaster6
+  - conditions:
+    - test2
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    action: action3
+    consequences_after_action:
+    - disaster7
+  - conditions:
+    - test2
+    - test3
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action:
+    - disaster8
+  - conditions:
+    - test2
+    consequences_before_action:
+    - disaster6
+    - disaster7
+    action: action3
+    consequences_after_action:
+    - disaster9
+  - conditions:
+    - test3
+    consequences_before_action:
+    - disaster8
+    - disaster9
+    action: action4
+    consequences_after_action: []
