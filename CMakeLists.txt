@@ -73,9 +73,14 @@ install(PROGRAMS
   # ACTION SPACE CLASSES/SCRIPTS
   scripts/risk_mitigating_action.py
   scripts/risk_mitigating_action_reader.py
+  # POLICY SUPERCLASS
+  scripts/policy_data_point.py
   # POLICY CLASSES/SCRIPTS
   scripts/risk_mitigating_policy_data_point.py
   scripts/risk_mitigating_policy_data_reader.py
+  # COUNTER FACTUAL POLICY CLASSES/SCRIPTS
+  scripts/counter_factual_policy_data_point.py
+  scripts/counter_factual_policy_data_reader.py
   # RED TEAMING HELPERS/CLASSES/SCRIPTS
   scripts/red_team_policy.py
   scripts/red_team_command_line_tools.py

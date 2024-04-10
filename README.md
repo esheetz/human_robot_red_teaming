@@ -2,34 +2,18 @@
 
 ## TODOs
 
-Consequence state space
-- [x] input consequence state space
-- [x] error check consequence state space
-- [x] update condition info with state space (update data point class, reader, YAML checks, and YAML)
-- [x] update consequence/risk/safety computation to match project formulation
-- [x] make sure everything in code is named appropriately (policy -> utility)
-- [x] update policy data points info with state space (update data point class, reader, YAML checks, and YAML)
-- [x] add querying state space info to red team data extension
-- [x] ask user for input on state space (CSL of consequence states)
+Counter-factual red teaming
+- [x] create general policy data point for less repeated coded
+- [x] create counter-factual policy data point and reader classes; avoids collision changes needed for risk mitigating policy
+- [x] rename red teamed data files to indicate both RS generation and CFA generation
+- [x] NOTE that CFA will likely create situations with same (condition,pre-conseq) and different (action,post-conseq), since point of CFA is to understand effects; probably want list instead of dictionary
+- [x] add counter-factual policy to red team policy
+- [x] add support to red team node to do both RS and CFA modes
+- [x] randomly select risky scenario
+- [x] randomly select risk mitigating action
+- [x] ask user for input on state space
 - [x] error checking on user input
 - [x] write to YAML file
-- [x] modify policy to be stored as (condition,consequence_before) pairs
-- [x] update policy data point class to check conflicts with after consequence states
-- [x] in red team data extension node, check for multiples with conflicting after consequence state spaces between data points
-- [x] refactor into Red Team Command Line Tools (RTCLT) with special classes for printing, validating inputs, etc.
-
-Counter-factual red teaming
-- [ ] rename red teamed data files to indicate both RS generation and CFA generation
-- [ ] add support to red team node to do both RS and CFA modes
-- [ ] NOTE that CFA will likely create situations with same (condition,pre-conseq) and different (action,post-conseq), since point of CFA is to understand effects; probably want list instead of dictionary
-- [ ] modify collision changes, add counter-factual policy to red team policy
-- [ ] modify risk mitigating policy reader, support optional collision checking since we expect CFA to have collisions?
-- [ ] randomly select risky scenario
-- [ ] randomly select risk mitigating action
-- [ ] ask user for input on state space
-- [ ] error checking on user input
-- [ ] check for multiples? may not be necessary
-- [ ] write to YAML file
 
 Model creation
 - [ ] input risky conditions for real (not just tests for development purposes)

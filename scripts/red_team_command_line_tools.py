@@ -13,10 +13,9 @@ from red_team_policy import RedTeamPolicy
 class RedTeamCommandLinePrinting:
 
     @staticmethod
-    def print_red_teamed_scenario(scenario, scenario_consequences, red_team):
-        print("    What should the robot do when the following RISK CONDITIONS (with possible future CONSEQUENCES) exist in the current state?")
+    def print_scenario_conditions(scenario_conditions, red_team):
         print("        RISK CONDITIONS:")
-        for condition_name in scenario:
+        for condition_name in scenario_conditions:
             # get condition from state space
             condition = red_team.get_risky_condition_with_name(condition_name)
             print("          - " + condition_name + "    [ " +
@@ -24,19 +23,49 @@ class RedTeamCommandLinePrinting:
                   ", C=" + str(condition.get_consequence_class()) +
                   ", Risk=" + str(condition.get_matrix_risk_score()) +
                   " (" + condition.get_matrix_risk_score_name() + ") ]")
-        print("        FUTURE CONSEQUENCES:")
+        return
+
+    def print_scenario_consequences(scenario_consequences, conseq_name):
+        print("        " + conseq_name.upper() + ":")
         for consequence_name in scenario_consequences:
             print("          - " + consequence_name)
+        return
+
+    def print_action(action):
+        print("        RISK MITIGATING ACTION: " + action)
+        return
+
+    @staticmethod
+    def print_red_teamed_scenario(scenario, scenario_consequences, red_team):
+        print("    What should the robot do when the following RISK CONDITIONS (with possible future CONSEQUENCES) exist in the current state?")
+        RedTeamCommandLinePrinting.print_scenario_conditions(scenario, red_team)
+        RedTeamCommandLinePrinting.print_scenario_consequences(scenario_consequences, "future consequences")
         print()
         return
 
     @staticmethod
-    def print_action_and_consequences(scenario_consequences, action):
+    def print_action_and_consequences(scenario_conditions, scenario_consequences, action, red_team, cf=False):
+        if not cf:
+            RedTeamCommandLinePrinting.print_risky_scenario_action_and_consequences(scenario_consequences, action)
+        else:
+            RedTeamCommandLinePrinting.print_counter_factual_action_and_consequences(scenario_conditions, scenario_consequences, action, red_team)
+        return
+
+    @staticmethod
+    def print_risky_scenario_action_and_consequences(scenario_consequences, action):
         print("    Given the possible future CONSEQUENCES, after the robot takes the RISK MITIGATING ACTION, what future CONSEQUENCES can still occur?")
-        print("        CONSEQUENCES BEFORE ACTION:")
-        for conseq_name in scenario_consequences:
-            print("          - " + conseq_name)
-        print("        RISK MITIGATING ACTION: " + action)
+        RedTeamCommandLinePrinting.print_scenario_consequences(scenario_consequences, "consequences before action")
+        RedTeamCommandLinePrinting.print_action(action)
+        print()
+        return
+
+    @staticmethod
+    def print_counter_factual_action_and_consequences(scenario_conditions, scenario_consequences, action, red_team):
+        print("    Consider the following RISK CONDITIONS (with possible future CONSEQUENCES):")
+        RedTeamCommandLinePrinting.print_scenario_conditions(scenario_conditions, red_team)
+        RedTeamCommandLinePrinting.print_scenario_consequences(scenario_consequences, "future consequences")
+        print("    After the robot takes the counter-factual RISK MITIGATING ACTION; what future CONSEQUENCES can occur?")
+        RedTeamCommandLinePrinting.print_action(action)
         print()
         return
 
@@ -294,7 +323,7 @@ class UserInputConsequenceProcessing:
     @staticmethod
     def get_consequences_from_user_and_resolve_conflicts(red_team, red_team_conditions, red_team_consequences, action, conseq_space):
         # get consequences from user input
-        continue_data_gen, abort, conseqs = UserInputConsequenceProcessing.get_consequences_from_user(red_team_conditions, red_team_consequences, action, conseq_space)
+        continue_data_gen, abort, conseqs = UserInputConsequenceProcessing.get_consequences_from_user(red_team, red_team_conditions, red_team_consequences, action, conseq_space)
         if abort:
             return continue_data_gen, True, None
 
@@ -304,6 +333,15 @@ class UserInputConsequenceProcessing:
             return continue_data_gen, True, None
 
         return continue_data_gen, False, conseqs
+
+    @staticmethod
+    def get_counter_factual_consequences_from_user(red_team, conditions, consequences, cf_action, conseq_space):
+        # get consequences from user input
+        continue_data_gen, abort, cf_conseqs = UserInputConsequenceProcessing.get_consequences_from_user(red_team, conditions, consequences, cf_action, conseq_space, cf=True)
+        if abort:
+            return continue_data_gen, True, None
+
+        return continue_data_gen, False, cf_conseqs
 
     @staticmethod
     def resolve_consequence_conflict(red_team, red_team_conditions, red_team_consequences, action, conseq_space, conseqs):
@@ -320,19 +358,19 @@ class UserInputConsequenceProcessing:
             RedTeamCommandLinePrinting.print_consequence_conflict_message(red_team_conditions, action, point_conseqs, pol_conseqs)
 
             # get consequences from user input
-            continue_data_gen, abort, conseqs = UserInputConsequenceProcessing.get_consequences_from_user(red_team_conditions, red_team_consequences, action, conseq_space)
+            continue_data_gen, abort, conseqs = UserInputConsequenceProcessing.get_consequences_from_user(red_team, red_team_conditions, red_team_consequences, action, conseq_space)
             if abort:
                 return continue_data_gen, True, None
 
         return True, False, conseqs
 
     @staticmethod
-    def get_consequences_from_user(red_team_conditions, red_team_consequences, action, conseq_space):
+    def get_consequences_from_user(red_team, red_team_conditions, red_team_consequences, action, conseq_space, cf=False):
         # initialize abort flag
         abort = False
 
         # get consequences after action input from user and unpack
-        user_input = UserInputConsequenceProcessing.consequence_input_process(red_team_conditions, red_team_consequences, action, conseq_space)
+        user_input = UserInputConsequenceProcessing.consequence_input_process(red_team, red_team_conditions, red_team_consequences, action, conseq_space, cf=cf)
         continue_data_gen, conseq_idxs = user_input
 
         # verify consequences are not None
@@ -353,7 +391,7 @@ class UserInputConsequenceProcessing:
         return continue_data_gen, abort, conseqs
 
     @staticmethod
-    def consequence_input_process(red_team_conditions, red_team_consequences, action, conseq_space):
+    def consequence_input_process(red_team, red_team_conditions, red_team_consequences, action, conseq_space, cf=False):
         # initialize loop flag and consequence indices
         got_valid_consequences = False
         conseq_idxs = None
@@ -361,7 +399,7 @@ class UserInputConsequenceProcessing:
         # keep asking until valid input received
         while not got_valid_consequences:
             # print scenario
-            RedTeamCommandLinePrinting.print_action_and_consequences(red_team_consequences, action)
+            RedTeamCommandLinePrinting.print_action_and_consequences(red_team_conditions, red_team_consequences, action, red_team, cf=cf)
 
             # print possible consequences
             RedTeamCommandLinePrinting.print_consequences(conseq_space)
