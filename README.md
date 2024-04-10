@@ -9,11 +9,11 @@ Counter-factual red teaming
 - [x] NOTE that CFA will likely create situations with same (condition,pre-conseq) and different (action,post-conseq), since point of CFA is to understand effects; probably want list instead of dictionary
 - [x] add counter-factual policy to red team policy
 - [x] add support to red team node to do both RS and CFA modes
-- [ ] randomly select risky scenario
-- [ ] randomly select risk mitigating action
-- [ ] ask user for input on state space
-- [ ] error checking on user input
-- [ ] write to YAML file
+- [x] randomly select risky scenario
+- [x] randomly select risk mitigating action
+- [x] ask user for input on state space
+- [x] error checking on user input
+- [x] write to YAML file
 
 Model creation
 - [ ] input risky conditions for real (not just tests for development purposes)

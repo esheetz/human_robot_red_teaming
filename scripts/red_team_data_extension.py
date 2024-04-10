@@ -16,12 +16,14 @@ from risky_condition import RiskyCondition
 from consequence_state import ConsequenceState
 from risk_mitigating_action import RiskMitigatingAction
 from risk_mitigating_policy_data_point import RiskMitigatingPolicyDataPoint
+from counter_factual_policy_data_point import CounterFactualPolicyDataPoint
 
 # import state space, consequence space, action space, and policy data readers
 from risky_condition_reader import RiskyConditionReader
 from consequence_state_reader import ConsequenceStateReader
 from risk_mitigating_action_reader import RiskMitigatingActionReader
 from risk_mitigating_policy_data_reader import RiskMitigatingPolicyDataReader
+from counter_factual_policy_data_reader import CounterFactualPolicyDataReader
 
 # import red team
 from red_team_policy import RedTeamPolicy
@@ -132,6 +134,30 @@ class RedTeamDataExtension:
 
         return scenario, scenario_consequences
 
+    ###########################################
+    ### COUNTER FACTUAL SCENARIO GENERATION ###
+    ###########################################
+
+    def get_random_counter_factual_scenario_action(self, state_space, consequence_space, action_space):
+        # get random key from red-teamed policy dictionary
+        key = random.choice(list(self.red_team.policy_data.keys()))
+
+        # get factual policy point
+        pol_point = self.red_team.policy_data[key]
+
+        # get conditions, consequences, and action
+        conditions = pol_point.get_policy_data_point_condition_names()
+        consequences, f_conseqs = pol_point.get_policy_data_point_consequence_names()
+        f_action = pol_point.get_policy_data_point_action_name()
+
+        # create counter factual action space by removing factual action
+        cf_action_space = [act for act in action_space if act != f_action]
+
+        # get random counter factual action
+        cf_action = random.choice(cf_action_space)
+
+        return conditions, consequences, cf_action
+
     #############################
     ### DATA POINT GENERATION ###
     #############################
@@ -185,8 +211,37 @@ class RedTeamDataExtension:
         return
 
     def __generate_new_counter_factual_data_point(self):
-        rospy.logwarn("[Red Team Data Extension] FUNCTION NOT IMPLEMENTED")
-        # TODO IMPLEMENTATION
+        # get state and action space
+        state_space = self.red_team.get_state_space()
+        conseq_space = self.red_team.get_consequence_state_space()
+        action_space = self.red_team.get_action_space()
+
+        # get random counter factual scenario from policy
+        conditions, consequences, cf_action = self.get_random_counter_factual_scenario_action(state_space, conseq_space, action_space)
+
+        # get consequences from user input
+        output = UIConseq.get_counter_factual_consequences_from_user(self.red_team, conditions, consequences, cf_action, conseq_space)
+        # unpack
+        self.continue_data_generation, abort, cf_conseqs = output
+        # check if aborting this data point
+        if abort:
+            return
+
+        # create policy data point
+        pol_point = CounterFactualPolicyDataPoint(conditions=conditions,
+                                                  consequences_before_action=consequences,
+                                                  action=cf_action,
+                                                  consequences_after_action=cf_conseqs)
+
+        # update policy
+        CLP.print_update_policy_message(conditions, consequences, cf_action, cf_conseqs)
+        self.red_team.update_counter_factual_policy(pol_point)
+
+        # check if policy needs to be written to file
+        if (self.get_points_generated() != 0) and ((self.get_points_generated() % self.save_new_policy_points) == 0):
+            self.write_policy_to_file()
+
+        return
 
     ###########################
     ### SAVE POLICY TO FILE ###
