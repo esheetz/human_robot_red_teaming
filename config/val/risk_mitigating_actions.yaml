@@ -1,10 +1,20 @@
 # risk mitigating actions for Valkyrie robot in different environments
 household:
   actions:
-    - name: action0
-    - name: action1
-    - name: action2
+    - name: lower_joint_velocities_torques
+    - name: shared_autonomy_navigation
+    - name: shared_autonomy_manipulation
+    - name: supervised_autonomy_backup_navigation
+    - name: teleoperated_manipulation
+    - name: ask_human_intervention_to_proceed
 lunar_habitat:
   actions:
-    - name: action3
-    - name: action4
+    - name: supervised_autonomy_backup_navigation
+    - name: teleoperated_navigation
+    - name: teleoperated_manipulation
+    - name: ask_human_intervention_to_proceed
+    - name: abort_task
+
+# NOTE: always implied that robot should pause task as part of risk mitigating action
+# NOTE: actions organized from greatest to least autonomy
+# NOTE: lower autonomy assistance can always be provided by operator, but robot will prompt for highest autonomy that could resolve issue
