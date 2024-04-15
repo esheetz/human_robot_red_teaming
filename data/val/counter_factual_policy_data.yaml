@@ -1,152 +1,65 @@
 lunar_habitat:
   policy_data:
   - conditions:
-    - test2
-    - test3
+    - robot_inhand_manipulation_object_collision
     consequences_before_action:
-    - disaster6
-    - disaster7
-    - disaster8
-    - disaster9
-    action: action4
-    consequences_after_action:
-    - disaster6
-  - conditions:
-    - test2
-    - test3
-    consequences_before_action:
-    - disaster6
-    - disaster7
-    - disaster8
-    - disaster9
-    action: action4
-    consequences_after_action:
-    - disaster7
-  - conditions:
-    - test2
-    - test3
-    consequences_before_action:
-    - disaster6
-    - disaster7
-    - disaster8
-    - disaster9
-    action: action4
-    consequences_after_action:
-    - disaster8
-  - conditions:
-    - test2
-    - test3
-    consequences_before_action:
-    - disaster6
-    - disaster7
-    - disaster8
-    - disaster9
-    action: action4
-    consequences_after_action:
-    - disaster9
-  - conditions:
-    - test3
-    consequences_before_action:
-    - disaster8
-    - disaster9
-    action: action4
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: teleoperated_navigation
     consequences_after_action: []
   - conditions:
-    - test2
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
     consequences_before_action:
-    - disaster6
-    - disaster7
-    action: action3
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: supervised_autonomy_backup_navigation
     consequences_after_action:
-    - disaster7
-    - disaster8
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
   - conditions:
-    - test3
+    - robot_navigation_object_collision
     consequences_before_action:
-    - disaster8
-    - disaster9
-    action: action4
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: supervised_autonomy_backup_navigation
     consequences_after_action:
-    - disaster8
-    - disaster9
+    - damage_robot
   - conditions:
-    - test2
+    - robot_inhand_manipulation_object_collision
     consequences_before_action:
-    - disaster6
-    - disaster7
-    action: action3
-    consequences_after_action:
-    - disaster6
-  - conditions:
-    - test3
-    consequences_before_action:
-    - disaster8
-    - disaster9
-    action: action4
-    consequences_after_action:
-    - disaster7
-  - conditions:
-    - test3
-    consequences_before_action:
-    - disaster8
-    - disaster9
-    action: action4
-    consequences_after_action:
-    - disaster8
-  - conditions:
-    - test2
-    consequences_before_action:
-    - disaster6
-    - disaster7
-    action: action3
-    consequences_after_action:
-    - disaster9
-  - conditions:
-    - test3
-    consequences_before_action:
-    - disaster8
-    - disaster9
-    action: action4
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
     consequences_after_action: []
   - conditions:
-    - test3
+    - robot_manipulation_object_collision
     consequences_before_action:
-    - disaster8
-    - disaster9
-    action: action4
-    consequences_after_action:
-    - disaster6
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
   - conditions:
-    - test2
+    - robot_inhand_manipulation_object_collision
     consequences_before_action:
-    - disaster6
-    - disaster7
-    action: action3
-    consequences_after_action:
-    - disaster7
-  - conditions:
-    - test2
-    - test3
-    consequences_before_action:
-    - disaster6
-    - disaster7
-    - disaster8
-    - disaster9
-    action: action4
-    consequences_after_action:
-    - disaster8
-  - conditions:
-    - test2
-    consequences_before_action:
-    - disaster6
-    - disaster7
-    action: action3
-    consequences_after_action:
-    - disaster9
-  - conditions:
-    - test3
-    consequences_before_action:
-    - disaster8
-    - disaster9
-    action: action4
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
     consequences_after_action: []

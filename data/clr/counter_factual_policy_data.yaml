@@ -1,0 +1,9 @@
+lunar_habitat:
+  policy_data:
+  - conditions:
+    - human_enters_workspace
+    consequences_before_action:
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action:
+    - harm_human
