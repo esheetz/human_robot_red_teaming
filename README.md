@@ -3,12 +3,18 @@
 ## TODOs
 
 Model creation
-- [ ] input risky conditions for real (not just tests for development purposes)
-- [ ] input action spaces for real (not just tests for development purposes)
-- [ ] input initial policy starters for real (not just tests for development purposes)
-- [ ] input consequence states for real (not just tests for development purposes)
-- [ ] final testing of data generation; do I need to add checks for repeated scenario generation?
-- [ ] generate red teamed data (~500 data points per robot per environment) (depending on how long this takes, may put off CLR for later)
+- [x] input consequence states for real (not just tests for development purposes)
+- [x] validate input of consequence states against data readers to verify formatting
+- [x] input risky conditions for real (not just tests for development purposes)
+- [x] validate input of risky conditions against data readers to verify formatting
+- [x] input action spaces for real (not just tests for development purposes)
+- [x] validate input of action spaces against data readers to verify formatting
+- [x] input initial policy starters for real (not just tests for development purposes)
+- [x] validate input of initial policy starters against data readers to verify formatting
+- [x] validate red team initialization to verify formatting
+- [x] final testing of data generation; minor debugging
+- [ ] do I need to add checks for repeated scenario generation? right now CF red teaming has generated repeated data points
+- [ ] generate red teamed data (~500 data points per robot per environment) (depending on how long this takes, may put off CLR for later) (but right now CLR data is exactly the same, nothing is specific to Val)
 - [ ] logistic regression analysis (combined, CLR only, Val only, household only, lunar only, CLR/household, CLR/lunar, Val/household, Val/lunar)
 - [ ] model(s) training and validation
 - [ ] save models for later use
