@@ -15,7 +15,7 @@ class RedTeamCommandLinePrinting:
     @staticmethod
     def print_scenario_conditions(scenario_conditions, red_team):
         print("        RISK CONDITIONS:")
-        for condition_name in scenario_conditions:
+        for condition_name in sorted(scenario_conditions):
             # get condition from state space
             condition = red_team.get_risky_condition_with_name(condition_name)
             print("          - " + condition_name + "    [ " +
@@ -27,7 +27,7 @@ class RedTeamCommandLinePrinting:
 
     def print_scenario_consequences(scenario_consequences, conseq_name):
         print("        " + conseq_name.upper() + ":")
-        for consequence_name in scenario_consequences:
+        for consequence_name in sorted(scenario_consequences):
             print("          - " + consequence_name)
         return
 
@@ -162,10 +162,10 @@ class RedTeamCommandLinePrinting:
     @staticmethod
     def print_update_policy_message(red_team_conditions, red_team_consequences, action, conseqs):
         print("    *** Great! Updating policy!")
-        print("            Conditions:", red_team_conditions)
-        print("            Consequences before action:", red_team_consequences)
+        print("            Conditions:", sorted(list(red_team_conditions)))
+        print("            Consequences before action:", sorted(list(red_team_consequences)))
         print("            Action:", action)
-        print("            Consequences after action:", conseqs)
+        print("            Consequences after action:", sorted(list(conseqs)))
         RedTeamCommandLinePrinting.print_separator()
         return
 

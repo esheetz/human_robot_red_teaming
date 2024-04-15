@@ -172,8 +172,11 @@ class RedTeamDataExtension:
     def __generate_new_risky_scenario_data_point(self):
         # get state and action space
         state_space = self.red_team.get_state_space()
+        state_space = sorted(state_space)
         conseq_space = self.red_team.get_consequence_state_space()
+        conseq_space = sorted(conseq_space)
         action_space = self.red_team.get_action_space()
+        action_space = sorted(action_space)
 
         # generate random scenario
         red_team_conditions, red_team_consequences = self.get_random_red_teamed_scenario(state_space, conseq_space)
@@ -213,8 +216,11 @@ class RedTeamDataExtension:
     def __generate_new_counter_factual_data_point(self):
         # get state and action space
         state_space = self.red_team.get_state_space()
+        state_space = sorted(state_space)
         conseq_space = self.red_team.get_consequence_state_space()
+        conseq_space = sorted(conseq_space)
         action_space = self.red_team.get_action_space()
+        action_space = sorted(action_space)
 
         # get random counter factual scenario from policy
         conditions, consequences, cf_action = self.get_random_counter_factual_scenario_action(state_space, conseq_space, action_space)
