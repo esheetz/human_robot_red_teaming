@@ -111,7 +111,7 @@ class ValCLRSpecificKnowledge(DomainSpecificKnowledge):
 
         # attempt to get actions and consequences from given scenario
         output = self.get_knowledge_based_risky_scenario_output(req.condition_names,
-                                                                req.pre_action_consequence_names) # TODO function implementation
+                                                                req.pre_action_consequence_names)
         # unpack
         succ, action, conseq = output
 
@@ -178,6 +178,11 @@ class ValCLRSpecificKnowledge(DomainSpecificKnowledge):
         return True, action, post_action_conseq_names
 
     def get_knowledge_based_counter_factual_output(self, condition_names, pre_action_conseq_names, cf_action):
+        # set minus using sets
+        set_diff = test_set1.difference(test_set2)
+        # set minus using lists
+        set_diff = [i for i in test_set1 if i not in test_set2]
+
         raise NotImplementedError
         # TODO
 
