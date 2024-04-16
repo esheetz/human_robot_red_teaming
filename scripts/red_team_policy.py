@@ -143,6 +143,11 @@ class RedTeamPolicy:
         return
 
     def update_counter_factual_policy(self, policy_data_point):
+        # check for duplicated data point
+        if self.__check_policy_point_in_policy_list(policy_data_point, self.cf_policy_data):
+            # no need to add a duplicate point
+            return
+
         # add data point to counter factual policy
         self.cf_policy_data.append(policy_data_point)
         return
@@ -340,7 +345,6 @@ class RedTeamPolicy:
 
         return valid_policies
 
-    # TODO MODIFY TO ACCEPT LIST AS WELL
     def __check_policy_against_state_action_spaces(self, policy_nickname : str,
                                                          policy,
                                                          state_space : list,
@@ -406,3 +410,27 @@ class RedTeamPolicy:
         # if we get here, human-generated policy included in red teamed policy
         rospy.loginfo("[Red Team] Human-generated and red team generated policies agree!")
         return True
+
+    def __check_policy_point_in_policy_list(self, pol_data_point : PolicyDataPoint,
+                                                  policy : list):
+        # look through policy
+        for pol_point in policy:
+            # compare all fields of policy points
+            if (pol_data_point.get_policy_data_point_condition_names() != pol_point.get_policy_data_point_condition_names()):
+                # condition names not equal, keep checking against points in policy
+                continue
+            elif (pol_data_point.get_policy_data_point_consequences_before_action_names() != pol_point.get_policy_data_point_consequences_before_action_names()):
+                # consequences before action not equal, keep checking against points in policy
+                continue
+            elif (pol_data_point.get_policy_data_point_action_name() != pol_point.get_policy_data_point_action_name()):
+                # actions not equal, keep checking against points in policy
+                continue
+            elif (pol_data_point.get_policy_data_point_consequences_after_action_names() != pol_point.get_policy_data_point_consequences_after_action_names()):
+                # consequences after action not equal, keep checking against points in policy
+                continue
+            else:
+                # all fields match
+                return True
+
+        # if we get here, must not be in policy
+        return False
