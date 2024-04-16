@@ -13,8 +13,8 @@ Model creation
 - [x] validate input of initial policy starters against data readers to verify formatting
 - [x] validate red team initialization to verify formatting
 - [x] final testing of data generation; minor debugging
+- [x] prevent CF red teaming from generating repeated data points
 - [ ] way to input knowledge-based rules, like downgrading to lowest form of autonomy? only ask for input if non-unique actions are given from generic rules?
-- [ ] do I need to add checks for repeated scenario generation? right now CF red teaming has generated repeated data points
 - [ ] generate red teamed data (~500 data points per robot per environment) (depending on how long this takes, may put off CLR for later) (but right now CLR data is exactly the same, nothing is specific to Val)
 - [ ] logistic regression analysis (combined, CLR only, Val only, household only, lunar only, CLR/household, CLR/lunar, Val/household, Val/lunar)
 - [ ] model(s) training and validation
