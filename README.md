@@ -3,12 +3,12 @@
 ## TODOs
 
 Application-specific knowledge-based rules
+- [x] update action class to include a "level of autonomy" score
 - [ ] create class for encapsulating knowledge-based info
 - [ ] automatically generate actions and consequences from policy starter info
 - [ ] create service to automatically provide info for data generation
 - [ ] pass application-specific service call as argument to red team data extension node
 - [ ] knowledge learned from red teaming: downgrading to lowest form of autonomy
-- [ ] update action class to include a "level of autonomy" score
 - [ ] only ask for input if non-unique actions are given from generic rules?
 - [ ] test automated data generation by generating 10-20 points at a time
 

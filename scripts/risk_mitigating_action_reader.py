@@ -107,7 +107,7 @@ class RiskMitigatingActionReader:
             self.valid_actions = self.valid_actions and valid_action
 
             # create risk mitigating action
-            risk_act = RiskMitigatingAction(name=act['name'])
+            risk_act = RiskMitigatingAction(name=act['name'], autonomy_level=act['autonomy_level'])
 
             # add risk mitigating action to list
             self.risk_mitigating_actions.append(risk_act)
@@ -138,6 +138,7 @@ class RiskMitigatingActionReader:
             # print action info
             print("    Action " + str(i) + " of " + str(num_acts) + ":")
             print("        name: " + act.get_action_name())
+            print("        autonomy_level: " + str(act.get_action_autonomy_level()))
         print()
 
         return
