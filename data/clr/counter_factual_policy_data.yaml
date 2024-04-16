@@ -7,3 +7,5 @@ lunar_habitat:
     action: ask_human_intervention_to_proceed
     consequences_after_action:
     - harm_human
+household:
+  policy_data: []

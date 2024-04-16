@@ -14,6 +14,13 @@
 	<arg name="num_points" default="10"/>
 	<arg name="max_conds" default="-1"/>
 
+	<!-- launch Val / CLR specific node -->
+	<include file="$(find safety_aware_reasoning)/launch/val_clr_specific_knowledge.launch">
+		<arg name="robot" value="$(arg robot)"/>
+		<arg name="env" value="$(arg env)"/>
+	</include>
+
+	<!-- launch red teaming node -->
 	<node pkg="safety_aware_reasoning" type="red_team_data_extension.py" name="RedTeamDataExtension" output="screen">
 		<param name="robot" type="str" value="$(arg robot)"/>
 		<param name="environment" type="str" value="$(arg env)"/>

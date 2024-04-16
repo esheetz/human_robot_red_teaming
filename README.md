@@ -4,13 +4,16 @@
 
 Application-specific knowledge-based rules
 - [x] update action class to include a "level of autonomy" score
-- [ ] create class for encapsulating knowledge-based info
-- [ ] automatically generate actions and consequences from policy starter info
-- [ ] create service to automatically provide info for data generation
+- [x] create class for encapsulating knowledge-based info
+- [x] create service to automatically provide info for risky scenario data generation
+- [x] knowledge learned from risky scenario red teaming: downgrading to lowest form of autonomy
+- [ ] create service to automatically provide info for counter factual data generation
+- [ ] knowledge learned from counter factual red teaming: lower autonomy is always safer (no consequences), higher autonomy is not (set minus between cf conseqs and pre-action conseqs for pol data point)
 - [ ] pass application-specific service call as argument to red team data extension node
-- [ ] knowledge learned from red teaming: downgrading to lowest form of autonomy
-- [ ] only ask for input if non-unique actions are given from generic rules?
-- [ ] test automated data generation by generating 10-20 points at a time
+- [ ] automatically generate actions and consequences from policy starter info
+- [ ] only ask for input if non-unique output is given from generic rules
+- [ ] test automated data generation by generating 10-20 risky scenario points at a time
+- [ ] test automated data generation by generating 10-20 counter factual points at a time
 
 Model creation
 - [x] input consequence states for real (not just tests for development purposes)
