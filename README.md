@@ -2,6 +2,16 @@
 
 ## TODOs
 
+Application-specific knowledge-based rules
+- [ ] create class for encapsulating knowledge-based info
+- [ ] automatically generate actions and consequences from policy starter info
+- [ ] create service to automatically provide info for data generation
+- [ ] pass application-specific service call as argument to red team data extension node
+- [ ] knowledge learned from red teaming: downgrading to lowest form of autonomy
+- [ ] update action class to include a "level of autonomy" score
+- [ ] only ask for input if non-unique actions are given from generic rules?
+- [ ] test automated data generation by generating 10-20 points at a time
+
 Model creation
 - [x] input consequence states for real (not just tests for development purposes)
 - [x] validate input of consequence states against data readers to verify formatting
@@ -14,7 +24,6 @@ Model creation
 - [x] validate red team initialization to verify formatting
 - [x] final testing of data generation; minor debugging
 - [x] prevent CF red teaming from generating repeated data points
-- [ ] way to input knowledge-based rules, like downgrading to lowest form of autonomy? only ask for input if non-unique actions are given from generic rules?
 - [ ] generate red teamed data (~500 data points per robot per environment) (depending on how long this takes, may put off CLR for later) (but right now CLR data is exactly the same, nothing is specific to Val)
 - [ ] logistic regression analysis (combined, CLR only, Val only, household only, lunar only, CLR/household, CLR/lunar, Val/household, Val/lunar)
 - [ ] model(s) training and validation
