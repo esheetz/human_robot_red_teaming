@@ -1,0 +1,8 @@
+string[] condition_names
+string[] pre_action_consequence_names
+
+---
+
+bool success
+string action_name
+string[] post_action_consequence_names

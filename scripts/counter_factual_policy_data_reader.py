@@ -81,6 +81,12 @@ class CounterFactualPolicyDataReader:
             self.valid_policy = True
             return
 
+        # verify environment in yaml
+        if self.environment_name not in yaml_dict.keys():
+            print("WARN: counter factual policy data file " + self.counter_factual_policy_data_full_path + " does not include environment " + self.environment_name + "; initializing to empty policy")
+            self.valid_policy = True
+            return
+
         # error check YAML file formatting
         valid_yaml = YAMLChecks.check_policy_data_yaml_formatting(yaml_dict, self.environment_name, "counter factual policy data")
         if not valid_yaml:

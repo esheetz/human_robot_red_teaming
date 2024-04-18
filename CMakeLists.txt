@@ -12,10 +12,10 @@ set(INSTALL_LIB_DIR ${CMAKE_INSTALL_PREFIX}/lib)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
+  std_msgs
+  message_generation
   #dynamic_reconfigure
   #geometry_msgs
-  #std_msgs
-  #message_generation
 )
 
 #------------------------------------------------------------------------
@@ -35,14 +35,23 @@ find_package(catkin REQUIRED COMPONENTS
 #
 #)
 
+# generate services
+add_service_files(
+  DIRECTORY
+  ./srv/
+  FILES
+  RiskyScenarioDataGeneration.srv
+  CounterFactualDataGeneration.srv
+)
+
 # dependencies for generated messages
-#generate_messages(
-#  DEPENDENCIES
-#  geometry_msgs
-#  std_msgs
-#)
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 #message("generated messages!")
+message("generated services!")
 
 #------------------------------------------------------------------------
 #     catkin Setup
@@ -85,6 +94,9 @@ install(PROGRAMS
   scripts/red_team_policy.py
   scripts/red_team_command_line_tools.py
   scripts/red_team_data_extension.py
+  # DOMAIN-SPECIFIC KNOWLEDGE CLASS
+  scripts/domain_specific_knowledge.py
+  scripts/val_clr_specific_knowledge.py
   DESTINATION lib/${PROJECT_NAME} #${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 message("installed python scripts!")

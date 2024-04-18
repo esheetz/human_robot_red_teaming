@@ -2,6 +2,20 @@
 
 ## TODOs
 
+Application-specific knowledge-based rules
+- [x] update action class to include a "level of autonomy" score
+- [x] create class for encapsulating knowledge-based info
+- [x] create service to automatically provide info for risky scenario data generation
+- [x] knowledge learned from risky scenario red teaming: downgrading to lowest form of autonomy
+- [x] create service to automatically provide info for counter factual data generation
+- [x] knowledge learned from counter factual red teaming: lower autonomy is always safer (no consequences), higher autonomy is not (set minus between cf conseqs and pre-action conseqs for pol data point)
+- [x] pass application-specific service call as argument to red team data extension node
+- [x] automatically generate data during red teaming
+- [x] only ask for input if non-unique output is given from generic rules or service call in some way fails
+- [x] test automated data generation by generating 10-20 risky scenario points at a time
+- [x] test automated data generation by generating 10-20 counter factual points at a time
+- [x] add functionality to check when data point saturation has been reached for automatic stopping of data generation
+
 Model creation
 - [x] input consequence states for real (not just tests for development purposes)
 - [x] validate input of consequence states against data readers to verify formatting
@@ -14,7 +28,6 @@ Model creation
 - [x] validate red team initialization to verify formatting
 - [x] final testing of data generation; minor debugging
 - [x] prevent CF red teaming from generating repeated data points
-- [ ] way to input knowledge-based rules, like downgrading to lowest form of autonomy? only ask for input if non-unique actions are given from generic rules?
 - [ ] generate red teamed data (~500 data points per robot per environment) (depending on how long this takes, may put off CLR for later) (but right now CLR data is exactly the same, nothing is specific to Val)
 - [ ] logistic regression analysis (combined, CLR only, Val only, household only, lunar only, CLR/household, CLR/lunar, Val/household, Val/lunar)
 - [ ] model(s) training and validation

@@ -198,6 +198,12 @@ class RedTeamPolicy:
             yaml_dict[self.environment_name] = {}
             yaml_dict[self.environment_name]['policy_data'] = []
 
+        # check if environment key exists
+        if self.environment_name not in yaml_dict.keys():
+            # initialize dictionary
+            yaml_dict[self.environment_name] = {}
+            yaml_dict[self.environment_name]['policy_data'] = []
+
         # modify dictionary with policy data
         yaml_dict[self.environment_name]['policy_data'] = yaml_policy_list
 
