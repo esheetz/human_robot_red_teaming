@@ -1,5 +1,9 @@
 string[] condition_names
 string[] pre_action_consequence_names
+
+string factual_action_name
+string[] factual_post_action_consequence_names
+
 string counter_factual_action_name
 
 ---

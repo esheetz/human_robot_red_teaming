@@ -7,8 +7,8 @@ Application-specific knowledge-based rules
 - [x] create class for encapsulating knowledge-based info
 - [x] create service to automatically provide info for risky scenario data generation
 - [x] knowledge learned from risky scenario red teaming: downgrading to lowest form of autonomy
-- [ ] create service to automatically provide info for counter factual data generation
-- [ ] knowledge learned from counter factual red teaming: lower autonomy is always safer (no consequences), higher autonomy is not (set minus between cf conseqs and pre-action conseqs for pol data point)
+- [x] create service to automatically provide info for counter factual data generation
+- [x] knowledge learned from counter factual red teaming: lower autonomy is always safer (no consequences), higher autonomy is not (set minus between cf conseqs and pre-action conseqs for pol data point)
 - [ ] pass application-specific service call as argument to red team data extension node
 - [ ] automatically generate actions and consequences from policy starter info
 - [ ] only ask for input if non-unique output is given from generic rules

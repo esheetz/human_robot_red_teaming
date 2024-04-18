@@ -7,6 +7,7 @@ Emily Sheetz, NSTGRO VTE 2024
 import rospy
 
 import sys
+from copy import deepcopy
 
 # import base class
 from domain_specific_knowledge import DomainSpecificKnowledge
@@ -135,12 +136,15 @@ class ValCLRSpecificKnowledge(DomainSpecificKnowledge):
         # attempt to get consequences from given counter-factual scenario
         output = self.get_knowledge_based_counter_factual_output(req.condition_names,
                                                                  req.pre_action_consequence_names,
-                                                                 req.counter_factual_action_name) # TODO function implementation
+                                                                 req.factual_action_name,
+                                                                 req.factual_post_action_consequence_names,
+                                                                 req.counter_factual_action_name)
         # unpack
-        succ, conseq = output
+        succ, msg, conseq = output
 
         # set response
         if succ:
+            rospy.loginfo("[%s] Generated counter-factual data point: %s", self.node_name, msg)
             res.success = True
             res.post_action_consequence_names = conseq
         else:
@@ -177,14 +181,60 @@ class ValCLRSpecificKnowledge(DomainSpecificKnowledge):
         # successfully generated knowledge-based output! return
         return True, action, post_action_conseq_names
 
-    def get_knowledge_based_counter_factual_output(self, condition_names, pre_action_conseq_names, cf_action):
-        # set minus using sets
-        set_diff = test_set1.difference(test_set2)
-        # set minus using lists
-        set_diff = [i for i in test_set1 if i not in test_set2]
+    def get_knowledge_based_counter_factual_output(self, condition_names, pre_action_conseq_names, f_action_name, f_post_action_conseq_names, cf_action_name):
+        # get factual and counter-factual actions
+        f_action = self.action_space_reader.get_risk_mitigating_action_with_name(f_action_name)
+        cf_action = self.action_space_reader.get_risk_mitigating_action_with_name(cf_action_name)
 
-        raise NotImplementedError
-        # TODO
+        # get autonomy levels
+        f_action_auto_level = f_action.get_action_autonomy_level()
+        cf_action_auto_level = cf_action.get_action_autonomy_level()
+
+        # initialize counter-factual post-action consequences and message
+        cf_post_action_conseq_names = []
+        msg = ""
+
+        # compare autonomy levels
+        if cf_action_auto_level == f_action_auto_level:
+            # counter-factual action requires equal autonomy; just as safe as factual action
+            msg = "counter-factual action ({}) requires equal autonomy as factual action ({}), and is just as safe!".format(cf_action_name, f_action_name)
+
+            # assume counter-factual action has same consequences as factual action
+            cf_post_action_conseq_names = deepcopy(f_post_action_conseq_names)
+
+        elif cf_action_auto_level < f_action_auto_level:
+            # counter-factual action requires less autonomy; may be even safer than factual action
+            msg = "counter-factual action ({}) requires less autonomy than factual action ({}), and may even be safer!".format(cf_action_name, f_action_name)
+
+            # get effect of counter-factual action (consequences resolved by action)
+            cf_action_effects = self.get_consequences_resolved_by_action_from_policy(cf_action_name)
+
+            # check success
+            if cf_action_effects is None:
+                return False, None, None
+
+            # subtract counter-factual resolved consequences from factual resolved consequences, since we are even safer than factual action
+            cf_post_action_conseq_names = [conseq for conseq in f_post_action_conseq_names if conseq not in cf_action_effects]
+            # equivalent to set difference:
+            #     cf_post_action_conseq_names = f_post_action_conseq_names - cf_action_effects
+
+        else: # cf_action_auto_level > f_action_auto_level
+            # counter-factual action requires more autonomy; will not adequately address all safety conditions
+            msg = "counter-factual action ({}) requires more autonomy than factual action ({}), which will not be as safe.".format(cf_action_name, f_action_name)
+
+            # get effect of counter-factual action (consequences resolved by action)
+            cf_action_effects = self.get_consequences_resolved_by_action_from_policy(cf_action_name)
+
+            # check success
+            if cf_action_effects is None:
+                return False, None, None
+
+            # subtract counter-factual resolved consequences from initial condition consequences, since we will not necessarily address any factually resolved consequences
+            cf_post_action_conseq_names = [conseq for conseq in pre_action_conseq_names if conseq not in cf_action_effects]
+            # equivalent to set difference:
+            #     cf_post_action_conseq_names = pre_action_conseq_names - cf_action_effects
+
+        return True, msg, cf_post_action_conseq_names
 
 
 
@@ -275,6 +325,40 @@ class ValCLRSpecificKnowledge(DomainSpecificKnowledge):
             return None
 
         # return single set of consequences
+        return consequences[0]
+
+    ###############################
+    ### COUNTER-FACTUAL HELPERS ###
+    ###############################
+
+    def get_consequences_resolved_by_action_from_policy(self, action_name):
+        # initialize consequences
+        consequences = []
+
+        # loop through policy data
+        for temp_key in self.policy_starter_reader.risk_mitigating_policy.keys():
+            # get policy data point
+            temp_pol_point = self.policy_starter_reader.risk_mitigating_policy[temp_key]
+
+            # check if action matches
+            if action_name == temp_pol_point.get_policy_data_point_action_name():
+                # get before and after consequences
+                bef_conseq, aft_conseq = temp_pol_point.get_policy_data_point_consequence_names()
+
+                # get consequences resolved by action
+                conseqs = [conseq for conseq in bef_conseq if conseq not in aft_conseq]
+                # equivalent to set difference:
+                #     conseqs = bef_conseq - aft_conseq
+
+                # add to list of consequences
+                consequences.append(conseqs)
+
+        # verify only one set of consequences found
+        if len(consequences) != 1:
+            rospy.logwarn("[%s] Found multiple sets of possible consequences resolved by action %s; cannot determine unique knowledge-based set of consequences", self.node_name, action_name)
+            return None
+
+        # return single set of resolved consequences
         return consequences[0]
 
 
