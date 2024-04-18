@@ -9,11 +9,12 @@ Application-specific knowledge-based rules
 - [x] knowledge learned from risky scenario red teaming: downgrading to lowest form of autonomy
 - [x] create service to automatically provide info for counter factual data generation
 - [x] knowledge learned from counter factual red teaming: lower autonomy is always safer (no consequences), higher autonomy is not (set minus between cf conseqs and pre-action conseqs for pol data point)
-- [ ] pass application-specific service call as argument to red team data extension node
-- [ ] automatically generate actions and consequences from policy starter info
-- [ ] only ask for input if non-unique output is given from generic rules
-- [ ] test automated data generation by generating 10-20 risky scenario points at a time
-- [ ] test automated data generation by generating 10-20 counter factual points at a time
+- [x] pass application-specific service call as argument to red team data extension node
+- [x] automatically generate data during red teaming
+- [x] only ask for input if non-unique output is given from generic rules or service call in some way fails
+- [x] test automated data generation by generating 10-20 risky scenario points at a time
+- [x] test automated data generation by generating 10-20 counter factual points at a time
+- [x] add functionality to check when data point saturation has been reached for automatic stopping of data generation
 
 Model creation
 - [x] input consequence states for real (not just tests for development purposes)
