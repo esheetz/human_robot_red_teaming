@@ -2,6 +2,13 @@
 
 ## TODOs
 
+Documentation
+- [ ] ticket TODO page
+- [ ] main README
+- [ ] reader page
+- [ ] specific knowledge
+- [ ] red team data generation
+
 Model creation
 - [x] input consequence states for real (not just tests for development purposes)
 - [x] validate input of consequence states against data readers to verify formatting
