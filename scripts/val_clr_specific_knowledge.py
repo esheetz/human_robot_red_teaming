@@ -54,8 +54,6 @@ class ValCLRSpecificKnowledge(DomainSpecificKnowledge):
         self.__initialize_action_space()
         self.__initialize_policy_starter()
 
-
-
     #######################################
     ### INITIALIZATION HELPER FUNCTIONS ###
     #######################################
@@ -99,8 +97,6 @@ class ValCLRSpecificKnowledge(DomainSpecificKnowledge):
         else:
             rospy.loginfo("[%s] Successfully initialized human-generated policy data points!", self.node_name)
         return
-
-
 
     #########################
     ### SERVICE CALLBACKS ###
@@ -153,8 +149,6 @@ class ValCLRSpecificKnowledge(DomainSpecificKnowledge):
 
         # return result
         return res
-
-
 
     #######################
     ### SERVICE HELPERS ###
@@ -235,8 +229,6 @@ class ValCLRSpecificKnowledge(DomainSpecificKnowledge):
             #     cf_post_action_conseq_names = pre_action_conseq_names - cf_action_effects
 
         return True, msg, cf_post_action_conseq_names
-
-
 
     ##############################
     ### RISKY SCENARIO HELPERS ###
@@ -321,8 +313,12 @@ class ValCLRSpecificKnowledge(DomainSpecificKnowledge):
 
         # verify only one set of consequences found
         if len(consequences) != 1:
-            rospy.logwarn("[%s] Found multiple sets of possible consequences after taking action %s; cannot determine unique knowledge-based set of consequences", self.node_name, action_name)
-            return None
+            # check if all consequence sets are equal
+            all_equal = self.check_all_list_elems_equal(consequences)
+            if not all_equal:
+                rospy.logwarn("[%s] Found multiple sets of possible consequences after taking action %s; cannot determine unique knowledge-based set of consequences", self.node_name, action_name)
+                return None
+            # otherwise, all must be equal, so we still found knowledge-based set of consequences
 
         # return single set of consequences
         return consequences[0]
@@ -355,11 +351,27 @@ class ValCLRSpecificKnowledge(DomainSpecificKnowledge):
 
         # verify only one set of consequences found
         if len(consequences) != 1:
-            rospy.logwarn("[%s] Found multiple sets of possible consequences resolved by action %s; cannot determine unique knowledge-based set of consequences", self.node_name, action_name)
-            return None
+            # check if all consequence sets are equal
+            all_equal = self.check_all_list_elems_equal(consequences)
+            if not all_equal:
+                rospy.logwarn("[%s] Found multiple sets of possible consequences resolved by action %s; cannot determine unique knowledge-based set of consequences", self.node_name, action_name)
+                return None
+            # othwerise, all must be equal, so we still found knowledge-based set of consequences
 
         # return single set of resolved consequences
         return consequences[0]
+
+    ####################
+    ### LIST HELPERS ###
+    ####################
+
+    def check_all_list_elems_equal(self, input_list):
+        # check for empty list
+        if len(input_list) == 0:
+            return False
+
+        # otherwise, check if all elements equal the first
+        return all([input_list[0] == elem for elem in input_list])
 
 
 
