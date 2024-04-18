@@ -3,10 +3,10 @@
 ## TODOs
 
 Documentation
-- [ ] ticket TODO page
-- [ ] main README
-- [ ] reader page
-- [ ] specific knowledge
+- [x] ticket TODO page
+- [x] main README
+- [x] reader page
+- [x] specific knowledge
 - [ ] red team data generation
 
 Model creation
