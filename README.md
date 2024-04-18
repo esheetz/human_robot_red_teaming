@@ -15,6 +15,7 @@ Model creation
 - [x] final testing of data generation; minor debugging
 - [x] prevent CF red teaming from generating repeated data points
 - [ ] final clean of all red-teamed data to start fresh
+- [ ] add instructions to README about how to generate data and run nodes
 - [ ] generate red teamed data (~500 data points per robot per environment) (depending on how long this takes, may put off CLR for later) (but right now CLR data is exactly the same, nothing is specific to Val)
 - [ ] logistic regression analysis (combined, CLR only, Val only, household only, lunar only, CLR/household, CLR/lunar, Val/household, Val/lunar)
 - [ ] model(s) training and validation
