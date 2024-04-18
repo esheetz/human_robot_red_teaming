@@ -13,6 +13,7 @@
 	<arg name="env" default="lunar_habitat"/>
 	<arg name="num_points" default="10"/>
 	<arg name="max_conds" default="-1"/>
+	<arg name="auto_gen_data" default="true"/>
 
 	<!-- launch Val / CLR specific node -->
 	<include file="$(find safety_aware_reasoning)/launch/val_clr_specific_knowledge.launch">
@@ -27,5 +28,8 @@
 		<param name="num_points" type="int" value="$(arg num_points)"/>
 		<param name="max_conds" type="int" value="$(arg max_conds)"/>
 		<param name="counter_factual" type="bool" value="false"/>
+		<param name="auto_gen_data" type="bool" value="$(arg auto_gen_data)"/>
+		<param name="auto_data_gen_service" type="str" value="/val_clr_knowledge_based_risky_scenario_data_gen"/>
+		<param name="auto_cf_data_gen_service" type="str" value="/val_clr_knowledge_based_counter_factual_data_gen"/>
 	</node>
 </launch>
