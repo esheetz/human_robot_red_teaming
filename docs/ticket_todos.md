@@ -7,7 +7,7 @@ Documentation
 - [x] main README
 - [x] reader page
 - [x] specific knowledge
-- [ ] red team data generation
+- [ x] red team data generation
 
 Model creation
 - [x] input consequence states for real (not just tests for development purposes)
