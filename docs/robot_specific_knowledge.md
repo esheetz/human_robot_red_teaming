@@ -2,7 +2,7 @@
 
 Depending on the embodiment and capabilities of a robot and depending on the particular domain, robots are expected to behave differently and take different risk mitigating actions under different circumstances.  This means that during the human-robot red teaming exercises, the human operators are expected to consider domain-specific and robot-specific knowledge to determine how the robot should act in different domains.
 
-Robot-specific and/or domain-specific knowledge can be used to automatically generate data during [red teamed data generation](docs/red_team_data_generation.md).  This package includes a generic `DomainSpecificKnowledge` base class that can be inherited by derived classes.  Inherited classes must implement two abstract methods: `risky_scenario_callback` and `counter_factual_callback`.  These methods are service callbacks that aid in automatic red-team data generation.
+Robot-specific and/or domain-specific knowledge can be used to automatically generate data during [red teamed data generation](red_team_data_generation.md).  This package includes a generic `DomainSpecificKnowledge` base class that can be inherited by derived classes.  Inherited classes must implement two abstract methods: `risky_scenario_callback` and `counter_factual_callback`.  These methods are service callbacks that aid in automatic red-team data generation.
 
 
 
@@ -26,4 +26,4 @@ To launch the Val and CLR specific servers, run:
 roslaunch safety_aware_reasoning val_clr_specific_knowledge.launch
 ```
 
-These services are automatically launched when [human-robot red teaming data generation exercises](docs/red_team_data_generation.md) are launched.
+These services are automatically launched when [human-robot red teaming data generation exercises](red_team_data_generation.md) are launched.

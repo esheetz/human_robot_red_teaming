@@ -15,7 +15,7 @@ Note that each has the following optional launch arguments:
 - `num_points` to specify the number of data points to generate
 - `auto_gen_data` to flag whether the data should be automatically generated based on robot- and domain-specific knowledge-based rules
 
-By default, `auto_gen_data` is set to `true`, in which case the robot will apply [robot- and domain-specific knowledge-based rules](docs/robot_specific_knowledge.md) to automatically generate data points.  If `auto_gen_data` is set to `false`, then the human can interactively provide data points for randomly generated risky scenarios and counter-factual scenarios via the command line.
+By default, `auto_gen_data` is set to `true`, in which case the robot will apply [robot- and domain-specific knowledge-based rules](robot_specific_knowledge.md) to automatically generate data points.  If `auto_gen_data` is set to `false`, then the human can interactively provide data points for randomly generated risky scenarios and counter-factual scenarios via the command line.
 
 The policy data generated through human-robot red teaming is stored in the `data/` directory.  Since these files are written by the red team data extension nodes, they will be formatted properly.  If you want to view the contents of these files, you can use the following data readers:
 
