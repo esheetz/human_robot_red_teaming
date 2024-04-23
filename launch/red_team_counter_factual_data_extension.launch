@@ -11,7 +11,7 @@
 <launch>
 	<arg name="robot" default="val_clr"/>
 	<arg name="env" default="lunar_habitat"/>
-	<arg name="num_points" default="50"/>
+	<arg name="num_points" default="100"/>
 	<arg name="max_conds" default="-1"/>
 	<arg name="auto_gen_data" default="true"/>
 

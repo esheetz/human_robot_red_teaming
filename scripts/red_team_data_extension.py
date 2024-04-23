@@ -101,7 +101,8 @@ class RedTeamDataExtension:
         a = self.red_team.action_space_reader.get_num_risk_mitigating_actions()
 
         # compute total
-        total = p * a
+        total = p * (a - 1)
+        # remove factual actions, only consider counter-factual actions
 
         return total
 
