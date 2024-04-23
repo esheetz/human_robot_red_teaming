@@ -29,5 +29,5 @@ roslaunch safety_aware_reasoning risk_mitigating_policy_data_reader.launch
 ```
 
 Note that each reader has two optional launch arguments:
-- `robot` to specify the robot subfolder under the `config/` directory; current supported robots are `val` (Valkyrie) or `clr` (ChonkUR L. Rail-E)
+- `robot` to specify the robot subfolder under the `config/` directory; current supported robots are `val` (Valkyrie), `clr` (ChonkUR L. Rail-E), or `val_clr` (which treats both Valkyrie and CLR as the same robot).
 - `env` to specify the environment; current supported environments are `household` and `lunar_habitat`

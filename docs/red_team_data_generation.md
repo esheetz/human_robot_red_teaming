@@ -12,7 +12,7 @@ roslaunch safety_aware_reasoning red_team_counter_factual_data_extension.launch
 ```
 
 Note that each has the following optional launch arguments:
-- `robot` to specify the robot subfolder under the `config/` directory; current supported robots are `val` (Valkyrie) or `clr` (ChonkUR L. Rail-E)
+- `robot` to specify the robot subfolder under the `config/` directory; current supported robots are `val` (Valkyrie), `clr` (ChonkUR L. Rail-E), or `val_clr` (which treats both Valkyrie and CLR as the same robot).
 - `env` to specify the environment; current supported environments are `household` and `lunar_habitat`
 - `num_points` to specify the number of data points to generate
 - `auto_gen_data` to flag whether the data should be automatically generated based on robot- and domain-specific knowledge-based rules
