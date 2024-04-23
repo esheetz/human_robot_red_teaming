@@ -43,6 +43,675 @@ household:
     - damage_robot
     action: supervised_autonomy_backup_navigation
     consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: shared_autonomy_navigation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - object_falls
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: shared_autonomy_manipulation
+    consequences_after_action: []
+  - conditions:
+    - object_falls
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - object_falls
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: supervised_autonomy_backup_navigation
+    consequences_after_action: []
+  - conditions:
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: supervised_autonomy_backup_navigation
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: supervised_autonomy_backup_navigation
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: shared_autonomy_navigation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - object_falls
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - object_falls
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: shared_autonomy_navigation
+    consequences_after_action: []
+  - conditions:
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    consequences_before_action:
+    - cannot_perform_action
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: supervised_autonomy_backup_navigation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: supervised_autonomy_backup_navigation
+    consequences_after_action: []
+  - conditions:
+    - object_falls
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: supervised_autonomy_backup_navigation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    consequences_before_action:
+    - collide_env_map
+    - damage_robot
+    - harm_human
+    action: supervised_autonomy_backup_navigation
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - object_falls
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: teleoperated_manipulation
+    consequences_after_action: []
 lunar_habitat:
   policy_data:
   - conditions:
@@ -90,6 +759,23 @@ lunar_habitat:
     consequences_after_action: []
   - conditions:
     - environment_map_collision
+    - object_falls
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
     - human_enters_workspace
     - object_falls
     - robot_inhand_manipulation_object_collision
@@ -97,7 +783,6 @@ lunar_habitat:
     - robot_navigation_object_collision
     consequences_before_action:
     - cannot_perform_action
-    - collide_env_map
     - collide_object
     - damage_object
     - damage_robot
@@ -122,47 +807,6 @@ lunar_habitat:
     - environment_map_collision
     - human_enters_workspace
     - object_falls
-    - robot_inhand_manipulation_object_collision
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - human_enters_workspace
-    - object_falls
-    - robot_inhand_manipulation_object_collision
-    - robot_manipulation_object_collision
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - human_enters_workspace
-    - object_falls
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - human_enters_workspace
-    - object_falls
     - robot_navigation_object_collision
     consequences_before_action:
     - cannot_perform_action
@@ -186,7 +830,73 @@ lunar_habitat:
     - environment_map_collision
     - human_enters_workspace
     - object_falls
+    - robot_inhand_manipulation_object_collision
     - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
     consequences_before_action:
     - cannot_perform_action
     - collide_env_map
@@ -210,7 +920,6 @@ lunar_habitat:
     - environment_map_collision
     - human_enters_workspace
     - object_falls
-    - robot_inhand_manipulation_object_collision
     - robot_manipulation_object_collision
     consequences_before_action:
     - cannot_perform_action
@@ -226,6 +935,75 @@ lunar_habitat:
     - robot_manipulation_object_collision
     - robot_navigation_object_collision
     consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: teleoperated_manipulation
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
     - collide_object
     - damage_object
     - damage_robot
@@ -244,31 +1022,7 @@ lunar_habitat:
     consequences_after_action: []
   - conditions:
     - environment_map_collision
-    - object_falls
-    - robot_inhand_manipulation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    action: ask_human_intervention_to_proceed
-    consequences_after_action: []
-  - conditions:
-    - object_falls
-    - robot_inhand_manipulation_object_collision
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_object
-    - damage_object
-    - damage_robot
-    action: ask_human_intervention_to_proceed
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
     - human_enters_workspace
-    - robot_inhand_manipulation_object_collision
     - robot_manipulation_object_collision
     - robot_navigation_object_collision
     consequences_before_action:
@@ -280,99 +1034,17 @@ lunar_habitat:
     action: abort_task
     consequences_after_action: []
   - conditions:
+    - human_enters_workspace
     - object_falls
-    - robot_inhand_manipulation_object_collision
-    - robot_manipulation_object_collision
-    - robot_navigation_object_collision
     consequences_before_action:
     - cannot_perform_action
-    - collide_object
-    - damage_object
-    - damage_robot
-    action: ask_human_intervention_to_proceed
-    consequences_after_action: []
-  - conditions:
-    - human_enters_workspace
-    - robot_manipulation_object_collision
-    consequences_before_action:
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - human_enters_workspace
-    - robot_manipulation_object_collision
-    consequences_before_action:
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - object_falls
-    - robot_manipulation_object_collision
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    action: ask_human_intervention_to_proceed
-    consequences_after_action: []
-  - conditions:
-    - human_enters_workspace
-    - robot_inhand_manipulation_object_collision
-    - robot_manipulation_object_collision
-    consequences_before_action:
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - human_enters_workspace
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - object_falls
-    - robot_inhand_manipulation_object_collision
-    - robot_manipulation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_object
-    - damage_object
-    - damage_robot
-    action: ask_human_intervention_to_proceed
-    consequences_after_action: []
-  - conditions:
-    - human_enters_workspace
-    - robot_inhand_manipulation_object_collision
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - collide_object
-    - damage_object
-    - damage_robot
     - harm_human
     action: abort_task
     consequences_after_action: []
   - conditions:
     - environment_map_collision
     - robot_inhand_manipulation_object_collision
-    - robot_navigation_object_collision
+    - robot_manipulation_object_collision
     consequences_before_action:
     - collide_env_map
     - collide_object
@@ -390,42 +1062,36 @@ lunar_habitat:
     action: abort_task
     consequences_after_action: []
   - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
     - environment_map_collision
-    - robot_inhand_manipulation_object_collision
-    - robot_manipulation_object_collision
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    action: teleoperated_manipulation
-    consequences_after_action: []
-  - conditions:
-    - human_enters_workspace
-    - object_falls
-    consequences_before_action:
-    - cannot_perform_action
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - human_enters_workspace
-    - object_falls
-    - robot_manipulation_object_collision
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
     - human_enters_workspace
     - object_falls
     - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_navigation_object_collision
     consequences_before_action:
     - cannot_perform_action
     - collide_object
@@ -435,57 +1101,9 @@ lunar_habitat:
     action: abort_task
     consequences_after_action: []
   - conditions:
-    - environment_map_collision
-    - human_enters_workspace
-    - robot_manipulation_object_collision
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - human_enters_workspace
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - human_enters_workspace
+    - object_falls
     - robot_inhand_manipulation_object_collision
-    consequences_before_action:
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - object_falls
     - robot_manipulation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    action: ask_human_intervention_to_proceed
-    consequences_after_action: []
-  - conditions:
-    - object_falls
-    - robot_navigation_object_collision
     consequences_before_action:
     - cannot_perform_action
     - collide_object
@@ -495,64 +1113,9 @@ lunar_habitat:
     consequences_after_action: []
   - conditions:
     - environment_map_collision
-    - robot_inhand_manipulation_object_collision
-    - robot_manipulation_object_collision
-    consequences_before_action:
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    action: teleoperated_manipulation
-    consequences_after_action: []
-  - conditions:
     - human_enters_workspace
     - robot_inhand_manipulation_object_collision
     consequences_before_action:
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - object_falls
-    - robot_inhand_manipulation_object_collision
-    - robot_manipulation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    action: ask_human_intervention_to_proceed
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - robot_manipulation_object_collision
-    consequences_before_action:
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    action: teleoperated_manipulation
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - object_falls
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_env_map
-    - damage_robot
-    action: ask_human_intervention_to_proceed
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - human_enters_workspace
-    - object_falls
-    - robot_inhand_manipulation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
     - collide_env_map
     - collide_object
     - damage_object
@@ -561,37 +1124,37 @@ lunar_habitat:
     action: abort_task
     consequences_after_action: []
   - conditions:
-    - environment_map_collision
     - object_falls
-    - robot_navigation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    action: ask_human_intervention_to_proceed
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - human_enters_workspace
-    - object_falls
-    consequences_before_action:
-    - cannot_perform_action
-    - collide_env_map
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - human_enters_workspace
-    - object_falls
+    - robot_inhand_manipulation_object_collision
     - robot_manipulation_object_collision
     - robot_navigation_object_collision
     consequences_before_action:
     - cannot_perform_action
-    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
     - collide_object
     - damage_object
     - damage_robot
@@ -610,9 +1173,32 @@ lunar_habitat:
     action: teleoperated_manipulation
     consequences_after_action: []
   - conditions:
+    - environment_map_collision
     - human_enters_workspace
     - robot_inhand_manipulation_object_collision
-    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
     - robot_navigation_object_collision
     consequences_before_action:
     - collide_object
@@ -623,7 +1209,17 @@ lunar_habitat:
     consequences_after_action: []
   - conditions:
     - object_falls
-    - robot_manipulation_object_collision
+    - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - object_falls
+    - robot_navigation_object_collision
     consequences_before_action:
     - cannot_perform_action
     - collide_object
@@ -641,21 +1237,22 @@ lunar_habitat:
     action: teleoperated_manipulation
     consequences_after_action: []
   - conditions:
+    - environment_map_collision
     - robot_inhand_manipulation_object_collision
-    - robot_navigation_object_collision
     consequences_before_action:
+    - collide_env_map
     - collide_object
     - damage_object
     - damage_robot
     action: teleoperated_manipulation
     consequences_after_action: []
   - conditions:
+    - environment_map_collision
     - human_enters_workspace
-    - object_falls
     - robot_inhand_manipulation_object_collision
     - robot_manipulation_object_collision
     consequences_before_action:
-    - cannot_perform_action
+    - collide_env_map
     - collide_object
     - damage_object
     - damage_robot
@@ -666,8 +1263,20 @@ lunar_habitat:
     - human_enters_workspace
     - object_falls
     - robot_manipulation_object_collision
+    - robot_navigation_object_collision
     consequences_before_action:
     - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - human_enters_workspace
+    - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
     - collide_object
     - damage_object
     - damage_robot
@@ -676,16 +1285,15 @@ lunar_habitat:
     consequences_after_action: []
   - conditions:
     - environment_map_collision
-    - human_enters_workspace
-    - robot_inhand_manipulation_object_collision
-    - robot_navigation_object_collision
+    - object_falls
+    - robot_manipulation_object_collision
     consequences_before_action:
+    - cannot_perform_action
     - collide_env_map
     - collide_object
     - damage_object
     - damage_robot
-    - harm_human
-    action: abort_task
+    action: ask_human_intervention_to_proceed
     consequences_after_action: []
   - conditions:
     - object_falls
@@ -700,7 +1308,55 @@ lunar_habitat:
     consequences_after_action: []
   - conditions:
     - environment_map_collision
+    - object_falls
     - robot_inhand_manipulation_object_collision
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - human_enters_workspace
+    - object_falls
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - object_falls
+    - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - robot_inhand_manipulation_object_collision
+    - robot_navigation_object_collision
     consequences_before_action:
     - collide_env_map
     - collide_object
@@ -710,8 +1366,31 @@ lunar_habitat:
     consequences_after_action: []
   - conditions:
     - environment_map_collision
+    - human_enters_workspace
     - object_falls
     - robot_inhand_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    - harm_human
+    action: abort_task
+    consequences_after_action: []
+  - conditions:
+    - object_falls
+    - robot_manipulation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
+    - object_falls
     - robot_navigation_object_collision
     consequences_before_action:
     - cannot_perform_action
@@ -722,36 +1401,26 @@ lunar_habitat:
     action: ask_human_intervention_to_proceed
     consequences_after_action: []
   - conditions:
-    - human_enters_workspace
+    - environment_map_collision
+    - object_falls
+    - robot_manipulation_object_collision
+    - robot_navigation_object_collision
+    consequences_before_action:
+    - cannot_perform_action
+    - collide_env_map
+    - collide_object
+    - damage_object
+    - damage_robot
+    action: ask_human_intervention_to_proceed
+    consequences_after_action: []
+  - conditions:
+    - environment_map_collision
     - object_falls
     - robot_inhand_manipulation_object_collision
     - robot_navigation_object_collision
     consequences_before_action:
     - cannot_perform_action
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - environment_map_collision
-    - human_enters_workspace
-    - robot_inhand_manipulation_object_collision
-    - robot_manipulation_object_collision
-    consequences_before_action:
     - collide_env_map
-    - collide_object
-    - damage_object
-    - damage_robot
-    - harm_human
-    action: abort_task
-    consequences_after_action: []
-  - conditions:
-    - object_falls
-    - robot_inhand_manipulation_object_collision
-    consequences_before_action:
-    - cannot_perform_action
     - collide_object
     - damage_object
     - damage_robot
