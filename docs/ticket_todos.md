@@ -14,8 +14,9 @@ Model creation
 - [x] validate red team initialization to verify formatting
 - [x] final testing of data generation; minor debugging
 - [x] prevent CF red teaming from generating repeated data points
-- [ ] final clean of all red-teamed data to start fresh
-- [ ] generate red teamed data (~500 data points per robot per environment) (depending on how long this takes, may put off CLR for later) (but right now CLR data is exactly the same, nothing is specific to Val)
+- [x] right now Val and CLR are the same, so create combined "val_clr" robot to simplify data generation
+- [x] generate random risky scenario data (total of 63 datapoints per environment, 126 total datapoints for combined Val/CLR robot)
+- [ ] generate counter-factual data
 - [ ] logistic regression analysis (combined, CLR only, Val only, household only, lunar only, CLR/household, CLR/lunar, Val/household, Val/lunar)
 - [ ] model(s) training and validation
 - [ ] save models for later use

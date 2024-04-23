@@ -9,9 +9,9 @@
 		$ rosrun safety_aware_reasoning red_team_data_extension.py
 ************************************************************-->
 <launch>
-	<arg name="robot" default="val"/>
+	<arg name="robot" default="val_clr"/>
 	<arg name="env" default="lunar_habitat"/>
-	<arg name="num_points" default="10"/>
+	<arg name="num_points" default="50"/>
 	<arg name="max_conds" default="-1"/>
 	<arg name="auto_gen_data" default="true"/>
 
