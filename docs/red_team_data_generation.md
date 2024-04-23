@@ -2,6 +2,8 @@
 
 In order to explore the space of risky situations that may arise in a given domain, the human and robot will engage in a human-robot red teaming exercise where they will generate policy data points to train the risk mitigating action utility model.
 
+> :warning: **NOTE that due to randomness of human-robot red teaming exercise**, data generation may be somewhat inefficient in that the same random scenarios are generated multiple times.  This is because for non-automated data generation, it can be helpful for the human team to re-consider multiple scenarios.  For automated data generation, we keep the randomness to avoid code rewrite.  In practice, the automated data generation will consider the full state space it may just take some time to randomly find each point.
+
 There are two types of data points that will be generated: random risky scenarios and random counter-factual scenarios.  To launch either data generation protocol, run:
 
 ```
