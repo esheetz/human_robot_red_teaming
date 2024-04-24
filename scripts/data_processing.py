@@ -8,12 +8,28 @@ import rospy
 
 import os, yaml
 import pandas as pd
+import numpy as np
 
 # data readers
 from risky_condition_reader import RiskyConditionReader
 from consequence_state_reader import ConsequenceStateReader
 from risk_mitigating_action_reader import RiskMitigatingActionReader
 from risk_mitigating_policy_data_reader import RiskMitigatingPolicyDataReader
+
+# logistic regression
+from sklearn.model_selection import train_test_split
+import statsmodels.formula.api as smf
+from scipy.linalg import LinAlgError
+
+# evaluation
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_score
+
+# helpers for exploring data relationships
+from itertools import combinations
+from sklearn.preprocessing import PolynomialFeatures
+
+# save model
+import pickle
 
 ##########################
 ### DATASET INFO CLASS ###
@@ -542,19 +558,314 @@ class DataProcessing:
         # create data frame
         self.df = pd.read_csv(self.data_file_name)
 
+    #######################
+    ### DATASET HELPERS ###
+    #######################
+
+    def prep_data_for_model_training(self, df=None, feature_indices=None):
+        # get X and Y data
+        X, Y = self.get_data_X_Y(df, feature_indices)
+        self.print_X_Y_shapes(X, Y)
+
+        # split data
+        X_train, X_test, y_train, y_test = self.train_test_split_data(X, Y)
+        self.print_train_test_data_shapes(X_train, X_test, y_train, y_test)
+        self.print_train_test_target_value_counts(y_train, y_test)
+
+        return X, Y, X_train, X_test, y_train, y_test
+
+    def get_data_X_Y(self, df=None, feature_indices=None):
+        if df is None:
+            df = self.df
+
+        # select explanatory variables
+        X = None
+        if feature_indices is None:
+            # use all features
+            X = df.drop([self.col_info.get_col_name_for_action(), self.col_info.get_col_name_for_action_encoded()], axis=1)
+        else:
+            # use given features
+            X = df.iloc[:,feature_indices]
+
+        # select target variable
+        Y = df[self.col_info.get_col_name_for_action_encoded()]
+
+        return X, Y
+
+    def train_test_split_data(self, X, Y):
+        # perform train test split
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)
+
+        return X_train, X_test, y_train, y_test
+
+    ###################################
+    ### DATASET INTERACTION HELPERS ###
+    ###################################
+
+    def get_interaction_data(self, df=None, feature_indices=None):
+        # prepare data
+        X, Y, X_train, X_test, y_train, y_test = self.prep_data_for_model_training(df, feature_indices)
+
+        # initialize polynomial features
+        poly = PolynomialFeatures(interaction_only=True)
+        # compute polynomial features
+        X_interactions = poly.fit_transform(X)
+
+        # format as dataframe
+        Xt = pd.DataFrame(X_interactions,columns=poly.get_feature_names_out())
+        Xt.columns = Xt.columns.str.replace(' ', '_INT_')
+        Xt = Xt.drop(['1'], axis=1)
+
+        # get target column names
+        target_col_names = self.col_info.get_col_name_for_action()
+        target_col = self.col_info.get_col_name_for_action_encoded()
+
+        data_interactions = pd.concat([Xt.reset_index(drop=True),
+                                       df[target_col_names].reset_index(drop=True),
+                                       df[target_col].reset_index(drop=True)], axis=1)
+        # some weird things happening with additional rows being added, so reset index to fix this
+
+        # print out info about interactions dataframe
+        print("Interactions dataset head:")
+        print(data_interactions.head())
+        print("Interactions dataset columns:")
+        print(data_interactions.columns)
+        print("Interactions dataset info:")
+        print(data_interactions.info())
+        print("Interactions dataset shape:")
+        print(data_interactions.shape)
+
+        return data_interactions, Xt
+
+    #####################
+    ### MODEL HELPERS ###
+    #####################
+
+    def create_feature_combos(self, data, num_cols=None):
+        # get target column names
+        target_col_names = self.col_info.get_col_name_for_action()
+        target_col = self.col_info.get_col_name_for_action_encoded()
+
+        # ensure data columns do not include targets
+        data_cols = [i for i in data.columns if (i != target_col) and (i != target_col_names)]
+
+        # create all combinations of features
+        feature_combos = []
+
+        # if given optional number of columns argument
+        if num_cols is not None:
+            feature_combos = list(combinations(range(0,len(data_cols)),num_cols))
+            return feature_combos
+
+        # otherwise, find all columns
+        for r in range(1,len(data.columns)+1):
+            for c in combinations(range(0,len(data_cols)),r):
+                feature_combos.append(c)
+        print("Found " + str(len(feature_combos)) + " feature combinations over " + str(len(data_cols)) + " features")
+
+        return feature_combos
+
+    def train_and_evaluate_model(self, X, Y, X_train, X_test, y_train, y_test):
+        # create formula string
+        formula, training_data = self.prep_formula_and_training_data(X_train, y_train, X.columns)
+
+        # build model
+        logit_model = self.build_and_train_model(formula, training_data)
+        if logit_model is None:
+            return False, None
+
+        # check how training went
+        good_model = self.validate_model_training(logit_model, X.columns)
+
+        # if good model, validate
+        if good_model:
+            self.evaluate_model(logit_model, X_test, y_test)
+
+        return good_model, logit_model
+
+    def prep_formula_and_training_data(self, X_train, y_train, col_names):
+        # get all columns in dataset
+        all_columns = None
+        if len(col_names) == 1:
+            all_columns = col_names[0]
+        else:
+            all_columns = ' + '.join(col_names)
+
+        # get target column name
+        target_col = self.col_info.get_col_name_for_action_encoded()
+
+        # create the formula string
+        formula = target_col + " ~ " + all_columns
+        print("formula: ", formula)
+        print()
+
+        # combine training predictors and targets into one dataframe
+        training_data = pd.concat([X_train, y_train], axis=1)
+        print("training data shape:",training_data.shape)
+
+        return formula, training_data
+
+    def build_and_train_model(self, formula, training_data):
+        try:
+            # create multinomial logistic regression modelodel
+            logit_model = smf.mnlogit(formula, data=training_data).fit(maxiter=150)
+        except LinAlgError as ex:
+            print("*** ERROR: singular matrix")
+            return None
+
+        return logit_model
+
+    def validate_model_training(self, logit_model, col_names):
+        # check convergence or non-nan function value
+        if logit_model.mle_retvals['converged'] or not np.isnan(logit_model.mle_retvals['fopt']):
+            # check if converged and nan function value
+            if np.isnan(logit_model.mle_retvals['fopt']):
+                print("\nConverged, but NaN function value; bad model")
+                return False
+            print("\nPROMISING MODEL with features: ", col_names)
+            print()
+            print(logit_model.summary())
+            print()
+            return True
+
+        return False
+
+    def evaluate_model(self, logit_model, X_test, y_test):
+        # compute predictions
+        y_test_pred_prob = logit_model.predict(X_test)
+        y_test_pred = np.argmax(np.array(y_test_pred_prob), axis=1)
+
+        # compute accuracy
+        print("Test accuracy:", accuracy_score(y_test, y_test_pred))
+
+        # look at confusion matrix to evaluate model more closely
+        cm = confusion_matrix(y_test, y_test_pred)
+        print("Confusion matrix:")
+        print(cm)
+        # ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=None).plot()
+
+        return
+
+    ###################################
+    ### LOGISTIC REGRESSION HELPERS ###
+    ###################################
+
+    def explore_possible_models(self, df=None, feature_indices=None):
+        if df is None:
+            df = self.df
+
+        # create all combinations of features
+        feature_combos = self.create_feature_combos(df, num_cols=3)
+
+        # explore combinations
+        self.explore_feature_combinations(df, feature_combos)
+
+        return
+
+    def explore_possible_models_with_interactions(self, df=None, feature_indices=None):
+        if df is None:
+            df = self.df
+
+        data_interactions, Xt = self.get_interaction_data(df, feature_indices)
+
+        # create all combinations of features
+        feature_combos = self.create_feature_combos(Xt)
+
+        # explore combinations
+        self.explore_feature_combinations(data_interactions, feature_combos)
+
+        return
+
+    def explore_feature_combinations(self, data, feature_combos):
+        # explore combinations
+        for combo in feature_combos:
+            print("==========")
+            print("***** ANALYSIS FOR VARIABLES: *****")
+            var_list = list(combo)
+            print([data.columns[i] for i in var_list])
+            self.run_logistic_regression_analysis(data, var_list)
+            print("==========\n\n\n")
+
+        return
+
+    def run_logistic_regression_analysis(self, df=None, feature_indices=None):
+        if df is None:
+            df = self.df
+
+        # get training and testing data
+        X, Y, X_train, X_test, y_train, y_test = self.prep_data_for_model_training(df, feature_indices)
+
+        # create, train, and evaluate logistic regression model
+        promising_model, logit_model = self.train_and_evaluate_model(X, Y, X_train, X_test, y_train, y_test)
+
+        return promising_model, logit_model
+
     ################
     ### PRINTING ###
     ################
 
     def print_summary_info(self):
+        print("DATASET SUMMARY")
+        print()
         print("*** COLUMN NAMES:")
         print(self.df.columns)
+        print()
         print("*** INFO:")
         print(self.df.info)
+        print()
         print("*** SHAPE:")
         print(self.df.shape)
+        print()
         print("*** HEAD:")
         print(self.df.head())
+        print()
+        return
+
+    def print_target_value_counts(self, df=None):
+        if df is None:
+            df = self.df
+
+        print("RISK MITIGATING ACTION ENCODINGS")
+        for k,v in self.col_info.action_encoding.items():
+            print("    {} : {}".format(v,k))
+        print()
+        print("RISK MITIGATING ACTION VALUE COUNTS")
+        print(df[self.col_info.get_col_name_for_action_encoded()].value_counts())
+        return
+
+    def print_X_Y_shapes(self, X, Y):
+        print("EXPLANATORY AND TARGET VARIABLE SHAPES")
+        print()
+        print("*** X SHAPE:", X.shape)
+        print("*** Y SHAPE:", Y.shape)
+        print()
+        return
+
+    def print_train_test_data_shapes(self, X_train, X_test, y_train, y_test):
+        print("TRAINING AND TESTING DATA SHAPES")
+        print()
+        print("*** TRAINING DATA SHAPES:")
+        print("        X shape:", X_train.shape)
+        print("        Y shape:", y_train.shape)
+        print()
+        print("*** TESTING DATA SHAPES:")
+        print("        X shape:", X_test.shape)
+        print("        Y shape:", y_test.shape)
+        print()
+        return
+
+    def print_train_test_target_value_counts(self, y_train, y_test):
+        print("RISK MITIGATING ACTION ENCODINGS")
+        for k,v in self.col_info.action_encoding.items():
+            print("    {} : {}".format(v,k))
+        print()
+        print("RISK MITIGATING ACTION VALUE COUNTS")
+        print("*** TRAINING DATA:")
+        print(y_train.value_counts())
+        print()
+        print("*** TESTING DATA:")
+        print(y_test.value_counts())
+        print()
         return
 
 
