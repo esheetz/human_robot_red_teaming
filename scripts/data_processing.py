@@ -186,12 +186,12 @@ class DatasetInfo:
 
 
 ################################
-### DATA PREPROCESSING CLASS ###
+### DATASET FORMATTING CLASS ###
 ################################
 
-class DataPreprocessing:
+class DatasetColumns:
     """
-    Pre-processes red teamed data (YAML files) into CSV files
+    Stores formatting and column information about the dataset
     """
 
     def __init__(self, robot="val_clr", environment="lunar_habitat"):
@@ -325,6 +325,34 @@ class DataPreprocessing:
     def get_consequence_name_from_col_name(self, col_name):
         return col_name.replace("CONSEQ_PRE_ACT_","").replace("CONSEQ_POST_ACT_","")
 
+
+
+################################
+### DATA PREPROCESSING CLASS ###
+################################
+
+class DataPreprocessing:
+    """
+    Pre-processes red teamed data (YAML files) into CSV files
+    """
+
+    def __init__(self, robot="val_clr", environment="lunar_habitat"):
+        # set internal paramters
+        self.robot_name = robot
+        self.environment_name = environment
+
+        # initialize data info
+        self.info = DatasetInfo()
+
+        # initialize data formatting
+        self.col_info = DatasetColumns(self.robot_name, self.environment_name)
+
+        # initialize relevant information
+        self.action_encoding = self.info.get_action_encoding_for_robot_env(self.robot_name, self.environment_name)
+        self.action_autonomy_space = self.info.get_action_autonomy_space_for_robot_env(self.robot_name, self.environment_name)
+        self.consequence_space = self.info.get_consequence_space_for_robot_env(self.robot_name, self.environment_name)
+        self.risky_conditions = self.info.get_risky_conditions_for_robot_env(self.robot_name, self.environment_name)
+
     ######################
     ### CREATE DATASET ###
     ######################
@@ -386,24 +414,24 @@ class DataPreprocessing:
 
         # initialize dictionary with column names as keys
         dataset_dict = {}
-        for col_name in self.column_names:
+        for col_name in self.col_info.column_names:
             dataset_dict[col_name] = []
 
         # compute column indices that include condition risks
-        cond_risk_cols = [name for name in self.column_names if self.check_col_name_for_condition_risk(name)]
-        # cond_risk_col_idxs = [i for i,name in enumerate(self.column_names) if self.check_col_name_for_condition_risk(name)]
+        cond_risk_cols = [name for name in self.col_info.column_names if self.col_info.check_col_name_for_condition_risk(name)]
+        # cond_risk_col_idxs = [i for i,name in enumerate(self.col_info.column_names) if self.col_info.check_col_name_for_condition_risk(name)]
 
         # look through list of policy data points
         for pol_point in policy_data:
             # set data for each column
-            for col_name in self.column_names:
+            for col_name in self.col_info.column_names:
                 # get column type
-                col_type = self.column_types[col_name]
+                col_type = self.col_info.column_types[col_name]
 
                 # set data for this column
-                if self.check_col_name_for_condition(col_name):
+                if self.col_info.check_col_name_for_condition(col_name):
                     # get condition name from current column
-                    cond_name = self.get_condition_name_from_col_name(col_name)
+                    cond_name = self.col_info.get_condition_name_from_col_name(col_name)
                     # check if condition is present in policy data point
                     if cond_name in pol_point['conditions']:
                         # condition is present in this data point, set to True
@@ -411,9 +439,9 @@ class DataPreprocessing:
                     else:
                         # condition is not present in this data point, set to False
                         dataset_dict[col_name].append( col_type(0) )
-                elif self.check_col_name_for_condition_risk(col_name):
+                elif self.col_info.check_col_name_for_condition_risk(col_name):
                     # get condition name from current column
-                    cond_name = self.get_condition_name_from_col_name(col_name)
+                    cond_name = self.col_info.get_condition_name_from_col_name(col_name)
                     # check if condition is present in policy data point
                     if cond_name in pol_point['conditions']:
                         # condition is present in this data point, set risk
@@ -421,9 +449,9 @@ class DataPreprocessing:
                     else:
                         # condition is not present in this data point, set risk to 0
                         dataset_dict[col_name].append( col_type(0.0) )
-                elif self.check_col_name_for_condition_safety(col_name):
+                elif self.col_info.check_col_name_for_condition_safety(col_name):
                     # get condition name from current column
-                    cond_name = self.get_condition_name_from_col_name(col_name)
+                    cond_name = self.col_info.get_condition_name_from_col_name(col_name)
                     # check if condition is present in policy data point
                     if cond_name in pol_point['conditions']:
                         # condition is present in this data point, set safety
@@ -431,9 +459,9 @@ class DataPreprocessing:
                     else:
                         # condition is not present in this data point, set safety to 1
                         dataset_dict[col_name].append( col_type(1.0) )
-                elif self.check_col_name_for_consequence(col_name, pre_action=True):
+                elif self.col_info.check_col_name_for_consequence(col_name, pre_action=True):
                     # get consequence name from current column
-                    conseq_name = self.get_consequence_name_from_col_name(col_name)
+                    conseq_name = self.col_info.get_consequence_name_from_col_name(col_name)
                     # check if consequence is present in policy data point
                     if conseq_name in pol_point['consequences_before_action']:
                         # consequence is present in this data point, set to True
@@ -441,9 +469,9 @@ class DataPreprocessing:
                     else:
                         # consequence is not present in this data point, set to False
                         dataset_dict[col_name].append( col_type(0) )
-                elif self.check_col_name_for_consequence(col_name, pre_action=False):
+                elif self.col_info.check_col_name_for_consequence(col_name, pre_action=False):
                     # get consequence name from current column
-                    conseq_name = self.get_consequence_name_from_col_name(col_name)
+                    conseq_name = self.col_info.get_consequence_name_from_col_name(col_name)
                     # check if consequence is present in policy data point
                     if conseq_name in pol_point['consequences_after_action']:
                         # consequence is present in this data point, set to True
@@ -451,20 +479,20 @@ class DataPreprocessing:
                     else:
                         # consequence is not present in this data point, set to False
                         dataset_dict[col_name].append( col_type(0) )
-                elif self.check_col_name_for_state_risk(col_name):
+                elif self.col_info.check_col_name_for_state_risk(col_name):
                     # get risks from all conditions
                     risks = [dataset_dict[col][-1] for col in cond_risk_cols]
                     # state risk is maximum of all risks
                     dataset_dict[col_name].append( col_type(max(risks)) )
-                elif self.check_col_name_for_state_safety(col_name):
+                elif self.col_info.check_col_name_for_state_safety(col_name):
                     # get state risk
-                    risk = dataset_dict[self.get_col_name_for_state_risk()][-1]
+                    risk = dataset_dict[self.col_info.get_col_name_for_state_risk()][-1]
                     # state safety is 1 - state risk
                     dataset_dict[col_name].append( col_type(1 - risk) )
-                elif self.check_col_name_for_action(col_name):
+                elif self.col_info.check_col_name_for_action(col_name):
                     # set action name
                     dataset_dict[col_name].append( col_type(pol_point['action']) )
-                elif self.check_col_name_for_action_encoded(col_name):
+                elif self.col_info.check_col_name_for_action_encoded(col_name):
                     # set encoded action name
                     dataset_dict[col_name].append( col_type(self.action_encoding[pol_point['action']]) )
                 else:
@@ -485,9 +513,49 @@ class DataPreprocessing:
 #############################
 
 class DataProcessing:
-    def __init__(self):
-        pass
-    # TODO
+    """
+    Process red teamed data
+    """
+
+    def __init__(self, robot="val_clr", environment="lunar_habitat"):
+        # set internal paramters
+        self.robot_name = robot
+        self.environment_name = environment
+
+        # initialize data info
+        self.info = DatasetInfo()
+
+        # initialize data formatting
+        self.col_info = DatasetColumns(self.robot_name, self.environment_name)
+
+        # initialize data frame
+        self.initialize_data_frame()
+
+    ######################
+    ### INITIALIZATION ###
+    ######################
+
+    def initialize_data_frame(self):
+        # get file name
+        _, self.data_file_name = self.info.get_combined_dataset_full_path(self.robot_name, self.environment_name)
+
+        # create data frame
+        self.df = pd.read_csv(self.data_file_name)
+
+    ################
+    ### PRINTING ###
+    ################
+
+    def print_summary_info(self):
+        print("*** COLUMN NAMES:")
+        print(self.df.columns)
+        print("*** INFO:")
+        print(self.df.info)
+        print("*** SHAPE:")
+        print(self.df.shape)
+        print("*** HEAD:")
+        print(self.df.head())
+        return
 
 
 
