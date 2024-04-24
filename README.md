@@ -5,4 +5,4 @@ Package for safety-aware reasoning project.  Captures knowledge-based data for a
 - [Ticket Progress and TODOs](docs/ticket_todos.md)
 - [Data Readers](docs/data_readers.md)
 - [Robot-Specific and Domain-Specific Knowledge](docs/robot_specific_knowledge.md)
-- [Human-Robot Red Teamed Data Generation](docs/red_team_data_generation.md)
+- [Human-Robot Red Teamed Data](docs/red_team_data_generation.md)
