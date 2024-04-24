@@ -97,6 +97,8 @@ install(PROGRAMS
   # DOMAIN-SPECIFIC KNOWLEDGE CLASS
   scripts/domain_specific_knowledge.py
   scripts/val_clr_specific_knowledge.py
+  # DATA PROCESSING
+  scripts/data_processing.py
   DESTINATION lib/${PROJECT_NAME} #${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 message("installed python scripts!")

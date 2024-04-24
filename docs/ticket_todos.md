@@ -19,7 +19,7 @@ Model creation
 - [x] final clean of generated data to start fresh
 - [x] generate random risky scenario data (63 datapoints per environment, 126 total datapoints for combined Val/CLR robot in combined environments)
 - [x] generate counter-factual data (252 datapoints for lunar, 315 datapoints for household, 567 total datapoints for combined Val/CLR robot in combined environments)
-- [ ] augment data with dummy variables and mean/max risk/safety scores; save formatted data as CSVs to save time on further data processing
+- [x] augment data with dummy variables and mean/max risk/safety scores; save formatted data as CSVs to save time on further data processing
 - [ ] logistic regression analysis (combined, CLR only, Val only, household only, lunar only, CLR/household, CLR/lunar, Val/household, Val/lunar)
 - [ ] model(s) training and validation
 - [ ] save models for later use
