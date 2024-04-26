@@ -7,10 +7,12 @@ Emily Sheetz, NSTGRO VTE 2024
 import rospy
 
 import os, yaml
+from copy import deepcopy
 import pandas as pd
 import numpy as np
 
 # data readers
+from likelihood_consequence_risk import LikelihoodLevels, ConsequenceClasses
 from risky_condition_reader import RiskyConditionReader
 from consequence_state_reader import ConsequenceStateReader
 from risk_mitigating_action_reader import RiskMitigatingActionReader
@@ -65,9 +67,13 @@ class DatasetInfo:
         # counter-factual action
         self.cfa_policy_file_name = "counter_factual_policy_data.yaml"
         self.cfa_dataset_file_name = "counter_factual_policy_data.csv"
+        self.cfa_limited_dataset_file_name = "counter_factual_policy_data_limited.csv"
+        self.cfa_match_factual_dataset_file_name = "counter_factual_policy_data_matches_factual.csv"
 
         # pre-processed data name
         self.data_file_name = "risk_mitigating_action_utility_data.csv"
+        self.data_limited_file_name = "risk_mitigating_action_utility_data_limited.csv"
+        self.data_match_factual_file_name = "risk_mitigating_action_utility_data_matches_factual.csv"
 
         # saved models directory
         self.models_dir = script_path + "/../saved_models/"
@@ -113,9 +119,26 @@ class DatasetInfo:
         file_name = path + self.cfa_dataset_file_name
         return path, file_name
 
-    def get_combined_dataset_full_path(self, robot, env):
+    def get_cfa_limited_dataset_full_path(self, robot, env):
         path = self.data_dir + robot + "/" + env + "/"
-        file_name = path + self.data_file_name
+        file_name = path + self.cfa_limited_dataset_file_name
+        return path, file_name
+
+    def get_cfa_match_factual_dataset_full_path(self, robot, env):
+        path = self.data_dir + robot + "/" + env + "/"
+        file_name = path + self.cfa_match_factual_dataset_file_name
+        return path, file_name
+
+    def get_combined_dataset_full_path(self, robot, env, limited_cfa=False):
+        path = self.data_dir + robot + "/" + env + "/"
+        file_name = None
+        if limited_cfa:
+            file_name_limited = path + self.data_limited_file_name
+            file_name_match_factual = path + self.data_match_factual_file_name
+            file_name = (file_name_limited, file_name_match_factual)
+        else:
+            file_name = path + self.data_file_name
+
         return path, file_name
 
     def get_action_encoding_for_robot_env(self, robot, env):
@@ -184,12 +207,33 @@ class DatasetInfo:
             c_safety = cond.get_matrix_safety_score()
             # add each entry to dictionary
             state_space[c_name] = {}
-            state_space[c_name]['likelihood'] = c_likeli
-            state_space[c_name]['consequence'] = c_conseq
+            state_space[c_name]['likelihood'] = c_likeli / LikelihoodLevels.get_max()
+            state_space[c_name]['consequence'] = c_conseq / ConsequenceClasses.get_max()
             state_space[c_name]['risk'] = c_risk
             state_space[c_name]['safety'] = c_safety
 
         return state_space
+
+    def get_policy_starter_for_robot_env(self, robot, env):
+        # create reader and process data
+        policy_starter_reader = RiskMitigatingPolicyDataReader(robot=robot, environment=env, human_gen_data=True)
+        policy_starter_reader.process_risk_mitigating_policy_data()
+
+        # initialize dictionary
+        policy_points = {}
+
+        # add policy starter information to dictionary
+        for key,pol_point in policy_starter_reader.get_risk_mitigating_policy_data().items():
+            p_conds = pol_point.get_policy_data_point_condition_names()
+            p_action = pol_point.get_policy_data_point_action_name()
+            p_conseqs_bef, p_conseqs_aft = pol_point.get_policy_data_point_consequence_names()
+            # add each entry to dictionary
+            policy_points[p_conds] = {}
+            policy_points[p_conds]['conseqs_bef'] = p_conseqs_bef
+            policy_points[p_conds]['action'] = p_action
+            policy_points[p_conds]['conseqs_aft'] = p_conseqs_aft
+
+        return policy_points
 
     ###############
     ### HELPERS ###
@@ -240,10 +284,19 @@ class DatasetColumns:
             col_name = self.get_col_name_for_condition(cond)
             self.column_names.append(col_name)
             self.column_types[col_name] = int
+            col_name = self.get_col_name_for_condition_likelihood(cond)
+            self.column_names.append(col_name)
+            self.column_types[col_name] = float
+            col_name = self.get_col_name_for_condition_consequence(cond)
+            self.column_names.append(col_name)
+            self.column_types[col_name] = float
             col_name = self.get_col_name_for_condition_risk(cond)
             self.column_names.append(col_name)
             self.column_types[col_name] = float
             col_name = self.get_col_name_for_condition_safety(cond)
+            self.column_names.append(col_name)
+            self.column_types[col_name] = float
+            col_name = self.get_col_name_for_condition_autonomy(cond)
             self.column_names.append(col_name)
             self.column_types[col_name] = float
 
@@ -254,10 +307,16 @@ class DatasetColumns:
             self.column_types[col_name] = int
 
         # add columns for risk/safety of whole state
+        col_name = self.get_col_name_for_state_conseq()
+        self.column_names.append(col_name)
+        self.column_types[col_name] = float
         col_name = self.get_col_name_for_state_risk()
         self.column_names.append(col_name)
         self.column_types[col_name] = float
         col_name = self.get_col_name_for_state_safety()
+        self.column_names.append(col_name)
+        self.column_types[col_name] = float
+        col_name = self.get_col_name_for_state_autonomy()
         self.column_names.append(col_name)
         self.column_types[col_name] = float
 
@@ -284,11 +343,20 @@ class DatasetColumns:
     def get_col_name_for_condition(self, cond_name):
         return "COND_NAME_" + cond_name
 
+    def get_col_name_for_condition_likelihood(self, cond_name):
+        return "COND_LIKELI_" + cond_name
+
+    def get_col_name_for_condition_consequence(self, cond_name):
+        return "COND_CONSEQ_" + cond_name
+
     def get_col_name_for_condition_risk(self, cond_name):
         return "COND_RISK_" + cond_name
 
     def get_col_name_for_condition_safety(self, cond_name):
         return "COND_SAFETY_" + cond_name
+
+    def get_col_name_for_condition_autonomy(self, cond_name):
+        return "COND_AUTO_LEVEL_" + cond_name
 
     def get_col_name_for_consequence(self, conseq_name, pre_action=True):
         if pre_action:
@@ -296,11 +364,17 @@ class DatasetColumns:
         else:
             return "CONSEQ_POST_ACT_" + conseq_name
 
+    def get_col_name_for_state_conseq(self):
+        return "STATE_CONSEQ"
+
     def get_col_name_for_state_risk(self):
         return "STATE_RISK"
 
     def get_col_name_for_state_safety(self):
         return "STATE_SAFETY"
+
+    def get_col_name_for_state_autonomy(self):
+        return "STATE_AUTO_LEVEL"
 
     def get_col_name_for_action(self):
         return "RISK_MITIGATING_ACTION"
@@ -311,11 +385,20 @@ class DatasetColumns:
     def check_col_name_for_condition(self, col_name):
         return "COND_NAME_" in col_name
 
+    def check_col_name_for_condition_likelihood(self, col_name):
+        return "COND_LIKELI_" in col_name
+
+    def check_col_name_for_condition_consequence(self, col_name):
+        return "COND_CONSEQ_" in col_name
+
     def check_col_name_for_condition_risk(self, col_name):
         return "COND_RISK_" in col_name
 
     def check_col_name_for_condition_safety(self, col_name):
         return "COND_SAFETY_" in col_name
+
+    def check_col_name_for_condition_autonomy(self, col_name):
+        return "COND_AUTO_LEVEL_" in col_name
 
     def check_col_name_for_consequence(self, col_name, pre_action=True):
         if pre_action:
@@ -323,11 +406,17 @@ class DatasetColumns:
         else:
             return "CONSEQ_POST_ACT_" in col_name
 
+    def check_col_name_for_state_conseq(self, col_name):
+        return "STATE_CONSEQ" == col_name
+
     def check_col_name_for_state_risk(self, col_name):
         return "STATE_RISK" == col_name
 
     def check_col_name_for_state_safety(self, col_name):
         return "STATE_SAFETY" == col_name
+
+    def check_col_name_for_state_autonomy(self, col_name):
+        return "STATE_AUTO_LEVEL" == col_name
 
     def check_col_name_for_action(self, col_name):
         return "RISK_MITIGATING_ACTION" == col_name
@@ -336,10 +425,45 @@ class DatasetColumns:
         return "RISK_MITIGATING_ACTION_ENCODED" == col_name
 
     def get_condition_name_from_col_name(self, col_name):
-        return col_name.replace("COND_NAME_","").replace("COND_RISK_","").replace("COND_SAFETY_","")
+        return col_name.replace("COND_NAME_","") \
+                       .replace("COND_LIKELI_","") \
+                       .replace("COND_CONSEQ_","") \
+                       .replace("COND_RISK_","") \
+                       .replace("COND_SAFETY_","") \
+                       .replace("COND_AUTO_LEVEL_","")
 
     def get_consequence_name_from_col_name(self, col_name):
         return col_name.replace("CONSEQ_PRE_ACT_","").replace("CONSEQ_POST_ACT_","")
+
+    def get_all_conseq_col_idxs(self, pre_action=True):
+        if pre_action:
+            return [i for i in range(len(self.column_names)) if "CONSEQ_PRE_ACT_" in self.column_names[i]]
+        else:
+            return [i for i in range(len(self.column_names)) if "CONSEQ_POST_ACT_" in self.column_names[i]]
+
+    def get_all_conseq_col_names(self, pre_action=True):
+        if pre_action:
+            return [i for i in self.column_names if "CONSEQ_PRE_ACT_" in i]
+        else:
+            return [i for i in self.column_names if "CONSEQ_POST_ACT_" in i]
+
+    def get_all_cond_conseq_col_idxs(self):
+        return [i for i in range(len(self.column_names)) if "COND_CONSEQ_" in self.column_names[i]]
+
+    def get_all_cond_conseq_col_names(self):
+        return [i for i in self.column_names if "COND_CONSEQ_" in i]
+
+    def get_all_cond_risk_col_idxs(self):
+        return [i for i in range(len(self.column_names)) if "COND_RISK_" in self.column_names[i]]
+
+    def get_all_cond_risk_col_names(self):
+        return [i for i in self.column_names if "COND_RISK_" in i]
+
+    def get_all_cond_auto_col_idxs(self):
+        return [i for i in range(len(self.column_names)) if "COND_AUTO_LEVEL_" in self.column_names[i]]
+
+    def get_all_cond_auto_col_names(self):
+        return [i for i in self.column_names if "COND_AUTO_LEVEL_" in i]
 
 
 
@@ -368,15 +492,29 @@ class DataPreprocessing:
         self.action_autonomy_space = self.info.get_action_autonomy_space_for_robot_env(self.robot_name, self.environment_name)
         self.consequence_space = self.info.get_consequence_space_for_robot_env(self.robot_name, self.environment_name)
         self.risky_conditions = self.info.get_risky_conditions_for_robot_env(self.robot_name, self.environment_name)
+        self.policy_starters = self.info.get_policy_starter_for_robot_env(self.robot_name, self.environment_name)
 
     ######################
     ### CREATE DATASET ###
     ######################
 
     def convert_yamls_to_dataset_csv(self):
+        # create and save RRS and CFA datasets
         df_rrs = self.convert_rrs_yaml_to_dataset_csv()
         df_cfa = self.convert_cfa_yaml_to_dataset_csv()
-        df = self.create_combined_csv(df_rrs, df_cfa)
+
+        # create and save full combined dataset
+        path, file_name = self.info.get_combined_dataset_full_path(self.robot_name, self.environment_name)
+        df_full = self.create_combined_csv(df_rrs, df_cfa, path, file_name)
+
+        # create and save limited CFA dataset
+        df_cfa_limited, df_cfa_match_factual = self.convert_limited_cfa_to_dataset_csv(df_cfa)
+
+        # create and save combined dataset from limited CFA datasets
+        path, (file_name_limited, file_name_match_factual) = self.info.get_combined_dataset_full_path(self.robot_name, self.environment_name, limited_cfa=True)
+        df = self.create_combined_csv(df_rrs, df_cfa_limited, path, file_name_limited)
+        df = self.create_combined_csv(df_rrs, df_cfa_match_factual, path, file_name_match_factual)
+
         return
 
     def convert_rrs_yaml_to_dataset_csv(self):
@@ -399,12 +537,23 @@ class DataPreprocessing:
 
         return df_cfa
 
-    def create_combined_csv(self, df1, df2):
+    def convert_limited_cfa_to_dataset_csv(self, df_cfa):
+        # create data frames
+        df_cfa_limited, df_cfa_match_factual = self.limit_cfa_dataset_to_improvement_examples(df_cfa)
+
+        # save data frames to file
+        path, file_name = self.info.get_cfa_limited_dataset_full_path(self.robot_name, self.environment_name)
+        self.save_pandas_as_csv(df_cfa_limited, path, file_name)
+        path, file_name = self.info.get_cfa_match_factual_dataset_full_path(self.robot_name, self.environment_name) # TODO
+        self.save_pandas_as_csv(df_cfa_match_factual, path, file_name)
+
+        return df_cfa_limited, df_cfa_match_factual
+
+    def create_combined_csv(self, df1, df2, path, file_name):
         # create combined data frame
         df = pd.concat([df1, df2], ignore_index=True)
 
         # save data frame to file
-        path, file_name = self.info.get_combined_dataset_full_path(self.robot_name, self.environment_name)
         self.save_pandas_as_csv(df, path, file_name)
 
         return df
@@ -418,6 +567,34 @@ class DataPreprocessing:
         # save data frame to csv file
         df.to_csv(csv_file, index=False) # encoding='utf-8'
         return
+
+    def limit_cfa_dataset_to_improvement_examples(self, df_cfa):
+        # get indices of pre-action and post-action consequence columns
+        pre_act_idxs = self.col_info.get_all_conseq_col_idxs(pre_action=True)
+        post_act_idxs = self.col_info.get_all_conseq_col_idxs(pre_action=False)
+
+        # initialize list of rows
+        pos_row_idxs = []
+        fact_row_idxs = []
+
+        # look through every row
+        for i in range(df_cfa.shape[0]):
+            # get number of pre-action consequences and post-action consequences
+            num_pre_act_conseq = sum(df_cfa.iloc[i,pre_act_idxs])
+            num_post_act_conseq = sum(df_cfa.iloc[i,post_act_idxs])
+
+            # check for improvement
+            if num_post_act_conseq < num_pre_act_conseq:
+                pos_row_idxs.append(i)
+                # check for matching factual action
+                if num_post_act_conseq == 0:
+                    fact_row_idxs.append(i)
+
+        # select only the positive rows
+        df_cfa_pos = df_cfa.iloc[pos_row_idxs,:]
+        df_cfa_fact = df_cfa.iloc[fact_row_idxs,:]
+
+        return df_cfa_pos, df_cfa_fact
 
     def convert_yaml_to_pandas(self, yaml_file):
         # open yaml file
@@ -434,8 +611,9 @@ class DataPreprocessing:
             dataset_dict[col_name] = []
 
         # compute column indices that include condition risks
-        cond_risk_cols = [name for name in self.col_info.column_names if self.col_info.check_col_name_for_condition_risk(name)]
-        # cond_risk_col_idxs = [i for i,name in enumerate(self.col_info.column_names) if self.col_info.check_col_name_for_condition_risk(name)]
+        cond_conseq_cols = self.col_info.get_all_cond_conseq_col_names()
+        cond_risk_cols = self.col_info.get_all_cond_risk_col_names()
+        cond_auto_cols = self.col_info.get_all_cond_auto_col_names()
 
         # look through list of policy data points
         for pol_point in policy_data:
@@ -455,6 +633,26 @@ class DataPreprocessing:
                     else:
                         # condition is not present in this data point, set to False
                         dataset_dict[col_name].append( col_type(0) )
+                elif self.col_info.check_col_name_for_condition_likelihood(col_name):
+                    # get condition name from current column
+                    cond_name = self.col_info.get_condition_name_from_col_name(col_name)
+                    # check if condition is present in policy data point
+                    if cond_name in pol_point['conditions']:
+                        # condition is present in this data point, set likelihood
+                        dataset_dict[col_name].append( col_type(self.risky_conditions[cond_name]['likelihood']) )
+                    else:
+                        # condition is not present in this data point, set likelihood
+                        dataset_dict[col_name].append( col_type(0.0) )
+                elif self.col_info.check_col_name_for_condition_consequence(col_name):
+                    # get condition name from current column
+                    cond_name = self.col_info.get_condition_name_from_col_name(col_name)
+                    # check if condition is present in policy data point
+                    if cond_name in pol_point['conditions']:
+                        # condition is present in this data point, set consequence
+                        dataset_dict[col_name].append( col_type(self.risky_conditions[cond_name]['consequence']) )
+                    else:
+                        # condition is not present in this data point, set consequence
+                        dataset_dict[col_name].append( col_type(0.0) )
                 elif self.col_info.check_col_name_for_condition_risk(col_name):
                     # get condition name from current column
                     cond_name = self.col_info.get_condition_name_from_col_name(col_name)
@@ -475,6 +673,18 @@ class DataPreprocessing:
                     else:
                         # condition is not present in this data point, set safety to 1
                         dataset_dict[col_name].append( col_type(1.0) )
+                elif self.col_info.check_col_name_for_condition_autonomy(col_name):
+                    # get condition name from current column
+                    cond_name = self.col_info.get_condition_name_from_col_name(col_name)
+                    # check if condition is present in policy data point
+                    if cond_name in pol_point['conditions']:
+                        # condition is present in this data point, get action from policy starter
+                        action = self.policy_starters[ tuple([cond_name]) ]['action']
+                        # set autonomy level
+                        dataset_dict[col_name].append( col_type(self.action_autonomy_space[action]) )
+                    else:
+                        # condition is not present in this data point, set autonomy level to 1
+                        dataset_dict[col_name].append ( col_type(1.0) )
                 elif self.col_info.check_col_name_for_consequence(col_name, pre_action=True):
                     # get consequence name from current column
                     conseq_name = self.col_info.get_consequence_name_from_col_name(col_name)
@@ -495,6 +705,11 @@ class DataPreprocessing:
                     else:
                         # consequence is not present in this data point, set to False
                         dataset_dict[col_name].append( col_type(0) )
+                elif self.col_info.check_col_name_for_state_conseq(col_name):
+                    # get consequences from all conditions
+                    conseqs = [dataset_dict[col][-1] for col in cond_conseq_cols]
+                    # state consequence is maximum of all consequences
+                    dataset_dict[col_name].append( col_type(max(conseqs)) )
                 elif self.col_info.check_col_name_for_state_risk(col_name):
                     # get risks from all conditions
                     risks = [dataset_dict[col][-1] for col in cond_risk_cols]
@@ -505,6 +720,11 @@ class DataPreprocessing:
                     risk = dataset_dict[self.col_info.get_col_name_for_state_risk()][-1]
                     # state safety is 1 - state risk
                     dataset_dict[col_name].append( col_type(1 - risk) )
+                elif self.col_info.check_col_name_for_state_autonomy(col_name):
+                    # get autonomy levels from all conditions
+                    autos = [dataset_dict[col][-1] for col in cond_auto_cols]
+                    # state autonomy level is minimum of all autonomy levels
+                    dataset_dict[col_name].append( col_type(min(autos)) )
                 elif self.col_info.check_col_name_for_action(col_name):
                     # set action name
                     dataset_dict[col_name].append( col_type(pol_point['action']) )
@@ -554,9 +774,15 @@ class DataProcessing:
     def initialize_data_frame(self):
         # get file name
         _, self.data_file_name = self.info.get_combined_dataset_full_path(self.robot_name, self.environment_name)
+        _, self.rrs_data_file_name = self.info.get_rrs_dataset_full_path(self.robot_name, self.environment_name)
+        _, self.cfa_data_file_name = self.info.get_cfa_dataset_full_path(self.robot_name, self.environment_name)
+        _, (_, self.data_limited_file_name) = self.info.get_combined_dataset_full_path(self.robot_name, self.environment_name, limited_cfa=True)
 
         # create data frame
-        self.df = pd.read_csv(self.data_file_name)
+        self.df_full = pd.read_csv(self.data_file_name)
+        self.df_rrs = pd.read_csv(self.rrs_data_file_name)
+        self.df_cfa = pd.read_csv(self.cfa_data_file_name)
+        self.df = pd.read_csv(self.data_limited_file_name)
 
     #######################
     ### DATASET HELPERS ###
@@ -598,6 +824,25 @@ class DataProcessing:
 
         return X_train, X_test, y_train, y_test
 
+    def correlation_matrix(self, df=None, print_detailed=False):
+        if df is None:
+            df = self.df
+
+        # drop out categorical variable
+        df_quant = df.drop([self.col_info.get_col_name_for_action()], axis=1)
+
+        # compute correlation matrix
+        corr_matrix = df_quant.corr()
+
+        print("CORRELATION MATRIX:")
+        print(corr_matrix)
+
+        if print_detailed:
+            for i in range(corr_matrix.shape[1]):
+                print(corr_matrix.iloc[:,i])
+
+        return
+
     ###################################
     ### DATASET INTERACTION HELPERS ###
     ###################################
@@ -636,6 +881,66 @@ class DataProcessing:
         print(data_interactions.shape)
 
         return data_interactions, Xt
+
+    #######################################
+    ### DATA SELECTION HELPER FUNCTIONS ###
+    #######################################
+
+    def get_feature_indices(self, columns_include=[], columns_exclude=[], columns_exactly=None, data=None):
+        if data is None:
+            data = self.df
+
+        # get list of all column names
+        all_col_names = list(data.columns)
+
+        # initialize list of column names
+        cols = []
+        if len(columns_include) == 0:
+            cols = deepcopy(all_col_names)
+
+        # if columns exactly is non-empty, use those exactly and ignore others
+        if columns_exactly is not None:
+            col_idxs = []
+            for col in columns_exactly:
+                col_idxs.append(all_col_names.index(col))
+            print("selected columns:", columns_exactly)
+            print("selected column indices:", col_idxs)
+            return columns_exactly, col_idxs
+
+        # loop through column names and find columns that should be included
+        for col in data.columns:
+            # loop through possible column include stubs
+            for poss_col in columns_include:
+                if poss_col in col:
+                    cols.append(col)
+                    # break out of inner-most for loop
+                    break
+
+        # initialize final list of column names
+        final_cols = []
+
+        # loop through column names and exclude columns if necessary
+        for col in cols:
+            keep_col = True
+            # loop through possible column exclude stubs
+            for ex_col in columns_exclude:
+                if ex_col in col:
+                    keep_col = False
+                    # break out of inner-most for loop
+                    break
+            # check if we are keeping this column
+            if keep_col:
+                final_cols.append(col)
+
+        # get indices of column names
+        col_idxs = []
+        for col in final_cols:
+            col_idxs.append(all_col_names.index(col))
+
+        print("selected columns:", final_cols)
+        print("selected column indices:", col_idxs)
+
+        return final_cols, col_idxs
 
     #####################
     ### MODEL HELPERS ###
@@ -754,8 +1059,11 @@ class DataProcessing:
         if df is None:
             df = self.df
 
+        if feature_indices is not None:
+            df = df.iloc[:,feature_indices]
+
         # create all combinations of features
-        feature_combos = self.create_feature_combos(df, num_cols=3)
+        feature_combos = self.create_feature_combos(df)#, num_cols=3)
 
         # explore combinations
         self.explore_feature_combinations(df, feature_combos)
@@ -804,20 +1112,23 @@ class DataProcessing:
     ### PRINTING ###
     ################
 
-    def print_summary_info(self):
+    def print_summary_info(self, df=None):
+        if df is None:
+            df = self.df
+
         print("DATASET SUMMARY")
         print()
         print("*** COLUMN NAMES:")
-        print(self.df.columns)
+        print(df.columns)
         print()
         print("*** INFO:")
-        print(self.df.info)
+        print(df.info())
         print()
         print("*** SHAPE:")
-        print(self.df.shape)
+        print(df.shape)
         print()
         print("*** HEAD:")
-        print(self.df.head())
+        print(df.head())
         print()
         return
 
