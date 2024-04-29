@@ -129,15 +129,20 @@ class DatasetInfo:
         file_name = path + self.cfa_match_factual_dataset_file_name
         return path, file_name
 
-    def get_combined_dataset_full_path(self, robot, env, limited_cfa=False):
+    def get_combined_dataset_full_path(self, robot, env, limited_cfa=False, weight=None):
         path = self.data_dir + robot + "/" + env + "/"
         file_name = None
         if limited_cfa:
             file_name_limited = path + self.data_limited_file_name
             file_name_match_factual = path + self.data_match_factual_file_name
+            if weight is not None:
+                file_name_limited = file_name_limited.replace(".csv","_weighted_{}x.csv".format(weight))
+                file_name_match_factual = file_name_match_factual.replace(".csv","_weighted_{}x.csv".format(weight))
             file_name = (file_name_limited, file_name_match_factual)
         else:
             file_name = path + self.data_file_name
+            if weight is not None:
+                file_name = file_name.replace(".csv","_weighted_{}x.csv".format(weight))
 
         return path, file_name
 
@@ -515,7 +520,21 @@ class DataPreprocessing:
         df = self.create_combined_csv(df_rrs, df_cfa_limited, path, file_name_limited)
         df = self.create_combined_csv(df_rrs, df_cfa_match_factual, path, file_name_match_factual)
 
-        return
+        return df_rrs, df_cfa_match_factual
+
+    def create_weighted_limited_datasets(self, df1, df2, max_df1_weight=9):
+        # create initial combined dataset with 1:1 ratio
+        df = pd.concat([df1, df2], ignore_index=True)
+
+        # create additional weights
+        for weight in range(2,max_df1_weight+1):
+            # add additional copy of df1
+            df = pd.concat([df1, df], ignore_index=True)
+            # save data frame to file
+            path, (_, weighted_file_name) = self.info.get_combined_dataset_full_path(self.robot_name, self.environment_name, limited_cfa=True, weight=weight)
+            self.save_pandas_as_csv(df, path, weighted_file_name)
+
+        return df
 
     def convert_rrs_yaml_to_dataset_csv(self):
         # create data frame
@@ -544,7 +563,7 @@ class DataPreprocessing:
         # save data frames to file
         path, file_name = self.info.get_cfa_limited_dataset_full_path(self.robot_name, self.environment_name)
         self.save_pandas_as_csv(df_cfa_limited, path, file_name)
-        path, file_name = self.info.get_cfa_match_factual_dataset_full_path(self.robot_name, self.environment_name) # TODO
+        path, file_name = self.info.get_cfa_match_factual_dataset_full_path(self.robot_name, self.environment_name)
         self.save_pandas_as_csv(df_cfa_match_factual, path, file_name)
 
         return df_cfa_limited, df_cfa_match_factual
@@ -1231,8 +1250,11 @@ if __name__ == '__main__':
             # create dataset csvs
             rospy.loginfo("[SAR Data Processing Node] Processing data for robot %s in %s environment",
                           robot.upper(), env.upper())
-            data_preprocess.convert_yamls_to_dataset_csv()
+            df_rrs, df_cfa = data_preprocess.convert_yamls_to_dataset_csv()
             rospy.loginfo("[SAR Data Processing Node] Created datasets for robot %s in %s environment",
+                          robot.upper(), env.upper())
+            data_preprocess.create_weighted_limited_datasets(df1=df_rrs, df2=df_cfa)
+            rospy.loginfo("[SAR Data Processing Node] Created weighted datasets for robot %s in %s environment",
                           robot.upper(), env.upper())
 
     rospy.loginfo("[SAR Data Processing Node] Completed data processing!")
