@@ -772,7 +772,7 @@ class DataProcessing:
     Process red teamed data
     """
 
-    def __init__(self, robot="val_clr", environment="lunar_habitat"):
+    def __init__(self, robot="val_clr", environment="lunar_habitat", initialize_weighted_datasets=False):
         # set internal paramters
         self.robot_name = robot
         self.environment_name = environment
@@ -784,13 +784,13 @@ class DataProcessing:
         self.col_info = DatasetColumns(self.robot_name, self.environment_name)
 
         # initialize data frame
-        self.initialize_data_frame()
+        self.initialize_data_frame(initialize_weighted_datasets)
 
     ######################
     ### INITIALIZATION ###
     ######################
 
-    def initialize_data_frame(self):
+    def initialize_data_frame(self, initialize_weighted_datasets=False):
         # get file name
         _, self.data_file_name = self.info.get_combined_dataset_full_path(self.robot_name, self.environment_name)
         _, self.rrs_data_file_name = self.info.get_rrs_dataset_full_path(self.robot_name, self.environment_name)
@@ -802,6 +802,14 @@ class DataProcessing:
         self.df_rrs = pd.read_csv(self.rrs_data_file_name)
         self.df_cfa = pd.read_csv(self.cfa_data_file_name)
         self.df = pd.read_csv(self.data_limited_file_name)
+
+        if initialize_weighted_datasets:
+            # create dictionary for weighted datasets
+            self.weighted_dfs = {}
+            for i in range(2, 10):
+                # get file name
+                _, (_, weighted_file_name) = self.info.get_combined_dataset_full_path(self.robot_name, self.environment_name, limited_cfa=True, weight=i)
+                self.weighted_dfs[i] = pd.read_csv(weighted_file_name)
 
     #######################
     ### DATASET HELPERS ###
@@ -1074,7 +1082,14 @@ class DataProcessing:
     ### LOGISTIC REGRESSION HELPERS ###
     ###################################
 
-    def explore_possible_models(self, df=None, feature_indices=None):
+    def explore_possible_models(self, df=None, feature_indices=None, explore_weights=None):
+        if explore_weights is not None:
+            self.__explore_possible_models_with_weights(feature_indices, explore_weights)
+        else:
+            self.__explore_possible_models(df, feature_indices)
+        return
+
+    def __explore_possible_models(self, df=None, feature_indices=None):
         if df is None:
             df = self.df
 
@@ -1082,10 +1097,29 @@ class DataProcessing:
             df = df.iloc[:,feature_indices]
 
         # create all combinations of features
-        feature_combos = self.create_feature_combos(df)#, num_cols=3)
+        feature_combos = self.create_feature_combos(df)
 
         # explore combinations
         self.explore_feature_combinations(df, feature_combos)
+
+        return
+
+    def __explore_possible_models_with_weights(self, feature_indices=None, explore_weights=[]):
+        # set weights
+        if len(explore_weights) == 0:
+            # set all possible weights
+            explore_weights = list(self.weighted_dfs.keys())
+
+        # loop through all possible weights
+        for i in explore_weights:
+            # get dataset
+            weighted_df = self.weighted_dfs[i]
+            print("\n\n\n==============================")
+            print("***** EXPLORING WEIGHTED DATASET *****")
+            print("RRS : CFA = {} : 1".format(i))
+            # explore models over this dataset
+            self.__explore_possible_models(weighted_df, feature_indices)
+            print("\n\n\n==============================\n\n\n")
 
         return
 

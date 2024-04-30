@@ -14,31 +14,40 @@ from data_processing import DataProcessing
 ##################
 
 if __name__ == '__main__':
+    # initialize flags for run
+    # NOTE that we likely only want ONE FLAG to be true at a time
+    # correlation flags
+    correlation = False
+    print_detailed_correlation = False
+    # exploring models flag (for identifying features of interest)
+    explore_models = False
+    # explore interactions flag (for exploring interactions over features of interest)
+    explore_interactions = True
+    # build best model
+    build_promising_model = False
+
     # create data class
-    data = DataProcessing()
+    data = DataProcessing(initialize_weighted_datasets=True)
 
     # # print summary info for whole dataset
     data.print_summary_info()
     data.print_target_value_counts()
 
-    # # print summary info for only subset of data
-    # data.print_summary_info(data.df_rrs)
-    # data.print_target_value_counts(data.df_rrs)
-
-    # get features
-    # feature_names, feature_idxs = data.get_feature_indices(columns_exclude=["CONSEQ_POST_ACT_","RISK_MITIGATING_ACTION","RISK_MITIGATING_ACTION_ENCODED"])#, data=data.df_rrs)
-    # feature_names, feature_idxs = data.get_feature_indices(columns_include=["RISK"],columns_exclude=["RISK_MITIGATING_ACTION","RISK_MITIGATING_ACTION_ENCODED"],data=data.df_rrs)
-    # feature_names, feature_idxs = data.get_feature_indices(columns_include=["RISK"])
+    # correlation matrix
+    if correlation:
+        data.correlation_matrix(print_detailed=print_detailed_correlation)
 
     # feature_names, feature_idxs = data.get_feature_indices(columns_exclude=["COND_NAME_", "COND_LIKELI_", "CONSEQ_PRE_ACT_", "CONSEQ_POST_ACT_", "RISK_MITIGATING_ACTION", "RISK_MITIGATING_ACTION_ENCODED"])
-    feature_names, feature_idxs = data.get_feature_indices(columns_include=["STATE","RISK_MITIGATING"])
+    feature_names, feature_idxs = data.get_feature_indices(columns_include=["STATE_CONSEQ","COND_RISK"])
 
-    # logistic regression analysis
-    # promising_model, logit_model = data.run_logistic_regression_analysis()#feature_indices=feature_idxs) #data.df_rrs, feature_idxs)
-
-    # correlation matrix
-    # data.correlation_matrix() #data.df_rrs
+    # explore possible models
+    if explore_models:
+        data.explore_possible_models(feature_indices=feature_idxs, explore_weights=[7,8,9])
 
     # explore possible interactions
-    data.explore_possible_models(feature_indices=feature_idxs)
+    if explore_interactions:
+        data.explore_possible_models_with_interactions(df=data.weighted_dfs[9], feature_indices=feature_idxs)
 
+    # logistic regression analysis and final training
+    if build_promising_model:
+        promising_model, logit_model = data.run_logistic_regression_analysis(df=data.weighted_dfs[9], feature_indices=feature_idxs)
