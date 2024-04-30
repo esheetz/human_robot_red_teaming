@@ -1,0 +1,1300 @@
+DATASET SUMMARY
+
+*** COLUMN NAMES:
+Index(['COND_NAME_human_enters_workspace',
+       'COND_LIKELI_human_enters_workspace',
+       'COND_CONSEQ_human_enters_workspace',
+       'COND_RISK_human_enters_workspace',
+       'COND_SAFETY_human_enters_workspace',
+       'COND_AUTO_LEVEL_human_enters_workspace', 'COND_NAME_object_falls',
+       'COND_LIKELI_object_falls', 'COND_CONSEQ_object_falls',
+       'COND_RISK_object_falls', 'COND_SAFETY_object_falls',
+       'COND_AUTO_LEVEL_object_falls',
+       'COND_NAME_robot_navigation_object_collision',
+       'COND_LIKELI_robot_navigation_object_collision',
+       'COND_CONSEQ_robot_navigation_object_collision',
+       'COND_RISK_robot_navigation_object_collision',
+       'COND_SAFETY_robot_navigation_object_collision',
+       'COND_AUTO_LEVEL_robot_navigation_object_collision',
+       'COND_NAME_robot_manipulation_object_collision',
+       'COND_LIKELI_robot_manipulation_object_collision',
+       'COND_CONSEQ_robot_manipulation_object_collision',
+       'COND_RISK_robot_manipulation_object_collision',
+       'COND_SAFETY_robot_manipulation_object_collision',
+       'COND_AUTO_LEVEL_robot_manipulation_object_collision',
+       'COND_NAME_robot_inhand_manipulation_object_collision',
+       'COND_LIKELI_robot_inhand_manipulation_object_collision',
+       'COND_CONSEQ_robot_inhand_manipulation_object_collision',
+       'COND_RISK_robot_inhand_manipulation_object_collision',
+       'COND_SAFETY_robot_inhand_manipulation_object_collision',
+       'COND_AUTO_LEVEL_robot_inhand_manipulation_object_collision',
+       'COND_NAME_environment_map_collision',
+       'COND_LIKELI_environment_map_collision',
+       'COND_CONSEQ_environment_map_collision',
+       'COND_RISK_environment_map_collision',
+       'COND_SAFETY_environment_map_collision',
+       'COND_AUTO_LEVEL_environment_map_collision',
+       'CONSEQ_PRE_ACT_harm_human', 'CONSEQ_PRE_ACT_damage_robot',
+       'CONSEQ_PRE_ACT_damage_object', 'CONSEQ_PRE_ACT_collide_env_map',
+       'CONSEQ_PRE_ACT_collide_object', 'CONSEQ_PRE_ACT_cannot_perform_action',
+       'STATE_CONSEQ', 'STATE_RISK', 'STATE_SAFETY', 'STATE_AUTO_LEVEL',
+       'CONSEQ_POST_ACT_harm_human', 'CONSEQ_POST_ACT_damage_robot',
+       'CONSEQ_POST_ACT_damage_object', 'CONSEQ_POST_ACT_collide_env_map',
+       'CONSEQ_POST_ACT_collide_object',
+       'CONSEQ_POST_ACT_cannot_perform_action', 'RISK_MITIGATING_ACTION',
+       'RISK_MITIGATING_ACTION_ENCODED'],
+      dtype='object')
+
+*** INFO:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 130 entries, 0 to 129
+Data columns (total 54 columns):
+ #   Column                                                      Non-Null Count  Dtype  
+---  ------                                                      --------------  -----  
+ 0   COND_NAME_human_enters_workspace                            130 non-null    int64  
+ 1   COND_LIKELI_human_enters_workspace                          130 non-null    float64
+ 2   COND_CONSEQ_human_enters_workspace                          130 non-null    float64
+ 3   COND_RISK_human_enters_workspace                            130 non-null    float64
+ 4   COND_SAFETY_human_enters_workspace                          130 non-null    float64
+ 5   COND_AUTO_LEVEL_human_enters_workspace                      130 non-null    float64
+ 6   COND_NAME_object_falls                                      130 non-null    int64  
+ 7   COND_LIKELI_object_falls                                    130 non-null    float64
+ 8   COND_CONSEQ_object_falls                                    130 non-null    float64
+ 9   COND_RISK_object_falls                                      130 non-null    float64
+ 10  COND_SAFETY_object_falls                                    130 non-null    float64
+ 11  COND_AUTO_LEVEL_object_falls                                130 non-null    float64
+ 12  COND_NAME_robot_navigation_object_collision                 130 non-null    int64  
+ 13  COND_LIKELI_robot_navigation_object_collision               130 non-null    float64
+ 14  COND_CONSEQ_robot_navigation_object_collision               130 non-null    float64
+ 15  COND_RISK_robot_navigation_object_collision                 130 non-null    float64
+ 16  COND_SAFETY_robot_navigation_object_collision               130 non-null    float64
+ 17  COND_AUTO_LEVEL_robot_navigation_object_collision           130 non-null    float64
+ 18  COND_NAME_robot_manipulation_object_collision               130 non-null    int64  
+ 19  COND_LIKELI_robot_manipulation_object_collision             130 non-null    float64
+ 20  COND_CONSEQ_robot_manipulation_object_collision             130 non-null    float64
+ 21  COND_RISK_robot_manipulation_object_collision               130 non-null    float64
+ 22  COND_SAFETY_robot_manipulation_object_collision             130 non-null    float64
+ 23  COND_AUTO_LEVEL_robot_manipulation_object_collision         130 non-null    float64
+ 24  COND_NAME_robot_inhand_manipulation_object_collision        130 non-null    int64  
+ 25  COND_LIKELI_robot_inhand_manipulation_object_collision      130 non-null    float64
+ 26  COND_CONSEQ_robot_inhand_manipulation_object_collision      130 non-null    float64
+ 27  COND_RISK_robot_inhand_manipulation_object_collision        130 non-null    float64
+ 28  COND_SAFETY_robot_inhand_manipulation_object_collision      130 non-null    float64
+ 29  COND_AUTO_LEVEL_robot_inhand_manipulation_object_collision  130 non-null    float64
+ 30  COND_NAME_environment_map_collision                         130 non-null    int64  
+ 31  COND_LIKELI_environment_map_collision                       130 non-null    float64
+ 32  COND_CONSEQ_environment_map_collision                       130 non-null    float64
+ 33  COND_RISK_environment_map_collision                         130 non-null    float64
+ 34  COND_SAFETY_environment_map_collision                       130 non-null    float64
+ 35  COND_AUTO_LEVEL_environment_map_collision                   130 non-null    float64
+ 36  CONSEQ_PRE_ACT_harm_human                                   130 non-null    int64  
+ 37  CONSEQ_PRE_ACT_damage_robot                                 130 non-null    int64  
+ 38  CONSEQ_PRE_ACT_damage_object                                130 non-null    int64  
+ 39  CONSEQ_PRE_ACT_collide_env_map                              130 non-null    int64  
+ 40  CONSEQ_PRE_ACT_collide_object                               130 non-null    int64  
+ 41  CONSEQ_PRE_ACT_cannot_perform_action                        130 non-null    int64  
+ 42  STATE_CONSEQ                                                130 non-null    float64
+ 43  STATE_RISK                                                  130 non-null    float64
+ 44  STATE_SAFETY                                                130 non-null    float64
+ 45  STATE_AUTO_LEVEL                                            130 non-null    float64
+ 46  CONSEQ_POST_ACT_harm_human                                  130 non-null    int64  
+ 47  CONSEQ_POST_ACT_damage_robot                                130 non-null    int64  
+ 48  CONSEQ_POST_ACT_damage_object                               130 non-null    int64  
+ 49  CONSEQ_POST_ACT_collide_env_map                             130 non-null    int64  
+ 50  CONSEQ_POST_ACT_collide_object                              130 non-null    int64  
+ 51  CONSEQ_POST_ACT_cannot_perform_action                       130 non-null    int64  
+ 52  RISK_MITIGATING_ACTION                                      130 non-null    object 
+ 53  RISK_MITIGATING_ACTION_ENCODED                              130 non-null    int64  
+dtypes: float64(34), int64(19), object(1)
+memory usage: 55.0+ KB
+None
+
+*** SHAPE:
+(130, 54)
+
+*** HEAD:
+   COND_NAME_human_enters_workspace  ...  RISK_MITIGATING_ACTION_ENCODED
+0                                 1  ...                               0
+1                                 0  ...                               5
+2                                 0  ...                               2
+3                                 0  ...                               1
+4                                 0  ...                               4
+
+[5 rows x 54 columns]
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+RISK_MITIGATING_ACTION_ENCODED
+5    63
+4    31
+3    15
+2    11
+1     9
+0     1
+Name: count, dtype: int64
+selected columns: ['STATE_CONSEQ', 'STATE_RISK', 'STATE_SAFETY', 'STATE_AUTO_LEVEL', 'RISK_MITIGATING_ACTION', 'RISK_MITIGATING_ACTION_ENCODED']
+selected column indices: [42, 43, 44, 45, 52, 53]
+Found 15 feature combinations over 4 features
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_CONSEQ']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 1)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 1)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 1)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_CONSEQ
+
+training data shape: (97, 2)
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 1.364241
+         Iterations: 150
+
+PROMISING MODEL with features:  Index(['STATE_CONSEQ'], dtype='object')
+
+                                MNLogit Regression Results                                
+==========================================================================================
+Dep. Variable:     RISK_MITIGATING_ACTION_ENCODED   No. Observations:                   97
+Model:                                    MNLogit   Df Residuals:                       87
+Method:                                       MLE   Df Model:                            5
+Date:                            Tue, 30 Apr 2024   Pseudo R-squ.:                0.009714
+Time:                                    23:03:26   Log-Likelihood:                -132.33
+converged:                                  False   LL-Null:                       -133.63
+Covariance Type:                        nonrobust   LLR p-value:                    0.7620
+====================================================================================================
+RISK_MITIGATING_ACTION_ENCODED=1       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           78.2627   8742.672      0.009      0.993   -1.71e+04    1.72e+04
+STATE_CONSEQ                       -77.2377   8742.673     -0.009      0.993   -1.72e+04    1.71e+04
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=2       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           76.9356   8742.672      0.009      0.993   -1.71e+04    1.72e+04
+STATE_CONSEQ                       -75.6997   8742.673     -0.009      0.993   -1.72e+04    1.71e+04
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=3       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           76.8605   8742.672      0.009      0.993   -1.71e+04    1.72e+04
+STATE_CONSEQ                       -75.3597   8742.673     -0.009      0.993   -1.72e+04    1.71e+04
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=4       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           76.9568   8742.672      0.009      0.993   -1.71e+04    1.72e+04
+STATE_CONSEQ                       -74.5781   8742.672     -0.009      0.993   -1.72e+04    1.71e+04
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=5       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           77.4050   8742.672      0.009      0.993   -1.71e+04    1.72e+04
+STATE_CONSEQ                       -74.2065   8742.672     -0.008      0.993   -1.72e+04    1.71e+04
+====================================================================================================
+
+Test accuracy: 0.45454545454545453
+Confusion matrix:
+[[ 0  0  0  0  1]
+ [ 0  0  0  0  3]
+ [ 0  0  0  0  5]
+ [ 0  0  0  0  9]
+ [ 0  0  0  0 15]]
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_RISK']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 1)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 1)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 1)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_RISK
+
+training data shape: (97, 2)
+Optimization terminated successfully.
+         Current function value: nan
+         Iterations 19
+
+Converged, but NaN function value; bad model
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_SAFETY']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 1)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 1)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 1)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_SAFETY
+
+training data shape: (97, 2)
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 1.357014
+         Iterations: 150
+
+PROMISING MODEL with features:  Index(['STATE_SAFETY'], dtype='object')
+
+                                MNLogit Regression Results                                
+==========================================================================================
+Dep. Variable:     RISK_MITIGATING_ACTION_ENCODED   No. Observations:                   97
+Model:                                    MNLogit   Df Residuals:                       87
+Method:                                       MLE   Df Model:                            5
+Date:                            Tue, 30 Apr 2024   Pseudo R-squ.:                 0.01496
+Time:                                    23:03:27   Log-Likelihood:                -131.63
+converged:                                  False   LL-Null:                       -133.63
+Covariance Type:                        nonrobust   LLR p-value:                    0.5497
+====================================================================================================
+RISK_MITIGATING_ACTION_ENCODED=1       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                            0.7475      1.212      0.617      0.537      -1.628       3.123
+STATE_SAFETY                        50.5168   6.05e+05   8.35e-05      1.000   -1.19e+06    1.19e+06
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=2       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                            1.1254      1.150      0.979      0.328      -1.129       3.380
+STATE_SAFETY                        49.4625   6.05e+05   8.18e-05      1.000   -1.19e+06    1.19e+06
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=3       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                            1.5783      1.098      1.437      0.151      -0.574       3.730
+STATE_SAFETY                        48.6934   6.05e+05   8.05e-05      1.000   -1.19e+06    1.19e+06
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=4       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                            2.3206      1.048      2.215      0.027       0.267       4.374
+STATE_SAFETY                        48.8597   6.05e+05   8.08e-05      1.000   -1.19e+06    1.19e+06
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=5       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                            3.2496      1.019      3.188      0.001       1.252       5.247
+STATE_SAFETY                        48.2957   6.05e+05   7.98e-05      1.000   -1.19e+06    1.19e+06
+====================================================================================================
+
+Test accuracy: 0.45454545454545453
+Confusion matrix:
+[[ 0  0  0  0  1]
+ [ 0  0  0  0  3]
+ [ 0  0  0  0  5]
+ [ 0  0  0  0  9]
+ [ 0  0  0  0 15]]
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_AUTO_LEVEL']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 1)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 1)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 1)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_AUTO_LEVEL
+
+training data shape: (97, 2)
+Optimization terminated successfully.
+         Current function value: 1.223098
+         Iterations 28
+
+PROMISING MODEL with features:  Index(['STATE_AUTO_LEVEL'], dtype='object')
+
+                                MNLogit Regression Results                                
+==========================================================================================
+Dep. Variable:     RISK_MITIGATING_ACTION_ENCODED   No. Observations:                   97
+Model:                                    MNLogit   Df Residuals:                       87
+Method:                                       MLE   Df Model:                            5
+Date:                            Tue, 30 Apr 2024   Pseudo R-squ.:                  0.1122
+Time:                                    23:03:27   Log-Likelihood:                -118.64
+converged:                                   True   LL-Null:                       -133.63
+Covariance Type:                        nonrobust   LLR p-value:                 1.490e-05
+====================================================================================================
+RISK_MITIGATING_ACTION_ENCODED=1       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                          233.4572        nan        nan        nan         nan         nan
+STATE_AUTO_LEVEL                  -233.2501        nan        nan        nan         nan         nan
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=2       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                          234.0372        nan        nan        nan         nan         nan
+STATE_AUTO_LEVEL                  -234.4107        nan        nan        nan         nan         nan
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=3       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                          233.7430        nan        nan        nan         nan         nan
+STATE_AUTO_LEVEL                  -233.3650        nan        nan        nan         nan         nan
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=4       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                          235.3093        nan        nan        nan         nan         nan
+STATE_AUTO_LEVEL                  -235.0241        nan        nan        nan         nan         nan
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=5       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                          237.0361        nan        nan        nan         nan         nan
+STATE_AUTO_LEVEL                  -238.2666        nan        nan        nan         nan         nan
+====================================================================================================
+
+Test accuracy: 0.48484848484848486
+Confusion matrix:
+[[ 0  0  0  0  1]
+ [ 0  0  0  3  0]
+ [ 0  0  0  3  2]
+ [ 0  0  0  1  8]
+ [ 0  0  0  0 15]]
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_CONSEQ', 'STATE_RISK']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 2)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 2)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 2)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_CONSEQ + STATE_RISK
+
+training data shape: (97, 3)
+Optimization terminated successfully.
+         Current function value: nan
+         Iterations 6
+
+Converged, but NaN function value; bad model
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_CONSEQ', 'STATE_SAFETY']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 2)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 2)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 2)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_CONSEQ + STATE_SAFETY
+
+training data shape: (97, 3)
+Optimization terminated successfully.
+         Current function value: nan
+         Iterations 6
+
+Converged, but NaN function value; bad model
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_CONSEQ', 'STATE_AUTO_LEVEL']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 2)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 2)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 2)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_CONSEQ + STATE_AUTO_LEVEL
+
+training data shape: (97, 3)
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 1.201745
+         Iterations: 150
+
+PROMISING MODEL with features:  Index(['STATE_CONSEQ', 'STATE_AUTO_LEVEL'], dtype='object')
+
+                                MNLogit Regression Results                                
+==========================================================================================
+Dep. Variable:     RISK_MITIGATING_ACTION_ENCODED   No. Observations:                   97
+Model:                                    MNLogit   Df Residuals:                       82
+Method:                                       MLE   Df Model:                           10
+Date:                            Tue, 30 Apr 2024   Pseudo R-squ.:                  0.1277
+Time:                                    23:03:27   Log-Likelihood:                -116.57
+converged:                                  False   LL-Null:                       -133.63
+Covariance Type:                        nonrobust   LLR p-value:                 0.0001762
+====================================================================================================
+RISK_MITIGATING_ACTION_ENCODED=1       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           96.0883   8.33e+04      0.001      0.999   -1.63e+05    1.63e+05
+STATE_CONSEQ                         2.8384   1.57e+05   1.81e-05      1.000   -3.07e+05    3.07e+05
+STATE_AUTO_LEVEL                   -98.8458   1.33e+05     -0.001      0.999    -2.6e+05     2.6e+05
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=2       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           94.2054   8.33e+04      0.001      0.999   -1.63e+05    1.63e+05
+STATE_CONSEQ                         6.0750   1.57e+05   3.88e-05      1.000   -3.07e+05    3.07e+05
+STATE_AUTO_LEVEL                  -100.6530   1.33e+05     -0.001      0.999    -2.6e+05     2.6e+05
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=3       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           94.4886   8.33e+04      0.001      0.999   -1.63e+05    1.63e+05
+STATE_CONSEQ                         5.3423   1.57e+05   3.41e-05      1.000   -3.07e+05    3.07e+05
+STATE_AUTO_LEVEL                   -99.4759   1.33e+05     -0.001      0.999    -2.6e+05     2.6e+05
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=4       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           94.0469   8.33e+04      0.001      0.999   -1.63e+05    1.63e+05
+STATE_CONSEQ                         7.7984   1.57e+05   4.98e-05      1.000   -3.07e+05    3.07e+05
+STATE_AUTO_LEVEL                  -101.4800   1.33e+05     -0.001      0.999    -2.6e+05     2.6e+05
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=5       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           94.4341   8.33e+04      0.001      0.999   -1.63e+05    1.63e+05
+STATE_CONSEQ                         9.3218   1.57e+05   5.95e-05      1.000   -3.07e+05    3.07e+05
+STATE_AUTO_LEVEL                  -104.7786   1.33e+05     -0.001      0.999    -2.6e+05     2.6e+05
+====================================================================================================
+
+Test accuracy: 0.48484848484848486
+Confusion matrix:
+[[ 0  0  0  0  1]
+ [ 1  0  0  2  0]
+ [ 1  0  0  2  2]
+ [ 1  0  0  1  7]
+ [ 0  0  0  0 15]]
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_RISK', 'STATE_SAFETY']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 2)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 2)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 2)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_RISK + STATE_SAFETY
+
+training data shape: (97, 3)
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 1.357014
+         Iterations: 150
+
+PROMISING MODEL with features:  Index(['STATE_RISK', 'STATE_SAFETY'], dtype='object')
+
+                                MNLogit Regression Results                                
+==========================================================================================
+Dep. Variable:     RISK_MITIGATING_ACTION_ENCODED   No. Observations:                   97
+Model:                                    MNLogit   Df Residuals:                       87
+Method:                                       MLE   Df Model:                            5
+Date:                            Tue, 30 Apr 2024   Pseudo R-squ.:                 0.01496
+Time:                                    23:03:27   Log-Likelihood:                -131.63
+converged:                                  False   LL-Null:                       -133.63
+Covariance Type:                        nonrobust   LLR p-value:                    0.5497
+====================================================================================================
+RISK_MITIGATING_ACTION_ENCODED=1       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           16.3114    6.2e+06   2.63e-06      1.000   -1.22e+07    1.22e+07
+STATE_RISK                         -15.5640    6.2e+06  -2.51e-06      1.000   -1.22e+07    1.22e+07
+STATE_SAFETY                        31.8753   6.21e+06   5.13e-06      1.000   -1.22e+07    1.22e+07
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=2       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           16.2120        nan        nan        nan         nan         nan
+STATE_RISK                         -15.0865        nan        nan        nan         nan         nan
+STATE_SAFETY                        31.2985        nan        nan        nan         nan         nan
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=3       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           16.2575        nan        nan        nan         nan         nan
+STATE_RISK                         -14.6792        nan        nan        nan         nan         nan
+STATE_SAFETY                        30.9367        nan        nan        nan         nan         nan
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=4       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           16.8078   5.82e+06   2.89e-06      1.000   -1.14e+07    1.14e+07
+STATE_RISK                         -14.4872   5.83e+06  -2.49e-06      1.000   -1.14e+07    1.14e+07
+STATE_SAFETY                        31.2950   5.82e+06   5.38e-06      1.000   -1.14e+07    1.14e+07
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=5       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           17.2391        nan        nan        nan         nan         nan
+STATE_RISK                         -13.9896        nan        nan        nan         nan         nan
+STATE_SAFETY                        31.2287        nan        nan        nan         nan         nan
+====================================================================================================
+
+Test accuracy: 0.45454545454545453
+Confusion matrix:
+[[ 0  0  0  0  1]
+ [ 0  0  0  0  3]
+ [ 0  0  0  0  5]
+ [ 0  0  0  0  9]
+ [ 0  0  0  0 15]]
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_RISK', 'STATE_AUTO_LEVEL']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 2)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 2)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 2)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_RISK + STATE_AUTO_LEVEL
+
+training data shape: (97, 3)
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: nan
+         Iterations: 150
+*** ERROR: singular matrix
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_SAFETY', 'STATE_AUTO_LEVEL']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 2)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 2)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 2)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_SAFETY + STATE_AUTO_LEVEL
+
+training data shape: (97, 3)
+Optimization terminated successfully.
+         Current function value: nan
+         Iterations 29
+
+Converged, but NaN function value; bad model
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_CONSEQ', 'STATE_RISK', 'STATE_SAFETY']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 3)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 3)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 3)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_CONSEQ + STATE_RISK + STATE_SAFETY
+
+training data shape: (97, 4)
+Optimization terminated successfully.
+         Current function value: nan
+         Iterations 6
+
+Converged, but NaN function value; bad model
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_CONSEQ', 'STATE_RISK', 'STATE_AUTO_LEVEL']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 3)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 3)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 3)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_CONSEQ + STATE_RISK + STATE_AUTO_LEVEL
+
+training data shape: (97, 4)
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: nan
+         Iterations: 150
+*** ERROR: singular matrix
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_CONSEQ', 'STATE_SAFETY', 'STATE_AUTO_LEVEL']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 3)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 3)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 3)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_CONSEQ + STATE_SAFETY + STATE_AUTO_LEVEL
+
+training data shape: (97, 4)
+Optimization terminated successfully.
+         Current function value: nan
+         Iterations 21
+
+Converged, but NaN function value; bad model
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_RISK', 'STATE_SAFETY', 'STATE_AUTO_LEVEL']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 3)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 3)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 3)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_RISK + STATE_SAFETY + STATE_AUTO_LEVEL
+
+training data shape: (97, 4)
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: nan
+         Iterations: 150
+*** ERROR: singular matrix
+==========
+
+
+
+==========
+***** ANALYSIS FOR VARIABLES: *****
+['STATE_CONSEQ', 'STATE_RISK', 'STATE_SAFETY', 'STATE_AUTO_LEVEL']
+EXPLANATORY AND TARGET VARIABLE SHAPES
+
+*** X SHAPE: (130, 4)
+*** Y SHAPE: (130,)
+
+TRAINING AND TESTING DATA SHAPES
+
+*** TRAINING DATA SHAPES:
+        X shape: (97, 4)
+        Y shape: (97,)
+
+*** TESTING DATA SHAPES:
+        X shape: (33, 4)
+        Y shape: (33,)
+
+RISK MITIGATING ACTION ENCODINGS
+    0 : lower_joint_velocities_torques
+    1 : shared_autonomy_manipulation
+    2 : shared_autonomy_navigation
+    3 : supervised_autonomy_backup_navigation
+    4 : teleoperated_manipulation
+    5 : ask_human_intervention_to_proceed
+
+RISK MITIGATING ACTION VALUE COUNTS
+*** TRAINING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    48
+4    22
+3    10
+2     8
+1     8
+0     1
+Name: count, dtype: int64
+
+*** TESTING DATA:
+RISK_MITIGATING_ACTION_ENCODED
+5    15
+4     9
+3     5
+2     3
+1     1
+Name: count, dtype: int64
+
+formula:  RISK_MITIGATING_ACTION_ENCODED ~ STATE_CONSEQ + STATE_RISK + STATE_SAFETY + STATE_AUTO_LEVEL
+
+training data shape: (97, 5)
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 1.164434
+         Iterations: 150
+
+PROMISING MODEL with features:  Index(['STATE_CONSEQ', 'STATE_RISK', 'STATE_SAFETY', 'STATE_AUTO_LEVEL'], dtype='object')
+
+                                MNLogit Regression Results                                
+==========================================================================================
+Dep. Variable:     RISK_MITIGATING_ACTION_ENCODED   No. Observations:                   97
+Model:                                    MNLogit   Df Residuals:                       77
+Method:                                       MLE   Df Model:                           15
+Date:                            Tue, 30 Apr 2024   Pseudo R-squ.:                  0.1548
+Time:                                    23:03:28   Log-Likelihood:                -112.95
+converged:                                  False   LL-Null:                       -133.63
+Covariance Type:                        nonrobust   LLR p-value:                 0.0002819
+====================================================================================================
+RISK_MITIGATING_ACTION_ENCODED=1       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                          -86.7611   3.48e+07   -2.5e-06      1.000   -6.81e+07    6.81e+07
+STATE_CONSEQ                       298.5386        nan        nan        nan         nan         nan
+STATE_RISK                        -108.5836   1.89e+07  -5.73e-06      1.000   -3.71e+07    3.71e+07
+STATE_SAFETY                        21.8225   2.52e+07   8.65e-07      1.000   -4.95e+07    4.95e+07
+STATE_AUTO_LEVEL                  -103.3429   2.18e+05     -0.000      1.000   -4.27e+05    4.27e+05
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=2       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                          -72.7593   1.45e+07  -5.03e-06      1.000   -2.83e+07    2.83e+07
+STATE_CONSEQ                       273.4169   9.04e+06   3.03e-05      1.000   -1.77e+07    1.77e+07
+STATE_RISK                         -95.6799   1.89e+07  -5.06e-06      1.000   -3.71e+07    3.71e+07
+STATE_SAFETY                        22.9207   1.69e+07   1.36e-06      1.000   -3.31e+07    3.31e+07
+STATE_AUTO_LEVEL                  -105.3624   2.18e+05     -0.000      1.000   -4.27e+05    4.27e+05
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=3       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           23.7674   3.41e+07   6.98e-07      1.000   -6.68e+07    6.68e+07
+STATE_CONSEQ                        93.5035   8.83e+06   1.06e-05      1.000   -1.73e+07    1.73e+07
+STATE_RISK                         -12.3638   3.78e+07  -3.27e-07      1.000    -7.4e+07     7.4e+07
+STATE_SAFETY                        36.1312   3.68e+07   9.81e-07      1.000   -7.22e+07    7.22e+07
+STATE_AUTO_LEVEL                  -104.4532   2.18e+05     -0.000      1.000   -4.27e+05    4.27e+05
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=4       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                          -82.9440        nan        nan        nan         nan         nan
+STATE_CONSEQ                       293.8303        nan        nan        nan         nan         nan
+STATE_RISK                        -104.1974   6.97e+06   -1.5e-05      1.000   -1.37e+07    1.37e+07
+STATE_SAFETY                        21.2533   5.22e+06   4.07e-06      1.000   -1.02e+07    1.02e+07
+STATE_AUTO_LEVEL                  -106.2902   2.18e+05     -0.000      1.000   -4.27e+05    4.27e+05
+----------------------------------------------------------------------------------------------------
+RISK_MITIGATING_ACTION_ENCODED=5       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+Intercept                           24.8292        nan        nan        nan         nan         nan
+STATE_CONSEQ                        95.3909   8.83e+06   1.08e-05      1.000   -1.73e+07    1.73e+07
+STATE_RISK                         -11.3585   1.23e+07  -9.24e-07      1.000   -2.41e+07    2.41e+07
+STATE_SAFETY                        36.1877   7.89e+06   4.58e-06      1.000   -1.55e+07    1.55e+07
+STATE_AUTO_LEVEL                  -109.7946   2.18e+05     -0.001      1.000   -4.27e+05    4.27e+05
+====================================================================================================
+
+Test accuracy: 0.42424242424242425
+Confusion matrix:
+[[ 0  0  0  0  1]
+ [ 1  0  0  2  0]
+ [ 1  0  0  1  3]
+ [ 0  0  0  1  8]
+ [ 0  0  0  2 13]]
+==========
+
+
+

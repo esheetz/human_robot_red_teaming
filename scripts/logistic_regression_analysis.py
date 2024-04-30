@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     # create data class
     data = DataProcessing(robot="val_clr",
-                          environment="lunar_habitat",
+                          environment="household",
                           initialize_weighted_datasets=True,
                           weighted=[9])
 
@@ -41,7 +41,15 @@ if __name__ == '__main__':
         data.correlation_matrix(print_detailed=print_detailed_correlation)
 
     # feature_names, feature_idxs = data.get_feature_indices(columns_exclude=["COND_NAME_", "COND_LIKELI_", "CONSEQ_PRE_ACT_", "CONSEQ_POST_ACT_", "RISK_MITIGATING_ACTION", "RISK_MITIGATING_ACTION_ENCODED"])
-    feature_names, feature_idxs = data.get_feature_indices(columns_include=["STATE_CONSEQ","COND_RISK"])
+    if explore_models or explore_models or build_promising_model:
+        # HOUSEHOLD FEATURES
+        if data.environment_name == "household":
+            feature_names, feature_idxs = data.get_feature_indices(columns_include=["STATE_CONSEQ","STATE_RISK","COND_RISK"])
+            model_name = "cond_risk_state_conseq_risk"
+        # LUNAR HABITAT FEATURES
+        if data.environment_name == "lunar_habitat":
+            feature_names, feature_idxs = data.get_feature_indices(columns_include=["STATE_CONSEQ","COND_RISK"])
+            model_name = "cond_risk_state_conseq"
 
     # explore possible models
     if explore_models:
@@ -54,4 +62,4 @@ if __name__ == '__main__':
     # logistic regression analysis and final training
     if build_promising_model:
         promising_model, logit_model = data.run_logistic_regression_analysis(df=data.weighted_dfs[9], feature_indices=feature_idxs)
-        data.save_model_to_file(logit_model, "cond_risk_state_conseq")
+        data.save_model_to_file(logit_model, model_name)
