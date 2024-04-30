@@ -20,11 +20,19 @@ Model creation
 - [x] generate random risky scenario data (63 datapoints per environment, 126 total datapoints for combined Val/CLR robot in combined environments)
 - [x] generate counter-factual data (252 datapoints for lunar, 315 datapoints for household, 567 total datapoints for combined Val/CLR robot in combined environments)
 - [x] augment data with dummy variables and mean/max risk/safety scores; save formatted data as CSVs to save time on further data processing
-- [ ] logistic regression analysis (likely separate, but hopefully analogous, analyses needed for lunar and household environments)
-- [ ] identify promising features
-- [ ] explore interactions over promising features
-- [ ] model(s) training and validation
-- [ ] save models for later use
+- [x] create limited datasets since lots of the counter-factual examples are not necessarily good examples
+- [x] create weighted datasets with risky scenarios weighted over counter-factual scenarios
+- [x] LUNAR HABITAT: identify promising features
+- [x] LUNAR HABITAT: explore interactions over promising features (files too big for GitHub, see Google Drive for data; but basically interactions didn't do any better)
+- [x] LUNAR HABITAT: logistic regression analysis
+- [x] LUNAR HABITAT: model training and validation
+- [x] LUNAR HABITAT: save model for later use
+- [x] analogous model features did not work for household environments, need to repeat analysis
+- [ ] HOUSEHOLD: identify promising features
+- [ ] HOUSEHOLD: explore interactions over promising features (files too big for GitHub, see Google Drive for data; but basically interactions didn't do any better)
+- [ ] HOUSEHOLD: logistic regression analysis
+- [ ] HOUSEHOLD: model training and validation
+- [ ] HOUSEHOLD: save model for later use
 
 Safety score and risk score computations
 - [ ] estimate safety/risk of current plan/task

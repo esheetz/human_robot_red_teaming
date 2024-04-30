@@ -772,7 +772,7 @@ class DataProcessing:
     Process red teamed data
     """
 
-    def __init__(self, robot="val_clr", environment="lunar_habitat", initialize_weighted_datasets=False):
+    def __init__(self, robot="val_clr", environment="lunar_habitat", initialize_weighted_datasets=False, weighted=[]):
         # set internal paramters
         self.robot_name = robot
         self.environment_name = environment
@@ -784,13 +784,13 @@ class DataProcessing:
         self.col_info = DatasetColumns(self.robot_name, self.environment_name)
 
         # initialize data frame
-        self.initialize_data_frame(initialize_weighted_datasets)
+        self.initialize_data_frame(initialize_weighted_datasets, weighted)
 
     ######################
     ### INITIALIZATION ###
     ######################
 
-    def initialize_data_frame(self, initialize_weighted_datasets=False):
+    def initialize_data_frame(self, initialize_weighted_datasets=False, weighted=[]):
         # get file name
         _, self.data_file_name = self.info.get_combined_dataset_full_path(self.robot_name, self.environment_name)
         _, self.rrs_data_file_name = self.info.get_rrs_dataset_full_path(self.robot_name, self.environment_name)
@@ -804,9 +804,14 @@ class DataProcessing:
         self.df = pd.read_csv(self.data_limited_file_name)
 
         if initialize_weighted_datasets:
+            # check if weights given
+            if len(weighted) == 0:
+                # set to all weights
+                weighted = list(range(2,10))
+
             # create dictionary for weighted datasets
             self.weighted_dfs = {}
-            for i in range(2, 10):
+            for i in weighted:
                 # get file name
                 _, (_, weighted_file_name) = self.info.get_combined_dataset_full_path(self.robot_name, self.environment_name, limited_cfa=True, weight=i)
                 self.weighted_dfs[i] = pd.read_csv(weighted_file_name)
@@ -1160,6 +1165,29 @@ class DataProcessing:
         promising_model, logit_model = self.train_and_evaluate_model(X, Y, X_train, X_test, y_train, y_test)
 
         return promising_model, logit_model
+
+    ##################
+    ### SAVE MODEL ###
+    ##################
+
+    def save_model_to_file(self, model, model_name):
+        print("Saving model to file...")
+
+        # get file name
+        model_file_name = "{0}{1}_{2}_{3}{4}".format(
+            self.info.models_dir,
+            self.robot_name,
+            self.environment_name,
+            model_name,
+            self.info.model_file_end
+        )
+
+        # save model
+        pickle.dump(model, open(model_file_name, 'wb'))
+
+        print("Saved model to file! Model location: {}".format(model_file_name))
+
+        return
 
     ################
     ### PRINTING ###

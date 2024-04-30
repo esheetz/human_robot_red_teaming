@@ -22,12 +22,15 @@ if __name__ == '__main__':
     # exploring models flag (for identifying features of interest)
     explore_models = False
     # explore interactions flag (for exploring interactions over features of interest)
-    explore_interactions = True
+    explore_interactions = False
     # build best model
-    build_promising_model = False
+    build_promising_model = True
 
     # create data class
-    data = DataProcessing(initialize_weighted_datasets=True)
+    data = DataProcessing(robot="val_clr",
+                          environment="lunar_habitat",
+                          initialize_weighted_datasets=True,
+                          weighted=[9])
 
     # # print summary info for whole dataset
     data.print_summary_info()
@@ -51,3 +54,4 @@ if __name__ == '__main__':
     # logistic regression analysis and final training
     if build_promising_model:
         promising_model, logit_model = data.run_logistic_regression_analysis(df=data.weighted_dfs[9], feature_indices=feature_idxs)
+        data.save_model_to_file(logit_model, "cond_risk_state_conseq")
