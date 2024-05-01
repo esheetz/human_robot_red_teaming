@@ -28,22 +28,26 @@ Model creation
 - [x] LUNAR HABITAT: model training and validation
 - [x] LUNAR HABITAT: save model for later use
 - [x] analogous model features did not work for household environments, need to repeat analysis
-- [ ] HOUSEHOLD: identify promising features
-- [ ] HOUSEHOLD: explore interactions over promising features (files too big for GitHub, see Google Drive for data; but basically interactions didn't do any better)
-- [ ] HOUSEHOLD: logistic regression analysis
-- [ ] HOUSEHOLD: model training and validation
-- [ ] HOUSEHOLD: save model for later use
+- [x] HOUSEHOLD: identify promising features
+- [x] HOUSEHOLD: explore interactions over promising features (files too big for GitHub, see Google Drive for data; but basically interactions didn't do any better)
+- [x] HOUSEHOLD: logistic regression analysis
+- [x] HOUSEHOLD: model training and validation
+- [x] HOUSEHOLD: save model for later use
 
-Safety score and risk score computations
-- [ ] estimate safety/risk of current plan/task
-- [ ] relevant for reporting
+Model deployment
+- [ ] launch node to load model, format data, get predictions, and send off predictions appropriately
+- [ ] reporting of safety/risk scores and evaluation, predictions of risk mitigating actions
+- [ ] no online training for now, but could add for later
 
-Online data point recording
-- [ ] record data points online during task execution, store in separate dataset
-- [ ] relearn from dataset and/or suggestions to relearn from dataset when new data is collected
-
-Counterfactual reasoning for identifying upstream decision points
-- [ ] report actions to user
-- [ ] ask user for input on what action should have been taken
-- [ ] generate additional data points based on user input
-- [ ] add to online dataset
+Stretch goals
+- [ ] Safety score and risk score computations
+	- [ ] estimate safety/risk of current plan/task
+	- [ ] relevant for reporting
+- [ ] Online data point recording
+	- [ ] record data points online during task execution, store in separate dataset?
+	- [ ] relearn from dataset and/or suggestions to relearn from dataset when new data is collected
+- [ ] Online counterfactual reasoning for identifying upstream decision points
+	- [ ] report actions to user
+	- [ ] ask user for input on what action should have been taken
+	- [ ] generate additional data points based on user input
+	- [ ] add to online dataset

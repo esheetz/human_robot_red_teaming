@@ -879,7 +879,7 @@ class DataProcessing:
     ### DATASET INTERACTION HELPERS ###
     ###################################
 
-    def get_interaction_data(self, df=None, feature_indices=None):
+    def get_interaction_data(self, df=None, feature_indices=None, limit_interactions=False):
         # prepare data
         X, Y, X_train, X_test, y_train, y_test = self.prep_data_for_model_training(df, feature_indices)
 
@@ -892,6 +892,16 @@ class DataProcessing:
         Xt = pd.DataFrame(X_interactions,columns=poly.get_feature_names_out())
         Xt.columns = Xt.columns.str.replace(' ', '_INT_')
         Xt = Xt.drop(['1'], axis=1)
+
+        # check if interactions are limited
+        if limit_interactions:
+            drop_col = []
+            for col in Xt.columns:
+                # remove interactions between two conditions
+                if ("_INT_COND_" in col) and (col.find("COND_") == 0):
+                    drop_col.append(col)
+            # drop columns
+            Xt = Xt.drop(drop_col, axis=1)
 
         # get target column names
         target_col_names = self.col_info.get_col_name_for_action()
@@ -1128,11 +1138,11 @@ class DataProcessing:
 
         return
 
-    def explore_possible_models_with_interactions(self, df=None, feature_indices=None):
+    def explore_possible_models_with_interactions(self, df=None, feature_indices=None, limit_interactions=False):
         if df is None:
             df = self.df
 
-        data_interactions, Xt = self.get_interaction_data(df, feature_indices)
+        data_interactions, Xt = self.get_interaction_data(df, feature_indices, limit_interactions)
 
         # create all combinations of features
         feature_combos = self.create_feature_combos(Xt)

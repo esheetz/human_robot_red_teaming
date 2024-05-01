@@ -41,7 +41,7 @@ if __name__ == '__main__':
         data.correlation_matrix(print_detailed=print_detailed_correlation)
 
     # feature_names, feature_idxs = data.get_feature_indices(columns_exclude=["COND_NAME_", "COND_LIKELI_", "CONSEQ_PRE_ACT_", "CONSEQ_POST_ACT_", "RISK_MITIGATING_ACTION", "RISK_MITIGATING_ACTION_ENCODED"])
-    if explore_models or explore_models or build_promising_model:
+    if explore_models or explore_interactions or build_promising_model:
         # HOUSEHOLD FEATURES
         if data.environment_name == "household":
             feature_names, feature_idxs = data.get_feature_indices(columns_include=["STATE_CONSEQ","STATE_RISK","COND_RISK"])
@@ -57,7 +57,10 @@ if __name__ == '__main__':
 
     # explore possible interactions
     if explore_interactions:
-        data.explore_possible_models_with_interactions(df=data.weighted_dfs[9], feature_indices=feature_idxs)
+        # limit interactions in household environment since we have more features
+        limit_interactions = (data.environment_name == "household")
+        data.explore_possible_models_with_interactions(df=data.weighted_dfs[9], feature_indices=feature_idxs,
+                                                       limit_interactions=limit_interactions)
 
     # logistic regression analysis and final training
     if build_promising_model:
