@@ -1,14 +1,19 @@
 # consequence states for CLR robot in different environments
 household:
   consequences:
-    - name: disaster11
-    - name: disaster12
-    - name: disaster13
-    - name: disaster14
-    - name: disaster15
+    - name: harm_human
+    - name: damage_robot
+    - name: damage_object
+    - name: collide_env_map
+    - name: collide_object
+    - name: cannot_perform_action
 lunar_habitat:
   consequences:
-    - name: disaster16
-    - name: disaster17
-    - name: disaster18
-    - name: disaster19
+    - name: harm_human
+    - name: damage_robot
+    - name: damage_object
+    - name: collide_env_map
+    - name: collide_object
+    - name: cannot_perform_action
+
+# NOTE: damage implied in collisions, but explicitly modeling to give robot more symbolic understanding

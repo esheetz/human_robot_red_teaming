@@ -146,7 +146,7 @@ class YAMLActionSpaceChecks(YAMLChecks):
                                                 yaml_dict=yaml_dict,
                                                 env_name=env_name,
                                                 list_key="actions",
-                                                list_elem_keys=["name"])
+                                                list_elem_keys=["name", "autonomy_level"])
 
     @staticmethod
     def check_valid_risk_mitigating_action_values(act_dict, i, num_acts):
@@ -156,6 +156,11 @@ class YAMLActionSpaceChecks(YAMLChecks):
         # check for valid name
         if not type(act_dict['name']) == str:
             print("WARN: non-string name for risk mitigating action " + str(i) + " of " + str(num_acts))
+            valid_values = False
+
+        # check for valid autonomy level
+        if not type(act_dict['autonomy_level']) == float:
+            print("WARN: non-float autonomy level for risk mitigating action " + str(i) + " of " + str(num_acts))
             valid_values = False
 
         return valid_values
