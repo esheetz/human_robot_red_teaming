@@ -3,8 +3,10 @@
 ## TODOs
 
 Model deployment
-- [ ] launch node to load model, format data, get predictions, and send off predictions appropriately
+- [ ] launch node to load model, format perception data, get predictions from model, and send off predictions appropriately
 - [ ] reporting of safety/risk scores and evaluation, predictions of risk mitigating actions
+- [ ] dialogue reporting for risk mitigating action execution
+- [ ] how to complete the task after the risk mitigating action has been completed
 - [ ] no online training for now, but could add for later
 
 Stretch goals
