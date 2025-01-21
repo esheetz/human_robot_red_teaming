@@ -2,6 +2,20 @@
 
 ## TODOs
 
+HRRT Level 3: Assumptions
+- [ ] assumptions in actions:
+	- [ ] pre-condition assumptions ({s},a)
+	- [ ] post-condition assumptions (a, {s})
+	- [ ] alternate contingency plans
+
+HRRT Level 4: Updating model knowledge
+- [ ] update model with added states
+- [ ] update model with removed states (but add to knowledge base)
+- [ ] update model with added actions
+- [ ] update model with removed actions (but add to knowledge base)
+- [ ] update knowledge base with rules
+- [ ] save off hypothesis model (and initial confidence score) for later use
+
 Model deployment
 - [ ] launch node to load model, format data, get predictions, and send off predictions appropriately
 - [ ] reporting of safety/risk scores and evaluation, predictions of risk mitigating actions
