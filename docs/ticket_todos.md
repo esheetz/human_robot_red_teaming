@@ -9,12 +9,12 @@ HRRT Level 2: Enumeration
 - [x] write possibilities to YAML file
 
 HRRT Level 3: Assumptions
-- [ ] assumptions in actions:
-	- [ ] pre-condition assumptions ({s},a)
-	- [ ] post-condition assumptions (a, {s})
-	- [ ] alternate contingency plans?
-- [ ] dialogue tree prompts about assumptions
-- [ ] save assumptions (and validity) to YAML file
+- [x] assumptions in actions:
+	- [x] pre-condition assumptions ({s},a)
+	- [x] post-condition assumptions (a, {s})
+	- [x] alternate contingency plans?
+- [x] dialogue tree prompts about assumptions
+- [x] save assumptions (and validity) to YAML file
 
 HRRT Level 4: Updating model knowledge
 - [ ] update model with added states
