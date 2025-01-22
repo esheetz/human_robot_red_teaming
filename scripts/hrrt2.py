@@ -48,7 +48,10 @@ def hrrt2(model):
                 # add to list of possibilities
                 possibilities.append([s,a["name"],post_sa])
 
-    return possibilities
+    # query validity of possibilities
+    possibility_validity = _query_possibility_validity(possibilities)
+
+    return possibility_validity
 
 def write_hrrt2_yaml(possibilities, model_file):
     # create file name
@@ -60,12 +63,13 @@ def write_hrrt2_yaml(possibilities, model_file):
     yaml_dict["possibilities"] = []
 
     for p in possibilities:
-        s,a,sp = p
+        s,a,sp,v = p
         # create dict
         p_dict = {
             "state" : s,
             "action" : a,
-            "next_state" : sp
+            "next_state" : sp,
+            "validity" : v
         }
         # append to list
         yaml_dict["possibilities"].append(p_dict)
@@ -77,3 +81,30 @@ def write_hrrt2_yaml(possibilities, model_file):
     print("Wrote data for HRRT Level 2 to file: " + hrrt2_file_name)
 
     return
+
+########################
+### HELPER FUNCTIONS ###
+########################
+
+def _query_possibility_validity(possibility_list):
+    # initialize validity list
+    validity_list = []
+
+    # loop through possibilities
+    for s,a,sp in possibilitiy_list:
+        # query user input for possibility until valid
+        valid_input = False
+        while not valid_input:
+            print("Found possible state:", s)
+            print("    within which it is possible to take action " + a)
+            val = input("    Is this possibility always valid (safe, feasible, etc.)? (Y/N) ")
+            val = val.lower()
+            if val not in ['y','n']:
+                print("Invalid input, please answer [Y/N] for yes or no.")
+            else:
+                valid_input = True
+        # received user input; store possibility validity
+        poss_validity = (val == 'y')
+        validity_list.append((s,a,sp,poss_validity))
+
+    return validity_list
