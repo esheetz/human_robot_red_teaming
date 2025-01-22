@@ -3,8 +3,8 @@
 ## TODOs
 
 HRRT Level 2: Enumeration
-- [ ] read in model states and actions and knowledge base
-- [ ] format checking on model
+- [x] check formatting on model and knowledge base
+- [x] read in model (states and actions) and knowledge base
 - [ ] enumerate possibilities from model
 
 HRRT Level 3: Assumptions
