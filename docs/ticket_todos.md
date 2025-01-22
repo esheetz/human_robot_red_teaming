@@ -6,7 +6,8 @@ HRRT Level 2: Enumeration
 - [x] check formatting on model and knowledge base
 - [x] read in model (states and actions) and knowledge base
 - [x] enumerate possibilities from model
-- [x] write possibilities to YAML file
+- [ ] dialogue tree prompts about possibilities
+- [x] write possibilities (and validity) to YAML file
 
 HRRT Level 3: Assumptions
 - [x] assumptions in actions:
@@ -17,6 +18,9 @@ HRRT Level 3: Assumptions
 - [x] save assumptions (and validity) to YAML file
 
 HRRT Level 4: Updating model knowledge
+- [ ] take in possibilities and assumptions or read them in from YAML
+- [ ] probing questions about possibilities and assumptions
+- [ ] accept user input for states and actions (prompt each sub-component of actions)
 - [ ] update model with added states
 - [ ] update model with removed states (but add to knowledge base)
 - [ ] update model with added actions
