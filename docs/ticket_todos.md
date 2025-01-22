@@ -5,6 +5,7 @@
 HRRT Level 2: Enumeration
 - [ ] read in model states and actions and knowledge base
 - [ ] format checking on model
+- [ ] enumerate possibilities from model
 
 HRRT Level 3: Assumptions
 - [ ] assumptions in actions:
