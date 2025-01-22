@@ -1,47 +1,31 @@
 model:
   states:
-      - robot_inside_habitat
-      - robot_inside_airlock
-      - robot_outside_habitat
+      - [robot_inside_habitat,robot_inside_airlock,robot_outside_habitat]
       - robot_has_key
-      - door_habitat_airlock_locked
-      - door_habitat_airlock_unlocked
-      - door_airlock_surface_locked
-      - door_airlock_surface_unlocked
-      - door_habitat_airlock_closed
-      - door_habitat_airlock_opened
-      - door_airlock_surface_closed
-      - door_airlock_surface_opened
+      - [door_habitat_airlock_locked_closed,door_habitat_airlock_unlocked_opened]
+      - [door_airlock_surface_locked_closed,door_airlock_surface_unlocked_opened]
   actions:
-      - name: unlock_door_habitat_airlock
-        precond: [robot_inside_airlock, robot_has_key, door_habitat_airlock_locked]
-        postcond_add: [door_habitat_airlock_unlocked]
-        postcond_sub: [door_habitat_airlock_locked]
-      - name: unlock_door_airlock_surface
-        precond: [robot_outside_habitat, robot_has_key, door_airlock_surface_locked]
-        postcond_add: [door_airlock_surface_locked]
-        postcond_sub: [door_airlock_surface_unlocked]
-      - name: open_door_habitat_airlock
-        precond: [door_habitat_airlock_unlocked, door_habitat_airlock_closed]
-        postcond_add: [door_habitat_airlock_opened]
-        postcond_sub: [door_habitat_airlock_closed]
-      - name: open_door_airlock_surface
-        precond: [door_airlock_surface_unlocked, door_airlock_surface_closed]
-        postcond_add: [door_airlock_surface_opened]
-        postcond_sub: [door_airlock_surface_closed]
+      - name: unlock_open_door_habitat_airlock
+        precond: [robot_inside_airlock, robot_has_key, door_habitat_airlock_locked_closed]
+        postcond_add: [door_habitat_airlock_unlocked_opened]
+        postcond_sub: [door_habitat_airlock_locked_closed]
+      - name: unlock_open_door_airlock_surface
+        precond: [robot_outside_habitat, robot_has_key, door_airlock_surface_locked_closed]
+        postcond_add: [door_airlock_surface_unlocked_opened]
+        postcond_sub: [door_airlock_surface_locked_closed]
       - name: enter_airlock_from_habitat
-        precond: [robot_inside_habitat, door_habitat_airlock_opened]
-        postcond_add: [robot_inside_airlock, door_habitat_airlock_closed, door_habitat_airlock_locked]
-        postcond_sub: [robot_inside_habitat, door_habitat_airlock_opened]
+        precond: [robot_inside_habitat, door_habitat_airlock_unlocked_opened]
+        postcond_add: [robot_inside_airlock, door_habitat_airlock_locked_closed]
+        postcond_sub: [robot_inside_habitat, door_habitat_airlock_unlocked_opened]
       - name: enter_surface_from_airlock
-        precond: [robot_inside_airlock, door_airlock_surface_opened]
-        postcond_add: [robot_outside_habitat, door_airlock_surface_closed, door_airlock_surface_locked]
-        postcond_sub: [robot_inside_airlock, door_airlock_surface_opened]
+        precond: [robot_inside_airlock, door_airlock_surface_unlocked_opened]
+        postcond_add: [robot_outside_habitat, door_airlock_surface_locked_closed]
+        postcond_sub: [robot_inside_airlock, door_airlock_surface_unlocked_opened]
       - name: enter_airlock_from_surface
-        precond: [robot_outside_habitat, door_airlock_surface_opened]
-        postcond_add: [robot_inside_airlock, door_airlock_surface_closed, door_airlock_surface_locked]
-        postcond_sub: [robot_outside_habitat, door_airlock_surface_opened]
+        precond: [robot_outside_habitat, door_airlock_surface_unlocked_opened]
+        postcond_add: [robot_inside_airlock, door_airlock_surface_locked_closed]
+        postcond_sub: [robot_outside_habitat, door_airlock_surface_unlocked_opened]
       - name: enter_habitat_from_airlock
-        precond: [robot_inside_airlock, door_habitat_airlock_opened]
-        postcond_add: [robot_inside_habitat, door_habitat_airlock_closed, door_habitat_airlock_locked]
-        postcond_sub: [robot_inside_airlock, door_habitat_airlock_opened]
+        precond: [robot_inside_airlock, door_habitat_airlock_unlocked_opened]
+        postcond_add: [robot_inside_habitat, door_habitat_airlock_locked_closed]
+        postcond_sub: [robot_inside_airlock, door_habitat_airlock_unlocked_opened]

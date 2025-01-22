@@ -115,8 +115,8 @@ class YAMLModelChecks(YAMLChecks):
             print("ERROR: model states are not a list")
             return False
         for i in model_dict["states"]:
-            if not type(i) == str:
-                print("ERROR: model state is not a string")
+            if (not type(i) == str) and (not type(i) == list):
+                print("ERROR: model state is not a string or a list of mutex strings")
                 return False
 
         # check for valid actions
