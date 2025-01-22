@@ -1,0 +1,106 @@
+assumptions:
+  precond:
+  - action: unlock_open_door_habitat_airlock
+    assumed_state: robot_inside_airlock
+    validity: true
+  - action: unlock_open_door_habitat_airlock
+    assumed_state: robot_has_key
+    validity: false
+  - action: unlock_open_door_habitat_airlock
+    assumed_state: door_habitat_airlock_locked_closed
+    validity: true
+  - action: unlock_open_door_airlock_surface
+    assumed_state: robot_outside_habitat
+    validity: true
+  - action: unlock_open_door_airlock_surface
+    assumed_state: robot_has_key
+    validity: false
+  - action: unlock_open_door_airlock_surface
+    assumed_state: door_airlock_surface_locked_closed
+    validity: true
+  - action: enter_airlock_from_habitat
+    assumed_state: robot_inside_habitat
+    validity: true
+  - action: enter_airlock_from_habitat
+    assumed_state: door_habitat_airlock_unlocked_opened
+    validity: true
+  - action: enter_surface_from_airlock
+    assumed_state: robot_inside_airlock
+    validity: true
+  - action: enter_surface_from_airlock
+    assumed_state: door_airlock_surface_unlocked_opened
+    validity: true
+  - action: enter_airlock_from_surface
+    assumed_state: robot_outside_habitat
+    validity: true
+  - action: enter_airlock_from_surface
+    assumed_state: door_airlock_surface_unlocked_opened
+    validity: true
+  - action: enter_habitat_from_airlock
+    assumed_state: robot_inside_airlock
+    validity: true
+  - action: enter_habitat_from_airlock
+    assumed_state: door_habitat_airlock_unlocked_opened
+    validity: true
+  postcond_add:
+  - action: unlock_open_door_habitat_airlock
+    assumed_state: door_habitat_airlock_unlocked_opened
+    validity: true
+  - action: unlock_open_door_airlock_surface
+    assumed_state: door_airlock_surface_unlocked_opened
+    validity: true
+  - action: enter_airlock_from_habitat
+    assumed_state: robot_inside_airlock
+    validity: true
+  - action: enter_airlock_from_habitat
+    assumed_state: door_habitat_airlock_locked_closed
+    validity: true
+  - action: enter_surface_from_airlock
+    assumed_state: robot_outside_habitat
+    validity: true
+  - action: enter_surface_from_airlock
+    assumed_state: door_airlock_surface_locked_closed
+    validity: true
+  - action: enter_airlock_from_surface
+    assumed_state: robot_inside_airlock
+    validity: true
+  - action: enter_airlock_from_surface
+    assumed_state: door_airlock_surface_locked_closed
+    validity: true
+  - action: enter_habitat_from_airlock
+    assumed_state: robot_inside_habitat
+    validity: true
+  - action: enter_habitat_from_airlock
+    assumed_state: door_habitat_airlock_locked_closed
+    validity: true
+  postcond_sub:
+  - action: unlock_open_door_habitat_airlock
+    assumed_state: door_habitat_airlock_locked_closed
+    validity: true
+  - action: unlock_open_door_airlock_surface
+    assumed_state: door_airlock_surface_locked_closed
+    validity: true
+  - action: enter_airlock_from_habitat
+    assumed_state: robot_inside_habitat
+    validity: true
+  - action: enter_airlock_from_habitat
+    assumed_state: door_habitat_airlock_unlocked_opened
+    validity: true
+  - action: enter_surface_from_airlock
+    assumed_state: robot_inside_airlock
+    validity: true
+  - action: enter_surface_from_airlock
+    assumed_state: door_airlock_surface_unlocked_opened
+    validity: true
+  - action: enter_airlock_from_surface
+    assumed_state: robot_outside_habitat
+    validity: true
+  - action: enter_airlock_from_surface
+    assumed_state: door_airlock_surface_unlocked_opened
+    validity: true
+  - action: enter_habitat_from_airlock
+    assumed_state: robot_inside_airlock
+    validity: true
+  - action: enter_habitat_from_airlock
+    assumed_state: door_habitat_airlock_unlocked_opened
+    validity: true
