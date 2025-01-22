@@ -2,11 +2,6 @@
 
 ## TODOs
 
-HRRT Level 2: Enumeration
-- [x] check formatting on model and knowledge base
-- [x] read in model (states and actions) and knowledge base
-- [ ] enumerate possibilities from model
-
 HRRT Level 3: Assumptions
 - [ ] assumptions in actions:
 	- [ ] pre-condition assumptions ({s},a)

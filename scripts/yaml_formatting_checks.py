@@ -1,11 +1,9 @@
 """
-YAML State Action Space Checks Class
-Emily Sheetz, NSTGRO VTE 2024
+YAML Knowledge Base and Model Checks
 """
 
 import os
-
-from likelihood_consequence_risk import LikelihoodLevels, ConsequenceClasses
+import yaml
 
 ###################################
 ### YAML FILE FORMATTING CHECKS ###
@@ -40,240 +38,170 @@ class YAMLChecks:
     # CHECK YAML FORMATTING
 
     @staticmethod
-    def check_yaml_formatting(file_nickname, yaml_dict, env_name, list_key, list_elem_keys):
-        # check if environment exists
-        if env_name not in yaml_dict.keys():
-            print("ERROR: environment " + env_name + " does not exist in " + file_nickname + " file")
-            return False
+    def check_yaml_keys(yaml_dict, source_key=None, list_keys=None):
+        # initialize sub-dict
+        yaml_subdict = None
 
-        # check for list key
-        if list_key not in yaml_dict[env_name].keys():
-            print("ERROR: environment " + env_name + " has no " + file_nickname + "s defined under key '" + list_key + "'")
-            return False
-
-        # get number of elements in list
-        num_elems = len(yaml_dict[env_name][list_key])
-
-        # initialize valid elements flag
-        valid_elems = True
-
-        # check each element in list
-        for i in range(num_elems):
-            # get element
-            elem = yaml_dict[env_name][list_key][i]
-
-            # check for each key in list element
-            for elem_key in list_elem_keys:
-                if elem_key not in elem.keys():
-                    print("ERROR: " + file_nickname + " " + str(i) + " of " + str(num_elems) + " does not have key " + elem_key)
-                    valid_elems = False
-
-        return valid_elems
-
-
-
-#####################################
-### STATE SPACE FORMATTING CHECKS ###
-#####################################
-
-class YAMLStateSpaceChecks(YAMLChecks):
-
-    @staticmethod
-    def check_consequence_state_yaml_formatting(yaml_dict, env_name):
-        return YAMLChecks.check_yaml_formatting(file_nickname="consequence state",
-                                                yaml_dict=yaml_dict,
-                                                env_name=env_name,
-                                                list_key="consequences",
-                                                list_elem_keys=["name"])
-
-    @staticmethod
-    def check_valid_consequence_state_values(state_dict, i, num_states):
-        # initialize valid values flag
-        valid_values = True
-
-        # check for valid name
-        if not type(state_dict['name']) == str:
-            print("WARN: non-string name for consequence state " + str(i) + " of " + str(num_states))
-            valid_values = False
-
-        return valid_values
-
-    @staticmethod
-    def check_risky_condition_yaml_formatting(yaml_dict, env_name):
-        return YAMLChecks.check_yaml_formatting(file_nickname="risky condition",
-                                                yaml_dict=yaml_dict,
-                                                env_name=env_name,
-                                                list_key="conditions",
-                                                list_elem_keys=["name","likelihood","consequence","consequence_states"])
-
-    @staticmethod
-    def check_valid_risky_condition_values(cond_dict, i, num_conds):
-        # initialize valid values flag
-        valid_values = True
-
-        # check for valid name
-        if not type(cond_dict['name']) == str:
-            print("WARN: non-string name for risky condition " + str(i) + " of " + str(num_conds))
-            valid_values = False
-
-        # check for valid consequence states
-        if not type(cond_dict['consequence_states']) == list:
-            print("WARN: non-list consequence states for risky condition " + str(i) + " of " + str(num_conds))
-            valid_values = False
-
-        # check for valid likelihood and consequence scores
-        if not LikelihoodLevels.valid_value(cond_dict['likelihood']):
-            print("WARN: invalid likelihood value for risky condition " + str(i) + " of " + str(num_conds))
-            valid_values = False
-
-        if not ConsequenceClasses.valid_value(cond_dict['consequence']):
-            print("WARN: invalid consequence value for risky condition " + str(i) + " of " + str(num_conds))
-            valid_values = False
-
-        return valid_values
-
-
-
-######################################
-### ACTION SPACE FORMATTING CHECKS ###
-######################################
-
-class YAMLActionSpaceChecks(YAMLChecks):
-
-    @staticmethod
-    def check_risk_mitigating_action_yaml_formatting(yaml_dict, env_name):
-        return YAMLChecks.check_yaml_formatting(file_nickname="risk mitigating action",
-                                                yaml_dict=yaml_dict,
-                                                env_name=env_name,
-                                                list_key="actions",
-                                                list_elem_keys=["name", "autonomy_level"])
-
-    @staticmethod
-    def check_valid_risk_mitigating_action_values(act_dict, i, num_acts):
-        # initialize valid values flag
-        valid_values = True
-
-        # check for valid name
-        if not type(act_dict['name']) == str:
-            print("WARN: non-string name for risk mitigating action " + str(i) + " of " + str(num_acts))
-            valid_values = False
-
-        # check for valid autonomy level
-        if not type(act_dict['autonomy_level']) == float:
-            print("WARN: non-float autonomy level for risk mitigating action " + str(i) + " of " + str(num_acts))
-            valid_values = False
-
-        return valid_values
-
-
-
-#####################################
-### POLICY DATA FORMATTING CHECKS ###
-#####################################
-
-class YAMLPolicyDataChecks(YAMLChecks):
-
-    @staticmethod
-    def check_policy_data_yaml_formatting(yaml_dict, env_name, file_nickname):
-        return YAMLChecks.check_yaml_formatting(file_nickname=file_nickname,
-                                                yaml_dict=yaml_dict,
-                                                env_name=env_name,
-                                                list_key="policy_data",
-                                                list_elem_keys=["conditions", "consequences_before_action", "action", "consequences_after_action"])
-
-    @staticmethod
-    def check_valid_policy_data_values(pol_dict, i, num_pols):
-        # initialize valid values flag
-        valid_values = True
-
-        # check for valid conditions
-        if not type(pol_dict['conditions']) == list:
-            print("WARN: non-list conditions for policy data " + str(i) + " of " + str(num_pols))
-            valid_values = False
-
-        # check for valid condition types
-        for cond in pol_dict['conditions']:
-            if not type(cond) == str:
-                print("WARN: non-string condition for policy data " + str(i) + " of " + str(num_pols))
-                valid_values = False
-
-        # check for valid action
-        if not type(pol_dict['action']) == str:
-            print("WARN: non-string action for policy data " + str(i) + " of " + str(num_pols))
-            valid_values = False
-
-        # check for valid consequences
-        if not type(pol_dict['consequences_before_action']) == list:
-            print("WARN: non-list consequences before action for policy data " + str(i) + " of " + str(num_pols))
-            valid_values = False
-        if not type(pol_dict['consequences_after_action']) == list:
-            print("WARN: non-list consequences after action for policy data " + str(i) + " of " + str(num_pols))
-            valid_values = False
-
-        # check for valid consequence types
-        for conseq in pol_dict['consequences_before_action']:
-            if not type(conseq) == str:
-                print("WARN: non-string consequence before action for policy data " + str(i) + " of " + str(num_pols))
-                valid_values = False
-        for conseq in pol_dict['consequences_after_action']:
-            if not type(conseq) == str:
-                print("WARN: non-string consequence after action for policy data " + str(i) + " of " + str(num_pols))
-                valid_values = False
-
-        return valid_values
-
-    @staticmethod
-    def format_policy_as_yaml_list(policy):
-        # check type
-        if type(policy) == dict:
-            return YAMLPolicyDataChecks.format_policy_dict_as_yaml_list(policy)
-        elif type(policy) == list:
-            return YAMLPolicyDataChecks.format_policy_list_as_yaml_list(policy)
+        # check if given source key
+        if source_key is not None:
+            # check if source key exists
+            if source_key not in yaml_dict.keys():
+                print("ERROR: source key " + source_key + " does not exist in file")
+                return False
+            else:
+                # key exists
+                yaml_subdict = yaml_dict[source_key]
         else:
-            print("ERROR: unrecognized policy type " + str(type(policy)) + ", but expected type is dict or list; returning None")
-            return None
+            # no source key given
+            yaml_subdict = yaml_dict
+
+        # check if given list of keys
+        if list_keys is not None:
+            # check for given list of keys
+            for k in list_keys:
+                if k not in yaml_subdict.keys():
+                    print("ERROR: key " + k + " does not exist in file")
+                    return False
+
+        return True
+
+########################################
+### KNOWLEDGE BASE FORMATTING CHECKS ###
+########################################
+
+class YAMLKBChecks(YAMLChecks):
 
     @staticmethod
-    def format_policy_dict_as_yaml_list(policy_dict : dict):
-        # initialize list of policy data points
-        policy_data_points = []
-
-        # loop through given policy dictionary
-        for conds in policy_dict:
-            # get condition from dictionary
-            policy_point = policy_dict[conds]
-
-            # create dictionary for data point
-            point_dict = YAMLPolicyDataChecks.format_policy_point_as_yaml_dict(policy_point)
-
-            # add data point to list
-            policy_data_points.append(point_dict)
-
-        return policy_data_points
+    def check_kb_yaml_formatting(yaml_dict):
+        return YAMLChecks.check_yaml_keys(yaml_dict,
+                                          source_key="kb",
+                                          list_keys=None)
 
     @staticmethod
-    def format_policy_list_as_yaml_list(policy_list : list):
-        # initialize list of policy data points
-        policy_data_points = []
+    def check_valid_kb_values(kb_list):
+        # check for valid knowledge base type
+        if not type(kb_list) == list:
+            print("ERROR: knowledge base is not a list")
+            return False
 
-        # loop through given policy list
-        for policy_point in policy_list:
-            # create dictionary for point
-            point_dict = YAMLPolicyDataChecks.format_policy_point_as_yaml_dict(policy_point)
+        # check for valid facts in list
+        for i in kb_list:
+            if not type(i) == str:
+                print("ERROR: knowledge base fact is not a string")
+                return False
 
-            # add data point to list
-            policy_data_points.append(point_dict)
+        return True
 
-        return policy_data_points
+###############################
+### MODEL FORMATTING CHECKS ###
+###############################
+
+class YAMLModelChecks(YAMLChecks):
 
     @staticmethod
-    def format_policy_point_as_yaml_dict(policy_point):
-        # create dictionary for data point
-        point_dict = {
-            "conditions" : list(policy_point.get_policy_data_point_condition_names()),
-            "consequences_before_action" : list(policy_point.get_policy_data_point_consequences_before_action_names()),
-            "action" : policy_point.get_policy_data_point_action_name(),
-            "consequences_after_action" : list(policy_point.get_policy_data_point_consequences_after_action_names())
-        }
+    def check_model_yaml_formatting(yaml_dict):
+        return YAMLChecks.check_yaml_keys(yaml_dict,
+                                          source_key="model",
+                                          list_keys=["states","actions"])
 
-        return point_dict
+    def check_valid_model_values(model_dict):
+        # check for valid model dict type
+        if not type(model_dict) == dict:
+            print("ERROR: model is not a dictionary")
+            return False
+
+        # check for valid states
+        if not type(model_dict["states"]) == list:
+            print("ERROR: model states are not a list")
+            return False
+        for i in model_dict["states"]:
+            if (not type(i) == str) and (not type(i) == list):
+                print("ERROR: model state is not a string or a list of mutex strings")
+                return False
+
+        # check for valid actions
+        if not type(model_dict["actions"]) == list:
+            print("ERROR: model actions are not a list")
+            return False
+        for i in model_dict["actions"]:
+            if not type(i) == dict:
+                print("ERROR: model action is not a dictionary")
+                return False
+            valid_act = YAMLChecks.check_yaml_keys(i,
+                                                   source_key=None,
+                                                   list_keys=["name","precond","postcond_add","postcond_sub"])
+            if not valid_act:
+                print("ERROR: model contains poorly formatted action")
+                return False
+
+        return True
+
+#################################
+### KNOWLEDGE BASE FORMATTING ###
+#################################
+
+class KBFormatting:
+
+    @staticmethod
+    def format_kb(yaml_file_path):
+        # verify YAML file exists
+        if not YAMLChecks.check_yaml_existence(yaml_file_path):
+            print("ERROR: knowledge base file " + yaml_file_path + " does not exist")
+            return False, []
+
+        # open YAML file and load dict
+        fo = open(yaml_file_path)
+        yaml_dict = yaml.load(fo, Loader=yaml.FullLoader)
+        fo.close()
+
+        # error check YAML file formatting
+        if not YAMLKBChecks.check_kb_yaml_formatting(yaml_dict):
+            print("ERROR: knowledge base YAML file is poorly formatted")
+            return False, []
+
+        # get knowledge base
+        kb_list = yaml_dict["kb"]
+
+        # error check knowledge base formatting
+        if not YAMLKBChecks.check_valid_kb_values(kb_list):
+            print("ERROR: knowledge base is poorly formatted")
+            return False, []
+
+        # if we get here, everything is properly formatted
+        # return knowledge base as list of strings
+        return True, kb_list
+
+########################
+### MODEL FORMATTING ###
+########################
+
+class ModelFormatting:
+
+    @staticmethod
+    def format_model(yaml_file_path):
+        # verify YAML file exists
+        if not YAMLChecks.check_yaml_existence(yaml_file_path):
+            print("ERROR: model file " + yaml_file_path + " does not exist")
+            return False, {}
+
+        # open YAML file and load dict
+        fo = open(yaml_file_path)
+        yaml_dict = yaml.load(fo, Loader=yaml.FullLoader)
+        fo.close()
+
+        # error check YAML file formatting
+        if not YAMLModelChecks.check_model_yaml_formatting(yaml_dict):
+            print("ERROR: model YAML file is poorly formatted")
+            return False, {}
+
+        # get model
+        model_dict = yaml_dict["model"]
+
+        # error check model formatting
+        if not YAMLModelChecks.check_valid_model_values(model_dict):
+            print("ERROR: model is poorly formatted")
+            return False, {}
+
+        # if we get here, everything is properly formatted
+        # return model as dictionary of states and actions
+        return True, model_dict
