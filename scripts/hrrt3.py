@@ -91,6 +91,7 @@ def _query_assumption_validity(assumptions_list, state_prompt_text, action_promp
                 print("Invalid input, please answer [Y/N] for yes or no.")
             else:
                 valid_input = True
+            print()
         # received user input, store assumption validity
         assump_validity = (val == 'y')
         validity_list.append((a,s,assump_validity))
