@@ -120,16 +120,16 @@ class YAMLModelChecks(YAMLChecks):
                 return False
 
         # check for valid actions
-        if not type(model_dict["actions"]) == dict:
-            print("ERROR: model actions are not a dictionary")
+        if not type(model_dict["actions"]) == list:
+            print("ERROR: model actions are not a list")
             return False
-        for i in model_dict["actions"].keys():
-            if not type(model_dict["actions"][i]) == dict:
+        for i in model_dict["actions"]:
+            if not type(i) == dict:
                 print("ERROR: model action is not a dictionary")
                 return False
-            valid_act = YAMLChecks.check_yaml_keys(model_dict["actions"][i],
+            valid_act = YAMLChecks.check_yaml_keys(i,
                                                    source_key=None,
-                                                   list_keys=["precond","postcond_add","postcond_sub"])
+                                                   list_keys=["name","precond","postcond_add","postcond_sub"])
             if not valid_act:
                 print("ERROR: model contains poorly formatted action")
                 return False
