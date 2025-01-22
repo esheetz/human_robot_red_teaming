@@ -5,6 +5,7 @@ Enumeration of Possibilities
 
 from itertools import chain, combinations
 from copy import deepcopy
+import yaml
 
 """
 assumes model is properly formatted
@@ -16,7 +17,7 @@ def hrrt2(model):
     state_idxs = [i for i in range(len(model["states"]))]
     powerset_state_idxs = list(chain.from_iterable(
                             combinations(state_idxs,r)
-                            for r in range(1,len(s)+1)))
+                            for r in range(1,len(state_idxs)+1)))
 
     # generate states
     powerset_states = []
@@ -25,12 +26,10 @@ def hrrt2(model):
         for i in combo:
             if type(model["states"][i]) == str:
                 # single state, append to states
-                states = [s.append(i) for s in states]
+                states = [s+[model["states"][i]] for s in states]
             else: # type(model["states"][i]) == list(str)
-                # copy states
-                states = states*len(model["states"][i])
                 # create new state for each mutex state
-                states = [s.append(ms) for s in states for ms in model["states"][i]]
+                states = [s+[ms] for s in states for ms in model["states"][i]]
         # add state to powerset
         powerset_states += states
 
@@ -45,8 +44,36 @@ def hrrt2(model):
                 post_sa = deepcopy(s)
                 # add/subtract post-conditions
                 post_sa += a["postcond_add"]
-                post_sa = [i for i in post_sa if not in a["postcond_sub"]]
+                post_sa = [i for i in post_sa if i not in a["postcond_sub"]]
                 # add to list of possibilities
-                possibilities.append([s,a,post_sa])
+                possibilities.append([s,a["name"],post_sa])
 
     return possibilities
+
+def write_hrrt2_yaml(possibilities, model_file):
+    # create file name
+    ext_idx = model_file.rfind(".yaml")
+    hrrt2_file_name = model_file[:ext_idx]+"_hrrt2"+model_file[ext_idx:]
+
+    # format possibilities as YAML dictionary
+    yaml_dict = {}
+    yaml_dict["possibilities"] = []
+
+    for p in possibilities:
+        s,a,sp = p
+        # create dict
+        p_dict = {
+            "state" : s,
+            "action" : a,
+            "next_state" : sp
+        }
+        # append to list
+        yaml_dict["possibilities"].append(p_dict)
+
+    # open YAML file in write mode and dump
+    fo = open(hrrt2_file_name, 'w')
+    yaml.dump(yaml_dict, fo, default_flow_style=False, sort_keys=False)
+    fo.close()
+    print("Wrote data for HRRT Level 2 to file: " + hrrt2_file_name)
+
+    return
