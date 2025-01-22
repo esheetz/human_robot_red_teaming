@@ -5,13 +5,16 @@
 HRRT Level 2: Enumeration
 - [x] check formatting on model and knowledge base
 - [x] read in model (states and actions) and knowledge base
-- [ ] enumerate possibilities from model
+- [x] enumerate possibilities from model
+- [x] write possibilities to YAML file
 
 HRRT Level 3: Assumptions
-- [ ] assumptions in actions:
-	- [ ] pre-condition assumptions ({s},a)
-	- [ ] post-condition assumptions (a, {s})
-	- [ ] alternate contingency plans
+- [x] assumptions in actions:
+	- [x] pre-condition assumptions ({s},a)
+	- [x] post-condition assumptions (a, {s})
+	- [x] alternate contingency plans?
+- [x] dialogue tree prompts about assumptions
+- [x] save assumptions (and validity) to YAML file
 
 HRRT Level 4: Updating model knowledge
 - [ ] update model with added states
