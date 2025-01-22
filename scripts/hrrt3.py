@@ -10,7 +10,7 @@ assumes model is properly formatted
 
 creates:
     - list of pre-condition assumptions (s,a)
-    - list of post-condition assumptions (a,s')
+    - list of (add/sub) post-condition assumptions (a,s')
 """
 def hrrt3(model):
     # initialize lists of assumptions
@@ -62,6 +62,14 @@ def write_hrrt3_yaml(assump_lists, model_file):
     yaml_dict["assumptions"]["postcond_add"] = _create_assumption_dicts(postcond_add_assump)
     yaml_dict["assumptions"]["postcond_sub"] = _create_assumption_dicts(postcond_sub_assump)
 
+    # open YAML file in write mode and dump
+    fo = open(hrrt3_file_name, 'w')
+    yaml.dump(yaml_dict, fo, default_flow_style=False, sort_keys=False)
+    fo.close()
+    print("Wrote data for HRRT Level 3 to file: " + hrrt3_file_name)
+
+    return
+
 ########################
 ### HELPER FUNCTIONS ###
 ########################
@@ -89,7 +97,7 @@ def _query_assumption_validity(assumptions_list, state_prompt_text, action_promp
 
     return validity_list
 
-def )create_assumption_dicts(assump_list):
+def _create_assumption_dicts(assump_list):
     # initialize list of dictionaries
     assump_dicts = []
 
