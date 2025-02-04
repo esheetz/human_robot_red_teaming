@@ -6,7 +6,7 @@ HRRT Level 2: Enumeration
 - [x] check formatting on model and knowledge base
 - [x] read in model (states and actions) and knowledge base
 - [x] enumerate possibilities from model
-- [ ] dialogue tree prompts about possibilities
+- [ ] dialogue tree prompts about possibilities - UNTESTED
 - [x] write possibilities (and validity) to YAML file
 
 HRRT Level 3: Assumptions
@@ -18,15 +18,24 @@ HRRT Level 3: Assumptions
 - [x] save assumptions (and validity) to YAML file
 
 HRRT Level 4: Updating model knowledge
-- [ ] take in possibilities and assumptions or read them in from YAML
-- [ ] probing questions about possibilities and assumptions
-- [ ] accept user input for states and actions (prompt each sub-component of actions)
-- [ ] update model with added states
-- [ ] update model with removed states (but add to knowledge base)
-- [ ] update model with added actions
-- [ ] update model with removed actions (but add to knowledge base)
-- [ ] update knowledge base with rules
-- [ ] save off hypothesis model (and initial confidence score) for later use
+- [ ] probing questions about possibilities and assumptions - UNTESTED
+- [ ] accept user input for states and actions (prompt each sub-component of actions) - UNTESTED
+- [ ] suggest when no new information has been gained - UNTESTED
+- [ ] update model with added states - UNTESTED
+- [ ] update model with removed states (but add to knowledge base) - UNTESTED
+- [ ] update model with added actions - UNTESTED
+- [ ] update model with removed actions (but add to knowledge base) - UNTESTED
+- [ ] update knowledge base formatting - UNTESTED
+- [ ] general probing questions - UNTESTED
+- [ ] add input for human red agents - UNTESTED
+- [ ] update knowledge base with rules - UNTESTED
+- [ ] update model formatting with confidence score - UNTESTED
+- [ ] save off hypothesis to YAML file - UNTESTED
+- [ ] save updated model (and initial confidence score) to YAML file - UNTESTED
+- [ ] save updated knowledge base to YAML file - UNTESTED
+- [ ] remove SAR code and SAR todos
+
+## SAR TODOs
 
 Model deployment
 - [ ] launch node to load model, format data, get predictions, and send off predictions appropriately
