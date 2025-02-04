@@ -10,8 +10,7 @@ assumes knowledge base, model, possibilities, and assumptions are properly forma
 
 creates updated model hypothesis (S+,S-,A+,A-) and facts L
 """
-def hrrt4(kb_file_name, kb,
-          model_file_name, model,
+def hrrt4(kb, model,
           possibilities, assumptions):
     # unpack assumptions
     precond_assump, postcond_add_assump, postcond_sub_assump = assumptions
@@ -29,7 +28,7 @@ def hrrt4(kb_file_name, kb,
     model_hypothesis_assump = _query_invalid_assumptions(invalid_assumps)
 
     # ask probing questions
-    facts, model_hypothesis_probe = self._query_probing_questions()
+    facts, model_hypothesis_probe = _query_probing_questions()
 
     # union model hypothesis
     # each model hypothesis is a tuple of 4:
@@ -247,6 +246,9 @@ def _get_model_hypothesis():
     return states_add, states_sub, actions_add, actions_sub
 
 def _query_invalid_possibilities(invalid_possibilities):
+    print()
+    print("==================== HRRT LEVEL 2 REVIEW ====================")
+    print()
     # check for empty possibilities
     if len(invalid_possibilities) == 0:
         print("No invalid possibilities found!")
@@ -262,9 +264,15 @@ def _query_invalid_possibilities(invalid_possibilities):
         print("Let's update the model to address these invalid possibilities!")
         print()
         model_hypothesis = _get_model_hypothesis()
+        print()
+        print()
+        print()
         return model_hypothesis
 
 def _query_invalid_assumptions(invalid_assumptions):
+    print()
+    print("==================== HRRT LEVEL 3 REVIEW ====================")
+    print()
     # unpack assumptions
     invalid_precond_assump, invalid_postcond_add_assump, invalid_postcond_sub_assump = invalid_assumptions
     if len(invalid_precond_assump) == 0 and \
@@ -288,9 +296,16 @@ def _query_invalid_assumptions(invalid_assumptions):
         print("Let's update the model to address these invalid assumptions!")
         print()
         model_hypothesis = _get_model_hypothesis()
+        print()
+        print()
+        print()
         return model_hypothesis
 
 def _query_probing_questions():
+    print()
+    print("==================== HRRT LEVEL 4 REFLECTIONS ====================")
+    print()
+
     # initialize list
     facts = []
 
@@ -353,5 +368,8 @@ def _query_probing_questions():
         print("Let's update the model to address the team's reflections!")
         print()
         model_hypothesis = _get_model_hypothesis()
+        print()
+        print()
+        print()
 
     return facts, model_hypothesis
