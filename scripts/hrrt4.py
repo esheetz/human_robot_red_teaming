@@ -74,6 +74,7 @@ def hrrt4(kb, model,
     else:
         kb["facts"] += facts
         print("Added new information to knowledge base!")
+    print()
     # reset confidence score for updated model
     model["confidence_score"] = {
         "successes" : 0,
