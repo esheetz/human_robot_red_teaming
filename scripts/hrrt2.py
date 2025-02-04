@@ -91,7 +91,7 @@ def _query_possibility_validity(possibility_list):
     validity_list = []
 
     # loop through possibilities
-    for s,a,sp in possibilitiy_list:
+    for s,a,sp in possibility_list:
         # query user input for possibility until valid
         valid_input = False
         while not valid_input:

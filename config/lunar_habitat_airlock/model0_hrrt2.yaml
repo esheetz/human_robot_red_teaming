@@ -6,6 +6,7 @@ possibilities:
   next_state:
   - robot_inside_airlock
   - door_habitat_airlock_locked_closed
+  validity: true
 - state:
   - robot_inside_airlock
   - door_habitat_airlock_unlocked_opened
@@ -13,6 +14,7 @@ possibilities:
   next_state:
   - robot_inside_habitat
   - door_habitat_airlock_locked_closed
+  validity: true
 - state:
   - robot_inside_airlock
   - door_airlock_surface_unlocked_opened
@@ -20,6 +22,7 @@ possibilities:
   next_state:
   - robot_outside_habitat
   - door_airlock_surface_locked_closed
+  validity: true
 - state:
   - robot_outside_habitat
   - door_airlock_surface_unlocked_opened
@@ -27,6 +30,7 @@ possibilities:
   next_state:
   - robot_inside_airlock
   - door_airlock_surface_locked_closed
+  validity: true
 - state:
   - robot_inside_habitat
   - robot_has_key
@@ -36,6 +40,7 @@ possibilities:
   - robot_has_key
   - robot_inside_airlock
   - door_habitat_airlock_locked_closed
+  validity: true
 - state:
   - robot_inside_airlock
   - robot_has_key
@@ -45,6 +50,7 @@ possibilities:
   - robot_inside_airlock
   - robot_has_key
   - door_habitat_airlock_unlocked_opened
+  validity: true
 - state:
   - robot_inside_airlock
   - robot_has_key
@@ -54,6 +60,7 @@ possibilities:
   - robot_has_key
   - robot_inside_habitat
   - door_habitat_airlock_locked_closed
+  validity: true
 - state:
   - robot_inside_airlock
   - robot_has_key
@@ -63,6 +70,7 @@ possibilities:
   - robot_has_key
   - robot_outside_habitat
   - door_airlock_surface_locked_closed
+  validity: true
 - state:
   - robot_outside_habitat
   - robot_has_key
@@ -72,6 +80,7 @@ possibilities:
   - robot_outside_habitat
   - robot_has_key
   - door_airlock_surface_unlocked_opened
+  validity: true
 - state:
   - robot_outside_habitat
   - robot_has_key
@@ -81,6 +90,7 @@ possibilities:
   - robot_has_key
   - robot_inside_airlock
   - door_airlock_surface_locked_closed
+  validity: true
 - state:
   - robot_inside_habitat
   - door_habitat_airlock_unlocked_opened
@@ -90,6 +100,7 @@ possibilities:
   - door_airlock_surface_locked_closed
   - robot_inside_airlock
   - door_habitat_airlock_locked_closed
+  validity: true
 - state:
   - robot_inside_habitat
   - door_habitat_airlock_unlocked_opened
@@ -99,6 +110,7 @@ possibilities:
   - door_airlock_surface_unlocked_opened
   - robot_inside_airlock
   - door_habitat_airlock_locked_closed
+  validity: false
 - state:
   - robot_inside_airlock
   - door_habitat_airlock_locked_closed
@@ -108,6 +120,7 @@ possibilities:
   - door_habitat_airlock_locked_closed
   - robot_outside_habitat
   - door_airlock_surface_locked_closed
+  validity: true
 - state:
   - robot_inside_airlock
   - door_habitat_airlock_unlocked_opened
@@ -117,6 +130,7 @@ possibilities:
   - door_airlock_surface_locked_closed
   - robot_inside_habitat
   - door_habitat_airlock_locked_closed
+  validity: true
 - state: &id001
   - robot_inside_airlock
   - door_habitat_airlock_unlocked_opened
@@ -126,12 +140,14 @@ possibilities:
   - door_habitat_airlock_unlocked_opened
   - robot_outside_habitat
   - door_airlock_surface_locked_closed
+  validity: true
 - state: *id001
   action: enter_habitat_from_airlock
   next_state:
   - door_airlock_surface_unlocked_opened
   - robot_inside_habitat
   - door_habitat_airlock_locked_closed
+  validity: true
 - state:
   - robot_outside_habitat
   - door_habitat_airlock_locked_closed
@@ -141,6 +157,7 @@ possibilities:
   - door_habitat_airlock_locked_closed
   - robot_inside_airlock
   - door_airlock_surface_locked_closed
+  validity: true
 - state:
   - robot_outside_habitat
   - door_habitat_airlock_unlocked_opened
@@ -150,6 +167,7 @@ possibilities:
   - door_habitat_airlock_unlocked_opened
   - robot_inside_airlock
   - door_airlock_surface_locked_closed
+  validity: true
 - state:
   - robot_inside_habitat
   - robot_has_key
@@ -161,6 +179,7 @@ possibilities:
   - door_airlock_surface_locked_closed
   - robot_inside_airlock
   - door_habitat_airlock_locked_closed
+  validity: true
 - state:
   - robot_inside_habitat
   - robot_has_key
@@ -172,6 +191,7 @@ possibilities:
   - door_airlock_surface_unlocked_opened
   - robot_inside_airlock
   - door_habitat_airlock_locked_closed
+  validity: true
 - state:
   - robot_inside_airlock
   - robot_has_key
@@ -183,6 +203,7 @@ possibilities:
   - robot_has_key
   - door_airlock_surface_locked_closed
   - door_habitat_airlock_unlocked_opened
+  validity: true
 - state: &id002
   - robot_inside_airlock
   - robot_has_key
@@ -194,6 +215,7 @@ possibilities:
   - robot_has_key
   - door_airlock_surface_unlocked_opened
   - door_habitat_airlock_unlocked_opened
+  validity: true
 - state: *id002
   action: enter_surface_from_airlock
   next_state:
@@ -201,6 +223,7 @@ possibilities:
   - door_habitat_airlock_locked_closed
   - robot_outside_habitat
   - door_airlock_surface_locked_closed
+  validity: true
 - state:
   - robot_inside_airlock
   - robot_has_key
@@ -212,6 +235,7 @@ possibilities:
   - door_airlock_surface_locked_closed
   - robot_inside_habitat
   - door_habitat_airlock_locked_closed
+  validity: true
 - state: &id003
   - robot_inside_airlock
   - robot_has_key
@@ -223,6 +247,7 @@ possibilities:
   - door_habitat_airlock_unlocked_opened
   - robot_outside_habitat
   - door_airlock_surface_locked_closed
+  validity: true
 - state: *id003
   action: enter_habitat_from_airlock
   next_state:
@@ -230,6 +255,7 @@ possibilities:
   - door_airlock_surface_unlocked_opened
   - robot_inside_habitat
   - door_habitat_airlock_locked_closed
+  validity: true
 - state:
   - robot_outside_habitat
   - robot_has_key
@@ -241,6 +267,7 @@ possibilities:
   - robot_has_key
   - door_habitat_airlock_locked_closed
   - door_airlock_surface_unlocked_opened
+  validity: true
 - state:
   - robot_outside_habitat
   - robot_has_key
@@ -252,6 +279,7 @@ possibilities:
   - door_habitat_airlock_locked_closed
   - robot_inside_airlock
   - door_airlock_surface_locked_closed
+  validity: true
 - state:
   - robot_outside_habitat
   - robot_has_key
@@ -263,6 +291,7 @@ possibilities:
   - robot_has_key
   - door_habitat_airlock_unlocked_opened
   - door_airlock_surface_unlocked_opened
+  validity: true
 - state:
   - robot_outside_habitat
   - robot_has_key
@@ -274,3 +303,4 @@ possibilities:
   - door_habitat_airlock_unlocked_opened
   - robot_inside_airlock
   - door_airlock_surface_locked_closed
+  validity: true
