@@ -1,1 +1,4 @@
-kb: []
+kb:
+  avoid_states: []
+  avoid_actions: []
+  facts: []

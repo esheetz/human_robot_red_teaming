@@ -75,17 +75,44 @@ class YAMLKBChecks(YAMLChecks):
     def check_kb_yaml_formatting(yaml_dict):
         return YAMLChecks.check_yaml_keys(yaml_dict,
                                           source_key="kb",
-                                          list_keys=None)
+                                          list_keys=["avoid_states","avoid_actions","facts"])
 
     @staticmethod
-    def check_valid_kb_values(kb_list):
+    def check_valid_kb_values(kb_dict):
         # check for valid knowledge base type
-        if not type(kb_list) == list:
-            print("ERROR: knowledge base is not a list")
+        if not type(kb_dict) == dict:
+            print("ERROR: knowledge base is not a dictionary")
             return False
 
-        # check for valid facts in list
-        for i in kb_list:
+        # check for valid states
+        if not type(kb_dict["avoid_states"]) == list:
+            print("ERROR: knowledge base avoid states are not a list")
+            return False
+        for i in kb_dict["avoid_states"]:
+            if (not type(i) == str) and (not type(i) == list):
+                print("ERROR: knowledge base avoid state is not a string or a list of mutex strings")
+                return False
+
+        # check for valid actions
+        if not type(kb_dict["avoid_actions"]) == list:
+            print("ERROR: knowledge base avoid actions are not a list")
+            return False
+        for i in kb_dict["avoid_actions"]:
+            if not type(i) == dict:
+                print("ERROR: knowledge base avoid action is not a dictionary")
+                return False
+            valid_act = YAMLChecks.check_yaml_keys(i,
+                                                   source_key=None,
+                                                   list_keys=["name","precond","postcond_add","postcond_sub"])
+            if not valid_act:
+                print("ERROR: knowledge base contains poorly formatted action")
+                return False
+
+        # check for valid facts
+        if not type(kb_dict["facts"]) == list:
+            print("ERROR: knowledbe base facts are not a list")
+            return False
+        for i in kb_dict["facts"]:
             if not type(i) == str:
                 print("ERROR: knowledge base fact is not a string")
                 return False
@@ -102,7 +129,7 @@ class YAMLModelChecks(YAMLChecks):
     def check_model_yaml_formatting(yaml_dict):
         return YAMLChecks.check_yaml_keys(yaml_dict,
                                           source_key="model",
-                                          list_keys=["states","actions"])
+                                          list_keys=["states","actions","confidence_score"])
 
     def check_valid_model_values(model_dict):
         # check for valid model dict type
@@ -133,6 +160,23 @@ class YAMLModelChecks(YAMLChecks):
             if not valid_act:
                 print("ERROR: model contains poorly formatted action")
                 return False
+
+        # check for valid confidence
+        if not type(model_dict["confidence_score"]) == dict:
+            print("ERROR: model confidence is not a dictionary")
+            return False
+        valid_conf = YAMLChecks.check_yaml_keys(model_dict["confidence_score"],
+                                                source_key=None,
+                                                list_keys=["successes","attempts"])
+        if not valid_conf:
+            print("ERROR: model confidence is poorly formatted")
+            return False
+        if not type(model_dict["confidence_score"]["successes"]) == int:
+            print("ERROR: model confidence successes is not an integer")
+            return False
+        if not type(model_dict["confidence_score"]["attempts"]) == int:
+            print("ERROR: model confidence attempts is not an integer")
+            return False
 
         return True
 
