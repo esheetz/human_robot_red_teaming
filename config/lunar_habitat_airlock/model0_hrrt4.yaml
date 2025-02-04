@@ -1,6 +1,16 @@
-kb:
-  avoid_states: []
-  avoid_actions: []
+model_hypothesis:
+  states_add:
+  - both_doors_unlocked
+  states_sub: []
+  actions_add:
+  - name: check_for_key
+    precond:
+    - ''
+    postcond_add:
+    - robot_has_key
+    postcond_sub:
+    - ''
+  actions_sub: []
   facts:
   - both doors cannot be open at the same time
   - loss of air
