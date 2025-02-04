@@ -103,6 +103,7 @@ def _query_possibility_validity(possibility_list):
                 print("Invalid input, please answer [Y/N] for yes or no.")
             else:
                 valid_input = True
+            print()
         # received user input; store possibility validity
         poss_validity = (val == 'y')
         validity_list.append((s,a,sp,poss_validity))
