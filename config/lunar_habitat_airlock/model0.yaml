@@ -1,4 +1,7 @@
 model:
+  confidence_score:
+      successes: 0
+      attempts: 0
   states:
       - [robot_inside_habitat,robot_inside_airlock,robot_outside_habitat]
       - robot_has_key
