@@ -34,3 +34,18 @@ HRRT Level 4: Updating model knowledge
 - [x] save updated model (and initial confidence score) to YAML file
 - [x] save updated knowledge base to YAML file
 - [x] remove SAR code and SAR todos
+
+ChatGPT Blue Team: accept input from ChatGPT and update models
+- [ ] modify printing and red teaming levels to accept ChatGPT inputs
+- [ ] additional functions for processing ChatGPT input from transcripts
+- [ ] seed several model problems
+- [ ] several iterations of HRRTing levels for problems until ChatGPT doesn't provide sufficient info
+
+Model planning problems:
+- [ ] incorporate pyperplan
+- [ ] convert model files to STRIPS files
+- [ ] research failure modes
+- [ ] process for randomizing task goals and failures
+- [ ] pipeline for attempting planning, updating model confidence, and moving to next model
+- [ ] record data about experiments to file
+- [ ] model planning experiments
