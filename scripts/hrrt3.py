@@ -29,22 +29,22 @@ def hrrt3(model, interactive=False):
 
     # query validity of assumptions
     pre_assump_validity = _query_assumption_validity(
-                              pre_assump,
+                              assumptions_list=pre_assump,
                               state_prompt_text="pre-condition",
                               action_prompt_text="can be achieved to perform",
-                              interactive
+                              interactive=interactive
                           )
     post_add_assump_validity = _query_assumption_validity(
-                                   post_add_assump,
+                                   assumptions_list=post_add_assump,
                                    state_prompt_text="added post-condition",
                                    action_prompt_text="will be achieved as a result of performing",
-                                   interactive
+                                   interactive=interactive
                                )
     post_sub_assump_validity = _query_assumption_validity(
-                                   post_sub_assump,
+                                   assumptions_list=post_sub_assump,
                                    state_prompt_text="subtracted post-condition",
                                    action_prompt_text="will be undone as a result of performing",
-                                   interactive
+                                   interactive=interactive
                                )
 
     return pre_assump_validity, post_add_assump_validity, post_sub_assump_validity
