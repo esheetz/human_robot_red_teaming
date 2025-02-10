@@ -36,7 +36,7 @@ HRRT Level 4: Updating model knowledge
 - [x] remove SAR code and SAR todos
 
 ChatGPT Blue Team: accept input from ChatGPT and update models
-- [ ] modify printing and red teaming levels to accept ChatGPT inputs
+- [x] modify printing and red teaming levels to accept ChatGPT inputs
 - [ ] additional functions for processing ChatGPT input from transcripts
 - [ ] seed several model problems
 - [ ] several iterations of HRRTing levels for problems until ChatGPT doesn't provide sufficient info
