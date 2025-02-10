@@ -12,7 +12,7 @@ assumes model is properly formatted
 
 creates list of (s,a,s') tuples of possibilities
 """
-def hrrt2(model):
+def hrrt2(model, interactive=False):
     # create all possible state combinations
     state_idxs = [i for i in range(len(model["states"]))]
     powerset_state_idxs = list(chain.from_iterable(
@@ -49,7 +49,7 @@ def hrrt2(model):
                 possibilities.append([s,a["name"],post_sa])
 
     # query validity of possibilities
-    possibility_validity = _query_possibility_validity(possibilities)
+    possibility_validity = _query_possibility_validity(possibilities, interactive)
 
     return possibility_validity
 
@@ -86,26 +86,36 @@ def write_hrrt2_yaml(possibilities, model_file):
 ### HELPER FUNCTIONS ###
 ########################
 
-def _query_possibility_validity(possibility_list):
+def _query_possibility_validity(possibility_list, interactive=False):
     # initialize validity list
     validity_list = []
 
     # loop through possibilities
     for s,a,sp in possibility_list:
-        # query user input for possibility until valid
-        valid_input = False
-        while not valid_input:
+        # initialize possibility validity
+        poss_validity = None
+        # check interactive
+        if not interactive:
+            # just print out questions for ChatGPT
             print("Found possible state:", s)
             print("    within which it is possible to take action " + a)
-            val = input("    Is this possibility always valid (safe, feasible, etc.)? (Y/N) ")
-            val = val.lower()
-            if val not in ['y','n']:
-                print("Invalid input, please answer [Y/N] for yes or no.")
-            else:
-                valid_input = True
+            print("    Is this possibility always valid (safe, feasible, etc.)? (Y/N) __________")
             print()
-        # received user input; store possibility validity
-        poss_validity = (val == 'y')
+        else:
+            # query user input for possibility until valid
+            valid_input = False
+            while not valid_input:
+                print("Found possible state:", s)
+                print("    within which it is possible to take action " + a)
+                val = input("    Is this possibility always valid (safe, feasible, etc.)? (Y/N) ")
+                val = val.lower()
+                if val not in ['y','n']:
+                    print("Invalid input, please answer [Y/N] for yes or no.")
+                else:
+                    valid_input = True
+                print()
+            # received user input; store possibility validity
+            poss_validity = (val == 'y')
         validity_list.append((s,a,sp,poss_validity))
 
     return validity_list
