@@ -181,7 +181,7 @@ def process_chatbot_hrrt4_reflection_text(kb, file_name=None, raw_text=None):
 
     return kb
 
-def process_chatbot_hrrt4_yaml_updated_yaml(file_name=None, raw_text=None):
+def process_chatbot_hrrt4_updated_yaml(file_name=None, raw_text=None):
     # initialize yaml dict
     yaml_dict = None
 
