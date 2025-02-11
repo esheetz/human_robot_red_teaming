@@ -82,6 +82,70 @@ def write_hrrt2_yaml(possibilities, model_file):
 
     return
 
+def process_chatbot_hrrt2_text(possibilities, file_name=None, raw_text=None):
+    # initialize lines of text
+    lines = None
+
+    # check given options
+    if file_name is None and raw_text is None:
+        print("ERROR: given no text to process")
+        return
+    elif file_name is not None and raw_text is None:
+        # open file and read text
+        fo = open(file_name, 'r')
+        lines = fo.readlines()
+        fo.close()
+    elif raw_text is not None:
+        # split text around newlines
+        lines = raw_text.split('\n')
+    else:
+        print("ERROR: invalid options, either file_name or raw_text must be given")
+        return
+
+    # parse text to identify states and validity
+    for line in lines:
+        # find state
+        state_idx_start = line.find("[")
+        state_idx_end = line.find("]")
+        if state_idx_start == -1 or state_idx_end == -1:
+            # no state found, continue
+            continue
+        # parse state, ignore square brackets
+        state_txt = line[state_idx_start+1:state_idx_end]
+        # remove any quotes
+        state_txt = state_txt.replace('"','')
+        state_txt = state_txt.replace("'","")
+        # get state as list of literals
+        state = state_txt.split(', ')
+
+        valid = False
+        # find validity
+        ans_idx_Y = line.find('Y')
+        ans_idx_N = line.find('N')
+        if ans_idx_Y == -1 and ans_idx_N == -1:
+            # assume invalid
+            valid = False
+        # check if valid
+        if ans_idx_Y != -1:
+            valid = True
+
+        # set validity
+        state_poss_idx = [i for i,(s,a,sp,v) in enumerate(possibilities) if s == state]
+        if len(state_poss_idx) == 0:
+            print("ERROR: could not find in possibilities list, parsed state", state)
+        # process all matching states
+        for idx in state_poss_idx:
+            # convert to list
+            poss_list = list(possibilities[idx])
+            # set validity
+            poss_list[3] = valid
+            # replace in possibilities
+            possibilities[idx] = tuple(poss_list)
+
+    return possibilities
+
+
+
 ########################
 ### HELPER FUNCTIONS ###
 ########################

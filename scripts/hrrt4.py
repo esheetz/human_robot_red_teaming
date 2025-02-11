@@ -131,6 +131,116 @@ def write_hrrt4_yaml(updated_kb, updated_model,
 
     return
 
+def process_chatbot_hrrt4_reflection_text(kb, file_name=None, raw_text=None):
+    # initialize lines of text
+    lines = None
+
+    # check given options
+    if file_name is None and raw_text is None:
+        print("ERROR: given no text to process")
+        return
+    elif file_name is not None and raw_text is None:
+        # open file and read text
+        fo = open(file_name, 'r')
+        lines = fo.readlines()
+        fo.close()
+    elif raw_text is not None:
+        # split text around newlines
+        lines = raw_text.split('\n')
+    else:
+        print("ERROR: invalid options, either file_name or raw_text must be given")
+        return
+
+    # find where reflections start
+    for line_idx in range(len(lines)):
+        # check for reflections
+        if "HRRT LEVEL 4 REFLECTIONS" in lines[line_idx]:
+            break
+        else:
+            # no reflections found, continue
+            continue
+
+    # skip over REFLECTIONS line
+    line_idx += 1
+
+    # found beginning of reflections, process and add to knowledge base
+    for i in range(line_idx,len(lines)):
+        # check if question or response
+        if len(lines[i]) == 0 or \
+            '?' in lines[i] or \
+            'RESPONSE' in lines[i]:
+            # not useful information, continue
+            continue
+        # check for line ending reflections section
+        # TODO STRONG ASSUMPTION: reflections end with '======' line
+        if '==========' in lines[i]:
+            # reached end of reflections
+            break
+        # add text to knowledge base
+        kb["facts"].append(lines[i])
+
+    return kb
+
+def process_chatbot_hrrt4_yaml_updated_yaml(file_name=None, raw_text=None):
+    # initialize yaml dict
+    yaml_dict = None
+
+    # check given options
+    if file_name is None and raw_text is None:
+        print("ERROR: given no text to process")
+        return
+    elif file_name is not None and raw_text is None:
+        # open file and read text
+        fo = open(file_name, 'r')
+        yaml_dict = yaml.load(fo, Loader=yaml.FullLoader)
+        fo.close()
+    elif raw_text is not None:
+        # read raw text as yaml
+        yaml_dict = yaml.load(raw_text, Loader=yaml.FullLoader)
+    else:
+        print("ERROR: invalid options, either file_name or raw_text must be given")
+        return
+
+    # create new model
+    updated_model = {}
+    # initialize confidence score
+    updated_model["confidence_score"] = {
+        "successes" : 0,
+        "attempts" : 0
+    }
+
+    # TODO STRONG ASSUMPTION: key names for given yaml dict
+
+    # create states from mutex groups
+    updated_model["states"] = yaml_dict["mutex_groups"]
+    # create a set of the mutex states
+    mutex_states = set()
+    for group in yaml_dict["mutex_groups"]:
+        for state in group:
+            mutex_states.add(state)
+    # check if singular states are already included in a mutex group
+    for s in yaml_dict["states"]:
+        if s not in mutex_states:
+            # add to model
+            updated_model["states"].append(s)
+
+    # create actions
+    updated_model["actions"] = []
+    for a in yaml_dict["actions"]:
+        # create dictionary with renamed keys
+        a_dict = {
+            "name" : a["name"],
+            "precond" : a["preconditions"],
+            "postcond_add" : a["add_postconditions"],
+            "postcond_sub" : a["remove_postconditions"]
+        }
+        # add to model
+        updated_model["actions"].append(a_dict)
+
+    return updated_model
+
+
+
 ########################
 ### HELPER FUNCTIONS ###
 ########################
