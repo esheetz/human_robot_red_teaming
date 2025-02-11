@@ -37,7 +37,11 @@ HRRT Level 4: Updating model knowledge
 
 ChatGPT Blue Team: accept input from ChatGPT and update models
 - [x] modify printing and red teaming levels to accept ChatGPT inputs
-- [ ] additional functions for processing ChatGPT input from transcripts
+- [x] additional functions for processing ChatGPT input from transcripts
+		- [x] HRRT2: possibility validity
+		- [x] HRRT3: assumption validity
+		- [x] HRRT4: KB reflections
+		- [x] HRRT4: updated model YAML
 - [ ] seed several model problems
 - [ ] several iterations of HRRTing levels for problems until ChatGPT doesn't provide sufficient info
 
