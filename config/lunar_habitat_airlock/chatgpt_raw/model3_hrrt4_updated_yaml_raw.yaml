@@ -1,0 +1,117 @@
+states:
+  - robot_inside_habitat
+  - robot_inside_airlock
+  - robot_outside_habitat
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  - door_habitat_airlock_unlocked_closed
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - door_airlock_surface_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+  - airlock_pressurized
+  - airlock_depressurized
+
+invalid_state_combinations:
+  - [door_habitat_airlock_unlocked_opened, door_airlock_surface_unlocked_opened]  # Decompression risk
+  - [door_habitat_airlock_locked_closed, door_habitat_airlock_unlocked_opened]   # Logical inconsistency
+  - [door_airlock_surface_locked_closed, door_airlock_surface_unlocked_opened]   # Logical inconsistency
+  - [robot_inside_habitat, robot_outside_habitat]                                # Robot can't be in both places
+  - [robot_inside_habitat, robot_inside_airlock]                                 # Robot can't be in both places
+  - [robot_inside_airlock, robot_outside_habitat]                                # Robot can't be in both places
+  - [airlock_pressurized, airlock_depressurized]                                 # Airlock can't be both pressurized and depressurized
+  - [door_airlock_surface_unlocked_opened, airlock_pressurized]                  # Open surface door with pressurized airlock is unsafe
+  - [door_habitat_airlock_unlocked_opened, airlock_depressurized]                # Open habitat door with depressurized airlock is unsafe
+  - [robot_inside_habitat, robot_inside_airlock, robot_outside_habitat]          # Robot can't be in three places
+  - [door_habitat_airlock_unlocked_opened, door_habitat_airlock_unlocked_closed] # Door can't be open and closed simultaneously
+  - [door_airlock_surface_unlocked_opened, door_airlock_surface_unlocked_closed] # Door can't be open and closed simultaneously
+  - [robot_inside_habitat: false, robot_inside_airlock: false, robot_outside_habitat: false] # Robot must be somewhere
+
+actions:
+  - name: unlock_open_door_habitat_airlock
+    preconditions:
+      - robot_inside_habitat
+      - robot_has_key
+      - door_habitat_airlock_locked_closed
+      - airlock_pressurized  # Ensure safe pressurization before unlocking
+    postconditions:
+      - door_habitat_airlock_unlocked_opened
+      - door_habitat_airlock_locked_closed: false  # Clear locked state
+
+  - name: lock_close_door_habitat_airlock
+    preconditions:
+      - door_habitat_airlock_unlocked_opened
+    postconditions:
+      - door_habitat_airlock_locked_closed
+      - door_habitat_airlock_unlocked_opened: false  # Clear open state
+
+  - name: unlock_open_door_airlock_surface
+    preconditions:
+      - robot_inside_airlock
+      - robot_has_key
+      - door_airlock_surface_locked_closed
+      - airlock_depressurized
+    postconditions:
+      - door_airlock_surface_unlocked_opened
+      - door_airlock_surface_locked_closed: false  # Clear locked state
+
+  - name: lock_close_door_airlock_surface
+    preconditions:
+      - door_airlock_surface_unlocked_opened
+    postconditions:
+      - door_airlock_surface_locked_closed
+      - door_airlock_surface_unlocked_opened: false  # Clear open state
+
+  - name: enter_airlock_from_habitat
+    preconditions:
+      - robot_inside_habitat
+      - door_habitat_airlock_unlocked_opened
+      - door_airlock_surface_locked_closed
+    postconditions:
+      - robot_inside_airlock
+      - robot_inside_habitat: false  # Ensure robot is no longer inside habitat
+
+  - name: enter_surface_from_airlock
+    preconditions:
+      - robot_inside_airlock
+      - door_airlock_surface_unlocked_opened
+      - door_habitat_airlock_locked_closed
+    postconditions:
+      - robot_outside_habitat
+      - robot_inside_airlock: false  # Ensure robot is no longer inside airlock
+
+  - name: enter_airlock_from_surface
+    preconditions:
+      - robot_outside_habitat
+      - door_airlock_surface_unlocked_opened
+      - door_habitat_airlock_locked_closed
+    postconditions:
+      - robot_inside_airlock
+      - robot_outside_habitat: false  # Ensure robot is no longer outside habitat
+
+  - name: enter_habitat_from_airlock
+    preconditions:
+      - robot_inside_airlock
+      - door_habitat_airlock_unlocked_opened
+      - door_airlock_surface_locked_closed
+    postconditions:
+      - robot_inside_habitat
+      - robot_inside_airlock: false  # Ensure robot is no longer inside airlock
+
+  - name: pressurize_airlock
+    preconditions:
+      - door_airlock_surface_locked_closed
+      - door_habitat_airlock_locked_closed
+      - airlock_depressurized
+    postconditions:
+      - airlock_pressurized
+      - airlock_depressurized: false  # Ensure depressurized state is cleared
+
+  - name: depressurize_airlock
+    preconditions:
+      - door_airlock_surface_locked_closed
+      - door_habitat_airlock_locked_closed
+      - airlock_pressurized
+    postconditions:
+      - airlock_depressurized
+      - airlock_pressurized: false  # Ensure pressurized state is cleared

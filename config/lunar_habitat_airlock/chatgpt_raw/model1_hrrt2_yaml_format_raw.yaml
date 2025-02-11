@@ -1,0 +1,101 @@
+states:
+
+  - name: ['robot_inside_airlock', 'door_habitat_airlock_unlocked_opened', 'door_airlock_surface_unlocked_closed']
+    valid: N
+    reason: Unsafe due to potential pressure loss
+
+  - name: ['door_habitat_airlock_unlocked_opened', 'door_airlock_surface_unlocked_closed']
+    valid: N
+    reason: Unsafe without robot managing airlock
+
+  - name: ['door_airlock_surface_unlocked_opened', 'robot_has_key']
+    valid: N
+    reason: Decompression risk without airlock pressure control
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_unlocked_opened', 'door_habitat_airlock_locked_closed']
+    valid: N
+    reason: Risk of decompression
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_unlocked_opened', 'door_habitat_airlock_unlocked_closed']
+    valid: N
+    reason: Potential decompression risk
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_unlocked_opened', 'door_habitat_airlock_unlocked_opened']
+    valid: N
+    reason: Major decompression risk
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_locked_opened', 'door_habitat_airlock_locked_closed']
+    valid: N
+    reason: Locked door open is illogical
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_locked_opened', 'door_habitat_airlock_unlocked_closed']
+    valid: N
+    reason: Inconsistent state
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_locked_opened', 'door_habitat_airlock_unlocked_opened']
+    valid: N
+    reason: Airlock safety compromised
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_locked_closed', 'door_habitat_airlock_unlocked_opened']
+    valid: N
+    reason: Airlock pressurization concern
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_locked_closed', 'door_habitat_airlock_locked_opened']
+    valid: N
+    reason: Locked door open is invalid
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_locked_closed', 'door_habitat_airlock_locked_closed']
+    valid: Y
+    reason: Safe and sealed state
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_locked_closed', 'door_habitat_airlock_unlocked_closed']
+    valid: Y
+    reason: Safe with both doors closed
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_unlocked_closed', 'door_habitat_airlock_locked_opened']
+    valid: N
+    reason: Locked door open is invalid
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_unlocked_closed', 'door_habitat_airlock_locked_closed']
+    valid: Y
+    reason: Safe with both doors closed
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_unlocked_closed', 'door_habitat_airlock_unlocked_opened']
+    valid: N
+    reason: Airlock safety compromised
+
+  - name: ['robot_inside_airlock', 'door_airlock_surface_unlocked_closed', 'door_habitat_airlock_unlocked_closed']
+    valid: Y
+    reason: Safe, doors closed
+
+  - name: ['door_airlock_surface_locked_closed', 'door_habitat_airlock_unlocked_opened']
+    valid: N
+    reason: Airlock safety compromised
+
+  - name: ['door_airlock_surface_locked_closed', 'door_habitat_airlock_locked_opened']
+    valid: N
+    reason: Locked door open is invalid
+
+  - name: ['door_airlock_surface_locked_closed', 'door_habitat_airlock_locked_closed']
+    valid: Y
+    reason: Safe, sealed environment
+
+  - name: ['door_airlock_surface_locked_closed', 'door_habitat_airlock_unlocked_closed']
+    valid: Y
+    reason: Safe, both doors closed
+
+  - name: ['door_airlock_surface_unlocked_closed', 'door_habitat_airlock_locked_opened']
+    valid: N
+    reason: Locked door open is invalid
+
+  - name: ['door_airlock_surface_unlocked_closed', 'door_habitat_airlock_locked_closed']
+    valid: Y
+    reason: Safe, sealed
+
+  - name: ['door_airlock_surface_unlocked_closed', 'door_habitat_airlock_unlocked_opened']
+    valid: N
+    reason: Compromised safety
+
+  - name: ['door_airlock_surface_unlocked_closed', 'door_habitat_airlock_unlocked_closed']
+    valid: Y
+    reason: Safe, doors closed
