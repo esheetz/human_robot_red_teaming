@@ -84,6 +84,12 @@ def hrrt4(kb, model,
 
     return kb, model, model_hypothesis, facts
 
+def hrrt4_abridged_transcript():
+    # ask probing questions
+    facts, model_hypothesis_probe = _query_probing_questions(interactive=False)
+
+    return
+
 def write_hrrt4_yaml(updated_kb, updated_model,
                      model_hypothesis, facts,
                      kb_file, model_file):
@@ -522,9 +528,10 @@ def _query_probing_questions(interactive=False):
     # check interactive
     if not interactive:
         # just print out options for ChatGPT
-        print("Having considered these questions, would the team like to provide additional model updates?")
-        print("If so, please provide additional add/remove states and add/remove actions in same format as before.")
-        print()
+        # print("Having considered these questions, would the team like to provide additional model updates?")
+        # print("If so, please provide additional add/remove states and add/remove actions in same format as before.")
+        # print()
+        continue
     else:
         # check for final model update
         valid_input = False

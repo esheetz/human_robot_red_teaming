@@ -53,6 +53,25 @@ def hrrt2(model, interactive=False):
 
     return possibility_validity
 
+def hrrt2_abridged_transcript(possibilities):
+    # create set of states
+    possibility_set = set()
+
+    # create set of only unique states
+    for s,_,_,_ in possibilities:
+        possibility_set.add(tuple(s))
+
+    # print transcript for unique possibilities
+    for s in possibility_set:
+        # just print out questions for ChatGPT
+        print("Found possible state:", list(s))
+        print("    Is this possibility always valid (safe, feasible, etc.)? (Y/N) __________")
+        print()
+
+    print("Please format your answers as a YAML file, with a list of states and their validity.")
+
+    return
+
 def write_hrrt2_yaml(possibilities, model_file):
     # create file name
     ext_idx = model_file.rfind(".yaml")
@@ -143,6 +162,35 @@ def process_chatbot_hrrt2_text(possibilities, file_name=None, raw_text=None):
             possibilities[idx] = tuple(poss_list)
 
     return possibilities
+
+def process_chatbot_hrrt2_yaml(file_name=None, raw_yaml=None):
+    # initialize yaml dict
+    yaml_dict = None
+
+    # check given options
+    if file_name is None and raw_yaml is None:
+        print("ERROR: given no text to process")
+        return
+    elif file_name is not None and raw_yaml is None:
+        # open file and read text
+        fo = open(file_name, 'r')
+        yaml_dict = yaml.load(fo, Loader=yaml.FullLoader)
+        fo.close()
+    elif raw_yaml is not None:
+        # read raw text as yaml
+        yaml_dict = yaml.load(raw_text, Loader=yaml.FullLoader)
+    else:
+        print("ERROR: invalid options, either file_name or raw_text must be given")
+        return
+
+    # initialize list of possibilities
+    possibilities = []
+
+    # loop through yaml
+    for s_dict in yaml_dict["states"]:
+        print("NOT IMPLEMENTED")
+
+    return
 
 
 
