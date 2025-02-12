@@ -43,28 +43,28 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 	- [x] HRRT4: KB reflections
 	- [x] HRRT4: updated model YAML
 - [ ] seed several model problems
-  - [ ] space related applications
+  - [x] space related applications
 	  - [x] lunar habitat
-		- [ ] mars team at distance
+		- [x] mars team at distance
 	- [ ] household related applications
 	  - [ ] cleaning
 		- [ ] assembly and repair tasks
 	- [ ] day-to-day applications
 	  - [ ] planning travel
-		- [ ] argument(?)
+		- [ ] diagnosing issue with vehicle
 	- [ ] cinematic applications
 		- [ ] 2001 Space Odyssey
 		- [ ] Iron Giant: missile launching
 - [ ] several iterations of HRRTing levels for problems until ChatGPT doesn't provide sufficient info
-	- [ ] space related applications
+	- [x] space related applications
 		- [x] lunar habitat (iterations 1, 2, 3, 4, 5)
-		- [ ] mars team at distance
+		- [x] mars team at distance (iterations 1, 2, 3, 4, 5)
 	- [ ] household related applications
 		- [ ] cleaning
 		- [ ] assembly and repair tasks
 	- [ ] day-to-day applications
 		- [ ] planning travel
-		- [ ] argument(?)
+		- [ ] diagnosing issue with vehicle
 	- [ ] cinematic applications
 		- [ ] 2001 Space Odyssey
 		- [ ] Iron Giant: missile launching
@@ -72,6 +72,7 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 Model planning problems:
 - [ ] incorporate pyperplan
 - [ ] convert model files to STRIPS files
+  - [ ] assume models are supersets of each other, so if ChatGPT removed something from one iteration to the next, include it
 - [ ] research failure modes
 - [ ] process for randomizing task goals and failures
 - [ ] pipeline for attempting planning, updating model confidence, and moving to next model
