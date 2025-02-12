@@ -1,0 +1,26 @@
+Your model is already quite comprehensive, but I suggest considering the following refinements to further enhance its robustness:
+
+### **1. Additional States to Improve Situational Awareness**
+- **weather_hazard_detected** – Represents when adverse weather (e.g., dust storm) impacts operations.
+- **robot_damaged** – Indicates if the robot has sustained damage, affecting mobility or functionality.
+- **communication_blackout** – A critical state where no communication is possible with either ground control or other robots.
+- **critical_system_failure** – Represents a major failure requiring human intervention or a last-resort autonomous recovery attempt.
+
+### **2. New Actions for Operational Flexibility**
+- **detect_weather_hazard**
+  - *Preconditions:* [robot_available]
+  - *Postconditions:* [weather_hazard_detected]
+
+- **assess_damage**
+  - *Preconditions:* [robot_available, robot_damaged]
+  - *Postconditions:* [failure_reported]
+
+- **attempt_autonomous_repair**
+  - *Preconditions:* [robot_damaged]
+  - *Postconditions:* [robot_available] (if successful), [critical_system_failure] (if unsuccessful)
+
+- **safe_mode_activation**
+  - *Preconditions:* [critical_system_failure]
+  - *Postconditions:* [mission_interrupted]
+
+Would you like me to update your YAML model with these enhancements?

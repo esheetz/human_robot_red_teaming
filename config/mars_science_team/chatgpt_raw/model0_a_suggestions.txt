@@ -1,0 +1,27 @@
+Your current model captures a basic sequence of sample collection, analysis, and reporting but could be improved to reflect the complexities of a Mars surface mission. Here are some suggestions:
+
+### **1. Expanding State Representation**
+Your states are too limited to account for real-world challenges like environmental hazards, communication delays, or the need for coordination among robots. Consider adding:
+- **robot_available** (to reflect if the robot is free for new tasks)
+- **robot_needs_recharge** (to ensure energy levels are considered)
+- **communication_delayed** (to reflect when Earth communication is out of sync)
+- **sample_type_identified** (since not all samples may be relevant for analysis)
+- **sample_contaminated** (to model errors in collection)
+
+### **2. Refining Actions**
+Your actions should account for additional operational concerns, such as:
+- **scan_for_samples**: A pre-step before detection.
+  - *Preconditions:* [robot_available]
+  - *Postconditions:* [sample_detected]
+- **transmit_findings**: A separate step from reporting to address time delays.
+  - *Preconditions:* [findings_ready, communication_delayed]
+  - *Postconditions:* []
+- **coordinate_with_other_robots**: Since multiple robots are involved.
+  - *Preconditions:* [robot_available]
+  - *Postconditions:* [task_synchronized]
+
+### **3. Handling Time-Delayed Communication**
+- Introduce a **delayed_response** state that captures when commands from Earth are in transit.
+- Modify actions so that critical updates (e.g., report_findings) cannot be executed unless communication is available.
+
+Would you like me to update your YAML model with these refinements?

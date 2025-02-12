@@ -1,0 +1,1 @@
+I've updated the model to include multi-robot coordination, recovery mechanisms, and failure communication with the team and ground control. Let me know if you need further refinements!
