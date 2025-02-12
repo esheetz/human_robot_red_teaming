@@ -1,0 +1,26 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - robot_has_sample
+      - sample_detected
+      - sample_analyzed
+      - findings_ready
+  actions:
+      - name: pick_up_sample
+        precond: [sample_detected]
+        postcond_add: [robot_has_sample]
+        postcond_sub: [sample_detected]
+      - name: analyze_sample
+        precond: [robot_has_sample]
+        postcond_add: [sample_analyzed]
+        postcond_sub: [findings_ready]
+      - name: report_findings
+        precond: [findings_ready]
+        postcond_add: []
+        postcond_sub: [sample_analyzed, findings_ready]
+      - name: drop_sample
+        precond: [robot_has_sample]
+        postcond_add: []
+        postcond_sub: [robot_has_sample]
