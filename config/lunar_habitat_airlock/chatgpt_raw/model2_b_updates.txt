@@ -1,0 +1,93 @@
+To fix issues with **astronaut verification**, we need to ensure that critical actions, such as placing a lunar sample in the habitat, are only performed when an astronaut is present or has given approval. There are multiple ways to incorporate this requirement into the model:
+
+---
+
+### **1. Modify the `place_lunar_sample_in_habitat` Action**
+Currently, the robot can place a lunar sample inside the habitat without astronaut oversight. We can add a precondition that requires the astronaut to be inside the habitat or explicitly approve the action.
+
+#### **Updated Action:**
+```yaml
+  - name: place_lunar_sample_in_habitat
+    preconditions:
+      - robot_inside_habitat
+      - lunar_sample_with_robot
+      - astronaut_inside_habitat | astronaut_approved_sample_placement
+      - robot_system_nominal
+    postconditions:
+      - lunar_sample_in_habitat
+    remove_conditions:
+      - lunar_sample_with_robot
+```
+✅ **Fix:**
+- Ensures the action can only proceed if an astronaut is present (`astronaut_inside_habitat`) or has explicitly approved it (`astronaut_approved_sample_placement`).
+- Introduces a new state, `astronaut_approved_sample_placement`, which can be toggled by another action (e.g., astronaut approval).
+
+---
+
+### **2. Introduce an `astronaut_approve_sample_placement` Action**
+Since an astronaut might not always be in the habitat, we need a way for them to remotely approve sample placement.
+
+#### **New Action:**
+```yaml
+  - name: astronaut_approve_sample_placement
+    preconditions:
+      - astronaut_on_surface | astronaut_inside_airlock | astronaut_inside_habitat
+    postconditions:
+      - astronaut_approved_sample_placement
+```
+✅ **Fix:**
+- Allows astronauts to remotely approve the sample placement.
+- Can be triggered from **any astronaut location** (surface, airlock, or habitat).
+
+---
+
+### **3. Reset the Approval State After Sample Placement**
+To prevent unintended carryover of approval, we should reset `astronaut_approved_sample_placement` after the robot places the sample.
+
+#### **Updated `place_lunar_sample_in_habitat` Action (with reset):**
+```yaml
+  - name: place_lunar_sample_in_habitat
+    preconditions:
+      - robot_inside_habitat
+      - lunar_sample_with_robot
+      - astronaut_inside_habitat | astronaut_approved_sample_placement
+      - robot_system_nominal
+    postconditions:
+      - lunar_sample_in_habitat
+    remove_conditions:
+      - lunar_sample_with_robot
+      - astronaut_approved_sample_placement  # Reset approval after placement
+```
+✅ **Fix:**
+- Ensures the astronaut must approve again for each new sample.
+
+---
+
+### **Alternative: Require Direct Astronaut Interaction**
+If strict control is needed, we could instead introduce an action where the astronaut physically takes the sample from the robot:
+
+#### **Alternative Action:**
+```yaml
+  - name: astronaut_take_lunar_sample_from_robot
+    preconditions:
+      - robot_inside_habitat
+      - lunar_sample_with_robot
+      - astronaut_inside_habitat
+    postconditions:
+      - lunar_sample_in_habitat
+    remove_conditions:
+      - lunar_sample_with_robot
+```
+✅ **Fix:**
+- The robot hands the sample directly to the astronaut.
+- Requires astronaut presence for sample handling.
+
+---
+
+### **Which Fix Works Best?**
+- **If astronauts should manually approve remotely → Use approval state (`astronaut_approved_sample_placement`).**
+- **If astronauts should always handle the sample manually → Use `astronaut_take_lunar_sample_from_robot`.**
+
+Would you like to enforce stricter verification, or should the robot operate semi-autonomously with remote approval?
+
+I've updated the YAML model to include astronaut verification and remote approval for semi-autonomous robot operations. Let me know if you need any refinements!
