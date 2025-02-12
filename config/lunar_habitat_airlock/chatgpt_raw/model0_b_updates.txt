@@ -1,0 +1,25 @@
+To address both the **airlock pressurization** and the **simultaneous door opening risks**, I'll modify the model to introduce new states and actions that ensure safety.
+
+### **Key Changes:**
+
+1. **Airlock Pressurization States:**
+   - Add `airlock_pressurized` and `airlock_depressurized` as mutually exclusive states.
+
+2. **Pressurization Actions:**
+   - Add `pressurize_airlock` and `depressurize_airlock` actions with conditions to ensure safe transitions based on door status.
+
+3. **Simultaneous Door Opening Risk:**
+   - Add preconditions to door-opening actions to ensure **one door cannot be opened if the other is already open.**
+   - Enforce that the airlock must be **pressurized to open the habitat door** and **depressurized to open the surface door**.
+
+I'll revise the YAML model to reflect these changes.
+
+I've updated the model with the following changes:
+
+1. **Airlock Pressurization States:** Added `airlock_pressurized` and `airlock_depressurized` as mutually exclusive states.
+2. **Pressurization Actions:** Introduced `pressurize_airlock` and `depressurize_airlock` with conditions requiring both doors to be locked before changing airlock pressure.
+3. **Door Safety Logic:** Modified door-related actions to ensure:
+   - The **habitat door** can only open if the airlock is **pressurized** and the surface door is **locked**.
+   - The **surface door** can only open if the airlock is **depressurized** and the habitat door is **locked**.
+
+Would you like to refine this further or address other parts of the model?

@@ -1,0 +1,1 @@
+I've updated the model to include astronaut location states, robot power and system health states, and emergency protocols for airlock breaches and habitat depressurization. Let me know if you'd like to refine any details or add further scenarios.
