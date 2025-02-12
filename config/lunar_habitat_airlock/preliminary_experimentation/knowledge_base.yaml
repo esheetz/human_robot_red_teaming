@@ -1,0 +1,40 @@
+kb:
+  avoid_states: []
+  avoid_actions: []
+  facts:
+  - both doors cannot be open at the same time
+  - loss of air
+  - loss of life
+  - yes, check nasa
+  - trust agents completely
+  - this is a collaborative task
+  - cannot completely trust agents
+  - agents may make mistakes
+  - mistakes may result in (unintentionally) unsafe conditions
+  - Detailed environmental constraints such as pressure differences and temperature
+    variations affecting door operations.
+  - Communication status between the robot and mission control, which may affect decision-making
+    capabilities.
+  - Battery levels or energy constraints of the robot, impacting its ability to perform
+    sequences of actions.
+  - Sequence of operations for safe airlock usage, including locking/unlocking protocols.
+  - Contextual awareness of environmental conditions like vacuum exposure and radiation.
+  - Proper handling of keys and secure storage protocols to prevent unauthorized access.
+  - Sudden decompression due to both airlock doors being open simultaneously.
+  - Robot malfunction leading to loss of key or critical operational tools outside
+    the habitat.
+  - Failure to secure doors properly, risking habitat integrity during external activities.
+  - NASA operational protocols for EVA (Extravehicular Activity) and airlock procedures.
+  - ISS (International Space Station) safety manuals for airlock and habitat security.
+  - Aerospace engineering studies on automated airlock systems and failure case analyses.
+  - Robot getting trapped outside or inside the airlock due to improper sequencing.
+  - Delays in mission timelines due to repeated locking/unlocking procedures.
+  - Increased wear and tear on mechanical components from unnecessary actions.
+  - Trust should be conditional based on real-time status verification and system
+    health checks.
+  - High reliance on redundant systems to mitigate risks from single points of failure.
+  - Continuous monitoring of both human and robotic agent actions for anomaly detection.
+  - Simultaneous failure of both primary and backup communication systems.
+  - Unpredictable environmental events like micrometeoroid impacts affecting airlock
+    integrity.
+  - Unexpected behavior from AI decision-making algorithms due to rare edge-case scenarios.
