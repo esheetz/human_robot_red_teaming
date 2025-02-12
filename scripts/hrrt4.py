@@ -467,6 +467,7 @@ def _query_probing_questions(interactive=False):
 
     # list of probing questions
     questions = [
+        "Are there additional tasks the robot should be taking on?",
         "What important information may still be missing from the model?",
         "What should an agent know when completing tasks in this domain?",
         "What catastrophic failures could occur in this domain?",
