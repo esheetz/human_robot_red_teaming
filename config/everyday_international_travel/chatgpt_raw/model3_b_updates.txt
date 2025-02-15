@@ -1,0 +1,8 @@
+I've updated the model to:
+- Introduce **mutex constraints** for mutually exclusive states.
+- Add missing **preconditions** for actions such as `check_flight_status`, `check_flight_delay`, `finalize_itinerary`, and `arrive_at_hotel`.
+- Include **contingency planning** for canceled flights and hotel rebooking.
+- Introduce an action for **checking in baggage** to ensure proper tracking.
+- Add **visa verification at the destination** before customs clearance.
+
+Let me know if you need further refinements!

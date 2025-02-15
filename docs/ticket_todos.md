@@ -50,7 +50,7 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 	  - [x] cleaning
 		- [x] assembly and repair tasks
 	- [ ] day-to-day applications
-	  - [ ] planning travel
+	  - [x] planning international travel
 		- [ ] diagnosing issue with vehicle
 	- [ ] cinematic applications
 		- [ ] 2001 Space Odyssey
@@ -63,7 +63,7 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 		- [x] cleaning (iterations 1, 2, 3, 4, 5)
 		- [x] assembly and repair tasks (iterations 1, 2, 3, 4, 5)
 	- [ ] day-to-day applications
-		- [ ] planning travel
+		- [x] planning international travel (iterations 1, 2, 3, 4, 5)
 		- [ ] diagnosing issue with vehicle
 	- [ ] cinematic applications
 		- [ ] 2001 Space Odyssey

@@ -15,3 +15,4 @@
     - This further exacerbated the model's tendency to repeat itself
     - Often the same adjustment needed to be prompted multiple times by human
 - Good at high-level questions, struggles with low-level details or specificity
+- Had a much easier time with more day-to-day scenarios (which makes sense, given what model was likely trained on)
