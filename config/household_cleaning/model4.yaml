@@ -1,0 +1,158 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - bedroom_dirty
+      - bedroom_partially_clean
+      - bedroom_clean
+      - bathroom_dirty
+      - bathroom_partially_clean
+      - bathroom_clean
+      - kitchen_dirty
+      - kitchen_partially_clean
+      - kitchen_clean
+      - main_room_dirty
+      - main_room_partially_clean
+      - main_room_clean
+      - floors_dirty
+      - floors_partially_clean
+      - floors_clean
+      - child_present
+      - pet_present
+      - child_supervised
+      - pet_supervised
+      - chemical_exposed
+      - obstacle_in_path
+      - vacuum_noise_level_high
+      - cleaning_in_progress_bedroom
+      - cleaning_in_progress_bathroom
+      - cleaning_in_progress_kitchen
+      - cleaning_in_progress_main_room
+      - wet_floor
+      - robot_needs_recharge
+      - robot_charging
+      - robot_carrying_chemicals
+      - robot_stuck
+      - robot_emergency_stop
+      - spill_detected
+      - hazard_alert_issued
+      - air_quality_hazard
+      - fume_detected
+      - fragile_object_detected
+      - fragile_object_shattered
+      - collision_detected
+      - dropped_object_detected
+      - food_waste_detected
+      - loose_furniture_detected
+      - cable_hazard_detected
+      - potential_spill_source_detected
+      - fire_hazard_detected
+      - gas_leak_detected
+      - maintenance_task_pending
+  actions:
+      - name: request_supervision_confirmation
+        precond: [child_present OR pet_present]
+        postcond_add: [child_supervised, pet_supervised]
+      - name: vacuum_floors
+        precond: [floors_dirty, child_supervised, pet_supervised]
+        postcond_add: [floors_partially_clean]
+        postcond_sub: [floors_dirty]
+      - name: finalize_floor_cleaning
+        precond: [floors_partially_clean]
+        postcond_add: [floors_clean]
+        postcond_sub: [floors_partially_clean]
+      - name: clean_toilet
+        precond: [bathroom_dirty, NOT child_present, chemical_exposed]
+        postcond_add: [bathroom_partially_clean]
+        postcond_sub: [bathroom_dirty]
+      - name: finalize_bathroom_cleaning
+        precond: [bathroom_partially_clean]
+        postcond_add: [bathroom_clean]
+        postcond_sub: [bathroom_partially_clean]
+      - name: scrub_countertops
+        precond: [kitchen_dirty, robot_carrying_chemicals, NOT child_present]
+        postcond_add: [kitchen_partially_clean]
+        postcond_sub: [kitchen_dirty]
+      - name: finalize_kitchen_cleaning
+        precond: [kitchen_partially_clean]
+        postcond_add: [kitchen_clean]
+        postcond_sub: [kitchen_partially_clean]
+      - name: make_bed
+        precond: [bedroom_dirty, NOT child_present]
+        postcond_add: [bedroom_partially_clean]
+        postcond_sub: [bedroom_dirty]
+      - name: finalize_bedroom_cleaning
+        precond: [bedroom_partially_clean]
+        postcond_add: [bedroom_clean]
+        postcond_sub: [bedroom_partially_clean]
+      - name: unclutter
+        precond: [main_room_dirty, NOT obstacle_in_path]
+        postcond_add: [main_room_partially_clean]
+        postcond_sub: [main_room_dirty]
+      - name: finalize_main_room_cleaning
+        precond: [main_room_partially_clean]
+        postcond_add: [main_room_clean]
+        postcond_sub: [main_room_partially_clean]
+      - name: detect_food_waste
+        precond: []
+        postcond_add: [food_waste_detected]
+      - name: dispose_food_waste
+        precond: [food_waste_detected]
+        postcond_sub: [food_waste_detected]
+      - name: detect_loose_furniture
+        precond: []
+        postcond_add: [loose_furniture_detected]
+      - name: secure_loose_furniture
+        precond: [loose_furniture_detected]
+        postcond_sub: [loose_furniture_detected]
+      - name: detect_cable_hazard
+        precond: []
+        postcond_add: [cable_hazard_detected]
+      - name: arrange_cables_safely
+        precond: [cable_hazard_detected]
+        postcond_sub: [cable_hazard_detected]
+      - name: detect_potential_spill_source
+        precond: []
+        postcond_add: [potential_spill_source_detected]
+      - name: secure_potential_spill_source
+        precond: [potential_spill_source_detected]
+        postcond_sub: [potential_spill_source_detected]
+      - name: recharge_battery
+        precond: [robot_needs_recharge]
+        postcond_add: [robot_charging]
+        postcond_sub: [robot_needs_recharge]
+      - name: complete_recharge
+        precond: [robot_charging]
+        postcond_sub: [robot_charging]
+      - name: safely_store_chemicals
+        precond: [chemical_exposed, robot_carrying_chemicals]
+        postcond_sub: [chemical_exposed, robot_carrying_chemicals]
+      - name: detect_spill
+        precond: []
+        postcond_add: [spill_detected, wet_floor]
+      - name: mop_floors
+        precond: [wet_floor, NOT child_present, NOT pet_present]
+        postcond_add: [floors_partially_clean]
+        postcond_sub: [wet_floor]
+      - name: alert_hazard
+        precond: [spill_detected OR chemical_exposed OR wet_floor OR obstacle_in_path OR air_quality_hazard OR fume_detected]
+        postcond_add: [hazard_alert_issued]
+      - name: detect_fire_hazard
+        precond: []
+        postcond_add: [fire_hazard_detected]
+      - name: alert_fire_hazard
+        precond: [fire_hazard_detected]
+        postcond_add: [hazard_alert_issued]
+      - name: detect_gas_leak
+        precond: []
+        postcond_add: [gas_leak_detected]
+      - name: alert_gas_leak
+        precond: [gas_leak_detected]
+        postcond_add: [hazard_alert_issued]
+      - name: detect_maintenance_task
+        precond: []
+        postcond_add: [maintenance_task_pending]
+      - name: provide_maintenance_reminder
+        precond: [maintenance_task_pending]
+        postcond_sub: [maintenance_task_pending]

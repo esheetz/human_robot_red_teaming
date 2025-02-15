@@ -1,0 +1,1 @@
+I've updated the model to introduce intermediate resolution steps before marking areas as clean, fixed chemical handling inconsistencies, and added energy management. Let me know if you need further refinements!

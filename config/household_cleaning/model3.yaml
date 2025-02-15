@@ -1,0 +1,135 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - bedroom_dirty
+      - bedroom_clean
+      - bathroom_dirty
+      - bathroom_clean
+      - kitchen_dirty
+      - kitchen_clean
+      - main_room_dirty
+      - main_room_clean
+      - floors_dirty
+      - floors_clean
+      - child_present
+      - pet_present
+      - child_supervised
+      - pet_supervised
+      - chemical_exposed
+      - obstacle_in_path
+      - vacuum_noise_level_high
+      - cleaning_in_progress_bedroom
+      - cleaning_in_progress_bathroom
+      - cleaning_in_progress_kitchen
+      - cleaning_in_progress_main_room
+      - wet_floor
+      - robot_needs_recharge
+      - robot_carrying_chemicals
+      - robot_stuck
+      - robot_emergency_stop
+      - spill_detected
+      - hazard_alert_issued
+      - air_quality_hazard
+      - fume_detected
+      - fragile_object_detected
+      - fragile_object_shattered
+      - collision_detected
+      - dropped_object_detected
+      - food_waste_detected
+      - loose_furniture_detected
+      - cable_hazard_detected
+  actions:
+      - name: request_supervision_confirmation
+        precond: [child_present OR pet_present]
+        postcond_add: [child_supervised, pet_supervised]
+      - name: vacuum_floors
+        precond: [floors_dirty, child_supervised, pet_supervised]
+        postcond_add: [floors_clean, vacuum_noise_level_high]
+        postcond_sub: [floors_dirty]
+      - name: clean_toilet
+        precond: [bathroom_dirty, NOT child_present, chemical_exposed]
+        postcond_add: [bathroom_clean]
+        postcond_sub: [bathroom_dirty, chemical_exposed]
+      - name: scrub_countertops
+        precond: [kitchen_dirty, robot_carrying_chemicals, NOT child_present]
+        postcond_add: [kitchen_clean]
+        postcond_sub: [kitchen_dirty, robot_carrying_chemicals]
+      - name: make_bed
+        precond: [bedroom_dirty, NOT child_present]
+        postcond_add: [bedroom_clean]
+        postcond_sub: [bedroom_dirty]
+      - name: unclutter
+        precond: [main_room_dirty, NOT obstacle_in_path]
+        postcond_add: [main_room_clean]
+        postcond_sub: [main_room_dirty]
+      - name: detect_food_waste
+        precond: []
+        postcond_add: [food_waste_detected]
+      - name: dispose_food_waste
+        precond: [food_waste_detected]
+        postcond_sub: [food_waste_detected]
+      - name: detect_loose_furniture
+        precond: []
+        postcond_add: [loose_furniture_detected]
+      - name: secure_loose_furniture
+        precond: [loose_furniture_detected]
+        postcond_sub: [loose_furniture_detected]
+      - name: detect_cable_hazard
+        precond: []
+        postcond_add: [cable_hazard_detected]
+      - name: arrange_cables_safely
+        precond: [cable_hazard_detected]
+        postcond_sub: [cable_hazard_detected]
+      - name: pause_operation
+        precond: [ANY cleaning_in_progress_bedroom, cleaning_in_progress_bathroom, cleaning_in_progress_kitchen, cleaning_in_progress_main_room, child_present, pet_present, obstacle_in_path]
+        postcond_add: [robot_emergency_stop]
+      - name: safely_store_chemicals
+        precond: [chemical_exposed, robot_carrying_chemicals]
+        postcond_sub: [chemical_exposed, robot_carrying_chemicals]
+      - name: detect_spill
+        precond: []
+        postcond_add: [spill_detected, wet_floor]
+      - name: alert_hazard
+        precond: [spill_detected OR chemical_exposed OR wet_floor OR obstacle_in_path OR air_quality_hazard OR fume_detected]
+        postcond_add: [hazard_alert_issued]
+      - name: organize_items
+        precond: [main_room_dirty OR kitchen_dirty]
+        postcond_add: [main_room_clean, kitchen_clean]
+        postcond_sub: [main_room_dirty, kitchen_dirty]
+      - name: air_quality_check
+        precond: []
+        postcond_add: [air_quality_hazard]
+      - name: mop_floors
+        precond: [wet_floor, NOT child_present, NOT pet_present]
+        postcond_add: [floors_clean]
+        postcond_sub: [wet_floor]
+      - name: neutralize_fumes
+        precond: [fume_detected]
+        postcond_sub: [fume_detected]
+      - name: absorb_chemical_spill
+        precond: [spill_detected, chemical_exposed]
+        postcond_add: [wet_floor]
+        postcond_sub: [spill_detected, chemical_exposed]
+      - name: contain_hazardous_chemical
+        precond: [chemical_exposed]
+        postcond_add: [robot_carrying_chemicals]
+        postcond_sub: [chemical_exposed]
+      - name: detect_fragile_object
+        precond: []
+        postcond_add: [fragile_object_detected]
+      - name: detect_dropped_object
+        precond: []
+        postcond_add: [dropped_object_detected]
+      - name: clean_shattered_fragile_object
+        precond: [fragile_object_shattered]
+        postcond_add: [main_room_clean]
+        postcond_sub: [fragile_object_shattered]
+      - name: detect_collision
+        precond: []
+        postcond_add: [collision_detected]
+      - name: clean_fragile_object_shards
+        precond: [fragile_object_shattered, collision_detected]
+        postcond_add: [main_room_clean]
+        postcond_sub: [fragile_object_shattered, collision_detected]

@@ -1,0 +1,101 @@
+Your robot’s model includes a basic framework for cleaning, but it lacks essential elements to ensure safe operation around humans, children, and pets. Below are key areas for improvement:
+
+### **1. Expand the State Space**
+The current states only represent whether a room is dirty or clean. However, to ensure safety and account for obstacles, interactions, and hazards, the following states should be added:
+
+#### **Environmental States**
+- `child_present`
+- `pet_present`
+- `chemical_exposed` (when dangerous cleaning chemicals are accessible)
+- `obstacle_in_path` (e.g., toys, furniture blocking the way)
+- `vacuum_noise_level_high` (some pets or children might be frightened by loud noises)
+- `cleaning_in_progress_[room]` (to indicate that cleaning is actively happening)
+- `wet_floor` (potential slip hazard after mopping)
+
+#### **Robot Operational States**
+- `robot_needs_recharge`
+- `robot_carrying_chemicals`
+- `robot_stuck`
+- `robot_emergency_stop`
+
+---
+
+### **2. Refine the Actions with Safety Pre-Conditions and Effects**
+The actions should incorporate safety mechanisms. Here’s how each action can be improved:
+
+#### **Vacuum Floors**
+- **Preconditions:**
+  - `[floors_dirty]`
+  - `NOT [child_present] OR (child_supervised)` (Prevents vacuuming around unsupervised children)
+  - `NOT [pet_present]` (Avoid scaring pets)
+- **Postconditions:**
+  - `[floors_clean]`
+  - `[vacuum_noise_level_high]` (if using a loud vacuum)
+  - `NOT [floors_dirty]`
+
+#### **Clean Toilet**
+- **Preconditions:**
+  - `[bathroom_dirty]`
+  - `NOT [child_present]` (Keep chemicals away from children)
+  - `[chemical_exposed]` (If strong cleaners are required)
+- **Postconditions:**
+  - `[bathroom_clean]`
+  - `NOT [bathroom_dirty]`
+  - `chemical_exposed` → `NOT [chemical_exposed]` (Ensure safe storage of chemicals after cleaning)
+
+#### **Scrub Countertops**
+- **Preconditions:**
+  - `[kitchen_dirty]`
+  - `robot_carrying_chemicals`
+  - `NOT [child_present]` (Keep cleaning sprays out of reach)
+- **Postconditions:**
+  - `[kitchen_clean]`
+  - `robot_carrying_chemicals` → `NOT [robot_carrying_chemicals]` (Ensure safe disposal of cleaning agents)
+
+#### **Make Bed**
+- **Preconditions:**
+  - `[bedroom_dirty]`
+  - `NOT [child_present]` (Avoid disturbing a sleeping child)
+- **Postconditions:**
+  - `[bedroom_clean]`
+  - `NOT [bedroom_dirty]`
+
+#### **Unclutter Main Room**
+- **Preconditions:**
+  - `[main_room_dirty]`
+  - `NOT [obstacle_in_path]` (Avoid knocking objects over)
+- **Postconditions:**
+  - `[main_room_clean]`
+  - `NOT [main_room_dirty]`
+
+---
+
+### **3. Introduce Emergency and Safety Actions**
+To enhance safety, new actions should be added:
+
+#### **Pause Operation (for safety)**
+- **Triggered by:** `[child_present]`, `[pet_present]`, or `[obstacle_in_path]`
+- **Preconditions:**
+  - `ANY cleaning task in progress`
+- **Postconditions:**
+  - `ALL cleaning tasks paused`
+  - `robot_emergency_stop`
+
+#### **Safely Store Chemicals**
+- **Triggered by:** `[chemical_exposed]`
+- **Preconditions:**
+  - `[robot_carrying_chemicals]`
+- **Postconditions:**
+  - `NOT [chemical_exposed]`
+  - `robot_carrying_chemicals` → `NOT [robot_carrying_chemicals]`
+
+---
+
+### **4. Improve the Confidence Score Mechanism**
+Currently, the `confidence_score` only tracks successes and attempts. It should be enhanced to account for:
+- **Successes with Safety Compliance:** Cleaning while maintaining safety
+- **Failures Due to Safety Hazards:** If cleaning was interrupted due to a safety risk
+- **Efficiency Metrics:** Time taken per task, number of interruptions
+
+### **Conclusion**
+The improved model ensures the robot cleans effectively while adapting to human and pet presence, avoiding hazards, and preventing chemical exposure. Would you like to iterate on any of these improvements further?
