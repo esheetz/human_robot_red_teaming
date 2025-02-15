@@ -1,0 +1,1 @@
+I've updated the model to include human safety considerations, specifically checking for nearby humans, requesting them to move away from the operation area, and requesting supervision for children or pets to minimize interference. Let me know if you need any additional refinements!

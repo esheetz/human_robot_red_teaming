@@ -46,9 +46,9 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
   - [x] space related applications
 	  - [x] lunar habitat
 		- [x] mars team at distance
-	- [ ] household related applications
+	- [x] household related applications
 	  - [x] cleaning
-		- [ ] assembly and repair tasks
+		- [x] assembly and repair tasks
 	- [ ] day-to-day applications
 	  - [ ] planning travel
 		- [ ] diagnosing issue with vehicle
@@ -59,9 +59,9 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 	- [x] space related applications
 		- [x] lunar habitat (iterations 1, 2, 3, 4, 5)
 		- [x] mars team at distance (iterations 1, 2, 3, 4, 5)
-	- [ ] household related applications
+	- [x] household related applications
 		- [x] cleaning (iterations 1, 2, 3, 4, 5)
-		- [ ] assembly and repair tasks
+		- [x] assembly and repair tasks (iterations 1, 2, 3, 4, 5)
 	- [ ] day-to-day applications
 		- [ ] planning travel
 		- [ ] diagnosing issue with vehicle

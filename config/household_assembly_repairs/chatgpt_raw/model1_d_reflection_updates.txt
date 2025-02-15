@@ -1,0 +1,1 @@
+I've updated the model to include inventory management, notifying humans about safety alerts, tool and furniture maintenance, and situational awareness such as recognizing humans and requesting supervision for pets/children in the vicinity. Let me know if any further refinements are needed!
