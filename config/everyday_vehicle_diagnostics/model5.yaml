@@ -1,0 +1,163 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - vehicle_has_gas
+      - vehicle_fuel_low
+      - vehicle_needs_gas
+      - vehicle_tires_full
+      - vehicle_tires_low_pressure
+      - vehicle_has_flat_tire
+      - vehicle_locked
+      - human_has_keys
+      - vehicle_engine_working
+      - vehicle_battery_charged
+      - vehicle_battery_dead
+      - vehicle_battery_low
+      - vehicle_brakes_functional
+      - vehicle_check_engine_light_on
+      - vehicle_oil_level_good
+      - vehicle_oil_low
+      - vehicle_coolant_level_good
+      - vehicle_needs_maintenance
+      - vehicle_headlights_functional
+      - vehicle_safe_to_drive
+      - vehicle_in_garage
+      - vehicle_at_gas_station
+      - vehicle_in_motion
+      - robot_has_diagnostic_tool
+      - robot_detected_issue
+      - robot_can_perform_fix
+      - robot_connected_to_external_services
+      - emergency_roadside_assistance_contacted
+      - weather_conditions_monitored
+      - vehicle_components_checked_for_wear
+      - vehicle_tire_pressure_optimal
+      - robot_recommended_fix_accepted
+      - vehicle_onboard_diagnostics_checked
+      - predictive_maintenance_scheduled
+      - human_overrides_robot_recommendation
+      - vehicle_out_of_fuel
+      - external_threat_detected
+      - vehicle_security_issue_detected
+      - consumable_parts_checked
+      - internal_security_issue_detected
+      - robot_has_jumper_cables
+      - emergency_protocols_activated
+      - external_road_conditions_monitored
+      - human_notified_of_road_conditions
+  mutex_groups:
+      - [vehicle_engine_working, vehicle_check_engine_light_on]
+      - [vehicle_battery_charged, vehicle_battery_dead, vehicle_battery_low]
+      - [vehicle_tires_full, vehicle_has_flat_tire, vehicle_tires_low_pressure]
+      - [vehicle_has_gas, vehicle_fuel_low, vehicle_needs_gas, vehicle_out_of_fuel]
+  actions:
+      - name: fill_car_with_gas
+        precond: [vehicle_fuel_low OR vehicle_out_of_fuel, vehicle_at_gas_station]
+        postcond_add: [vehicle_has_gas]
+        postcond_sub: [vehicle_fuel_low, vehicle_out_of_fuel]
+      - name: fill_tires_with_air
+        precond: [vehicle_tires_low_pressure, NOT(vehicle_has_flat_tire)]
+        postcond_add: [vehicle_tires_full, vehicle_tire_pressure_optimal]
+        postcond_sub: [vehicle_tires_low_pressure]
+      - name: lock_vehicle
+        precond: [human_has_keys]
+        postcond_add: [vehicle_locked]
+        postcond_sub: []
+      - name: diagnose_vehicle_issue
+        precond: [robot_has_diagnostic_tool, NOT(human_overrides_robot_recommendation)]
+        postcond_add: [robot_detected_issue]
+        postcond_sub: []
+      - name: check_engine
+        precond: []
+        postcond_add: [vehicle_check_engine_light_on]
+        postcond_sub: []
+      - name: check_oil_level
+        precond: []
+        postcond_add: [vehicle_oil_level_good]
+        postcond_sub: []
+      - name: jump_start_vehicle
+        precond: [vehicle_battery_dead, robot_has_jumper_cables]
+        postcond_add: [vehicle_battery_charged]
+        postcond_sub: [vehicle_battery_dead]
+      - name: replace_flat_tire
+        precond: [vehicle_has_flat_tire, human_has_spare_tire, NOT(vehicle_in_motion)]
+        postcond_add: [vehicle_tires_full]
+        postcond_sub: [vehicle_has_flat_tire]
+      - name: recommend_maintenance
+        precond: [vehicle_check_engine_light_on, vehicle_oil_low, NOT(human_overrides_robot_recommendation)]
+        postcond_add: [vehicle_needs_maintenance]
+        postcond_sub: []
+      - name: connect_to_external_services
+        precond: []
+        postcond_add: [robot_connected_to_external_services]
+        postcond_sub: []
+      - name: contact_emergency_roadside_assistance
+        precond: [vehicle_battery_dead OR vehicle_has_flat_tire OR NOT(vehicle_engine_working) OR vehicle_out_of_fuel OR internal_security_issue_detected OR NOT(vehicle_brakes_functional) OR external_threat_detected]
+        postcond_add: [emergency_roadside_assistance_contacted]
+        postcond_sub: []
+      - name: monitor_weather_conditions
+        precond: []
+        postcond_add: [weather_conditions_monitored]
+        postcond_sub: []
+      - name: check_vehicle_component_wear
+        precond: []
+        postcond_add: [vehicle_components_checked_for_wear]
+        postcond_sub: []
+      - name: detect_external_threats
+        precond: []
+        postcond_add: [external_threat_detected]
+        postcond_sub: []
+      - name: identify_security_issues
+        precond: []
+        postcond_add: [vehicle_security_issue_detected, internal_security_issue_detected]
+        postcond_sub: []
+      - name: check_consumable_parts
+        precond: []
+        postcond_add: [consumable_parts_checked]
+        postcond_sub: []
+      - name: monitor_external_road_conditions
+        precond: []
+        postcond_add: [external_road_conditions_monitored]
+        postcond_sub: []
+      - name: notify_human_of_road_conditions
+        precond: [external_road_conditions_monitored]
+        postcond_add: [human_notified_of_road_conditions]
+        postcond_sub: []
+      - name: suggest_human_contact_technical_authorities
+        precond: [robot_detected_issue, NOT(robot_can_perform_fix)]
+        postcond_add: []
+        postcond_sub: []
+      - name: activate_emergency_protocols
+        precond: [vehicle_not_safe_to_drive OR external_threat_detected OR internal_security_issue_detected]
+        postcond_add: [emergency_protocols_activated]
+        postcond_sub: []
+      - name: remind_to_refuel
+        precond: [vehicle_fuel_low OR vehicle_out_of_fuel, NOT(vehicle_at_gas_station)]
+        postcond_add: []
+        postcond_sub: []
+      - name: check_battery_health
+        precond: [NOT(vehicle_battery_charged)]
+        postcond_add: [vehicle_battery_low]
+        postcond_sub: []
+      - name: notify_human_issue
+        precond: [robot_detected_issue]
+        postcond_add: [robot_recommended_fix_accepted]
+        postcond_sub: []
+      - name: block_diagnostics_while_driving
+        precond: [vehicle_in_motion]
+        postcond_add: []
+        postcond_sub: [robot_detected_issue]
+      - name: check_vehicle_onboard_diagnostics
+        precond: [robot_has_diagnostic_tool]
+        postcond_add: [vehicle_onboard_diagnostics_checked]
+        postcond_sub: []
+      - name: schedule_predictive_maintenance
+        precond: [vehicle_components_checked_for_wear, vehicle_onboard_diagnostics_checked]
+        postcond_add: [predictive_maintenance_scheduled]
+        postcond_sub: []
+      - name: assist_with_minor_repairs
+        precond: [robot_can_perform_fix]
+        postcond_add: []
+        postcond_sub: []

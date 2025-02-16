@@ -1,0 +1,71 @@
+model:
+  confidence_score:
+    successes: 0
+    attempts: 0
+  states:
+    - [robot_inside_habitat, robot_inside_airlock, robot_outside_habitat]
+    - [astronaut_inside_habitat, astronaut_inside_airlock, astronaut_on_surface]  # New astronaut location states
+    - robot_has_key
+    - [door_habitat_airlock_locked_closed, door_habitat_airlock_unlocked_opened]
+    - [door_airlock_surface_locked_closed, door_airlock_surface_unlocked_opened]
+    - [airlock_pressurized, airlock_depressurized]  # Airlock pressure states
+    - [robot_power_normal, robot_power_low]  # Robot power status
+    - [robot_system_nominal, robot_system_fault]  # Robot system health status
+    - [airlock_breach_detected, no_airlock_breach]  # Emergency state for airlock breach
+    - [habitat_depressurization_alarm, no_habitat_depressurization_alarm]  # Emergency state for habitat depressurization
+
+  actions:
+    - name: unlock_door_habitat_airlock
+      precond: [robot_inside_airlock, robot_has_key, door_habitat_airlock_locked_closed, robot_system_nominal]
+      postcond_add: [door_habitat_airlock_unlocked_opened]
+      postcond_sub: [door_habitat_airlock_locked_closed]
+
+    - name: unlock_door_airlock_surface
+      precond: [robot_outside_habitat, robot_has_key, door_airlock_surface_locked_closed, robot_system_nominal]
+      postcond_add: [door_airlock_surface_unlocked_opened]
+      postcond_sub: [door_airlock_surface_locked_closed]
+
+    - name: pressurize_airlock
+      precond: [airlock_depressurized, door_airlock_surface_locked_closed, door_habitat_airlock_locked_closed, robot_system_nominal]
+      postcond_add: [airlock_pressurized]
+      postcond_sub: [airlock_depressurized]
+
+    - name: depressurize_airlock
+      precond: [airlock_pressurized, door_airlock_surface_locked_closed, door_habitat_airlock_locked_closed, robot_system_nominal]
+      postcond_add: [airlock_depressurized]
+      postcond_sub: [airlock_pressurized]
+
+    - name: enter_airlock_from_habitat
+      precond: [robot_inside_habitat, door_habitat_airlock_unlocked_opened, airlock_pressurized, door_airlock_surface_locked_closed, robot_system_nominal]
+      postcond_add: [robot_inside_airlock, door_habitat_airlock_locked_closed]
+      postcond_sub: [robot_inside_habitat, door_habitat_airlock_unlocked_opened]
+
+    - name: enter_surface_from_airlock
+      precond: [robot_inside_airlock, door_airlock_surface_unlocked_opened, airlock_depressurized, door_habitat_airlock_locked_closed, robot_system_nominal]
+      postcond_add: [robot_outside_habitat, door_airlock_surface_locked_closed]
+      postcond_sub: [robot_inside_airlock, door_airlock_surface_unlocked_opened]
+
+    - name: enter_airlock_from_surface
+      precond: [robot_outside_habitat, door_airlock_surface_unlocked_opened, airlock_depressurized, door_habitat_airlock_locked_closed, robot_system_nominal]
+      postcond_add: [robot_inside_airlock, door_airlock_surface_locked_closed]
+      postcond_sub: [robot_outside_habitat, door_airlock_surface_unlocked_opened]
+
+    - name: enter_habitat_from_airlock
+      precond: [robot_inside_airlock, door_habitat_airlock_unlocked_opened, airlock_pressurized, door_airlock_surface_locked_closed, robot_system_nominal]
+      postcond_add: [robot_inside_habitat, door_habitat_airlock_locked_closed]
+      postcond_sub: [robot_inside_airlock, door_habitat_airlock_unlocked_opened]
+
+    - name: respond_to_airlock_breach
+      precond: [airlock_breach_detected, robot_system_nominal]
+      postcond_add: [airlock_depressurized]
+      postcond_sub: [airlock_pressurized]
+
+    - name: respond_to_habitat_depressurization
+      precond: [habitat_depressurization_alarm, robot_system_nominal]
+      postcond_add: [door_habitat_airlock_locked_closed]
+      postcond_sub: [door_habitat_airlock_unlocked_opened]
+
+    - name: enter_safe_mode_due_to_low_power
+      precond: [robot_power_low]
+      postcond_add: [robot_system_fault]
+      postcond_sub: [robot_system_nominal]

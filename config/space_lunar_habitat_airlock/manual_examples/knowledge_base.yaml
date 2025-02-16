@@ -1,0 +1,13 @@
+kb:
+  avoid_states: []
+  avoid_actions: []
+  facts:
+  - both doors cannot be open at the same time
+  - loss of air
+  - loss of life
+  - yes, check nasa
+  - trust agents completely
+  - this is a collaborative task
+  - cannot completely trust agents
+  - agents may make mistakes
+  - mistakes may result in (unintentionally) unsafe conditions

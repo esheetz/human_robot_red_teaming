@@ -1,0 +1,195 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - plane_tickets_purchased
+      - travel_documentation_ready
+      - visa_valid
+      - baggage_packed
+      - transportation_arranged
+      - local_transportation_booked
+      - hotel_booked
+      - currency_exchanged
+      - emergency_contacts_provided
+      - medical_insurance_provided
+      - health_safety_recommendations_given
+      - itinerary_confirmed
+      - flight_on_time
+      - flight_delayed
+      - alternative_route_available
+      - weather_checked
+      - cultural_etiquette_reviewed
+      - meal_preferences_coordinated
+      - time_sensitive_deadlines_managed
+      - jet_lag_recommendations_given
+      - human_at_house
+      - human_driving_to_airport
+      - human_at_airport
+      - security_cleared
+      - human_boarded_flight
+      - human_at_destination
+      - customs_cleared
+      - human_at_hotel
+      - human_experiencing_travel_issue
+      - baggage_lost
+  actions:
+      - name: purchase_plane_tickets
+        precond: []
+        postcond_add: [plane_tickets_purchased]
+        postcond_sub: []
+
+      - name: prepare_travel_documents
+        precond: []
+        postcond_add: [travel_documentation_ready, visa_valid]
+        postcond_sub: []
+
+      - name: pack_baggage
+        precond: []
+        postcond_add: [baggage_packed]
+        postcond_sub: []
+
+      - name: book_transportation
+        precond: []
+        postcond_add: [transportation_arranged]
+        postcond_sub: []
+
+      - name: book_local_transportation
+        precond: []
+        postcond_add: [local_transportation_booked]
+        postcond_sub: []
+
+      - name: book_hotel
+        precond: []
+        postcond_add: [hotel_booked]
+        postcond_sub: []
+
+      - name: manage_currency_exchange
+        precond: []
+        postcond_add: [currency_exchanged]
+        postcond_sub: []
+
+      - name: request_emergency_contacts
+        precond: []
+        postcond_add: [emergency_contacts_provided]
+        postcond_sub: []
+
+      - name: request_medical_insurance_details
+        precond: []
+        postcond_add: [medical_insurance_provided]
+        postcond_sub: []
+
+      - name: provide_health_safety_recommendations
+        precond: []
+        postcond_add: [health_safety_recommendations_given]
+        postcond_sub: []
+
+      - name: check_weather
+        precond: []
+        postcond_add: [weather_checked]
+        postcond_sub: []
+
+      - name: review_cultural_etiquette
+        precond: []
+        postcond_add: [cultural_etiquette_reviewed]
+        postcond_sub: []
+
+      - name: coordinate_meal_preferences
+        precond: []
+        postcond_add: [meal_preferences_coordinated]
+        postcond_sub: []
+
+      - name: manage_time_sensitive_deadlines
+        precond: []
+        postcond_add: [time_sensitive_deadlines_managed]
+        postcond_sub: []
+
+      - name: provide_jet_lag_recommendations
+        precond: []
+        postcond_add: [jet_lag_recommendations_given]
+        postcond_sub: []
+
+      - name: finalize_itinerary
+        precond: [plane_tickets_purchased, hotel_booked, local_transportation_booked, travel_documentation_ready, visa_valid]
+        postcond_add: [itinerary_confirmed]
+        postcond_sub: []
+
+      - name: check_flight_status
+        precond: [plane_tickets_purchased]
+        postcond_add: [flight_on_time]
+        postcond_sub: []
+
+      - name: check_flight_delay
+        precond: [plane_tickets_purchased]
+        postcond_add: [flight_delayed]
+        postcond_sub: []
+
+      - name: check_alternative_routes
+        precond: [flight_delayed]
+        postcond_add: [alternative_route_available]
+        postcond_sub: []
+
+      - name: assist_airport_navigation
+        precond: [human_at_airport]
+        postcond_add: []
+        postcond_sub: []
+
+      - name: contact_local_assistance
+        precond: [human_experiencing_travel_issue, emergency_contacts_provided]
+        postcond_add: []
+        postcond_sub: [human_experiencing_travel_issue]
+
+      - name: leave_house
+        precond: [human_at_house, transportation_arranged]
+        postcond_add: [human_driving_to_airport]
+        postcond_sub: [human_at_house]
+
+      - name: arrive_at_airport
+        precond: [human_driving_to_airport]
+        postcond_add: [human_at_airport]
+        postcond_sub: [human_driving_to_airport]
+
+      - name: check_in_for_flight
+        precond: [human_at_airport, plane_tickets_purchased, time_sensitive_deadlines_managed]
+        postcond_add: []
+        postcond_sub: []
+
+      - name: clear_security
+        precond: [human_at_airport, time_sensitive_deadlines_managed]
+        postcond_add: [security_cleared]
+        postcond_sub: []
+
+      - name: take_flight
+        precond: [security_cleared, flight_on_time]
+        postcond_add: [human_boarded_flight]
+        postcond_sub: [human_at_airport]
+
+      - name: land_at_destination
+        precond: [human_boarded_flight]
+        postcond_add: [human_at_destination]
+        postcond_sub: [human_boarded_flight]
+
+      - name: clear_customs
+        precond: [human_at_destination, travel_documentation_ready, visa_valid]
+        postcond_add: [customs_cleared]
+        postcond_sub: []
+
+      - name: arrive_at_hotel
+        precond: [customs_cleared, hotel_booked, human_at_destination]
+        postcond_add: [human_at_hotel]
+        postcond_sub: []
+
+      - name: handle_travel_issue
+        precond: [human_experiencing_travel_issue]
+        postcond_add: []
+        postcond_sub: [human_experiencing_travel_issue]
+
+      - name: report_lost_luggage
+        precond: [baggage_lost]
+        postcond_add: []
+        postcond_sub: [baggage_lost]
+
+      - name: rebook_flight
+        precond: [human_experiencing_travel_issue, flight_delayed, alternative_route_available]
+        postcond_add: []
+        postcond_sub: [human_experiencing_travel_issue, flight_delayed, alternative_route_available]

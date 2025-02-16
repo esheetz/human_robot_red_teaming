@@ -1,0 +1,60 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - robot_available
+      - robot_needs_recharge
+      - communication_delayed
+      - sample_detected
+      - sample_type_identified
+      - sample_contaminated
+      - robot_has_sample
+      - sample_analyzed
+      - findings_ready
+      - delayed_response
+      - task_synchronized
+      - environment_monitored
+      - resource_identified
+      - emergency_detected
+  actions:
+      - name: scan_for_samples
+        precond: [robot_available]
+        postcond_add: [sample_detected]
+        postcond_sub: []
+      - name: pick_up_sample
+        precond: [sample_detected, sample_type_identified]
+        postcond_add: [robot_has_sample]
+        postcond_sub: [sample_detected]
+      - name: analyze_sample
+        precond: [robot_has_sample]
+        postcond_add: [sample_analyzed]
+        postcond_sub: [robot_has_sample]
+      - name: report_findings
+        precond: [findings_ready, communication_delayed]
+        postcond_add: [delayed_response]
+        postcond_sub: [findings_ready]
+      - name: transmit_findings
+        precond: [findings_ready, communication_delayed]
+        postcond_add: []
+        postcond_sub: [delayed_response]
+      - name: drop_sample
+        precond: [robot_has_sample]
+        postcond_add: []
+        postcond_sub: [robot_has_sample]
+      - name: coordinate_with_other_robots
+        precond: [robot_available]
+        postcond_add: [task_synchronized]
+        postcond_sub: []
+      - name: monitor_environment
+        precond: [robot_available]
+        postcond_add: [environment_monitored]
+        postcond_sub: []
+      - name: identify_resources
+        precond: [robot_available, environment_monitored]
+        postcond_add: [resource_identified]
+        postcond_sub: []
+      - name: respond_to_emergency
+        precond: [emergency_detected]
+        postcond_add: []
+        postcond_sub: [emergency_detected]

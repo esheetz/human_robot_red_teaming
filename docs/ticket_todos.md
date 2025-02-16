@@ -1,6 +1,4 @@
-# Safety Aware Reasoning Project
-
-## TODOs
+# Human-Robot Red Teaming TODOs
 
 HRRT Level 2: Enumeration
 - [x] check formatting on model and knowledge base
@@ -34,3 +32,47 @@ HRRT Level 4: Updating model knowledge
 - [x] save updated model (and initial confidence score) to YAML file
 - [x] save updated knowledge base to YAML file
 - [x] remove SAR code and SAR todos
+
+ChatGPT Blue Team: accept input from ChatGPT and update models
+- [x] modify printing and red teaming levels to accept ChatGPT inputs
+- [x] additional functions for processing ChatGPT input from transcripts:
+	- [x] HRRT2: possibility validity
+	- [x] HRRT3: assumption validity
+	- [x] HRRT4: KB reflections
+	- [x] HRRT4: updated model YAML
+- [x] seed several model problems
+  - [x] space related applications
+	  - [x] lunar habitat
+		- [x] mars team at distance
+	- [x] household related applications
+	  - [x] cleaning
+		- [x] assembly and repair tasks
+	- [x] day-to-day applications
+	  - [x] planning international travel
+		- [x] diagnosing issue with vehicle
+	- [x] cinematic applications
+		- [x] 2001 Space Odyssey
+		- [x] Iron Giant
+- [x] several iterations of HRRTing levels for problems until ChatGPT doesn't provide sufficient info
+	- [x] space related applications
+		- [x] lunar habitat (iterations 1, 2, 3, 4, 5)
+		- [x] mars team at distance (iterations 1, 2, 3, 4, 5)
+	- [x] household related applications
+		- [x] cleaning (iterations 1, 2, 3, 4, 5)
+		- [x] assembly and repair tasks (iterations 1, 2, 3, 4, 5)
+	- [x] day-to-day applications
+		- [x] planning international travel (iterations 1, 2, 3, 4, 5)
+		- [x] diagnosing issue with vehicle (iterations 1, 2, 3, 4, 5)
+	- [x] cinematic applications
+		- [x] 2001 Space Odyssey (iterations 1, 2, 3, 4, 5)
+		- [x] Iron Giant (iterations 1, 2, 3, 4, 5)
+
+Model planning problems:
+- [ ] incorporate pyperplan
+- [ ] convert model files to STRIPS files
+  - [ ] assume models are supersets of each other, so if ChatGPT removed something from one iteration to the next, include it
+- [ ] research failure modes
+- [ ] process for randomizing task goals and failures
+- [ ] pipeline for attempting planning, updating model confidence, and moving to next model
+- [ ] record data about experiments to file
+- [ ] model planning experiments

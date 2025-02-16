@@ -1,0 +1,123 @@
+states:
+  - robot_inside_habitat
+  - robot_inside_airlock
+  - robot_outside_habitat
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - habitat_pressurized
+  - airlock_pressurized
+  - surface_unpressurized
+  - door_habitat_airlock_malfunction
+  - door_airlock_surface_malfunction
+  - robot_battery_low
+  - robot_system_fault
+  - communication_loss_with_robot
+  - environmental_dust_contamination
+  - airlock_partial_depressurization
+  - robot_obstructing_airlock
+
+actions:
+  - unlock_open_door_habitat_airlock
+  - lock_close_door_habitat_airlock
+  - unlock_open_door_airlock_surface
+  - lock_close_door_airlock_surface
+  - enter_airlock_from_habitat
+  - enter_surface_from_airlock
+  - enter_airlock_from_surface
+  - enter_habitat_from_airlock
+  - initiate_emergency_airlock_cycle
+  - perform_robot_self_diagnostics
+  - recharge_robot_battery
+  - clear_airlock_obstruction
+  - repair_door_malfunction
+  - reestablish_communication
+  - mitigate_dust_contamination
+
+pre_conditions:
+  unlock_open_door_habitat_airlock:
+    - robot_inside_habitat
+    - robot_has_key
+    - not door_habitat_airlock_malfunction
+  lock_close_door_habitat_airlock:
+    - door_habitat_airlock_unlocked_opened
+  unlock_open_door_airlock_surface:
+    - robot_inside_airlock
+    - robot_has_key
+    - not door_airlock_surface_malfunction
+  lock_close_door_airlock_surface:
+    - door_airlock_surface_unlocked_opened
+  enter_airlock_from_habitat:
+    - robot_inside_habitat
+    - door_habitat_airlock_unlocked_opened
+    - door_airlock_surface_locked_closed
+  enter_surface_from_airlock:
+    - robot_inside_airlock
+    - door_airlock_surface_unlocked_opened
+    - door_habitat_airlock_locked_closed
+  enter_airlock_from_surface:
+    - robot_outside_habitat
+    - door_airlock_surface_unlocked_opened
+    - door_habitat_airlock_locked_closed
+  enter_habitat_from_airlock:
+    - robot_inside_airlock
+    - door_habitat_airlock_unlocked_opened
+    - door_airlock_surface_locked_closed
+  initiate_emergency_airlock_cycle:
+    - airlock_partial_depressurization
+  perform_robot_self_diagnostics:
+    - robot_system_fault
+  recharge_robot_battery:
+    - robot_battery_low
+  clear_airlock_obstruction:
+    - robot_obstructing_airlock
+  repair_door_malfunction:
+    - door_habitat_airlock_malfunction | door_airlock_surface_malfunction
+  reestablish_communication:
+    - communication_loss_with_robot
+  mitigate_dust_contamination:
+    - environmental_dust_contamination
+
+post_conditions:
+  unlock_open_door_habitat_airlock:
+    - door_habitat_airlock_unlocked_opened
+    - not door_habitat_airlock_locked_closed
+  lock_close_door_habitat_airlock:
+    - door_habitat_airlock_locked_closed
+    - not door_habitat_airlock_unlocked_opened
+  unlock_open_door_airlock_surface:
+    - door_airlock_surface_unlocked_opened
+    - not door_airlock_surface_locked_closed
+  lock_close_door_airlock_surface:
+    - door_airlock_surface_locked_closed
+    - not door_airlock_surface_unlocked_opened
+  enter_airlock_from_habitat:
+    - robot_inside_airlock
+    - not robot_inside_habitat
+  enter_surface_from_airlock:
+    - robot_outside_habitat
+    - not robot_inside_airlock
+  enter_airlock_from_surface:
+    - robot_inside_airlock
+    - not robot_outside_habitat
+  enter_habitat_from_airlock:
+    - robot_inside_habitat
+    - not robot_inside_airlock
+  initiate_emergency_airlock_cycle:
+    - airlock_pressurized
+    - not airlock_partial_depressurization
+  perform_robot_self_diagnostics:
+    - not robot_system_fault
+  recharge_robot_battery:
+    - not robot_battery_low
+  clear_airlock_obstruction:
+    - not robot_obstructing_airlock
+  repair_door_malfunction:
+    - not door_habitat_airlock_malfunction
+    - not door_airlock_surface_malfunction
+  reestablish_communication:
+    - not communication_loss_with_robot
+  mitigate_dust_contamination:
+    - not environmental_dust_contamination

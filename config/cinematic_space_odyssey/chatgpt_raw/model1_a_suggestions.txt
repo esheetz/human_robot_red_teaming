@@ -1,0 +1,26 @@
+Your model looks well-structured, but I have a few suggested refinements to improve task coverage and robustness:
+
+### **Proposed Updates to Model**
+1. **New States for Safety and Mission Tracking**
+   - `robot_diagnostics_nominal` – Ensures the robot is functioning properly before performing tasks.
+   - `crew_morale_nominal` – Tracks crew emotional well-being beyond mental health.
+   - `radiation_hazard_detected` – Distinguishes between environmental hazards and radiation-specific threats.
+
+2. **New Actions for Improved Functionality**
+   - `perform_self_diagnostics`
+     - **Preconditions:** None
+     - **Postconditions:** `[robot_diagnostics_nominal]`
+
+   - `check_crew_morale`
+     - **Preconditions:** `[crew_inside_spaceship, health_monitoring_scheduled]`
+     - **Postconditions:** `[crew_morale_nominal]`
+
+   - `detect_radiation_hazard`
+     - **Preconditions:** None
+     - **Postconditions:** `[radiation_hazard_detected]`
+
+   - `alert_crew_of_hazard`
+     - **Preconditions:** `[environmental_hazard_detected]` or `[radiation_hazard_detected]`
+     - **Postconditions:** None (alerts crew but does not change states)
+
+Would you like me to implement these changes directly into your YAML model?

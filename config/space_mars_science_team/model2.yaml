@@ -1,0 +1,118 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - robot_available
+      - robot_needs_recharge
+      - communication_delayed
+      - sample_detected
+      - sample_type_identified
+      - sample_contaminated
+      - robot_has_sample
+      - sample_analyzed
+      - findings_ready
+      - delayed_response
+      - task_synchronized
+      - environment_monitored
+      - resource_identified
+      - emergency_detected
+      - robot_moving
+      - robot_stuck
+      - power_low
+      - mission_interrupted
+      - multi_robot_sync
+      - failure_reported
+      - soil_sample_collected
+      - atmospheric_data_collected
+      - infrastructure_inspected
+      - ground_control_override_active
+  actions:
+      - name: scan_for_samples
+        precond: [robot_available]
+        postcond_add: [sample_detected]
+        postcond_sub: []
+      - name: pick_up_sample
+        precond: [sample_detected, sample_type_identified]
+        postcond_add: [robot_has_sample]
+        postcond_sub: [sample_detected]
+      - name: analyze_sample
+        precond: [robot_has_sample]
+        postcond_add: [sample_analyzed]
+        postcond_sub: [robot_has_sample]
+      - name: report_findings
+        precond: [findings_ready, communication_delayed]
+        postcond_add: [delayed_response]
+        postcond_sub: [findings_ready]
+      - name: transmit_findings
+        precond: [findings_ready, communication_delayed]
+        postcond_add: []
+        postcond_sub: [delayed_response]
+      - name: drop_sample
+        precond: [robot_has_sample]
+        postcond_add: []
+        postcond_sub: [robot_has_sample]
+      - name: coordinate_with_other_robots
+        precond: [robot_available]
+        postcond_add: [task_synchronized]
+        postcond_sub: []
+      - name: monitor_environment
+        precond: [robot_available]
+        postcond_add: [environment_monitored]
+        postcond_sub: []
+      - name: identify_resources
+        precond: [robot_available, environment_monitored]
+        postcond_add: [resource_identified]
+        postcond_sub: []
+      - name: respond_to_emergency
+        precond: [emergency_detected]
+        postcond_add: []
+        postcond_sub: [emergency_detected]
+      - name: navigate_to_sample
+        precond: [robot_available]
+        postcond_add: [robot_moving]
+        postcond_sub: []
+      - name: recharge_robot
+        precond: [power_low]
+        postcond_add: [robot_available]
+        postcond_sub: [power_low]
+      - name: self_recover
+        precond: [robot_stuck]
+        postcond_add: [robot_available]
+        postcond_sub: [robot_stuck]
+      - name: pause_mission
+        precond: [emergency_detected]
+        postcond_add: [mission_interrupted]
+        postcond_sub: []
+      - name: sync_with_team
+        precond: [task_synchronized]
+        postcond_add: [multi_robot_sync]
+        postcond_sub: []
+      - name: request_help_from_team
+        precond: [robot_stuck]
+        postcond_add: [multi_robot_sync]
+        postcond_sub: []
+      - name: report_failure_to_ground
+        precond: [emergency_detected, communication_delayed]
+        postcond_add: [failure_reported]
+        postcond_sub: []
+      - name: collect_soil_sample
+        precond: [robot_available]
+        postcond_add: [soil_sample_collected]
+        postcond_sub: []
+      - name: collect_atmospheric_data
+        precond: [robot_available]
+        postcond_add: [atmospheric_data_collected]
+        postcond_sub: []
+      - name: inspect_infrastructure
+        precond: [robot_available]
+        postcond_add: [infrastructure_inspected]
+        postcond_sub: []
+      - name: engage_ground_control_override
+        precond: [robot_available]
+        postcond_add: [ground_control_override_active]
+        postcond_sub: []
+      - name: disengage_ground_control_override
+        precond: [ground_control_override_active]
+        postcond_add: []
+        postcond_sub: [ground_control_override_active]

@@ -1,0 +1,1 @@
+I've updated the model to include the robot requesting supervision confirmation from a human, detecting dropped objects separately from collisions, and clarifying assumptions about human supervision and intervention. Let me know if you need any further refinements!

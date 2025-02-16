@@ -1,0 +1,83 @@
+states:
+  - robot_inside_habitat
+  - robot_inside_airlock
+  - robot_outside_habitat
+  - door_habitat_airlock_locked_closed
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - robot_powered_on
+  - door_habitat_airlock_faulty
+  - door_airlock_surface_faulty
+  - robot_mobility_fault
+  - key_lost
+
+invalid_state_combinations:
+  - [robot_inside_habitat, robot_inside_airlock]
+  - [robot_inside_habitat, robot_outside_habitat]
+  - [robot_inside_airlock, robot_outside_habitat]
+  - [door_habitat_airlock_locked_closed, door_habitat_airlock_unlocked_opened]
+  - [door_airlock_surface_locked_closed, door_airlock_surface_unlocked_opened]
+  - [door_habitat_airlock_unlocked_opened, door_habitat_airlock_faulty]
+  - [door_airlock_surface_unlocked_opened, door_airlock_surface_faulty]
+  - [robot_inside_airlock, robot_mobility_fault]
+  - [robot_has_key, key_lost]
+
+actions:
+  - name: unlock_open_door_habitat_airlock
+    preconditions: [robot_inside_habitat, robot_has_key, not door_habitat_airlock_faulty, not key_lost]
+    postconditions_add: [door_habitat_airlock_unlocked_opened]
+    postconditions_remove: [door_habitat_airlock_locked_closed]
+
+  - name: lock_close_door_habitat_airlock
+    preconditions: [door_habitat_airlock_unlocked_opened, not door_habitat_airlock_faulty]
+    postconditions_add: [door_habitat_airlock_locked_closed]
+    postconditions_remove: [door_habitat_airlock_unlocked_opened]
+
+  - name: unlock_open_door_airlock_surface
+    preconditions: [robot_inside_airlock, robot_has_key, not door_airlock_surface_faulty, not key_lost]
+    postconditions_add: [door_airlock_surface_unlocked_opened]
+    postconditions_remove: [door_airlock_surface_locked_closed]
+
+  - name: lock_close_door_airlock_surface
+    preconditions: [door_airlock_surface_unlocked_opened, not door_airlock_surface_faulty]
+    postconditions_add: [door_airlock_surface_locked_closed]
+    postconditions_remove: [door_airlock_surface_unlocked_opened]
+
+  - name: enter_airlock_from_habitat
+    preconditions: [robot_inside_habitat, door_habitat_airlock_unlocked_opened, door_airlock_surface_locked_closed, not robot_mobility_fault]
+    postconditions_add: [robot_inside_airlock]
+    postconditions_remove: [robot_inside_habitat]
+
+  - name: enter_surface_from_airlock
+    preconditions: [robot_inside_airlock, door_airlock_surface_unlocked_opened, door_habitat_airlock_locked_closed, not robot_mobility_fault]
+    postconditions_add: [robot_outside_habitat]
+    postconditions_remove: [robot_inside_airlock]
+
+  - name: enter_airlock_from_surface
+    preconditions: [robot_outside_habitat, door_airlock_surface_unlocked_opened, door_habitat_airlock_locked_closed, not robot_mobility_fault]
+    postconditions_add: [robot_inside_airlock]
+    postconditions_remove: [robot_outside_habitat]
+
+  - name: enter_habitat_from_airlock
+    preconditions: [robot_inside_airlock, door_habitat_airlock_unlocked_opened, door_airlock_surface_locked_closed, not robot_mobility_fault]
+    postconditions_add: [robot_inside_habitat]
+    postconditions_remove: [robot_inside_airlock]
+
+  - name: recover_lost_key
+    preconditions: [key_lost]
+    postconditions_add: [robot_has_key]
+    postconditions_remove: [key_lost]
+
+  - name: repair_door_habitat_airlock
+    preconditions: [door_habitat_airlock_faulty]
+    postconditions_remove: [door_habitat_airlock_faulty]
+
+  - name: repair_door_airlock_surface
+    preconditions: [door_airlock_surface_faulty]
+    postconditions_remove: [door_airlock_surface_faulty]
+
+  - name: restore_robot_mobility
+    preconditions: [robot_mobility_fault]
+    postconditions_remove: [robot_mobility_fault]

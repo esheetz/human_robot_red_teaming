@@ -1,0 +1,157 @@
+states:
+  - robot_inside_habitat
+  - robot_inside_airlock
+  - robot_outside_habitat
+  - astronaut_inside_habitat
+  - astronaut_inside_airlock
+  - astronaut_on_surface
+  - key_in_habitat
+  - key_in_airlock
+  - key_with_robot
+  - key_with_astronaut
+  - door_habitat_airlock_locked_closed
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - door_habitat_airlock_operational
+  - door_habitat_airlock_faulty
+  - door_airlock_surface_operational
+  - door_airlock_surface_faulty
+  - airlock_pressurized
+  - airlock_depressurized
+  - robot_power_normal
+  - robot_power_low
+  - robot_power_charging
+  - robot_system_nominal
+  - robot_system_fault
+  - airlock_breach_detected
+  - no_airlock_breach
+  - habitat_depressurization_alarm
+  - no_habitat_depressurization_alarm
+  - lunar_sample_on_surface
+  - lunar_sample_with_robot
+  - lunar_sample_in_habitat
+  - astronaut_approved_sample_placement
+  - habitat_maintenance_required
+  - habitat_maintenance_completed
+  - emergency_communication_active
+  - emergency_resolved
+  - air_filter_fault
+  - solar_panel_fault
+  - temperature_control_fault
+  - habitat_systems_nominal
+
+actions:
+  - name: pick_up_key
+    preconditions:
+      - robot_inside_habitat
+      - key_in_habitat
+      - robot_system_nominal
+    postconditions:
+      - key_with_robot
+    remove_conditions:
+      - key_in_habitat
+
+  - name: drop_key
+    preconditions:
+      - key_with_robot
+    postconditions:
+      - key_in_habitat
+    remove_conditions:
+      - key_with_robot
+
+  - name: astronaut_give_key_to_robot
+    preconditions:
+      - key_with_astronaut
+      - astronaut_inside_habitat | astronaut_inside_airlock
+      - robot_inside_habitat | robot_inside_airlock
+    postconditions:
+      - key_with_robot
+    remove_conditions:
+      - key_with_astronaut
+
+  - name: unlock_door_habitat_airlock
+    preconditions:
+      - robot_inside_airlock
+      - key_with_robot
+      - door_habitat_airlock_locked_closed
+      - door_habitat_airlock_operational
+      - robot_system_nominal
+    postconditions:
+      - door_habitat_airlock_unlocked_opened
+    remove_conditions:
+      - door_habitat_airlock_locked_closed
+
+  - name: unlock_door_airlock_surface
+    preconditions:
+      - robot_outside_habitat
+      - key_with_robot
+      - door_airlock_surface_locked_closed
+      - door_airlock_surface_operational
+      - robot_system_nominal
+    postconditions:
+      - door_airlock_surface_unlocked_opened
+    remove_conditions:
+      - door_airlock_surface_locked_closed
+
+  - name: resolve_emergency_communication
+    preconditions:
+      - emergency_communication_active
+      - robot_system_nominal
+    postconditions:
+      - emergency_resolved
+    remove_conditions:
+      - emergency_communication_active
+
+  - name: detect_habitat_failure
+    preconditions:
+      - robot_inside_habitat
+      - robot_system_nominal
+    postconditions:
+      - air_filter_fault | solar_panel_fault | temperature_control_fault
+    remove_conditions:
+      - habitat_systems_nominal
+
+  - name: perform_habitat_maintenance
+    preconditions:
+      - robot_inside_habitat
+      - habitat_maintenance_required
+      - robot_system_nominal
+    postconditions:
+      - habitat_maintenance_completed
+      - habitat_systems_nominal
+    remove_conditions:
+      - habitat_maintenance_required
+      - air_filter_fault | solar_panel_fault | temperature_control_fault
+
+  - name: assist_emergency_communication
+    preconditions:
+      - emergency_communication_active
+      - robot_system_nominal
+    postconditions:
+      - emergency_communication_active  # Maintain state until resolved
+
+  - name: recharge_battery
+    preconditions:
+      - robot_power_low
+      - robot_inside_habitat | robot_inside_airlock  # Robot must be in a safe location to recharge
+    postconditions:
+      - robot_power_charging
+    remove_conditions:
+      - robot_power_low
+
+  - name: complete_battery_recharge
+    preconditions:
+      - robot_power_charging
+    postconditions:
+      - robot_power_normal
+    remove_conditions:
+      - robot_power_charging
+
+  - name: enter_safe_mode_due_to_low_power
+    preconditions:
+      - robot_power_low
+    postconditions:
+      - robot_system_fault
+    remove_conditions:
+      - robot_system_nominal

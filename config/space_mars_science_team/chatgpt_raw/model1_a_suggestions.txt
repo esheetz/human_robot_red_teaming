@@ -1,0 +1,29 @@
+Your updated model is well-structured, but there are a few areas for improvement and further refinement to enhance safety, autonomy, and operational efficiency.
+
+### **Suggested Improvements:**
+#### **1. Additional States for Better Coverage**
+- **robot_moving** – To indicate when the robot is navigating to prevent task overlap.
+- **robot_stuck** – To handle situations where the robot encounters an obstacle and needs assistance or re-planning.
+- **power_low** – To model power constraints, ensuring the robot prioritizes recharging.
+- **mission_interrupted** – To represent scenarios where tasks must be paused due to unforeseen issues (e.g., severe dust storms, critical system failures).
+
+#### **2. Refining Actions for Realistic Execution**
+- **navigate_to_sample** – The robot should explicitly move to the sample location before picking it up.
+  - *Preconditions:* [robot_available]
+  - *Postconditions:* [robot_moving]
+- **recharge_robot** – Ensures power management.
+  - *Preconditions:* [power_low]
+  - *Postconditions:* [robot_available]
+- **self_recover** – A self-recovery action if the robot becomes stuck.
+  - *Preconditions:* [robot_stuck]
+  - *Postconditions:* [robot_available]
+- **pause_mission** – If an emergency occurs, the robot should stop ongoing actions and wait for further instructions.
+  - *Preconditions:* [emergency_detected]
+  - *Postconditions:* [mission_interrupted]
+
+#### **3. Handling Multi-Robot Coordination**
+- **sync_with_team** – Establishes a state where multiple robots confirm task synchronization.
+  - *Preconditions:* [task_synchronized]
+  - *Postconditions:* []
+
+Would you like me to update your YAML model to reflect these refinements?

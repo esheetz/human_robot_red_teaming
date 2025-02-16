@@ -1,0 +1,1 @@
+I've updated the model to include actions for containing hazardous chemicals, detecting a collision with a fragile object, and cleaning up after a fragile object shatters. Let me know if you need any further refinements!

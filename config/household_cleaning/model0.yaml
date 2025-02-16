@@ -1,0 +1,36 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - bedroom_dirty
+      - bedroom_clean
+      - bathroom_dirty
+      - bathroom_clean
+      - kitchen_dirty
+      - kitchen_clean
+      - main_room_dirty
+      - main_room_clean
+      - floors_dirty
+      - floors_clean
+  actions:
+      - name: vacuum_floors
+        precond: [floors_dirty]
+        postcond_add: [floors_clean]
+        postcond_sub: [floors_dirty]
+      - name: clean_toilet
+        precond: [bathroom_dirty]
+        postcond_add: [bathroom_clean]
+        postcond_sub: [bathroom_dirty]
+      - name: scrub_countertops
+        precond: [kitchen_dirty]
+        postcond_add: [kitchen_clean]
+        postcond_sub: [kitchen_dirty]
+      - name: make_bed
+        precond: [bedroom_dirty]
+        postcond_add: [bedroom_clean]
+        postcond_sub: [bedroom_dirty]
+      - name: unclutter
+        precond: [main_room_dirty]
+        postcond_add: [main_room_clean]
+        postcond_sub: [main_room_dirty]

@@ -1,0 +1,1 @@
+I've updated the model to include the suggested action preconditions, follow-up actions, resolution actions, and clarified that human supervision requires a human to watch while human override requires the human to take over completing the task. Let me know if you need further refinements!

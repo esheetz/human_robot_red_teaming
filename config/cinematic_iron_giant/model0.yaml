@@ -1,0 +1,22 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - humans_safe
+      - humans_unsafe
+      - detected_missile
+      - missile_disarmed
+  actions:
+      - name: verify_human_safety
+        precond: []
+        postcond_add: [humans_safe]
+        postcond_sub: []
+      - name: detect_missile_launch
+        precond: [humans_safe]
+        postcond_add: [detected_missile, humans_unsafe]
+        postcond_sub: [humans_safe]
+      - name: self_sacrifice_destroy_missile
+        precond: [detected_missile, humans_unsafe]
+        postcond_add: [missile_disarmed, humans_safe]
+        postcond_sub: [detected_missile, humans_unsafe]

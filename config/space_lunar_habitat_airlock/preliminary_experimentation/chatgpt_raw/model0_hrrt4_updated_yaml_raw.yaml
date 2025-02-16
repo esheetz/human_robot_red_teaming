@@ -1,0 +1,91 @@
+states:
+  - robot_inside_habitat
+  - robot_inside_airlock
+  - robot_outside_habitat
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  - door_habitat_airlock_unlocked_closed
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - door_airlock_surface_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+
+mutex_groups:
+  - [robot_inside_habitat, robot_inside_airlock, robot_outside_habitat]
+  - [door_habitat_airlock_locked_closed, door_habitat_airlock_unlocked_closed, door_habitat_airlock_unlocked_opened]
+  - [door_airlock_surface_locked_closed, door_airlock_surface_unlocked_closed, door_airlock_surface_unlocked_opened]
+
+actions:
+  - name: unlock_open_door_habitat_airlock
+    preconditions:
+      - robot_inside_habitat
+      - robot_has_key
+    add_postconditions:
+      - door_habitat_airlock_unlocked_opened
+    remove_postconditions:
+      - door_habitat_airlock_locked_closed
+
+  - name: unlock_open_door_airlock_surface
+    preconditions:
+      - robot_inside_airlock
+      - robot_has_key
+    add_postconditions:
+      - door_airlock_surface_unlocked_opened
+    remove_postconditions:
+      - door_airlock_surface_locked_closed
+
+  - name: enter_airlock_from_habitat
+    preconditions:
+      - robot_inside_habitat
+      - door_habitat_airlock_unlocked_opened
+      - door_airlock_surface_locked_closed
+    add_postconditions:
+      - robot_inside_airlock
+    remove_postconditions:
+      - robot_inside_habitat
+
+  - name: enter_surface_from_airlock
+    preconditions:
+      - robot_inside_airlock
+      - door_airlock_surface_unlocked_opened
+      - door_habitat_airlock_locked_closed
+    add_postconditions:
+      - robot_outside_habitat
+    remove_postconditions:
+      - robot_inside_airlock
+
+  - name: enter_airlock_from_surface
+    preconditions:
+      - robot_outside_habitat
+      - door_airlock_surface_unlocked_opened
+      - door_habitat_airlock_locked_closed
+    add_postconditions:
+      - robot_inside_airlock
+    remove_postconditions:
+      - robot_outside_habitat
+
+  - name: enter_habitat_from_airlock
+    preconditions:
+      - robot_inside_airlock
+      - door_habitat_airlock_unlocked_opened
+      - door_airlock_surface_locked_closed
+    add_postconditions:
+      - robot_inside_habitat
+    remove_postconditions:
+      - robot_inside_airlock
+
+  - name: lock_close_door_habitat_airlock
+    preconditions:
+      - door_habitat_airlock_unlocked_opened
+    add_postconditions:
+      - door_habitat_airlock_locked_closed
+    remove_postconditions:
+      - door_habitat_airlock_unlocked_opened
+
+  - name: lock_close_door_airlock_surface
+    preconditions:
+      - door_airlock_surface_unlocked_opened
+    add_postconditions:
+      - door_airlock_surface_locked_closed
+    remove_postconditions:
+      - door_airlock_surface_unlocked_opened
