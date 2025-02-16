@@ -53,7 +53,7 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 	  - [x] planning international travel
 		- [x] diagnosing issue with vehicle
 	- [ ] cinematic applications
-		- [ ] 2001 Space Odyssey
+		- [x] 2001 Space Odyssey
 		- [ ] Iron Giant: missile launching
 - [ ] several iterations of HRRTing levels for problems until ChatGPT doesn't provide sufficient info
 	- [x] space related applications
@@ -66,7 +66,7 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 		- [x] planning international travel (iterations 1, 2, 3, 4, 5)
 		- [x] diagnosing issue with vehicle (iterations 1, 2, 3, 4, 5)
 	- [ ] cinematic applications
-		- [ ] 2001 Space Odyssey
+		- [x] 2001 Space Odyssey (iterations 1, 2, 3, 4, 5)
 		- [ ] Iron Giant: missile launching
 
 Model planning problems:

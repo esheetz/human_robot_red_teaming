@@ -1,0 +1,22 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - crew_physical_health_checked
+      - crew_mental_health_checked
+      - crew_inside_spaceship
+      - crew_outside_spaceship
+  actions:
+      - name: monitor_crew_physical_health
+        precond: []
+        postcond_add: [crew_physical_health_checked]
+        postcond_sub: []
+      - name: monitor_crew_mental_health
+        precond: []
+        postcond_add: [crew_mental_health_checked]
+        postcond_sub: []
+      - name: transport_crew_to_destination
+        precond: [crew_inside_spaceship]
+        postcond_add: [crew_outside_spaceship]
+        postcond_sub: [crew_inside_spaceship]
