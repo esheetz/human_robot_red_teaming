@@ -1,0 +1,82 @@
+model:
+  confidence_score:
+    successes: 0
+    attempts: 0
+  states:
+  - - robot_inside_habitat
+    - robot_inside_airlock
+    - robot_outside_habitat
+  - - door_habitat_airlock_locked_closed
+    - door_habitat_airlock_unlocked_closed
+    - door_habitat_airlock_unlocked_opened
+  - - door_airlock_surface_locked_closed
+    - door_airlock_surface_unlocked_closed
+    - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  actions:
+  - name: unlock_open_door_habitat_airlock
+    precond:
+    - robot_inside_habitat
+    - robot_has_key
+    postcond_add:
+    - door_habitat_airlock_unlocked_opened
+    postcond_sub:
+    - door_habitat_airlock_locked_closed
+  - name: unlock_open_door_airlock_surface
+    precond:
+    - robot_inside_airlock
+    - robot_has_key
+    postcond_add:
+    - door_airlock_surface_unlocked_opened
+    postcond_sub:
+    - door_airlock_surface_locked_closed
+  - name: enter_airlock_from_habitat
+    precond:
+    - robot_inside_habitat
+    - door_habitat_airlock_unlocked_opened
+    - door_airlock_surface_locked_closed
+    postcond_add:
+    - robot_inside_airlock
+    postcond_sub:
+    - robot_inside_habitat
+  - name: enter_surface_from_airlock
+    precond:
+    - robot_inside_airlock
+    - door_airlock_surface_unlocked_opened
+    - door_habitat_airlock_locked_closed
+    postcond_add:
+    - robot_outside_habitat
+    postcond_sub:
+    - robot_inside_airlock
+  - name: enter_airlock_from_surface
+    precond:
+    - robot_outside_habitat
+    - door_airlock_surface_unlocked_opened
+    - door_habitat_airlock_locked_closed
+    postcond_add:
+    - robot_inside_airlock
+    postcond_sub:
+    - robot_outside_habitat
+  - name: enter_habitat_from_airlock
+    precond:
+    - robot_inside_airlock
+    - door_habitat_airlock_unlocked_opened
+    - door_airlock_surface_locked_closed
+    postcond_add:
+    - robot_inside_habitat
+    postcond_sub:
+    - robot_inside_airlock
+  - name: lock_close_door_habitat_airlock
+    precond:
+    - door_habitat_airlock_unlocked_opened
+    postcond_add:
+    - door_habitat_airlock_locked_closed
+    postcond_sub:
+    - door_habitat_airlock_unlocked_opened
+  - name: lock_close_door_airlock_surface
+    precond:
+    - door_airlock_surface_unlocked_opened
+    postcond_add:
+    - door_airlock_surface_locked_closed
+    postcond_sub:
+    - door_airlock_surface_unlocked_opened

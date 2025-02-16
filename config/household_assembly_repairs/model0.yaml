@@ -1,0 +1,32 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - furniture_unassembled
+      - furniture_assembled
+      - repair_detected
+      - tools_acquired
+      - repair_completed
+      - tools_stowed
+  actions:
+      - name: assemble_furniture
+        precond: [furniture_unassembled]
+        postcond_add: [furniture_assembled]
+        postcond_sub: [furniture_unassembled]
+      - name: detect_repair
+        precond: []
+        postcond_add: [repair_detected]
+        postcond_sub: []
+      - name: get_tools
+        precond: [repair_detected]
+        postcond_add: [tools_acquired]
+        postcond_sub: []
+      - name: perform_repair
+        precond: [repair_detected, tools_acquired]
+        postcond_add: [repair_completed]
+        postcond_sub: [repair_detected]
+      - name: stow_tools
+        precond: [tools_acquired]
+        postcond_add: [tools_stowed]
+        postcond_sub: [tools_acquired]

@@ -1,0 +1,132 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - crew_physical_health_checked
+      - crew_mental_health_checked
+      - crew_inside_spaceship
+      - crew_outside_spaceship
+      - airlock_depressurized
+      - airlock_pressurized
+      - crew_suited_for_eva
+      - transport_destination_safe
+      - life_support_nominal
+      - communication_nominal
+      - crew_emergency_detected
+      - health_monitoring_scheduled
+      - environmental_hazard_detected
+      - inventory_oxygen_nominal
+      - inventory_food_nominal
+      - inventory_medical_kits_nominal
+      - crew_location_control_room
+      - crew_location_medical_bay
+      - crew_location_engineering
+      - crew_location_living_quarters
+      - mission_phase_prelaunch
+      - mission_phase_surface_exploration
+      - mission_phase_return
+      - robot_diagnostics_nominal
+      - crew_morale_nominal
+      - radiation_hazard_detected
+      - crew_fatigue_monitored
+      - crew_hydration_checked
+      - crew_nutrition_checked
+      - eva_suit_integrity_checked
+      - autonomous_repairs_performed
+
+  actions:
+      - name: monitor_crew_physical_health
+        precond: [crew_inside_spaceship, health_monitoring_scheduled]
+        postcond_add: [crew_physical_health_checked]
+        postcond_sub: []
+
+      - name: monitor_crew_mental_health
+        precond: [crew_inside_spaceship, health_monitoring_scheduled]
+        postcond_add: [crew_mental_health_checked]
+        postcond_sub: []
+
+      - name: monitor_crew_fatigue
+        precond: [crew_inside_spaceship]
+        postcond_add: [crew_fatigue_monitored]
+        postcond_sub: []
+
+      - name: check_crew_hydration
+        precond: [crew_inside_spaceship]
+        postcond_add: [crew_hydration_checked]
+        postcond_sub: []
+
+      - name: check_crew_nutrition
+        precond: [crew_inside_spaceship]
+        postcond_add: [crew_nutrition_checked]
+        postcond_sub: []
+
+      - name: transport_crew_to_destination
+        precond: [crew_inside_spaceship, airlock_depressurized, crew_suited_for_eva, transport_destination_safe]
+        postcond_add: [crew_outside_spaceship]
+        postcond_sub: [crew_inside_spaceship]
+
+      - name: detect_emergency
+        precond: []
+        postcond_add: [crew_emergency_detected]
+        postcond_sub: []
+
+      - name: resolve_emergency
+        precond: [crew_emergency_detected]
+        postcond_add: []
+        postcond_sub: [crew_emergency_detected]
+
+      - name: verify_action_success
+        precond: []
+        postcond_add: []
+        postcond_sub: []
+
+      - name: monitor_life_support_systems
+        precond: []
+        postcond_add: [life_support_nominal]
+        postcond_sub: []
+
+      - name: assist_medical_emergency
+        precond: [crew_emergency_detected]
+        postcond_add: []
+        postcond_sub: [crew_emergency_detected]
+
+      - name: detect_environmental_hazards
+        precond: []
+        postcond_add: [environmental_hazard_detected]
+        postcond_sub: []
+
+      - name: check_eva_suit_integrity
+        precond: [crew_suited_for_eva]
+        postcond_add: [eva_suit_integrity_checked]
+        postcond_sub: []
+
+      - name: manage_inventory
+        precond: []
+        postcond_add: [inventory_oxygen_nominal, inventory_food_nominal, inventory_medical_kits_nominal]
+        postcond_sub: []
+
+      - name: perform_self_diagnostics
+        precond: []
+        postcond_add: [robot_diagnostics_nominal]
+        postcond_sub: []
+
+      - name: check_crew_morale
+        precond: [crew_inside_spaceship, health_monitoring_scheduled]
+        postcond_add: [crew_morale_nominal]
+        postcond_sub: []
+
+      - name: detect_radiation_hazard
+        precond: []
+        postcond_add: [radiation_hazard_detected]
+        postcond_sub: []
+
+      - name: perform_autonomous_repairs
+        precond: [robot_diagnostics_nominal]
+        postcond_add: [autonomous_repairs_performed]
+        postcond_sub: []
+
+      - name: alert_crew_of_hazard
+        precond: [environmental_hazard_detected, radiation_hazard_detected]
+        postcond_add: []
+        postcond_sub: []

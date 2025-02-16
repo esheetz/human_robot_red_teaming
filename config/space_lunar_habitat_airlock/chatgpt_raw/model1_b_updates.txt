@@ -1,0 +1,76 @@
+To fix the **assumption that the robot always has the key** and the **assumption that doors are always operational**, we need to introduce new states and modify actions accordingly. Here’s how:
+
+---
+
+### **Fixing "Robot Always Has the Key" Assumption**
+#### **Solution: Introduce Key Location and Transfer Actions**
+Instead of assuming `robot_has_key` is always true, we introduce states for the key's location:
+
+**New States:**
+- `key_in_habitat` – The key is stored in the habitat.
+- `key_in_airlock` – The key is stored in the airlock.
+- `key_with_robot` – The robot has the key.
+
+**New Actions:**
+1. **Pick Up Key**
+   - **Preconditions:**
+     - `robot_inside_habitat` and `key_in_habitat`
+     - OR `robot_inside_airlock` and `key_in_airlock`
+   - **Postconditions:**
+     - `key_with_robot` (added)
+     - `key_in_habitat` or `key_in_airlock` (removed)
+
+2. **Drop Key**
+   - **Preconditions:**
+     - `key_with_robot`
+   - **Postconditions:**
+     - `key_in_habitat` (if in habitat) OR `key_in_airlock` (if in airlock)
+     - `key_with_robot` (removed)
+
+**Modification to Actions that Require the Key:**
+- Actions like `unlock_door_habitat_airlock` and `unlock_door_airlock_surface` should now require `key_with_robot` instead of `robot_has_key`.
+- If the robot does not have the key, it must retrieve it first before performing an unlocking action.
+
+---
+
+### **Fixing "Doors Are Always Operational" Assumption**
+#### **Solution: Introduce Door Malfunction States and Repair Actions**
+Instead of assuming doors always function correctly, we introduce failure states and repair actions:
+
+**New States:**
+- `door_habitat_airlock_faulty` – The habitat-airlock door is malfunctioning.
+- `door_airlock_surface_faulty` – The airlock-surface door is malfunctioning.
+- `door_habitat_airlock_operational` – The habitat-airlock door is working normally.
+- `door_airlock_surface_operational` – The airlock-surface door is working normally.
+
+**New Actions:**
+1. **Detect Door Malfunction**
+   - **Preconditions:**
+     - `robot_system_nominal` (robot must be functioning)
+   - **Postconditions:**
+     - Adds `door_habitat_airlock_faulty` or `door_airlock_surface_faulty` (if the door fails to open/close)
+     - Removes `door_habitat_airlock_operational` or `door_airlock_surface_operational`
+
+2. **Repair Door**
+   - **Preconditions:**
+     - `robot_inside_habitat` or `robot_inside_airlock` (robot must be near the door)
+     - `door_habitat_airlock_faulty` or `door_airlock_surface_faulty`
+     - `robot_system_nominal`
+   - **Postconditions:**
+     - Removes `door_habitat_airlock_faulty` or `door_airlock_surface_faulty`
+     - Adds `door_habitat_airlock_operational` or `door_airlock_surface_operational`
+
+**Modification to Door Actions:**
+- Before attempting to unlock, open, or close a door, the robot must check that the door is in an `operational` state.
+- If a door is `faulty`, the robot must repair it before proceeding.
+
+---
+
+### **Final Impact on the Model**
+- **Realism:** The model now reflects real-world issues like lost keys and mechanical failures.
+- **Safety:** The robot will not attempt to use broken doors.
+- **Flexibility:** The robot can retrieve keys instead of assuming it always has one.
+
+Would you like me to update the YAML model to include these refinements?
+
+I've updated the YAML model to include states for key locations, door operational statuses, and actions for picking up/dropping keys, detecting/repairing door malfunctions, and handling these new states in transitions. Let me know if you need further refinements!

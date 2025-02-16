@@ -1,0 +1,1 @@
+I've updated the model to include checking for transportation disruptions, political instability, and civil unrest. These checks are now also incorporated into itinerary finalization. Let me know if you need any additional refinements!

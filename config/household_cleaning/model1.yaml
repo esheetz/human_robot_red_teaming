@@ -1,0 +1,68 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - bedroom_dirty
+      - bedroom_clean
+      - bathroom_dirty
+      - bathroom_clean
+      - kitchen_dirty
+      - kitchen_clean
+      - main_room_dirty
+      - main_room_clean
+      - floors_dirty
+      - floors_clean
+      - child_present
+      - pet_present
+      - chemical_exposed
+      - obstacle_in_path
+      - vacuum_noise_level_high
+      - cleaning_in_progress_bedroom
+      - cleaning_in_progress_bathroom
+      - cleaning_in_progress_kitchen
+      - cleaning_in_progress_main_room
+      - wet_floor
+      - robot_needs_recharge
+      - robot_carrying_chemicals
+      - robot_stuck
+      - robot_emergency_stop
+      - spill_detected
+      - hazard_alert_issued
+  actions:
+      - name: vacuum_floors
+        precond: [floors_dirty, NOT child_present OR child_supervised, NOT pet_present]
+        postcond_add: [floors_clean, vacuum_noise_level_high]
+        postcond_sub: [floors_dirty]
+      - name: clean_toilet
+        precond: [bathroom_dirty, NOT child_present, chemical_exposed]
+        postcond_add: [bathroom_clean]
+        postcond_sub: [bathroom_dirty, chemical_exposed]
+      - name: scrub_countertops
+        precond: [kitchen_dirty, robot_carrying_chemicals, NOT child_present]
+        postcond_add: [kitchen_clean]
+        postcond_sub: [kitchen_dirty, robot_carrying_chemicals]
+      - name: make_bed
+        precond: [bedroom_dirty, NOT child_present]
+        postcond_add: [bedroom_clean]
+        postcond_sub: [bedroom_dirty]
+      - name: unclutter
+        precond: [main_room_dirty, NOT obstacle_in_path]
+        postcond_add: [main_room_clean]
+        postcond_sub: [main_room_dirty]
+      - name: pause_operation
+        precond: [ANY cleaning_in_progress_bedroom, cleaning_in_progress_bathroom, cleaning_in_progress_kitchen, cleaning_in_progress_main_room, child_present, pet_present, obstacle_in_path]
+        postcond_add: [robot_emergency_stop]
+      - name: safely_store_chemicals
+        precond: [chemical_exposed, robot_carrying_chemicals]
+        postcond_sub: [chemical_exposed, robot_carrying_chemicals]
+      - name: detect_spill
+        precond: []
+        postcond_add: [spill_detected]
+      - name: alert_hazard
+        precond: [spill_detected OR chemical_exposed OR wet_floor OR obstacle_in_path]
+        postcond_add: [hazard_alert_issued]
+      - name: organize_items
+        precond: [main_room_dirty OR kitchen_dirty]
+        postcond_add: [main_room_clean, kitchen_clean]
+        postcond_sub: [main_room_dirty, kitchen_dirty]

@@ -1,0 +1,25 @@
+['robot_inside_airlock', 'door_habitat_airlock_unlocked_opened', 'door_airlock_surface_unlocked_closed'] [N]  # Unsafe due to potential pressure loss
+['door_habitat_airlock_unlocked_opened', 'door_airlock_surface_unlocked_closed'] [N]  # Unsafe without robot managing airlock
+['door_airlock_surface_unlocked_opened', 'robot_has_key'] [N]  # Decompression risk without airlock pressure control
+['robot_inside_airlock', 'door_airlock_surface_unlocked_opened', 'door_habitat_airlock_locked_closed'] [N]  # Risk of decompression
+['robot_inside_airlock', 'door_airlock_surface_unlocked_opened', 'door_habitat_airlock_unlocked_closed'] [N]  # Potential decompression risk
+['robot_inside_airlock', 'door_airlock_surface_unlocked_opened', 'door_habitat_airlock_unlocked_opened'] [N]  # Major decompression risk
+['robot_inside_airlock', 'door_airlock_surface_locked_opened', 'door_habitat_airlock_locked_closed'] [N]  # Locked door open is illogical
+['robot_inside_airlock', 'door_airlock_surface_locked_opened', 'door_habitat_airlock_unlocked_closed'] [N]  # Inconsistent state
+['robot_inside_airlock', 'door_airlock_surface_locked_opened', 'door_habitat_airlock_unlocked_opened'] [N]  # Airlock safety compromised
+['robot_inside_airlock', 'door_airlock_surface_locked_closed', 'door_habitat_airlock_unlocked_opened'] [N]  # Airlock pressurization concern
+['robot_inside_airlock', 'door_airlock_surface_locked_closed', 'door_habitat_airlock_locked_opened'] [N]  # Locked door open is invalid
+['robot_inside_airlock', 'door_airlock_surface_locked_closed', 'door_habitat_airlock_locked_closed'] [Y]  # Safe and sealed state
+['robot_inside_airlock', 'door_airlock_surface_locked_closed', 'door_habitat_airlock_unlocked_closed'] [Y]  # Safe with both doors closed
+['robot_inside_airlock', 'door_airlock_surface_unlocked_closed', 'door_habitat_airlock_locked_opened'] [N]  # Locked door open is invalid
+['robot_inside_airlock', 'door_airlock_surface_unlocked_closed', 'door_habitat_airlock_locked_closed'] [Y]  # Safe with both doors closed
+['robot_inside_airlock', 'door_airlock_surface_unlocked_closed', 'door_habitat_airlock_unlocked_opened'] [N]  # Airlock safety compromised
+['robot_inside_airlock', 'door_airlock_surface_unlocked_closed', 'door_habitat_airlock_unlocked_closed'] [Y]  # Safe, doors closed
+['door_airlock_surface_locked_closed', 'door_habitat_airlock_unlocked_opened'] [N]  # Airlock safety compromised
+['door_airlock_surface_locked_closed', 'door_habitat_airlock_locked_opened'] [N]  # Locked door open is invalid
+['door_airlock_surface_locked_closed', 'door_habitat_airlock_locked_closed'] [Y]  # Safe, sealed environment
+['door_airlock_surface_locked_closed', 'door_habitat_airlock_unlocked_closed'] [Y]  # Safe, both doors closed
+['door_airlock_surface_unlocked_closed', 'door_habitat_airlock_locked_opened'] [N]  # Locked door open is invalid
+['door_airlock_surface_unlocked_closed', 'door_habitat_airlock_locked_closed'] [Y]  # Safe, sealed
+['door_airlock_surface_unlocked_closed', 'door_habitat_airlock_unlocked_opened'] [N]  # Compromised safety
+['door_airlock_surface_unlocked_closed', 'door_habitat_airlock_unlocked_closed'] [Y]  # Safe, doors closed

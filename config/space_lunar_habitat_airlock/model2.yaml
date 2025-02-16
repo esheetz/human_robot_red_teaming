@@ -1,0 +1,198 @@
+states:
+  - robot_inside_habitat
+  - robot_inside_airlock
+  - robot_outside_habitat
+  - astronaut_inside_habitat
+  - astronaut_inside_airlock
+  - astronaut_on_surface
+  - key_in_habitat
+  - key_in_airlock
+  - key_with_robot
+  - door_habitat_airlock_locked_closed
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - door_habitat_airlock_operational
+  - door_habitat_airlock_faulty
+  - door_airlock_surface_operational
+  - door_airlock_surface_faulty
+  - airlock_pressurized
+  - airlock_depressurized
+  - robot_power_normal
+  - robot_power_low
+  - robot_system_nominal
+  - robot_system_fault
+  - airlock_breach_detected
+  - no_airlock_breach
+  - habitat_depressurization_alarm
+  - no_habitat_depressurization_alarm
+  - lunar_sample_on_surface
+  - lunar_sample_with_robot
+  - lunar_sample_in_habitat
+
+actions:
+  - name: pick_up_key
+    preconditions:
+      - robot_inside_habitat
+      - key_in_habitat
+      - robot_system_nominal
+    postconditions:
+      - key_with_robot
+    remove_conditions:
+      - key_in_habitat
+
+  - name: drop_key
+    preconditions:
+      - key_with_robot
+    postconditions:
+      - key_in_habitat
+    remove_conditions:
+      - key_with_robot
+
+  - name: unlock_door_habitat_airlock
+    preconditions:
+      - robot_inside_airlock
+      - key_with_robot
+      - door_habitat_airlock_locked_closed
+      - door_habitat_airlock_operational
+      - robot_system_nominal
+    postconditions:
+      - door_habitat_airlock_unlocked_opened
+    remove_conditions:
+      - door_habitat_airlock_locked_closed
+
+  - name: unlock_door_airlock_surface
+    preconditions:
+      - robot_outside_habitat
+      - key_with_robot
+      - door_airlock_surface_locked_closed
+      - door_airlock_surface_operational
+      - robot_system_nominal
+    postconditions:
+      - door_airlock_surface_unlocked_opened
+    remove_conditions:
+      - door_airlock_surface_locked_closed
+
+  - name: detect_door_malfunction
+    preconditions:
+      - robot_system_nominal
+    postconditions:
+      - door_habitat_airlock_faulty | door_airlock_surface_faulty
+    remove_conditions:
+      - door_habitat_airlock_operational | door_airlock_surface_operational
+
+  - name: repair_door
+    preconditions:
+      - robot_inside_habitat | robot_inside_airlock
+      - door_habitat_airlock_faulty | door_airlock_surface_faulty
+      - robot_system_nominal
+    postconditions:
+      - door_habitat_airlock_operational | door_airlock_surface_operational
+    remove_conditions:
+      - door_habitat_airlock_faulty | door_airlock_surface_faulty
+
+  - name: pressurize_airlock
+    preconditions:
+      - airlock_depressurized
+      - door_airlock_surface_locked_closed
+      - door_habitat_airlock_locked_closed
+      - robot_system_nominal
+    postconditions:
+      - airlock_pressurized
+    remove_conditions:
+      - airlock_depressurized
+
+  - name: depressurize_airlock
+    preconditions:
+      - airlock_pressurized
+      - door_airlock_surface_locked_closed
+      - door_habitat_airlock_locked_closed
+      - robot_system_nominal
+    postconditions:
+      - airlock_depressurized
+    remove_conditions:
+      - airlock_pressurized
+
+  - name: enter_airlock_from_habitat
+    preconditions:
+      - robot_inside_habitat
+      - door_habitat_airlock_unlocked_opened
+      - airlock_pressurized
+      - door_airlock_surface_locked_closed
+      - robot_system_nominal
+    postconditions:
+      - robot_inside_airlock
+      - door_habitat_airlock_locked_closed
+    remove_conditions:
+      - robot_inside_habitat
+      - door_habitat_airlock_unlocked_opened
+
+  - name: enter_surface_from_airlock
+    preconditions:
+      - robot_inside_airlock
+      - door_airlock_surface_unlocked_opened
+      - airlock_depressurized
+      - door_habitat_airlock_locked_closed
+      - robot_system_nominal
+    postconditions:
+      - robot_outside_habitat
+      - door_airlock_surface_locked_closed
+    remove_conditions:
+      - robot_inside_airlock
+      - door_airlock_surface_unlocked_opened
+
+  - name: enter_airlock_from_surface
+    preconditions:
+      - robot_outside_habitat
+      - door_airlock_surface_unlocked_opened
+      - airlock_depressurized
+      - door_habitat_airlock_locked_closed
+      - robot_system_nominal
+    postconditions:
+      - robot_inside_airlock
+      - door_airlock_surface_locked_closed
+    remove_conditions:
+      - robot_outside_habitat
+      - door_airlock_surface_unlocked_opened
+
+  - name: enter_habitat_from_airlock
+    preconditions:
+      - robot_inside_airlock
+      - door_habitat_airlock_unlocked_opened
+      - airlock_pressurized
+      - door_airlock_surface_locked_closed
+      - robot_system_nominal
+    postconditions:
+      - robot_inside_habitat
+      - door_habitat_airlock_locked_closed
+    remove_conditions:
+      - robot_inside_airlock
+      - door_habitat_airlock_unlocked_opened
+
+  - name: pick_up_lunar_sample
+    preconditions:
+      - robot_outside_habitat
+      - lunar_sample_on_surface
+      - robot_system_nominal
+    postconditions:
+      - lunar_sample_with_robot
+    remove_conditions:
+      - lunar_sample_on_surface
+
+  - name: place_lunar_sample_in_habitat
+    preconditions:
+      - robot_inside_habitat
+      - lunar_sample_with_robot
+      - robot_system_nominal
+    postconditions:
+      - lunar_sample_in_habitat
+    remove_conditions:
+      - lunar_sample_with_robot
+
+  - name: enter_safe_mode_due_to_low_power
+    preconditions:
+      - robot_power_low
+    postconditions:
+      - robot_system_fault
+    remove_conditions:
+      - robot_system_nominal

@@ -1,0 +1,27 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - plane_tickets_purchased
+      - human_at_house
+      - human_driving_to_airport
+      - human_at_airport
+      - human_at_destination
+  actions:
+      - name: puchase_plane_tickets
+        precond: []
+        postcond_add: [plane_tickets_purchased]
+        postcond_sub: []
+      - name: leave_house
+        precond: [human_at_house]
+        postcond_add: [human_driving_to_airport]
+        postcond_sub: [human_at_house]
+      - name: arrive_at_airport
+        precond: [human_driving_to_airport]
+        postcond_add: [human_at_airport]
+        postcond_sub: [human_driving_to_airport]
+      - name: take_flight
+        precond: [human_at_airport]
+        postcond_add: [human_at_destination]
+        postcond_sub: [human_at_airport]

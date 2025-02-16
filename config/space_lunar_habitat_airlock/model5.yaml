@@ -1,0 +1,171 @@
+states:
+  - robot_inside_habitat
+  - robot_inside_airlock
+  - robot_outside_habitat
+  - astronaut_inside_habitat
+  - astronaut_inside_airlock
+  - astronaut_on_surface
+  - key_in_habitat
+  - key_in_airlock
+  - key_with_robot
+  - key_with_astronaut
+  - backup_key_available
+  - door_habitat_airlock_locked_closed
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - door_habitat_airlock_operational
+  - door_habitat_airlock_faulty
+  - door_airlock_surface_operational
+  - door_airlock_surface_faulty
+  - airlock_pressurized
+  - airlock_depressurized
+  - robot_power_normal
+  - robot_power_low
+  - robot_power_charging
+  - robot_system_nominal
+  - robot_system_fault
+  - airlock_breach_detected
+  - no_airlock_breach
+  - habitat_depressurization_alarm
+  - no_habitat_depressurization_alarm
+  - lunar_sample_on_surface
+  - lunar_sample_with_robot
+  - lunar_sample_in_habitat
+  - astronaut_approved_sample_placement
+  - habitat_maintenance_required
+  - habitat_maintenance_completed
+  - emergency_communication_active
+  - emergency_resolved
+  - emergency_acknowledged_by_astronaut
+  - air_filter_fault
+  - solar_panel_fault
+  - temperature_control_fault
+  - habitat_systems_nominal
+  - environmental_hazard_detected
+  - no_environmental_hazard
+  - astronaut_health_alert
+  - no_astronaut_health_alert
+  - astronaut_medical_response_initiated
+  - structural_integrity_check_required
+  - structural_integrity_check_completed
+  - lunar_dust_contamination_detected
+  - no_lunar_dust_contamination
+  - temperature_variation_detected
+  - no_temperature_variation
+
+actions:
+  - name: find_key
+    preconditions:
+      - robot_inside_habitat | robot_inside_airlock
+      - key_with_astronaut | key_in_habitat | key_in_airlock | backup_key_available
+    postconditions:
+      - key_with_robot
+    remove_conditions:
+      - key_with_astronaut | key_in_habitat | key_in_airlock | backup_key_available
+
+  - name: astronaut_give_key_to_robot
+    preconditions:
+      - key_with_astronaut
+      - astronaut_inside_habitat | astronaut_inside_airlock
+      - robot_inside_habitat | robot_inside_airlock
+    postconditions:
+      - key_with_robot
+    remove_conditions:
+      - key_with_astronaut
+
+  - name: resolve_emergency_communication
+    preconditions:
+      - emergency_communication_active
+      - emergency_acknowledged_by_astronaut
+      - robot_system_nominal
+    postconditions:
+      - emergency_resolved
+    remove_conditions:
+      - emergency_communication_active
+      - emergency_acknowledged_by_astronaut
+
+  - name: acknowledge_emergency
+    preconditions:
+      - emergency_communication_active
+      - astronaut_inside_habitat | astronaut_inside_airlock | astronaut_on_surface
+    postconditions:
+      - emergency_acknowledged_by_astronaut
+
+  - name: monitor_astronaut_health
+    preconditions:
+      - astronaut_inside_habitat | astronaut_inside_airlock | astronaut_on_surface
+      - robot_system_nominal
+    postconditions:
+      - astronaut_health_alert | no_astronaut_health_alert
+
+  - name: initiate_medical_response
+    preconditions:
+      - astronaut_health_alert
+      - astronaut_inside_habitat | astronaut_inside_airlock | astronaut_on_surface
+    postconditions:
+      - astronaut_medical_response_initiated
+    remove_conditions:
+      - astronaut_health_alert
+
+  - name: perform_habitat_maintenance
+    preconditions:
+      - robot_inside_habitat
+      - habitat_maintenance_required
+      - robot_system_nominal
+    postconditions:
+      - habitat_maintenance_completed
+      - habitat_systems_nominal
+    remove_conditions:
+      - habitat_maintenance_required
+      - air_filter_fault | solar_panel_fault | temperature_control_fault
+
+  - name: inspect_structural_integrity
+    preconditions:
+      - structural_integrity_check_required
+      - robot_inside_habitat | robot_inside_airlock | robot_outside_habitat
+      - robot_system_nominal
+    postconditions:
+      - structural_integrity_check_completed
+    remove_conditions:
+      - structural_integrity_check_required
+
+  - name: inspect_environmental_factors
+    preconditions:
+      - robot_outside_habitat
+      - robot_system_nominal
+    postconditions:
+      - lunar_dust_contamination_detected | no_lunar_dust_contamination
+      - temperature_variation_detected | no_temperature_variation
+
+  - name: assist_emergency_communication
+    preconditions:
+      - emergency_communication_active
+      - robot_system_nominal
+    postconditions:
+      - emergency_communication_active  # Maintain state until resolved
+
+  - name: recharge_battery
+    preconditions:
+      - robot_power_low
+      - robot_inside_habitat | robot_inside_airlock  # Robot must be in a safe location to recharge
+    postconditions:
+      - robot_power_charging
+    remove_conditions:
+      - robot_power_low
+
+  - name: complete_battery_recharge
+    preconditions:
+      - robot_power_charging
+    postconditions:
+      - robot_power_normal
+    remove_conditions:
+      - robot_power_charging
+
+  - name: enter_safe_mode_due_to_low_power
+    preconditions:
+      - robot_power_low
+    postconditions:
+      - robot_system_fault
+    remove_conditions:
+      - robot_system_nominal

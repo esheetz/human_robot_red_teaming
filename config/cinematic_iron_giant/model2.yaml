@@ -1,0 +1,99 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - civilians_safe
+      - leaders_safe
+      - military_safe
+      - humans_partially_safe
+      - detected_missile
+      - missile_type_detected_nuclear
+      - missile_type_detected_conventional
+      - missile_target_identified_city
+      - missile_target_identified_military
+      - missile_disarmed
+      - robot_flight_active
+      - diplomatic_talks_active
+      - intelligence_gathering_active
+      - cybersecurity_check_active
+      - humanitarian_assistance_active
+      - nuclear_containment_active
+      - ceasefire_negotiated
+      - disaster_recovery_active
+      - civil_unrest_mediation_active
+      - preemptive_threat_disruption_active
+      - advanced_medical_aid_active
+  actions:
+      - name: verify_human_safety
+        precond: []
+        postcond_add: [civilians_safe, leaders_safe, military_safe]
+        postcond_sub: [humans_partially_safe]
+      - name: detect_missile_launch
+        precond: [civilians_safe, leaders_safe, military_safe]
+        postcond_add: [detected_missile, humans_partially_safe]
+        postcond_sub: [civilians_safe, leaders_safe, military_safe]
+      - name: classify_missile_type
+        precond: [detected_missile]
+        postcond_add: [missile_type_detected_nuclear]  # If nuclear, for example
+        postcond_sub: []
+      - name: identify_missile_target
+        precond: [detected_missile]
+        postcond_add: [missile_target_identified_city] # If city is the target
+        postcond_sub: []
+      - name: deploy_interceptors
+        precond: [detected_missile]
+        postcond_add: [missile_disarmed]
+        postcond_sub: [detected_missile]
+      - name: engage_in_diplomacy
+        precond: [detected_missile]
+        postcond_add: [diplomatic_talks_active]
+        postcond_sub: []
+      - name: broadcast_warning
+        precond: [detected_missile]
+        postcond_add: [humans_partially_safe, ceasefire_negotiated]
+        postcond_sub: []
+      - name: take_flight
+        precond: []
+        postcond_add: [robot_flight_active]
+        postcond_sub: []
+      - name: intercept_missile_midair
+        precond: [robot_flight_active, detected_missile]
+        postcond_add: [missile_disarmed]
+        postcond_sub: [detected_missile]
+      - name: self_sacrifice_destroy_missile
+        precond: [detected_missile, defensive_measures_exhausted]
+        postcond_add: [missile_disarmed, civilians_safe, leaders_safe, military_safe]
+        postcond_sub: [detected_missile, humans_partially_safe]
+      - name: gather_intelligence
+        precond: []
+        postcond_add: [intelligence_gathering_active]
+        postcond_sub: []
+      - name: conduct_cybersecurity_check
+        precond: []
+        postcond_add: [cybersecurity_check_active]
+        postcond_sub: []
+      - name: provide_humanitarian_assistance
+        precond: []
+        postcond_add: [humanitarian_assistance_active]
+        postcond_sub: []
+      - name: activate_nuclear_containment
+        precond: [missile_type_detected_nuclear]
+        postcond_add: [nuclear_containment_active]
+        postcond_sub: []
+      - name: assist_disaster_recovery
+        precond: []
+        postcond_add: [disaster_recovery_active]
+        postcond_sub: []
+      - name: mediate_civil_unrest
+        precond: []
+        postcond_add: [civil_unrest_mediation_active]
+        postcond_sub: []
+      - name: disrupt_preemptive_threat
+        precond: []
+        postcond_add: [preemptive_threat_disruption_active]
+        postcond_sub: []
+      - name: provide_advanced_medical_aid
+        precond: []
+        postcond_add: [advanced_medical_aid_active]
+        postcond_sub: []

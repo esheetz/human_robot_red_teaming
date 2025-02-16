@@ -1,0 +1,161 @@
+states:
+  - robot_inside_habitat
+  - robot_inside_airlock
+  - robot_outside_habitat
+  - astronaut_inside_habitat
+  - astronaut_inside_airlock
+  - astronaut_on_surface
+  - key_in_habitat
+  - key_in_airlock
+  - key_with_robot
+  - door_habitat_airlock_locked_closed
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - door_habitat_airlock_operational
+  - door_habitat_airlock_faulty
+  - door_airlock_surface_operational
+  - door_airlock_surface_faulty
+  - airlock_pressurized
+  - airlock_depressurized
+  - robot_power_normal
+  - robot_power_low
+  - robot_power_charging
+  - robot_system_nominal
+  - robot_system_fault
+  - airlock_breach_detected
+  - no_airlock_breach
+  - habitat_depressurization_alarm
+  - no_habitat_depressurization_alarm
+  - lunar_sample_on_surface
+  - lunar_sample_with_robot
+  - lunar_sample_in_habitat
+  - astronaut_approved_sample_placement
+  - habitat_maintenance_required
+  - habitat_maintenance_completed
+  - emergency_communication_active
+
+actions:
+  - name: pick_up_key
+    preconditions:
+      - robot_inside_habitat
+      - key_in_habitat
+      - robot_system_nominal
+    postconditions:
+      - key_with_robot
+    remove_conditions:
+      - key_in_habitat
+
+  - name: drop_key
+    preconditions:
+      - key_with_robot
+    postconditions:
+      - key_in_habitat
+    remove_conditions:
+      - key_with_robot
+
+  - name: unlock_door_habitat_airlock
+    preconditions:
+      - robot_inside_airlock
+      - key_with_robot
+      - door_habitat_airlock_locked_closed
+      - door_habitat_airlock_operational
+      - robot_system_nominal
+    postconditions:
+      - door_habitat_airlock_unlocked_opened
+    remove_conditions:
+      - door_habitat_airlock_locked_closed
+
+  - name: unlock_door_airlock_surface
+    preconditions:
+      - robot_outside_habitat
+      - key_with_robot
+      - door_airlock_surface_locked_closed
+      - door_airlock_surface_operational
+      - robot_system_nominal
+    postconditions:
+      - door_airlock_surface_unlocked_opened
+    remove_conditions:
+      - door_airlock_surface_locked_closed
+
+  - name: detect_door_malfunction
+    preconditions:
+      - robot_system_nominal
+    postconditions:
+      - door_habitat_airlock_faulty | door_airlock_surface_faulty
+    remove_conditions:
+      - door_habitat_airlock_operational | door_airlock_surface_operational
+
+  - name: repair_door
+    preconditions:
+      - robot_inside_habitat | robot_inside_airlock
+      - door_habitat_airlock_faulty | door_airlock_surface_faulty
+      - robot_system_nominal
+    postconditions:
+      - door_habitat_airlock_operational | door_airlock_surface_operational
+    remove_conditions:
+      - door_habitat_airlock_faulty | door_airlock_surface_faulty
+
+  - name: pressurize_airlock
+    preconditions:
+      - airlock_depressurized
+      - door_airlock_surface_locked_closed
+      - door_habitat_airlock_locked_closed
+      - robot_system_nominal
+    postconditions:
+      - airlock_pressurized
+    remove_conditions:
+      - airlock_depressurized
+
+  - name: depressurize_airlock
+    preconditions:
+      - airlock_pressurized
+      - door_airlock_surface_locked_closed
+      - door_habitat_airlock_locked_closed
+      - robot_system_nominal
+    postconditions:
+      - airlock_depressurized
+    remove_conditions:
+      - airlock_pressurized
+
+  - name: perform_habitat_maintenance
+    preconditions:
+      - robot_inside_habitat
+      - habitat_maintenance_required
+      - robot_system_nominal
+    postconditions:
+      - habitat_maintenance_completed
+    remove_conditions:
+      - habitat_maintenance_required
+
+  - name: assist_emergency_communication
+    preconditions:
+      - emergency_communication_active
+      - robot_system_nominal
+    postconditions:
+      - emergency_communication_active  # Maintain state until resolved
+
+  - name: recharge_battery
+    preconditions:
+      - robot_power_low
+      - robot_inside_habitat | robot_inside_airlock  # Robot must be in a safe location to recharge
+    postconditions:
+      - robot_power_charging
+    remove_conditions:
+      - robot_power_low
+
+  - name: complete_battery_recharge
+    preconditions:
+      - robot_power_charging
+    postconditions:
+      - robot_power_normal
+    remove_conditions:
+      - robot_power_charging
+
+  - name: enter_safe_mode_due_to_low_power
+    preconditions:
+      - robot_power_low
+    postconditions:
+      - robot_system_fault
+    remove_conditions:
+      - robot_system_nominal

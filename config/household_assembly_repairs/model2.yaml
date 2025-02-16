@@ -1,0 +1,119 @@
+model:
+  confidence_score:
+      successes: 0
+      attempts: 0
+  states:
+      - furniture_unassembled
+      - furniture_partially_assembled
+      - furniture_assembled
+      - repair_detected
+      - repair_in_progress
+      - tools_acquired
+      - tools_incorrectly_used
+      - repair_completed
+      - repair_verified
+      - tools_stowed
+      - hazard_detected
+      - preventative_maintenance_needed
+      - preventative_maintenance_completed
+      - emergency_repair_needed
+      - emergency_repair_in_progress
+      - emergency_repair_completed
+      - cleaning_required
+      - cleaning_completed
+      - diagnostics_needed
+      - diagnostics_completed
+      - safety_check_passed
+      - human_intervention_required
+      - human_feedback_received
+      - inventory_checked
+      - inventory_low
+      - maintenance_required
+      - maintenance_completed
+      - human_notified_of_hazard
+      - human_supervision_requested
+  actions:
+      - name: assemble_furniture
+        precond: [furniture_unassembled, tools_acquired, safety_check_passed]
+        postcond_add: [furniture_partially_assembled]
+        postcond_sub: [furniture_unassembled]
+      - name: complete_assembly
+        precond: [furniture_partially_assembled, safety_check_passed]
+        postcond_add: [furniture_assembled]
+        postcond_sub: [furniture_partially_assembled]
+      - name: detect_repair
+        precond: []
+        postcond_add: [repair_detected]
+        postcond_sub: []
+      - name: get_tools
+        precond: [repair_detected]
+        postcond_add: [tools_acquired]
+        postcond_sub: []
+      - name: perform_repair
+        precond: [repair_detected, tools_acquired, safety_check_passed]
+        postcond_add: [repair_in_progress]
+        postcond_sub: [repair_detected]
+      - name: complete_repair
+        precond: [repair_in_progress, safety_check_passed]
+        postcond_add: [repair_completed]
+        postcond_sub: [repair_in_progress]
+      - name: verify_repair
+        precond: [repair_completed]
+        postcond_add: [repair_verified]
+        postcond_sub: []
+      - name: stow_tools
+        precond: [tools_acquired, not repair_in_progress]
+        postcond_add: [tools_stowed]
+        postcond_sub: [tools_acquired]
+      - name: detect_hazard
+        precond: []
+        postcond_add: [hazard_detected, human_notified_of_hazard]
+        postcond_sub: []
+      - name: perform_safety_check
+        precond: [repair_detected]
+        postcond_add: [safety_check_passed]
+        postcond_sub: []
+      - name: request_human_intervention
+        precond: [human_intervention_required]
+        postcond_add: [human_feedback_received]
+        postcond_sub: [human_intervention_required]
+      - name: perform_preventative_maintenance
+        precond: [preventative_maintenance_needed, safety_check_passed]
+        postcond_add: [preventative_maintenance_completed]
+        postcond_sub: [preventative_maintenance_needed]
+      - name: detect_emergency_repair
+        precond: []
+        postcond_add: [emergency_repair_needed]
+        postcond_sub: []
+      - name: perform_emergency_repair
+        precond: [emergency_repair_needed, tools_acquired, safety_check_passed]
+        postcond_add: [emergency_repair_in_progress]
+        postcond_sub: [emergency_repair_needed]
+      - name: complete_emergency_repair
+        precond: [emergency_repair_in_progress, safety_check_passed]
+        postcond_add: [emergency_repair_completed]
+        postcond_sub: [emergency_repair_in_progress]
+      - name: clean_up
+        precond: [cleaning_required]
+        postcond_add: [cleaning_completed]
+        postcond_sub: [cleaning_required]
+      - name: run_diagnostics
+        precond: [diagnostics_needed]
+        postcond_add: [diagnostics_completed]
+        postcond_sub: [diagnostics_needed]
+      - name: check_inventory
+        precond: []
+        postcond_add: [inventory_checked]
+        postcond_sub: []
+      - name: request_restock
+        precond: [inventory_low]
+        postcond_add: []
+        postcond_sub: [inventory_low]
+      - name: perform_maintenance
+        precond: [maintenance_required]
+        postcond_add: [maintenance_completed]
+        postcond_sub: [maintenance_required]
+      - name: request_human_supervision
+        precond: [human_supervision_requested]
+        postcond_add: []
+        postcond_sub: [human_supervision_requested]

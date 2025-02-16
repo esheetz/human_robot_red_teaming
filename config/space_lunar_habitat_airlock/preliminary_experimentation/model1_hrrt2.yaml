@@ -1,0 +1,999 @@
+possibilities:
+- state:
+  - door_habitat_airlock_unlocked_opened
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_airlock_surface
+  next_state:
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_opened
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_outside_habitat
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_outside_habitat
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_outside_habitat
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_inside_habitat
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state:
+  - robot_inside_airlock
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state:
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_airlock_surface
+  next_state:
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_airlock_surface
+  next_state:
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - door_airlock_surface_locked_closed
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_closed
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - door_airlock_surface_unlocked_closed
+  - door_habitat_airlock_locked_closed
+  validity: false
+- state: &id001
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - door_airlock_surface_unlocked_opened
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: *id001
+  action: lock_close_door_airlock_surface
+  next_state:
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - door_habitat_airlock_unlocked_opened
+  - robot_has_key
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: false
+- state:
+  - robot_inside_habitat
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_locked_closed
+  validity: null
+- state: &id002
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  action: enter_airlock_from_habitat
+  next_state:
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - robot_inside_airlock
+  validity: null
+- state: *id002
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_locked_closed
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_closed
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_unlocked_closed
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: &id003
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_unlocked_opened
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: *id003
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  validity: null
+- state: &id004
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  action: enter_surface_from_airlock
+  next_state:
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_outside_habitat
+  validity: null
+- state: *id004
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_locked_closed
+  validity: null
+- state: &id005
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  action: enter_habitat_from_airlock
+  next_state:
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - robot_inside_habitat
+  validity: null
+- state: *id005
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_airlock
+  - door_airlock_surface_locked_closed
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_closed
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_airlock
+  - door_airlock_surface_unlocked_closed
+  - door_habitat_airlock_locked_closed
+  validity: false
+- state: &id006
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_airlock
+  - door_airlock_surface_unlocked_opened
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: *id006
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  validity: null
+- state: &id007
+  - robot_outside_habitat
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  action: enter_airlock_from_surface
+  next_state:
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_inside_airlock
+  validity: null
+- state: *id007
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_outside_habitat
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_outside_habitat
+  - door_airlock_surface_locked_closed
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_closed
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_outside_habitat
+  - door_airlock_surface_unlocked_closed
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: &id008
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_opened
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_outside_habitat
+  - door_airlock_surface_unlocked_opened
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: *id008
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_habitat_airlock_locked_closed
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state: &id009
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state: *id009
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_closed
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_closed
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state: &id010
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state: *id010
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_airlock
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - robot_has_key
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_outside_habitat
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state: &id011
+  - robot_inside_habitat
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state: *id011
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_habitat
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state: &id012
+  - robot_inside_airlock
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state: *id012
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_outside_habitat
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_outside_habitat
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: lock_close_door_airlock_surface
+  next_state:
+  - door_habitat_airlock_locked_closed
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: lock_close_door_airlock_surface
+  next_state:
+  - door_habitat_airlock_unlocked_closed
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: &id013
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: *id013
+  action: lock_close_door_airlock_surface
+  next_state:
+  - door_habitat_airlock_unlocked_opened
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state: &id014
+  - robot_inside_habitat
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state: *id014
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_locked_closed
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state: &id015
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state: *id015
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state: &id016
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state: *id016
+  action: enter_airlock_from_habitat
+  next_state:
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  - robot_inside_airlock
+  validity: null
+- state: *id016
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: &id017
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state: *id017
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: &id018
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: unlock_open_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_habitat_airlock_unlocked_opened
+  validity: null
+- state: *id018
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_habitat
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: *id018
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state: &id019
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state: *id019
+  action: enter_surface_from_airlock
+  next_state:
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - robot_outside_habitat
+  validity: null
+- state: *id019
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_locked_closed
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_closed
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state: &id020
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state: *id020
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_closed
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state: &id021
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state: *id021
+  action: enter_habitat_from_airlock
+  next_state:
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  - robot_inside_habitat
+  validity: null
+- state: *id021
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_airlock
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: &id022
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state: *id022
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_airlock
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: &id023
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: unlock_open_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_airlock_surface_unlocked_opened
+  validity: null
+- state: *id023
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_inside_airlock
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: *id023
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_inside_airlock
+  - door_habitat_airlock_unlocked_opened
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state: &id024
+  - robot_outside_habitat
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: enter_airlock_from_surface
+  next_state:
+  - door_habitat_airlock_locked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - robot_inside_airlock
+  validity: null
+- state: *id024
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_outside_habitat
+  - door_habitat_airlock_locked_closed
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_closed
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null
+- state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_outside_habitat
+  - door_airlock_surface_locked_closed
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_outside_habitat
+  - door_airlock_surface_unlocked_closed
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: &id025
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  action: lock_close_door_habitat_airlock
+  next_state:
+  - robot_outside_habitat
+  - door_airlock_surface_unlocked_opened
+  - robot_has_key
+  - door_habitat_airlock_locked_closed
+  validity: null
+- state: *id025
+  action: lock_close_door_airlock_surface
+  next_state:
+  - robot_outside_habitat
+  - door_habitat_airlock_unlocked_opened
+  - robot_has_key
+  - door_airlock_surface_locked_closed
+  validity: null

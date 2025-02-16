@@ -1,0 +1,1 @@
+I've updated the model to include soil and atmospheric sampling, infrastructure inspection, and the ability to engage and disengage ground control override. Let me know if you need any additional refinements!

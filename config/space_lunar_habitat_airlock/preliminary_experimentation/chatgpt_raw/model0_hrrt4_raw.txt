@@ -1,0 +1,115 @@
+==================== HRRT LEVEL 2 REVIEW ====================
+
+What states should be added to the model?
+add state(s) (or list(s) of comma separated mutex states):
+
+door_habitat_airlock_locked_closed, door_habitat_airlock_unlocked_opened (mutex)
+
+door_airlock_surface_locked_closed, door_airlock_surface_unlocked_opened (mutex)
+
+robot_inside_habitat, robot_inside_airlock, robot_outside_habitat (mutex)
+
+What states should be removed from the model?
+remove state(s) (or list(s) of comma separated mutex states):
+
+robot_inside_habitat, door_habitat_airlock_unlocked_opened (invalid combination)
+
+robot_inside_airlock, door_habitat_airlock_unlocked_opened (invalid combination)
+
+robot_inside_airlock, door_airlock_surface_unlocked_opened (invalid combination)
+
+robot_outside_habitat, door_airlock_surface_unlocked_opened (invalid combination)
+
+What actions should be added to the model?
+add action(s):
+
+name: lock_close_door_habitat_airlock
+pre-conditions (list of comma separated states): door_habitat_airlock_unlocked_opened
+added post-conditions (list of comma separated states): door_habitat_airlock_locked_closed
+removed post-conditions (list of comma separated states): door_habitat_airlock_unlocked_opened
+
+name: lock_close_door_airlock_surface
+pre-conditions (list of comma separated states): door_airlock_surface_unlocked_opened
+added post-conditions (list of comma separated states): door_airlock_surface_locked_closed
+removed post-conditions (list of comma separated states): door_airlock_surface_unlocked_opened
+
+What actions should be removed from the model?
+remove action:
+
+enter_airlock_from_habitat (invalid preconditions)
+
+enter_surface_from_airlock (invalid preconditions)
+
+enter_airlock_from_surface (invalid preconditions)
+
+enter_habitat_from_airlock (invalid preconditions)
+
+==================== HRRT LEVEL 4 REFLECTIONS ====================
+
+What important information may still be missing from the model?
+[HUMAN-ROBOT BLUE TEAM RESPONSE]:
+
+Detailed environmental constraints such as pressure differences and temperature variations affecting door operations.
+
+Communication status between the robot and mission control, which may affect decision-making capabilities.
+
+Battery levels or energy constraints of the robot, impacting its ability to perform sequences of actions.
+
+What should an agent know when completing tasks in this domain?
+[HUMAN-ROBOT BLUE TEAM RESPONSE]:
+
+Sequence of operations for safe airlock usage, including locking/unlocking protocols.
+
+Contextual awareness of environmental conditions like vacuum exposure and radiation.
+
+Proper handling of keys and secure storage protocols to prevent unauthorized access.
+
+What catastrophic failures could occur in this domain?
+[HUMAN-ROBOT BLUE TEAM RESPONSE]:
+
+Sudden decompression due to both airlock doors being open simultaneously.
+
+Robot malfunction leading to loss of key or critical operational tools outside the habitat.
+
+Failure to secure doors properly, risking habitat integrity during external activities.
+
+Are there external, independently verified resources for identifying failure cases in this domain?
+[HUMAN-ROBOT BLUE TEAM RESPONSE]:
+
+NASA operational protocols for EVA (Extravehicular Activity) and airlock procedures.
+
+ISS (International Space Station) safety manuals for airlock and habitat security.
+
+Aerospace engineering studies on automated airlock systems and failure case analyses.
+
+What are undesirable outcomes (not necessarily catastrophic failures) for this domain?
+[HUMAN-ROBOT BLUE TEAM RESPONSE]:
+
+Robot getting trapped outside or inside the airlock due to improper sequencing.
+
+Delays in mission timelines due to repeated locking/unlocking procedures.
+
+Increased wear and tear on mechanical components from unnecessary actions.
+
+How much can an agent trust other agents in this domain?
+[HUMAN-ROBOT BLUE TEAM RESPONSE]:
+
+Trust should be conditional based on real-time status verification and system health checks.
+
+High reliance on redundant systems to mitigate risks from single points of failure.
+
+Continuous monitoring of both human and robotic agent actions for anomaly detection.
+
+What are unlikely or remote possibilities that may occur in this domain?
+[HUMAN-ROBOT BLUE TEAM RESPONSE]:
+
+Simultaneous failure of both primary and backup communication systems.
+
+Unpredictable environmental events like micrometeoroid impacts affecting airlock integrity.
+
+Unexpected behavior from AI decision-making algorithms due to rare edge-case scenarios.
+
+============================================================
+
+Having considered these questions, would the team like to provide additional model updates?
+If so, please provide additional add/remove states and add/remove actions in same format as before.

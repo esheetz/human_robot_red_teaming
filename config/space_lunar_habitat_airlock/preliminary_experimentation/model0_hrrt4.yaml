@@ -1,0 +1,6 @@
+model_hypothesis:
+  states_add: []
+  states_sub: []
+  actions_add: []
+  actions_sub: []
+  facts: []
