@@ -68,9 +68,71 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 		- [x] Iron Giant (iterations 1, 2, 3, 4, 5)
 
 Model planning problems:
-- [ ] incorporate pyperplan
+- [x] incorporate pyperplan
 - [ ] convert model files to STRIPS files
-  - [ ] assume models are supersets of each other, so if ChatGPT removed something from one iteration to the next, include it
+	- [x] consistent domain name across all models
+	- [ ] double check translation to PDDL
+	- [ ] assume models are supersets of each other, so if ChatGPT removed something from one iteration to the next, include it
+	- [x] space related applications
+		- [x] lunar habitat
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+		- [x] mars team at distance
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+	- [x] household related applications
+		- [x] cleaning
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+		- [x] assembly and repair tasks
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+	- [x] day-to-day applications
+		- [x] planning international travel
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+		- [x] diagnosing issue with vehicle
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+	- [x] cinematic applications
+		- [x] 2001 Space Odyssey
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+		- [x] Iron Giant
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
 - [ ] research failure modes
 - [ ] process for randomizing task goals and failures
 - [ ] pipeline for attempting planning, updating model confidence, and moving to next model
