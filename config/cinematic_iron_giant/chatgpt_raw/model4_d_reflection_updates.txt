@@ -1,0 +1,6 @@
+The model has been updated to:
+- **Monitor and detect** biological, chemical, and EMP-based attacks.
+- **Incorporate human overrides** so humans have the final say in all decisions.
+- **Add states and mitigation steps for civilian unrest**, ensuring proper mediation.
+
+Let me know if you need further refinements! 🚀

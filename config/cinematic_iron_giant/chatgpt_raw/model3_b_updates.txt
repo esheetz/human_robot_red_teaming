@@ -1,0 +1,1 @@
+The model has been updated to ensure `detected_missile` is removed when `missile_disarmed` is added, extend the postconditions of `broadcast_warning`, and expand the preconditions for relevant actions. Let me know if you need any further refinements! 🚀
