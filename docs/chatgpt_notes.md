@@ -3,6 +3,7 @@
 ## Features
 
 - Good at brainstorming, consistently makes ~5 suggestions for each prompted question
+- Good at working from very minimal model information to explore the complexity of the scenario
 - _If given complete control over editing a model_, can update and edit live, which is convenient
 
 ## Challenges

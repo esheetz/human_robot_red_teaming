@@ -1,6 +1,4 @@
-# Safety Aware Reasoning Project
-
-## TODOs
+# Human-Robot Red Teaming TODOs
 
 HRRT Level 2: Enumeration
 - [x] check formatting on model and knowledge base
@@ -42,7 +40,7 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 	- [x] HRRT3: assumption validity
 	- [x] HRRT4: KB reflections
 	- [x] HRRT4: updated model YAML
-- [ ] seed several model problems
+- [x] seed several model problems
   - [x] space related applications
 	  - [x] lunar habitat
 		- [x] mars team at distance
@@ -52,10 +50,10 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 	- [x] day-to-day applications
 	  - [x] planning international travel
 		- [x] diagnosing issue with vehicle
-	- [ ] cinematic applications
+	- [x] cinematic applications
 		- [x] 2001 Space Odyssey
-		- [ ] Iron Giant: missile launching
-- [ ] several iterations of HRRTing levels for problems until ChatGPT doesn't provide sufficient info
+		- [x] Iron Giant
+- [x] several iterations of HRRTing levels for problems until ChatGPT doesn't provide sufficient info
 	- [x] space related applications
 		- [x] lunar habitat (iterations 1, 2, 3, 4, 5)
 		- [x] mars team at distance (iterations 1, 2, 3, 4, 5)
@@ -65,9 +63,9 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 	- [x] day-to-day applications
 		- [x] planning international travel (iterations 1, 2, 3, 4, 5)
 		- [x] diagnosing issue with vehicle (iterations 1, 2, 3, 4, 5)
-	- [ ] cinematic applications
+	- [x] cinematic applications
 		- [x] 2001 Space Odyssey (iterations 1, 2, 3, 4, 5)
-		- [ ] Iron Giant: missile launching
+		- [x] Iron Giant (iterations 1, 2, 3, 4, 5)
 
 Model planning problems:
 - [ ] incorporate pyperplan
