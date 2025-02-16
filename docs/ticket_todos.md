@@ -49,9 +49,9 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 	- [x] household related applications
 	  - [x] cleaning
 		- [x] assembly and repair tasks
-	- [ ] day-to-day applications
+	- [x] day-to-day applications
 	  - [x] planning international travel
-		- [ ] diagnosing issue with vehicle
+		- [x] diagnosing issue with vehicle
 	- [ ] cinematic applications
 		- [ ] 2001 Space Odyssey
 		- [ ] Iron Giant: missile launching
@@ -62,9 +62,9 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 	- [x] household related applications
 		- [x] cleaning (iterations 1, 2, 3, 4, 5)
 		- [x] assembly and repair tasks (iterations 1, 2, 3, 4, 5)
-	- [ ] day-to-day applications
+	- [x] day-to-day applications
 		- [x] planning international travel (iterations 1, 2, 3, 4, 5)
-		- [ ] diagnosing issue with vehicle
+		- [x] diagnosing issue with vehicle (iterations 1, 2, 3, 4, 5)
 	- [ ] cinematic applications
 		- [ ] 2001 Space Odyssey
 		- [ ] Iron Giant: missile launching

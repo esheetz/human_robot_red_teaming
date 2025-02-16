@@ -1,0 +1,1 @@
+I've added an action for replacing a flat tire with an additional precondition preventing it from being performed while the vehicle is in motion. Additionally, the preconditions for contacting emergency roadside assistance now include external threats and brake failures. Let me know if you need any further refinements! 🚗🔧🤖
