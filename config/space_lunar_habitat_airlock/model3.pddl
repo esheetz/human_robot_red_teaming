@@ -116,6 +116,18 @@
     :effect (and (robot_power_normal) (not (robot_power_charging)))
   )
 
+  ;; Emergency response to an airlock breach
+  (:action respond_to_airlock_breach
+    :precondition (and (airlock_breach_detected) (robot_system_nominal))
+    :effect (and (airlock_depressurized) (not (airlock_pressurized)))
+  )
+
+  ;; Emergency response to habitat depressurization
+  (:action respond_to_habitat_depressurization
+    :precondition (and (habitat_depressurization_alarm) (robot_system_nominal))
+    :effect (and (door_habitat_airlock_locked_closed) (not (door_habitat_airlock_unlocked_opened)))
+  )
+
   ;; Enter safe mode due to low power
   (:action enter_safe_mode_due_to_low_power
     :precondition (robot_power_low)

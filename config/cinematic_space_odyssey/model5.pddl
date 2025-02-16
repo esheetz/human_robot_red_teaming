@@ -69,9 +69,29 @@
     :effect (and (crew_mental_health_checked))
   )
 
+  (:action monitor_crew_fatigue
+    :precondition (and (crew_inside_spaceship))
+    :effect (and (crew_fatigue_monitored))
+  )
+
+  (:action check_crew_hydration
+    :precondition (and (crew_inside_spaceship))
+    :effect (and (crew_hydration_checked))
+  )
+
+  (:action check_crew_nutrition
+    :precondition (and (crew_inside_spaceship))
+    :effect (and (crew_nutrition_checked))
+  )
+
   (:action transport_crew_to_destination
     :precondition (and (crew_inside_spaceship) (airlock_depressurized) (crew_suited_for_eva) (transport_destination_safe) (eva_suit_integrity_checked))
     :effect (and (crew_outside_spaceship) (crew_transport_verified) (airlock_pressurized) (not (crew_inside_spaceship)) (not (airlock_depressurized)))
+  )
+
+  (:action detect_emergency
+    :precondition ()
+    :effect (and (crew_emergency_detected))
   )
 
   (:action resolve_emergency
@@ -84,9 +104,64 @@
     :effect (and (crew_transport_verified) (medical_intervention_verified) (hazard_mitigation_successful) (hazard_mitigation_verified))
   )
 
+  (:action monitor_life_support_systems
+    :precondition ()
+    :effect (and (life_support_nominal) (not (life_support_failure_detected)))
+  )
+
   (:action detect_environmental_hazards
     :precondition ()
     :effect (and (environmental_hazard_detected))
+  )
+
+  (:action check_eva_suit_integrity
+    :precondition (and (crew_suited_for_eva))
+    :effect (and (eva_suit_integrity_checked))
+  )
+
+  (:action manage_inventory
+    :precondition ()
+    :effect (and (inventory_oxygen_nominal) (inventory_food_nominal) (inventory_medical_kits_nominal))
+  )
+
+  (:action perform_self_diagnostics
+    :precondition ()
+    :effect (and (robot_diagnostics_nominal) (not (robot_malfunction_detected)))
+  )
+
+  (:action check_crew_morale
+    :precondition (and (crew_inside_spaceship) (health_monitoring_scheduled))
+    :effect (and (crew_morale_nominal))
+  )
+
+  (:action detect_radiation_hazard
+    :precondition ()
+    :effect (and (radiation_hazard_detected))
+  )
+
+  (:action perform_autonomous_repairs
+    :precondition (and (robot_diagnostics_nominal) (systems_malfunction_detected))
+    :effect (and (autonomous_repairs_performed) (not (systems_malfunction_detected)))
+  )
+
+  (:action alert_crew_of_hazard
+    :precondition (and (environmental_hazard_detected) (radiation_hazard_detected))
+    :effect (and (hazard_response_initiated))
+  )
+
+  (:action communicate_hazard_to_ground_control
+    :precondition (and (hazard_response_initiated))
+    :effect (and (hazard_communicated_to_ground_control))
+  )
+
+  (:action crew_override
+    :precondition ()
+    :effect (and (crew_override_active))
+  )
+
+  (:action ground_control_override
+    :precondition ()
+    :effect (and (ground_control_override_active))
   )
 
   (:action mitigate_hazard

@@ -154,6 +154,16 @@
     :effect (and (hazard_communicated_to_ground_control))
   )
 
+  (:action crew_override
+    :precondition ()
+    :effect (and (crew_override_active))
+  )
+
+  (:action ground_control_override
+    :precondition ()
+    :effect (and (ground_control_override_active))
+  )
+
   (:action check_power_system_status
     :precondition ()
     :effect (and (power_nominal) (not (power_critical)))

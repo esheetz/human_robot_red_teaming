@@ -33,7 +33,7 @@
   ;; Analyze collected sample
   (:action analyze_sample
     :precondition (robot_has_sample)
-    :effect (and (sample_analyzed) (not robot_has_sample))
+    :effect (and (sample_analyzed) (findings_ready) (not robot_has_sample))
   )
 
   ;; Report findings (delayed if communication is an issue)

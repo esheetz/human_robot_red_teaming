@@ -57,7 +57,7 @@
   ;; Analyze sample
   (:action analyze_sample
     :precondition (and robot_available robot_has_sample (not robot_stuck) (not mission_interrupted))
-    :effect (and (sample_analyzed) (not robot_has_sample))
+    :effect (and (sample_analyzed) (findings_ready) (not robot_has_sample))
   )
 
   ;; Report findings with potential communication delay
@@ -166,6 +166,84 @@
   (:action pause_mission
     :precondition (emergency_detected)
     :effect (mission_interrupted)
+  )
+
+  ;; Sync with the multi-robot team
+  (:action sync_with_team
+    :precondition (and task_synchronized (not mission_interrupted))
+    :effect (multi_robot_sync)
+  )
+
+  ;; Request help from another robot when stuck
+  (:action request_help_from_team
+    :precondition (and robot_stuck multi_robot_sync)
+    :effect (multi_robot_sync)
+  )
+
+  ;; Report failure to ground control
+  (:action report_failure_to_ground
+    :precondition (and emergency_detected communication_delayed (not communication_blackout))
+    :effect (failure_reported)
+  )
+
+  ;; Collect soil sample
+  (:action collect_soil_sample
+    :precondition (and robot_available (not robot_stuck))
+    :effect (soil_sample_collected)
+  )
+
+  ;; Collect atmospheric data
+  (:action collect_atmospheric_data
+    :precondition (and robot_available (not robot_stuck))
+    :effect (atmospheric_data_collected)
+  )
+
+  ;; Inspect infrastructure for issues
+  (:action inspect_infrastructure
+    :precondition (and robot_available (not mission_interrupted))
+    :effect (infrastructure_inspected)
+  )
+
+  ;; Engage manual override from ground control
+  (:action engage_ground_control_override
+    :precondition (and robot_available (not mission_interrupted))
+    :effect (ground_control_override_active)
+  )
+
+  ;; Disengage manual override
+  (:action disengage_ground_control_override
+    :precondition (ground_control_override_active)
+    :effect (not ground_control_override_active)
+  )
+
+  ;; Detect weather hazards
+  (:action detect_weather_hazard
+    :precondition (robot_available)
+    :effect (weather_hazard_detected)
+  )
+
+  ;; Assess damage on the robot
+  (:action assess_damage
+    :precondition (and robot_available robot_damaged (not mission_interrupted))
+    :effect (failure_reported)
+  )
+
+  ;; Attempt autonomous repair
+  (:action attempt_autonomous_repair
+    :precondition (and robot_damaged (not critical_system_failure))
+    :effect (and (robot_available) (not robot_damaged))
+  )
+
+  ;; Activate safe mode in case of critical failure
+  (:action safe_mode_activation
+    :precondition (critical_system_failure)
+    :effect (mission_interrupted)
+  )
+
+  ;; Calibrate equipment
+  (:action calibrate_equipment
+    :precondition (and robot_available (not mission_interrupted))
+    :effect (equipment_calibrated)
   )
 
   ;; Perform maintenance

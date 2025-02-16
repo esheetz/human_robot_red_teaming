@@ -1,4 +1,4 @@
-(define (domain travel)
+(define (domain everyday_international_travel)
   (:requirements :strips)
 
   (:predicates
@@ -115,7 +115,7 @@
   )
 
   (:action check_flight_status
-    :precondition (and (plane_tickets_purchased))
+    :precondition (and (plane_tickets_purchased) (human_at_airport))
     :effect (and (flight_on_time))
   )
 

@@ -136,6 +136,66 @@
     :effect (and (civil_unrest_mediation_active) (not (civilian_unrest_active)))
   )
 
+  (:action gather_intelligence
+    :precondition ()
+    :effect (and (intelligence_gathering_active))
+  )
+
+  (:action conduct_cybersecurity_check
+    :precondition ()
+    :effect (and (cybersecurity_check_active))
+  )
+
+  (:action provide_humanitarian_assistance
+    :precondition ()
+    :effect (and (humanitarian_assistance_active))
+  )
+
+  (:action activate_nuclear_containment
+    :precondition (and (missile_type_detected_nuclear) (interception_failed))
+    :effect (and (nuclear_containment_active))
+  )
+
+  (:action assist_disaster_recovery
+    :precondition ()
+    :effect (and (disaster_recovery_active))
+  )
+
+  (:action mediate_civil_unrest
+    :precondition ()
+    :effect (and (civil_unrest_mediation_active))
+  )
+
+  (:action disrupt_preemptive_threat
+    :precondition ()
+    :effect (and (preemptive_threat_disruption_active))
+  )
+
+  (:action provide_advanced_medical_aid
+    :precondition ()
+    :effect (and (advanced_medical_aid_active))
+  )
+
+  (:action resolve_post_war_conflict
+    :precondition ()
+    :effect (and (post_war_conflict_resolution_active))
+  )
+
+  (:action mitigate_environmental_hazards
+    :precondition ()
+    :effect (and (environmental_hazard_mitigation_active))
+  )
+
+  (:action manage_supply_chain_logistics
+    :precondition ()
+    :effect (and (supply_chain_logistics_active))
+  )
+
+  (:action stabilize_psychological_social_wellbeing
+    :precondition ()
+    :effect (and (psychological_social_stabilization_active))
+  )
+
   (:action rescue_hostages
     :precondition ()
     :effect (and (hostage_rescue_active))

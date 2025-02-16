@@ -69,10 +69,10 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 
 Model planning problems:
 - [x] incorporate pyperplan
-- [ ] convert model files to STRIPS files
+- [x] convert model files to STRIPS files
 	- [x] consistent domain name across all models
-	- [ ] double check translation to PDDL
-	- [ ] assume models are supersets of each other, so if ChatGPT removed something from one iteration to the next, include it
+	- [x] double check translation to PDDL; spot checking a few models looks good
+	- [x] assume models are supersets of each other, so if ChatGPT removed something from one iteration to the next, include it
 	- [x] space related applications
 		- [x] lunar habitat
 			- [x] model0

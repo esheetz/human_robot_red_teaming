@@ -53,7 +53,7 @@
   ;; Analyze sample after picking it up
   (:action analyze_sample
     :precondition (and robot_available robot_has_sample (not robot_stuck))
-    :effect (and (sample_analyzed) (not robot_has_sample))
+    :effect (and (sample_analyzed) (findings_ready) (not robot_has_sample))
   )
 
   ;; Report findings (delayed if communication is an issue)

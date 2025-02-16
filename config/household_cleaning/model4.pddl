@@ -35,7 +35,7 @@
 
   (:action vacuum_floors
     :precondition (and (floors_dirty) (child_supervised) (pet_supervised))
-    :effect (and (floors_partially_clean) (not (floors_dirty)))
+    :effect (and (floors_partially_clean) (vacuum_noise_level_high) (not (floors_dirty)))
   )
 
   (:action finalize_floor_cleaning
@@ -113,6 +113,13 @@
     :effect (not (cable_hazard_detected))
   )
 
+  (:action pause_operation
+    :precondition (or (cleaning_in_progress_bedroom) (cleaning_in_progress_bathroom)
+                      (cleaning_in_progress_kitchen) (cleaning_in_progress_main_room)
+                      (child_present) (pet_present) (obstacle_in_path))
+    :effect (robot_emergency_stop)
+  )
+
   (:action detect_potential_spill_source
     :precondition ()
     :effect (potential_spill_source_detected)
@@ -152,6 +159,56 @@
     :precondition (or (spill_detected) (chemical_exposed) (wet_floor)
                       (obstacle_in_path) (air_quality_hazard) (fume_detected))
     :effect (hazard_alert_issued)
+  )
+
+  (:action organize_items
+    :precondition (or (main_room_dirty) (kitchen_dirty))
+    :effect (and (main_room_clean) (kitchen_clean) (not (main_room_dirty)) (not (kitchen_dirty)))
+  )
+
+  (:action air_quality_check
+    :precondition ()
+    :effect (air_quality_hazard)
+  )
+
+  (:action neutralize_fumes
+    :precondition (fume_detected)
+    :effect (not (fume_detected))
+  )
+
+  (:action absorb_chemical_spill
+    :precondition (and (spill_detected) (chemical_exposed))
+    :effect (and (wet_floor) (not (spill_detected)) (not (chemical_exposed)))
+  )
+
+  (:action contain_hazardous_chemical
+    :precondition (chemical_exposed)
+    :effect (and (robot_carrying_chemicals) (not (chemical_exposed)))
+  )
+
+  (:action detect_fragile_object
+    :precondition ()
+    :effect (fragile_object_detected)
+  )
+
+  (:action detect_dropped_object
+    :precondition ()
+    :effect (dropped_object_detected)
+  )
+
+  (:action clean_shattered_fragile_object
+    :precondition (fragile_object_shattered)
+    :effect (and (main_room_clean) (not (fragile_object_shattered)))
+  )
+
+  (:action detect_collision
+    :precondition ()
+    :effect (collision_detected)
+  )
+
+  (:action clean_fragile_object_shards
+    :precondition (and (fragile_object_shattered) (collision_detected))
+    :effect (and (main_room_clean) (not (fragile_object_shattered)) (not (collision_detected)))
   )
 
   (:action detect_fire_hazard

@@ -17,7 +17,7 @@
   ;; Analyze the collected sample
   (:action analyze_sample
     :precondition (robot_has_sample)
-    :effect (and (sample_analyzed) (not (findings_ready)))
+    :effect (and (sample_analyzed) (findings_ready))
   )
 
   ;; Report findings after analysis

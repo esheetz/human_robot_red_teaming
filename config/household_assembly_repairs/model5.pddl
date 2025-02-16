@@ -121,6 +121,91 @@
     :effect (and (fire_hazard_detected) (human_notified_of_fire_hazard))
   )
 
+  (:action trigger_emergency_alarm
+    :precondition (and (fire_hazard_detected) (electrical_hazard_detected))
+    :effect ()
+  )
+
+  (:action notify_authorities
+    :precondition (and (fire_hazard_detected) (electrical_hazard_detected))
+    :effect ()
+  )
+
+  (:action resolve_hazard
+    :precondition (and (hazard_detected) (human_notified_of_hazard))
+    :effect (and (not (hazard_detected)) (not (human_notified_of_hazard)))
+  )
+
+  (:action perform_safety_check
+    :precondition (repair_detected)
+    :effect (safety_check_passed)
+  )
+
+  (:action request_human_intervention
+    :precondition (human_intervention_required)
+    :effect (and (human_feedback_received) (not (human_intervention_required)))
+  )
+
+  (:action prioritize_tasks
+    :precondition (and (repair_detected) (emergency_repair_needed))
+    :effect (task_prioritized)
+  )
+
+  (:action perform_preventative_maintenance
+    :precondition (and (preventative_maintenance_needed) (safety_check_passed))
+    :effect (and (preventative_maintenance_completed) (not (preventative_maintenance_needed)))
+  )
+
+  (:action detect_emergency_repair
+    :precondition ()
+    :effect (emergency_repair_needed)
+  )
+
+  (:action perform_emergency_repair
+    :precondition (and (emergency_repair_needed) (tools_checked) (safety_check_passed) (not (environmental_constraint_detected)))
+    :effect (and (emergency_repair_in_progress) (not (emergency_repair_needed)))
+  )
+
+  (:action complete_emergency_repair
+    :precondition (and (emergency_repair_in_progress) (safety_check_passed))
+    :effect (and (emergency_repair_completed) (not (emergency_repair_in_progress)))
+  )
+
+  (:action verify_emergency_repair
+    :precondition (emergency_repair_completed)
+    :effect (repair_verified)
+  )
+
+  (:action clean_up
+    :precondition (cleaning_required)
+    :effect (and (cleaning_completed) (not (cleaning_required)))
+  )
+
+  (:action run_diagnostics
+    :precondition (diagnostics_needed)
+    :effect (and (diagnostics_completed) (not (diagnostics_needed)))
+  )
+
+  (:action check_inventory
+    :precondition ()
+    :effect (inventory_checked)
+  )
+
+  (:action request_restock
+    :precondition (inventory_low)
+    :effect (not (inventory_low))
+  )
+
+  (:action perform_maintenance
+    :precondition (maintenance_required)
+    :effect (and (maintenance_completed) (not (maintenance_required)))
+  )
+
+  (:action perform_self_maintenance
+    :precondition (self_maintenance_needed)
+    :effect (and (self_maintenance_completed) (not (self_maintenance_needed)))
+  )
+
   (:action detect_electrical_hazard
     :precondition ()
     :effect (and (electrical_hazard_detected) (human_notified_of_electrical_hazard))
@@ -159,5 +244,15 @@
   (:action log_failure
     :precondition (repair_failed)
     :effect (failure_log_updated)
+  )
+
+  (:action detect_low_battery
+    :precondition ()
+    :effect (low_battery_detected)
+  )
+
+  (:action recharge_battery
+    :precondition (low_battery_detected)
+    :effect (and (battery_recharged) (not (low_battery_detected)))
   )
 )
