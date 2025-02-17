@@ -3,10 +3,9 @@
 
 		(:init
 			(robot_available)
-			contamination_detected
-			communication_blackout
-			long_term_war_detected
-			emergency_detectedmission_interrupted
+			(emergency_detected)(mission_interrupted)
+			(contamination_detected)
+			(long_term_wear_detected)
 		)
 
 		(:goal (and (soil_sample_collected)

@@ -4,7 +4,7 @@
 		(:init
 			(detected_missile)
 			(human_verification_received)
-			(detected_biological_threat)
+			(all_defenses_failed)
 		)
 
 		(:goal (and (civilians_safe)

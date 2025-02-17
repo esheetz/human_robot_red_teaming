@@ -4,8 +4,7 @@
 		(:init
 			(crew_inside_spaceship)
 			(health_monitoring_scheduled)
-			(robot_malfunction_detected)
-			(systems_malfunction_detected)
+			(life_support_failure_detected)
 		)
 
 		(:goal (and (ai_self_correction_initiated)

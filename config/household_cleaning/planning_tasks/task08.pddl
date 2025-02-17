@@ -9,7 +9,10 @@
 			(floors_dirty)
 			(child_present)
 			(pet_present)
-			(fragile_object_shattered)
+			(cable_hazard_detected)
+			(mold_growth_risk)
+			(spill_detected)(fume_detected)
+			(fire_hazard_detected)
 		)
 
 		(:goal (and (bedroom_clean)

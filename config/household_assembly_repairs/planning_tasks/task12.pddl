@@ -6,6 +6,8 @@
 			(repair_detected)
 			(maintenance_required)
 			(emergency_repair_failed)
+			(repair_failed)
+			(tools_incorrectly_used)
 		)
 
 		(:goal (and (pet_or_child_supervision_requested)

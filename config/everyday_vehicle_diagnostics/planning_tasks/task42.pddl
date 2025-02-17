@@ -5,7 +5,7 @@
 			(human_has_keys)
 			(robot_has_jumper_cables)
 			(human_has_spare_tire)
-			(vehicle_tires_low_pressure)
+			(vehicle_battery_dead)
 		)
 
 		(:goal (and (vehicle_has_gas)

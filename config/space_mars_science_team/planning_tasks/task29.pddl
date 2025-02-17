@@ -3,7 +3,7 @@
 
 		(:init
 			(robot_available)
-			critical_system_failure
+			(contamination_detected)
 		)
 
 		(:goal (and (soil_sample_collected)

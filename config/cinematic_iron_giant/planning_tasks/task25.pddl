@@ -5,9 +5,6 @@
 			(detected_missile)
 			(human_verification_received)
 			(detected_biological_threat)
-			(detected_emp_threat)
-			(all_defenses_failed)
-			(defensive_measures_exhausted)
 		)
 
 		(:goal (and (civilians_safe)

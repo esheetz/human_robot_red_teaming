@@ -3,7 +3,8 @@
 
 		(:init
 			(robot_available)
-			critical_system_failure
+			(long_term_wear_detected)
+			(emergency_detected)(mission_interrupted)
 		)
 
 		(:goal (and (soil_sample_collected)

@@ -9,7 +9,8 @@
 			(floors_dirty)
 			(child_present)
 			(pet_present)
-			(food_waste_detected)
+			(gas_leak_detected)
+			(fire_hazard_detected)
 		)
 
 		(:goal (and (bedroom_clean)

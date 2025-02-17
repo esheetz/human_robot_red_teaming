@@ -6,6 +6,7 @@
 			(alternative_route_available)
 			(human_experiencing_travel_issue)
 			(human_lost)
+			(human_mugged)
 			(baggage_lost)
 		)
 

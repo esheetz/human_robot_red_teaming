@@ -11,7 +11,8 @@
 			(airlock_pressurized)
 			(no_airlock_breach)
 			(lunar_sample_on_surface)
-			(airlock_breach_detected)
+			(lunar_dust_contamination_detected)
+			(temperature_control_fault)
 			(air_filter_fault)
 		)
 

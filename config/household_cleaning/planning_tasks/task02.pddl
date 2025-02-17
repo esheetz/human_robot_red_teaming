@@ -17,6 +17,7 @@
 			(spill_detected)(fume_detected)
 			(gas_leak_detected)
 			(fire_hazard_detected)
+			(child_pet_unsupervised)
 		)
 
 		(:goal (and (bedroom_clean)

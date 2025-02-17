@@ -3,7 +3,7 @@
 
 		(:init
 			(robot_available)
-			communication_blackout
+			(critical_system_failure)
 		)
 
 		(:goal (and (soil_sample_collected)

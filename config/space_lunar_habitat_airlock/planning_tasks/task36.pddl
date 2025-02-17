@@ -11,8 +11,7 @@
 			(airlock_pressurized)
 			(no_airlock_breach)
 			(lunar_sample_on_surface)
-			(temperature_variation_detected)
-			(airlock_breach_detected)
+			(air_filter_fault)
 		)
 
 		(:goal (and (robot_inside_habitat)

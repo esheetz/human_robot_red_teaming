@@ -9,9 +9,10 @@
 			(floors_dirty)
 			(child_present)
 			(pet_present)
-			(spill_detected)(fume_detected)
-			(loose_furniture_detected)
+			(gas_leak_detected)
+			(food_waste_detected)
 			(fragile_object_shattered)
+			(fire_hazard_detected)
 			(mold_growth_risk)
 		)
 

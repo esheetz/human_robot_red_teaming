@@ -6,9 +6,6 @@
 			(robot_has_jumper_cables)
 			(human_has_spare_tire)
 			(vehicle_tires_low_pressure)
-			(vehicle_has_flat_tire)
-			(vehicle_oil_low)
-			(vehicle_battery_dead)
 			(vehicle_check_engine_light_on)
 		)
 

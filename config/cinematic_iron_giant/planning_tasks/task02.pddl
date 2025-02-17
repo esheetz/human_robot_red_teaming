@@ -6,6 +6,7 @@
 			(human_verification_received)
 			(defensive_measures_exhausted)
 			(all_defenses_failed)
+			(world_war)
 			(detected_emp_threat)
 			(detected_chemical_threat)
 			(detected_biological_threat)

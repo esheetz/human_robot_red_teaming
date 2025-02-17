@@ -8,6 +8,7 @@
 			(vehicle_check_engine_light_on)
 			(vehicle_oil_low)
 			(vehicle_battery_dead)
+			(vehicle_tires_low_pressure)
 			(vehicle_has_flat_tire)
 		)
 

@@ -4,8 +4,6 @@
 		(:init
 			(detected_missile)
 			(human_verification_received)
-			(all_defenses_failed)
-			(detected_chemical_threat)
 			(detected_emp_threat)
 		)
 

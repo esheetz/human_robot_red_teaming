@@ -6,8 +6,8 @@
 			(human_verification_received)
 			(detected_biological_threat)
 			(detected_emp_threat)
+			(world_war)
 			(defensive_measures_exhausted)
-			(detected_chemical_threat)
 		)
 
 		(:goal (and (civilians_safe)

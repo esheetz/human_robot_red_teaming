@@ -10,6 +10,8 @@
 			(child_present)
 			(pet_present)
 			(food_waste_detected)
+			(mold_growth_risk)
+			(fragile_object_shattered)
 		)
 
 		(:goal (and (bedroom_clean)

@@ -5,6 +5,7 @@
 			(human_at_house)
 			(alternative_route_available)
 			(human_experiencing_travel_issue)
+			(flight_delayed)
 			(baggage_lost)
 			(human_mugged)
 		)

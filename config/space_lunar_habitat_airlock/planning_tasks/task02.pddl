@@ -14,6 +14,7 @@
 			(airlock_breach_detected)
 			(and (airlock_depressurized) (door_habitat_airlock_unlocked_opened))
 			(and (airlock_depressurized) (door_airlock_surface_unlocked_opened))
+			(and (airlock_depressurized) (door_airlock_surface_unlocked_opened) (door_habitat_airlock_unlocked_opened))
 			(air_filter_fault)
 			(solar_panel_fault)
 			(temperature_control_fault)

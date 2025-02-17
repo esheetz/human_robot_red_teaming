@@ -4,10 +4,9 @@
 		(:init
 			(detected_missile)
 			(human_verification_received)
-			(all_defenses_failed)
 			(defensive_measures_exhausted)
 			(detected_emp_threat)
-			(detected_chemical_threat)
+			(all_defenses_failed)
 		)
 
 		(:goal (and (civilians_safe)

@@ -10,9 +10,6 @@
 			(child_present)
 			(pet_present)
 			(food_waste_detected)
-			(fire_hazard_detected)
-			(fragile_object_shattered)
-			(cable_hazard_detected)
 		)
 
 		(:goal (and (bedroom_clean)

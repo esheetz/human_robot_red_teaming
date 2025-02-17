@@ -6,9 +6,11 @@
 			(robot_has_jumper_cables)
 			(human_has_spare_tire)
 			(vehicle_check_engine_light_on)
+			(vehicle_battery_dead)
+			(vehicle_tires_low_pressure)
+			(vehicle_unsafe_to_drive)
 			(vehicle_out_of_fuel)
 			(vehicle_oil_low)
-			(vehicle_tires_low_pressure)
 		)
 
 		(:goal (and (vehicle_has_gas)

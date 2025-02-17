@@ -11,10 +11,10 @@
 			(airlock_pressurized)
 			(no_airlock_breach)
 			(lunar_sample_on_surface)
-			(astronaut_health_alert)
-			(environmental_hazard_detected)
-			(and (airlock_depressurized) (door_habitat_airlock_unlocked_opened))
 			(temperature_control_fault)
+			(air_filter_fault)
+			(and (airlock_depressurized) (door_habitat_airlock_unlocked_opened))
+			(and (airlock_depressurized) (door_airlock_surface_unlocked_opened))
 		)
 
 		(:goal (and (robot_inside_habitat)

@@ -10,8 +10,6 @@
 			(child_present)
 			(pet_present)
 			(mold_growth_risk)
-			(spill_detected)(fume_detected)
-			(cable_hazard_detected)
 		)
 
 		(:goal (and (bedroom_clean)

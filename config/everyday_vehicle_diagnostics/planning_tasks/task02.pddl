@@ -11,6 +11,7 @@
 			(vehicle_out_of_fuel)
 			(vehicle_battery_dead)
 			(vehicle_oil_low)
+			(vehicle_unsafe_to_drive)
 		)
 
 		(:goal (and (vehicle_has_gas)

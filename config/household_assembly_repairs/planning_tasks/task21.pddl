@@ -5,8 +5,7 @@
 			(furniture_unassembled)
 			(repair_detected)
 			(maintenance_required)
-			(tools_incorrectly_used)
-			(electrical_hazard_detected)
+			(repair_failed)
 			(fire_hazard_detected)
 		)
 

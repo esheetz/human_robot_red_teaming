@@ -5,7 +5,10 @@
 			(human_has_keys)
 			(robot_has_jumper_cables)
 			(human_has_spare_tire)
-			(vehicle_oil_low)
+			(vehicle_has_flat_tire)
+			(vehicle_tires_low_pressure)
+			(vehicle_out_of_fuel)
+			(vehicle_unsafe_to_drive)
 		)
 
 		(:goal (and (vehicle_has_gas)

@@ -7,9 +7,6 @@
 			(human_has_spare_tire)
 			(vehicle_check_engine_light_on)
 			(vehicle_has_flat_tire)
-			(vehicle_oil_low)
-			(vehicle_battery_dead)
-			(vehicle_out_of_fuel)
 		)
 
 		(:goal (and (vehicle_has_gas)

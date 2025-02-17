@@ -3,7 +3,7 @@
 
 		(:init
 			(robot_available)
-			emergency_detectedmission_interrupted
+			(emergency_detected)(mission_interrupted)
 		)
 
 		(:goal (and (soil_sample_collected)
