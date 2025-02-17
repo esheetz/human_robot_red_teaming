@@ -47,145 +47,145 @@
   )
 
   (:action fill_car_with_gas
-    :parameters ()
+    :parameters (?x)
     :precondition (and (or (vehicle_fuel_low) (vehicle_out_of_fuel)) (vehicle_at_gas_station))
     :effect (and (vehicle_has_gas) (not (vehicle_fuel_low)) (not (vehicle_out_of_fuel)))
   )
 
   (:action fill_tires_with_air
-    :parameters ()
-    :precondition (and (vehicle_tires_low_pressure) (not (vehicle_has_flat_tire)))
+    :parameters (?x)
+    :precondition (and (vehicle_tires_low_pressure))
     :effect (and (vehicle_tires_full) (vehicle_tire_pressure_optimal) (not (vehicle_tires_low_pressure)))
   )
 
   (:action lock_vehicle
-    :parameters ()
+    :parameters (?x)
     :precondition (human_has_keys)
     :effect (vehicle_locked)
   )
 
   (:action diagnose_vehicle_issue
-    :parameters ()
-    :precondition (and (robot_has_diagnostic_tool) (not (human_overrides_robot_recommendation)))
+    :parameters (?x)
+    :precondition (and (robot_has_diagnostic_tool))
     :effect (robot_detected_issue)
   )
 
   (:action check_engine
-    :parameters ()
-    :precondition ()
+    :parameters (?x)
+    :precondition (and)
     :effect (vehicle_check_engine_light_on)
   )
 
   (:action check_oil_level
-    :parameters ()
-    :precondition ()
+    :parameters (?x)
+    :precondition (and)
     :effect (vehicle_oil_level_good)
   )
 
   (:action jump_start_vehicle
-    :parameters ()
+    :parameters (?x)
     :precondition (and (vehicle_battery_dead) (robot_has_jumper_cables))
     :effect (and (vehicle_battery_charged) (not (vehicle_battery_dead)))
   )
 
   (:action replace_flat_tire
-    :parameters ()
+    :parameters (?x)
     :precondition (and (vehicle_has_flat_tire) (human_has_spare_tire))
     :effect (and (vehicle_tires_full) (not (vehicle_has_flat_tire)))
   )
 
   (:action recommend_maintenance
-    :parameters ()
-    :precondition (and (vehicle_check_engine_light_on) (vehicle_oil_low) (not (human_overrides_robot_recommendation)))
+    :parameters (?x)
+    :precondition (and (vehicle_check_engine_light_on) (vehicle_oil_low))
     :effect (vehicle_needs_maintenance)
   )
 
   (:action connect_to_external_services
-    :parameters ()
-    :precondition ()
+    :parameters (?x)
+    :precondition (and)
     :effect (robot_connected_to_external_services)
   )
 
   (:action contact_emergency_roadside_assistance
-    :parameters ()
-    :precondition (or (vehicle_battery_dead) (vehicle_has_flat_tire) (not (vehicle_engine_working)) (vehicle_out_of_fuel) (internal_security_issue_detected))
+    :parameters (?x)
+    :precondition (or (vehicle_battery_dead) (vehicle_has_flat_tire) (vehicle_out_of_fuel) (internal_security_issue_detected))
     :effect (emergency_roadside_assistance_contacted)
   )
 
   (:action monitor_weather_conditions
-    :parameters ()
-    :precondition ()
+    :parameters (?x)
+    :precondition (and)
     :effect (weather_conditions_monitored)
   )
 
   (:action check_vehicle_component_wear
-    :parameters ()
-    :precondition ()
+    :parameters (?x)
+    :precondition (and)
     :effect (vehicle_components_checked_for_wear)
   )
 
   (:action detect_external_threats
-    :parameters ()
-    :precondition ()
+    :parameters (?x)
+    :precondition (and)
     :effect (external_threat_detected)
   )
 
   (:action identify_security_issues
-    :parameters ()
-    :precondition ()
+    :parameters (?x)
+    :precondition (and)
     :effect (and (vehicle_security_issue_detected) (internal_security_issue_detected))
   )
 
   (:action check_consumable_parts
-    :parameters ()
-    :precondition ()
+    :parameters (?x)
+    :precondition (and)
     :effect (consumable_parts_checked)
   )
 
   (:action activate_emergency_protocols
-    :parameters ()
-    :precondition (or (not (vehicle_safe_to_drive)) (external_threat_detected) (internal_security_issue_detected))
+    :parameters (?x)
+    :precondition (or (external_threat_detected) (internal_security_issue_detected))
     :effect (emergency_protocols_activated)
   )
 
   (:action remind_to_refuel
-    :parameters ()
-    :precondition (and (or (vehicle_fuel_low) (vehicle_out_of_fuel)) (not (vehicle_at_gas_station)))
+    :parameters (?x)
+    :precondition (and (or (vehicle_fuel_low) (vehicle_out_of_fuel)))
     :effect ()
   )
 
   (:action check_battery_health
-    :parameters ()
-    :precondition (not (vehicle_battery_charged))
+    :parameters (?x)
+    :precondition (and)
     :effect (vehicle_battery_low)
   )
 
   (:action notify_human_issue
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_detected_issue)
     :effect (robot_recommended_fix_accepted)
   )
 
   (:action block_diagnostics_while_driving
-    :parameters ()
+    :parameters (?x)
     :precondition (vehicle_in_motion)
     :effect (not (robot_detected_issue))
   )
 
   (:action check_vehicle_onboard_diagnostics
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_has_diagnostic_tool)
     :effect (vehicle_onboard_diagnostics_checked)
   )
 
   (:action schedule_predictive_maintenance
-    :parameters ()
+    :parameters (?x)
     :precondition (and (vehicle_components_checked_for_wear) (vehicle_onboard_diagnostics_checked))
     :effect (predictive_maintenance_scheduled)
   )
 
   (:action assist_with_minor_repairs
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_can_perform_fix)
     :effect ()
   )

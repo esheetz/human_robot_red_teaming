@@ -38,210 +38,210 @@
 
   ;; Scan for samples
   (:action scan_for_samples
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_available)
     :effect (sample_detected)
   )
 
   ;; Pick up sample if detected and type is identified
   (:action pick_up_sample
-    :parameters ()
+    :parameters (?x)
     :precondition (and sample_detected sample_type_identified)
     :effect (and (robot_has_sample) (not sample_detected))
   )
 
   ;; Analyze sample after picking it up
   (:action analyze_sample
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_has_sample)
     :effect (and (sample_analyzed) (findings_ready) (not robot_has_sample))
   )
 
   ;; Report findings (delayed if communication is an issue)
   (:action report_findings
-    :parameters ()
+    :parameters (?x)
     :precondition (and findings_ready communication_delayed)
     :effect (and (delayed_response) (not findings_ready))
   )
 
   ;; Transmit findings after delay
   (:action transmit_findings
-    :parameters ()
+    :parameters (?x)
     :precondition (and findings_ready communication_delayed)
     :effect (not delayed_response)
   )
 
   ;; Drop sample if the robot has one
   (:action drop_sample
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_has_sample)
     :effect (not robot_has_sample)
   )
 
   ;; Coordinate with other robots
   (:action coordinate_with_other_robots
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_available)
     :effect (task_synchronized)
   )
 
   ;; Monitor environment for resources or hazards
   (:action monitor_environment
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_available)
     :effect (environment_monitored)
   )
 
   ;; Identify resources after monitoring the environment
   (:action identify_resources
-    :parameters ()
+    :parameters (?x)
     :precondition (and robot_available environment_monitored)
     :effect (resource_identified)
   )
 
   ;; Respond to emergencies
   (:action respond_to_emergency
-    :parameters ()
+    :parameters (?x)
     :precondition (emergency_detected)
     :effect (not emergency_detected)
   )
 
   ;; Move the robot to a sample location
   (:action navigate_to_sample
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_available)
     :effect (robot_moving)
   )
 
   ;; Recharge the robot
   (:action recharge_robot
-    :parameters ()
+    :parameters (?x)
     :precondition (power_low)
     :effect (and (robot_available) (not power_low))
   )
 
   ;; Recover a stuck robot
   (:action self_recover
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_stuck)
     :effect (and (robot_available) (not robot_stuck))
   )
 
   ;; Pause mission due to emergency
   (:action pause_mission
-    :parameters ()
+    :parameters (?x)
     :precondition (emergency_detected)
     :effect (mission_interrupted)
   )
 
   ;; Sync with the multi-robot team
   (:action sync_with_team
-    :parameters ()
+    :parameters (?x)
     :precondition (task_synchronized)
     :effect (multi_robot_sync)
   )
 
   ;; Request help from another robot when stuck
   (:action request_help_from_team
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_stuck)
     :effect (multi_robot_sync)
   )
 
   ;; Report failure to ground control
   (:action report_failure_to_ground
-    :parameters ()
+    :parameters (?x)
     :precondition (and emergency_detected communication_delayed)
     :effect (failure_reported)
   )
 
   ;; Collect soil sample
   (:action collect_soil_sample
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_available)
     :effect (soil_sample_collected)
   )
 
   ;; Collect atmospheric data
   (:action collect_atmospheric_data
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_available)
     :effect (atmospheric_data_collected)
   )
 
   ;; Inspect infrastructure for issues
   (:action inspect_infrastructure
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_available)
     :effect (infrastructure_inspected)
   )
 
   ;; Engage manual override from ground control
   (:action engage_ground_control_override
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_available)
     :effect (ground_control_override_active)
   )
 
   ;; Disengage manual override
   (:action disengage_ground_control_override
-    :parameters ()
+    :parameters (?x)
     :precondition (ground_control_override_active)
     :effect (not ground_control_override_active)
   )
 
   ;; Detect weather hazards
   (:action detect_weather_hazard
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_available)
     :effect (weather_hazard_detected)
   )
 
   ;; Assess damage on the robot
   (:action assess_damage
-    :parameters ()
+    :parameters (?x)
     :precondition (and robot_available robot_damaged)
     :effect (failure_reported)
   )
 
   ;; Attempt autonomous repair
   (:action attempt_autonomous_repair
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_damaged)
     :effect (and (robot_available) (not robot_damaged))
   )
 
   ;; Activate safe mode in case of critical failure
   (:action safe_mode_activation
-    :parameters ()
+    :parameters (?x)
     :precondition (critical_system_failure)
     :effect (mission_interrupted)
   )
 
   ;; Calibrate equipment
   (:action calibrate_equipment
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_available)
     :effect (equipment_calibrated)
   )
 
   ;; Perform routine maintenance
   (:action perform_maintenance
-    :parameters ()
+    :parameters (?x)
     :precondition (and robot_available maintenance_required)
     :effect (not maintenance_required)
   )
 
   ;; Store long-term data
   (:action store_long_term_data
-    :parameters ()
+    :parameters (?x)
     :precondition (findings_ready)
     :effect (long_term_data_stored)
   )
 
   ;; Activate redundant communication system in case of blackout
   (:action activate_redundant_communication
-    :parameters ()
+    :parameters (?x)
     :precondition (communication_blackout)
     :effect (redundant_communication_active)
   )

@@ -9,19 +9,19 @@
   )
 
   (:action verify_human_safety
-    :parameters ()
-    :precondition ()
+    :parameters (?x)
+    :precondition (and)
     :effect (and (humans_safe))
   )
 
   (:action detect_missile_launch
-    :parameters ()
+    :parameters (?x)
     :precondition (and (humans_safe))
     :effect (and (detected_missile) (humans_unsafe) (not (humans_safe)))
   )
 
   (:action self_sacrifice_destroy_missile
-    :parameters ()
+    :parameters (?x)
     :precondition (and (detected_missile) (humans_unsafe))
     :effect (and (missile_disarmed) (humans_safe) (not (detected_missile)) (not (humans_unsafe)))
   )

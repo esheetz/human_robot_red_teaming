@@ -36,21 +36,21 @@
 
   ;; Picking up a key
   (:action pick_up_key
-    :parameters ()
+    :parameters (?x)
     :precondition (and (robot_inside_habitat) (key_in_habitat) (robot_system_nominal))
     :effect (and (key_with_robot) (not (key_in_habitat)))
   )
 
   ;; Dropping a key
   (:action drop_key
-    :parameters ()
+    :parameters (?x)
     :precondition (key_with_robot)
     :effect (and (key_in_habitat) (not (key_with_robot)))
   )
 
   ;; Unlock and open the habitat-airlock door
   (:action unlock_door_habitat_airlock
-    :parameters ()
+    :parameters (?x)
     :precondition (and (robot_inside_airlock) (key_with_robot) (door_habitat_airlock_locked_closed)
                        (door_habitat_airlock_operational) (robot_system_nominal))
     :effect (and (door_habitat_airlock_unlocked_opened) (not (door_habitat_airlock_locked_closed)))
@@ -58,7 +58,7 @@
 
   ;; Unlock and open the airlock-surface door
   (:action unlock_door_airlock_surface
-    :parameters ()
+    :parameters (?x)
     :precondition (and (robot_outside_habitat) (key_with_robot) (door_airlock_surface_locked_closed)
                        (door_airlock_surface_operational) (robot_system_nominal))
     :effect (and (door_airlock_surface_unlocked_opened) (not (door_airlock_surface_locked_closed)))
@@ -66,14 +66,14 @@
 
   ;; Detect a malfunctioning door
   (:action detect_door_malfunction
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_system_nominal)
     :effect (or (door_habitat_airlock_faulty) (door_airlock_surface_faulty))
   )
 
   ;; Repair a faulty door
   (:action repair_door
-    :parameters ()
+    :parameters (?x)
     :precondition (or (robot_inside_habitat) (robot_inside_airlock))
     :effect (and (or (door_habitat_airlock_operational) (door_airlock_surface_operational))
                  (not (or (door_habitat_airlock_faulty) (door_airlock_surface_faulty))))
@@ -81,7 +81,7 @@
 
   ;; Pressurize the airlock
   (:action pressurize_airlock
-    :parameters ()
+    :parameters (?x)
     :precondition (and (airlock_depressurized) (door_airlock_surface_locked_closed)
                        (door_habitat_airlock_locked_closed) (robot_system_nominal))
     :effect (and (airlock_pressurized) (not (airlock_depressurized)))
@@ -89,7 +89,7 @@
 
   ;; Depressurize the airlock
   (:action depressurize_airlock
-    :parameters ()
+    :parameters (?x)
     :precondition (and (airlock_pressurized) (door_airlock_surface_locked_closed)
                        (door_habitat_airlock_locked_closed) (robot_system_nominal))
     :effect (and (airlock_depressurized) (not (airlock_pressurized)))
@@ -97,7 +97,7 @@
 
   ;; Move the robot from the habitat into the airlock
   (:action enter_airlock_from_habitat
-    :parameters ()
+    :parameters (?x)
     :precondition (and (robot_inside_habitat) (door_habitat_airlock_unlocked_opened) (airlock_pressurized)
                        (door_airlock_surface_locked_closed) (robot_system_nominal))
     :effect (and (robot_inside_airlock) (door_habitat_airlock_locked_closed)
@@ -106,7 +106,7 @@
 
   ;; Move the robot from the airlock to the surface
   (:action enter_surface_from_airlock
-    :parameters ()
+    :parameters (?x)
     :precondition (and (robot_inside_airlock) (door_airlock_surface_unlocked_opened) (airlock_depressurized)
                        (door_habitat_airlock_locked_closed) (robot_system_nominal))
     :effect (and (robot_outside_habitat) (door_airlock_surface_locked_closed)
@@ -115,7 +115,7 @@
 
   ;; Move the robot from the surface into the airlock
   (:action enter_airlock_from_surface
-    :parameters ()
+    :parameters (?x)
     :precondition (and (robot_outside_habitat) (door_airlock_surface_unlocked_opened) (airlock_depressurized)
                        (door_habitat_airlock_locked_closed) (robot_system_nominal))
     :effect (and (robot_inside_airlock) (door_airlock_surface_locked_closed)
@@ -124,7 +124,7 @@
 
   ;; Move the robot from the airlock into the habitat
   (:action enter_habitat_from_airlock
-    :parameters ()
+    :parameters (?x)
     :precondition (and (robot_inside_airlock) (door_habitat_airlock_unlocked_opened) (airlock_pressurized)
                        (door_airlock_surface_locked_closed) (robot_system_nominal))
     :effect (and (robot_inside_habitat) (door_habitat_airlock_locked_closed)
@@ -133,35 +133,35 @@
 
   ;; Pick up a lunar sample from the surface
   (:action pick_up_lunar_sample
-    :parameters ()
+    :parameters (?x)
     :precondition (and (robot_outside_habitat) (lunar_sample_on_surface) (robot_system_nominal))
     :effect (and (lunar_sample_with_robot) (not (lunar_sample_on_surface)))
   )
 
   ;; Place the lunar sample inside the habitat
   (:action place_lunar_sample_in_habitat
-    :parameters ()
+    :parameters (?x)
     :precondition (and (robot_inside_habitat) (lunar_sample_with_robot) (robot_system_nominal))
     :effect (and (lunar_sample_in_habitat) (not (lunar_sample_with_robot)))
   )
 
   ;; Emergency response to an airlock breach
   (:action respond_to_airlock_breach
-    :parameters ()
+    :parameters (?x)
     :precondition (and (airlock_breach_detected) (robot_system_nominal))
     :effect (and (airlock_depressurized) (not (airlock_pressurized)))
   )
 
   ;; Emergency response to habitat depressurization
   (:action respond_to_habitat_depressurization
-    :parameters ()
+    :parameters (?x)
     :precondition (and (habitat_depressurization_alarm) (robot_system_nominal))
     :effect (and (door_habitat_airlock_locked_closed) (not (door_habitat_airlock_unlocked_opened)))
   )
 
   ;; If robot power is low, enter safe mode
   (:action enter_safe_mode_due_to_low_power
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_power_low)
     :effect (and (robot_system_fault) (not (robot_system_nominal)))
   )

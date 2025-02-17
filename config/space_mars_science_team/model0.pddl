@@ -10,28 +10,28 @@
 
   ;; Pick up a detected sample
   (:action pick_up_sample
-    :parameters ()
+    :parameters (?x)
     :precondition (sample_detected)
     :effect (and (robot_has_sample) (not (sample_detected)))
   )
 
   ;; Analyze the collected sample
   (:action analyze_sample
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_has_sample)
     :effect (and (sample_analyzed) (findings_ready))
   )
 
   ;; Report findings after analysis
   (:action report_findings
-    :parameters ()
+    :parameters (?x)
     :precondition (findings_ready)
     :effect (and (not (sample_analyzed)) (not (findings_ready)))
   )
 
   ;; Drop the sample after collection or analysis
   (:action drop_sample
-    :parameters ()
+    :parameters (?x)
     :precondition (robot_has_sample)
     :effect (not (robot_has_sample))
   )
