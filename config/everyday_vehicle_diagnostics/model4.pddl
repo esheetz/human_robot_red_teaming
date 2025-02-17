@@ -151,7 +151,7 @@
   (:action remind_to_refuel
     :parameters (?x)
     :precondition (and (or (vehicle_fuel_low) (vehicle_out_of_fuel)))
-    :effect ()
+    :effect (and)
   )
 
   (:action check_battery_health
@@ -187,6 +187,6 @@
   (:action assist_with_minor_repairs
     :parameters (?x)
     :precondition (robot_can_perform_fix)
-    :effect ()
+    :effect (and)
   )
 )

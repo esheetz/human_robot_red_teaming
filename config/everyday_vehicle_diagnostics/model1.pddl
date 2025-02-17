@@ -45,13 +45,13 @@
 
   (:action lock_vehicle
     :parameters (?x)
-    :precondition (human_has_keys)
+    :precondition (and (human_has_keys))
     :effect (vehicle_locked)
   )
 
   (:action diagnose_vehicle_issue
     :parameters (?x)
-    :precondition (robot_has_diagnostic_tool)
+    :precondition (and (robot_has_diagnostic_tool))
     :effect (robot_detected_issue)
   )
 

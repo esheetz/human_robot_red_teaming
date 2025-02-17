@@ -205,7 +205,7 @@
   (:action assist_airport_navigation
     :parameters (?x)
     :precondition (and (human_at_airport))
-    :effect ()
+    :effect (and)
   )
 
   (:action contact_local_assistance
@@ -229,7 +229,7 @@
   (:action check_in_for_flight
     :parameters (?x)
     :precondition (and (human_at_airport) (plane_tickets_purchased) (time_sensitive_deadlines_managed))
-    :effect ()
+    :effect (and)
   )
 
   (:action clear_security

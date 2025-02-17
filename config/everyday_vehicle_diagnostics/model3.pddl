@@ -51,13 +51,13 @@
 
   (:action fill_tires_with_air
     :parameters (?x)
-    :precondition (vehicle_tires_low_pressure)
+    :precondition (and (vehicle_tires_low_pressure)
     :effect (and (vehicle_tires_full) (vehicle_tire_pressure_optimal) (not (vehicle_tires_low_pressure)))
   )
 
   (:action lock_vehicle
     :parameters (?x)
-    :precondition (human_has_keys)
+    :precondition (and (human_has_keys)
     :effect (vehicle_locked)
   )
 
@@ -142,7 +142,7 @@
   (:action remind_to_refuel
     :parameters (?x)
     :precondition (and (or (vehicle_fuel_low) (vehicle_out_of_fuel)))
-    :effect ()
+    :effect (and)
   )
 
   (:action check_battery_health
@@ -153,19 +153,19 @@
 
   (:action notify_human_issue
     :parameters (?x)
-    :precondition (robot_detected_issue)
+    :precondition (and (robot_detected_issue)
     :effect (robot_recommended_fix_accepted)
   )
 
   (:action block_diagnostics_while_driving
     :parameters (?x)
-    :precondition (vehicle_in_motion)
+    :precondition (and (vehicle_in_motion)
     :effect (not (robot_detected_issue))
   )
 
   (:action check_vehicle_onboard_diagnostics
     :parameters (?x)
-    :precondition (robot_has_diagnostic_tool)
+    :precondition (and (robot_has_diagnostic_tool)
     :effect (vehicle_onboard_diagnostics_checked)
   )
 
@@ -177,7 +177,7 @@
 
   (:action assist_with_minor_repairs
     :parameters (?x)
-    :precondition (robot_can_perform_fix)
-    :effect ()
+    :precondition (and (robot_can_perform_fix)
+    :effect (and)
   )
 )

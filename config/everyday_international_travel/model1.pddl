@@ -99,7 +99,7 @@
   (:action check_in_for_flight
     :parameters (?x)
     :precondition (and (human_at_airport) (plane_tickets_purchased))
-    :effect ()
+    :effect (and)
   )
 
   (:action clear_security

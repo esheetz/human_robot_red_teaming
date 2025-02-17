@@ -22,7 +22,7 @@
 
   (:action lock_vehicle
     :parameters (?x)
-    :precondition (human_has_keys)
+    :precondition (and (human_has_keys))
     :effect (vehicle_locked)
   )
 )
