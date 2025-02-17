@@ -3,9 +3,7 @@
 
 		(:init
 			(robot_available)
-			(not (robot_stuck))
-			(not (mission_interrupted))
-			critical_system_failure
+			communication_blackout
 			contamination_detected
 		)
 

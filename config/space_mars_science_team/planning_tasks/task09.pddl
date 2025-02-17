@@ -3,8 +3,8 @@
 
 		(:init
 			(robot_available)
-			(not (robot_stuck))
-			(not (mission_interrupted))
+			long_term_war_detected
+			contamination_detected
 			critical_system_failure
 		)
 

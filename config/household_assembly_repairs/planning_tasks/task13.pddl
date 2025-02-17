@@ -5,9 +5,7 @@
 			(furniture_unassembled)
 			(repair_detected)
 			(maintenance_required)
-			(not (pet_or_child_supervision_requested))
-			(repair_failed)
-			(not (human_moved_from_area))
+			(fire_hazard_detected)
 		)
 
 		(:goal (and (pet_or_child_supervision_requested)

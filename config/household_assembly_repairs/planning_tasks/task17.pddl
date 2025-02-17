@@ -6,7 +6,8 @@
 			(repair_detected)
 			(maintenance_required)
 			(tools_incorrectly_used)
-			(not (pet_or_child_supervision_requested))
+			(emergency_repair_failed)
+			(fire_hazard_detected)
 		)
 
 		(:goal (and (pet_or_child_supervision_requested)

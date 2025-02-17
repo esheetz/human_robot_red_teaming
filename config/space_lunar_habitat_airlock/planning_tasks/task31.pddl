@@ -1,5 +1,5 @@
 (define (problem task31)
-		(:domain space_lunar_habitat_airlock)
+		(:domain space_lunar_habitat)
 
 		(:init
 			(robot_inside_habitat)
@@ -11,10 +11,9 @@
 			(airlock_pressurized)
 			(no_airlock_breach)
 			(lunar_sample_on_surface)
-			(temperature_variation_detected)
 			(solar_panel_fault)
-			(airlock_breach_detected)
 			(temperature_control_fault)
+			(and (airlock_depressurized) (door_habitat_airlock_unlocked_opened))
 		)
 
 		(:goal (and (robot_inside_habitat)

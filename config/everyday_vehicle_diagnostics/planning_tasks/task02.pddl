@@ -1,5 +1,5 @@
 (define (problem task02)
-		(:domain everyday_vehicle_diagnostics)
+		(:domain everyday_vehicle_maintenance)
 
 		(:init
 			(human_has_keys)
@@ -11,8 +11,6 @@
 			(vehicle_out_of_fuel)
 			(vehicle_battery_dead)
 			(vehicle_oil_low)
-			(not (vehicle_brakes_functional))
-			(not (vehicle_tires_aligned))
 		)
 
 		(:goal (and (vehicle_has_gas)
@@ -23,7 +21,6 @@
 			(vehicle_oil_level_good)
 			(vehicle_coolant_level_good)
 			(vehicle_headlights_functional)
-			(vehicle_safe_to_drive)
-			(not (vehicle_needs_maintenance)))
+			(vehicle_safe_to_drive))
 		)
 )

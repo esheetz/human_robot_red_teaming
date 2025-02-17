@@ -6,8 +6,6 @@
 			(repair_detected)
 			(maintenance_required)
 			(emergency_repair_failed)
-			(not (human_moved_from_area))
-			(repair_failed)
 		)
 
 		(:goal (and (pet_or_child_supervision_requested)

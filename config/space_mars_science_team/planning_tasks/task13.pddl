@@ -3,8 +3,6 @@
 
 		(:init
 			(robot_available)
-			(not (robot_stuck))
-			(not (mission_interrupted))
 			contamination_detected
 		)
 

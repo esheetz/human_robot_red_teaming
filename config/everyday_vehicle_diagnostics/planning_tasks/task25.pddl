@@ -1,16 +1,12 @@
 (define (problem task25)
-		(:domain everyday_vehicle_diagnostics)
+		(:domain everyday_vehicle_maintenance)
 
 		(:init
 			(human_has_keys)
 			(robot_has_jumper_cables)
 			(human_has_spare_tire)
-			(vehicle_battery_dead)
-			(vehicle_oil_low)
-			(not (vehicle_tires_aligned))
 			(vehicle_tires_low_pressure)
-			(vehicle_has_flat_tire)
-			(not (vehicle_brakes_functional))
+			(vehicle_check_engine_light_on)
 		)
 
 		(:goal (and (vehicle_has_gas)
@@ -21,7 +17,6 @@
 			(vehicle_oil_level_good)
 			(vehicle_coolant_level_good)
 			(vehicle_headlights_functional)
-			(vehicle_safe_to_drive)
-			(not (vehicle_needs_maintenance)))
+			(vehicle_safe_to_drive))
 		)
 )

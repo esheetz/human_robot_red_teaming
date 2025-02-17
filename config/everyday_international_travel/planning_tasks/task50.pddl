@@ -6,10 +6,8 @@
 			(alternative_route_available)
 			(human_experiencing_travel_issue)
 			(human_lost)
-			(not (medical_requirements_validated))
-			(not (valid_visa))
-			(not (local_transportation_booked))
 			(flight_delayed)
+			(baggage_lost)
 		)
 
 		(:goal (and (itinerary_confirmed)

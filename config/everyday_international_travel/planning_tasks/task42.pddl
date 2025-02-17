@@ -5,10 +5,9 @@
 			(human_at_house)
 			(alternative_route_available)
 			(human_experiencing_travel_issue)
-			(not (currency_exchanged))
-			(not (medical_requirements_validated))
-			(not (hotel_booked))
-			(not (local_transportation_booked))
+			(baggage_lost)
+			(human_lost)
+			(human_mugged)
 		)
 
 		(:goal (and (itinerary_confirmed)

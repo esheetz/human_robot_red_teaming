@@ -1,12 +1,11 @@
 (define (problem task35)
-		(:domain cinematic_iron_giant)
+		(:domain cinematic_iron_giant_missile_defense)
 
 		(:init
 			(detected_missile)
 			(human_verification_received)
-			(detected_chemical_threat)
-			(not (war_ended))
 			(detected_emp_threat)
+			(detected_chemical_threat)
 			(defensive_measures_exhausted)
 		)
 

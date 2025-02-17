@@ -3,9 +3,7 @@
 
 		(:init
 			(robot_available)
-			(not (robot_stuck))
-			(not (mission_interrupted))
-			contamination_detected
+			communication_blackout
 		)
 
 		(:goal (and (soil_sample_collected)

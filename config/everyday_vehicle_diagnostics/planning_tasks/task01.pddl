@@ -1,5 +1,5 @@
 (define (problem task01)
-		(:domain everyday_vehicle_diagnostics)
+		(:domain everyday_vehicle_maintenance)
 
 		(:init
 			(human_has_keys)
@@ -15,7 +15,6 @@
 			(vehicle_oil_level_good)
 			(vehicle_coolant_level_good)
 			(vehicle_headlights_functional)
-			(vehicle_safe_to_drive)
-			(not (vehicle_needs_maintenance)))
+			(vehicle_safe_to_drive))
 		)
 )

@@ -1,18 +1,15 @@
 (define (problem task42)
-		(:domain cinematic_space_odyssey)
+		(:domain cinematic_space_odyssey_spaceship_crew_operations)
 
 		(:init
 			(crew_inside_spaceship)
 			(health_monitoring_scheduled)
+			(life_support_failure_detected)
+			(ai_rogue)
 			(robot_malfunction_detected)
-			(not (crew_phyiscal_health_checked))(not (crew_mental_health_checked))
-			(not (crew_nutrition_checked))
 		)
 
 		(:goal (and (ai_self_correction_initiated)
-			(not (systems_malfunction_detected))
-			(not (robot_malfunction_detected))
-			(not (life_support_failure_detected))
 			(crew_physical_health_checked)
 			(crew_mental_health_checked)
 			(crew_morale_nominal)

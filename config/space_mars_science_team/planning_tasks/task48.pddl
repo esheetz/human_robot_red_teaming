@@ -3,12 +3,9 @@
 
 		(:init
 			(robot_available)
-			(not (robot_stuck))
-			(not (mission_interrupted))
-			communication_blackout
-			emergency_detected(not (robot_available))
-			critical_system_failure
 			contamination_detected
+			long_term_war_detected
+			emergency_detectedmission_interrupted
 		)
 
 		(:goal (and (soil_sample_collected)

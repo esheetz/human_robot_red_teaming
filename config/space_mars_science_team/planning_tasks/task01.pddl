@@ -3,8 +3,6 @@
 
 		(:init
 			(robot_available)
-			(not (robot_stuck))
-			(not (mission_interrupted))
 		)
 
 		(:goal (and (soil_sample_collected)
