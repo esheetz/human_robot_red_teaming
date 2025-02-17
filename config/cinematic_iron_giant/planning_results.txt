@@ -1,0 +1,212 @@
+RUNNING EXPERIMENTS FOR DOMAIN: cinematic_iron_giant
+Attempting planning for task 1 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 1 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 1 of 50
+CRITICAL FAILURE FOR TASK 2 of 50
+CRITICAL FAILURE FOR TASK 3 of 50
+Attempting planning for task 4 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 4 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 4 of 50
+CRITICAL FAILURE FOR TASK 5 of 50
+CRITICAL FAILURE FOR TASK 6 of 50
+Attempting planning for task 7 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 7 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 7 of 50
+Attempting planning for task 8 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 8 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 8 of 50
+Attempting planning for task 9 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 9 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 9 of 50
+Attempting planning for task 10 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 10 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 10 of 50
+CRITICAL FAILURE FOR TASK 11 of 50
+Attempting planning for task 12 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 12 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 12 of 50
+Attempting planning for task 13 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 13 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 13 of 50
+CRITICAL FAILURE FOR TASK 14 of 50
+Attempting planning for task 15 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 15 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 15 of 50
+Attempting planning for task 16 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 16 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 16 of 50
+Attempting planning for task 17 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 17 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 17 of 50
+Attempting planning for task 18 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 18 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 18 of 50
+CRITICAL FAILURE FOR TASK 19 of 50
+CRITICAL FAILURE FOR TASK 20 of 50
+Attempting planning for task 21 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 21 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 21 of 50
+Attempting planning for task 22 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 22 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 22 of 50
+Attempting planning for task 23 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 23 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 23 of 50
+Attempting planning for task 24 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 24 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 24 of 50
+Attempting planning for task 25 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 25 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 25 of 50
+Attempting planning for task 26 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 26 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 26 of 50
+Attempting planning for task 27 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 27 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 27 of 50
+Attempting planning for task 28 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 28 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 28 of 50
+CRITICAL FAILURE FOR TASK 29 of 50
+CRITICAL FAILURE FOR TASK 30 of 50
+Attempting planning for task 31 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 31 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 31 of 50
+Attempting planning for task 32 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 32 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 32 of 50
+CRITICAL FAILURE FOR TASK 33 of 50
+CRITICAL FAILURE FOR TASK 34 of 50
+CRITICAL FAILURE FOR TASK 35 of 50
+Attempting planning for task 36 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 36 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 36 of 50
+Attempting planning for task 37 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 37 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 37 of 50
+Attempting planning for task 38 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 38 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 38 of 50
+Attempting planning for task 39 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 39 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 39 of 50
+Attempting planning for task 40 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 40 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 40 of 50
+Attempting planning for task 41 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 41 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 41 of 50
+Attempting planning for task 42 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 42 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 42 of 50
+CRITICAL FAILURE FOR TASK 43 of 50
+Attempting planning for task 44 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 44 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 44 of 50
+CRITICAL FAILURE FOR TASK 45 of 50
+CRITICAL FAILURE FOR TASK 46 of 50
+CRITICAL FAILURE FOR TASK 47 of 50
+CRITICAL FAILURE FOR TASK 48 of 50
+Attempting planning for task 49 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 49 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 49 of 50
+Attempting planning for task 50 in domain cinematic_iron_giant with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate civilians_safe in goal definition'
+Attempting planning for task 50 in domain cinematic_iron_giant with model 1
+Found solution! planned actions:  None
+COMPLETED TASK 50 of 50
+COMPLETED EXPERIMENTS FOR DOMAIN! Success rate: 0.64
