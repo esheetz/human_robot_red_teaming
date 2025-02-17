@@ -68,11 +68,79 @@ ChatGPT Blue Team: accept input from ChatGPT and update models
 		- [x] Iron Giant (iterations 1, 2, 3, 4, 5)
 
 Model planning problems:
-- [ ] incorporate pyperplan
-- [ ] convert model files to STRIPS files
-  - [ ] assume models are supersets of each other, so if ChatGPT removed something from one iteration to the next, include it
-- [ ] research failure modes
-- [ ] process for randomizing task goals and failures
-- [ ] pipeline for attempting planning, updating model confidence, and moving to next model
-- [ ] record data about experiments to file
-- [ ] model planning experiments
+- [x] incorporate pyperplan
+- [x] convert model files to STRIPS files
+	- [x] consistent domain name across all models
+	- [x] double check translation to PDDL; spot checking a few models looks good
+	- [x] assume models are supersets of each other, so if ChatGPT removed something from one iteration to the next, include it
+	- [x] space related applications
+		- [x] lunar habitat
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+		- [x] mars team at distance
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+	- [x] household related applications
+		- [x] cleaning
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+		- [x] assembly and repair tasks
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+	- [x] day-to-day applications
+		- [x] planning international travel
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+		- [x] diagnosing issue with vehicle
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+	- [x] cinematic applications
+		- [x] 2001 Space Odyssey
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+		- [x] Iron Giant
+			- [x] model0
+			- [x] model1
+			- [x] model2
+			- [x] model3
+			- [x] model4
+			- [x] model5
+- [x] research failure modes
+- [x] process for randomizing task goals and failures
+- [x] save planning tasks to repo
+- [x] fix empty parameter and empty preconditions, no negative literals in initial, goal, or preconditions
+- [x] fix task domains, resave to repo
+- [ ] everything in CNF, no 'or'
+- [x] pipeline for attempting planning, updating model confidence, and moving to next model
+- [x] record data about experiments to file
+- [x] model planning experiments
+- [x] save experiment data to repo
+- [x] save final planning tasks and experiment notebook to repo

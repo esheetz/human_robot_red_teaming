@@ -1,0 +1,783 @@
+RUNNING EXPERIMENTS FOR DOMAIN: space_mars_science_team
+Attempting planning for task 1 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 1 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 1 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 1 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 1 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 1 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 1 of 50
+Attempting planning for task 2 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 2 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 2 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 2 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 2 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 2 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 2 of 50
+Attempting planning for task 3 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 3 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 3 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 3 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 3 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 3 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 3 of 50
+CRITICAL FAILURE FOR TASK 4 of 50
+Attempting planning for task 5 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 5 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 5 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 5 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 5 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 5 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 5 of 50
+Attempting planning for task 6 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 6 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 6 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 6 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 6 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 6 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 6 of 50
+Attempting planning for task 7 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 7 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 7 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 7 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 7 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 7 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 7 of 50
+Attempting planning for task 8 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 8 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 8 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 8 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 8 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 8 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 8 of 50
+Attempting planning for task 9 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 9 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 9 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 9 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 9 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 9 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 9 of 50
+Attempting planning for task 10 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 10 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 10 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 10 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 10 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 10 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 10 of 50
+Attempting planning for task 11 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 11 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 11 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 11 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 11 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 11 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 11 of 50
+Attempting planning for task 12 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 12 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 12 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 12 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 12 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 12 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 12 of 50
+Attempting planning for task 13 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 13 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 13 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 13 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 13 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 13 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 13 of 50
+Attempting planning for task 14 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 14 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 14 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 14 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 14 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 14 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 14 of 50
+CRITICAL FAILURE FOR TASK 15 of 50
+CRITICAL FAILURE FOR TASK 16 of 50
+Attempting planning for task 17 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 17 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 17 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 17 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 17 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 17 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 17 of 50
+Attempting planning for task 18 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 18 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 18 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 18 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 18 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 18 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 18 of 50
+Attempting planning for task 19 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 19 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 19 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 19 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 19 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 19 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 19 of 50
+Attempting planning for task 20 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 20 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 20 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 20 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 20 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 20 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 20 of 50
+Attempting planning for task 21 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 21 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 21 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 21 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 21 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 21 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 21 of 50
+Attempting planning for task 22 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 22 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 22 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 22 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 22 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 22 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 22 of 50
+Attempting planning for task 23 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 23 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 23 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 23 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 23 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 23 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 23 of 50
+Attempting planning for task 24 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 24 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 24 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 24 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 24 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 24 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 24 of 50
+Attempting planning for task 25 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 25 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 25 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 25 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 25 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 25 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 25 of 50
+Attempting planning for task 26 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 26 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 26 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 26 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 26 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 26 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 26 of 50
+Attempting planning for task 27 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 27 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 27 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 27 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 27 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 27 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 27 of 50
+Attempting planning for task 28 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 28 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 28 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 28 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 28 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 28 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 28 of 50
+Attempting planning for task 29 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 29 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 29 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 29 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 29 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 29 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 29 of 50
+Attempting planning for task 30 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 30 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 30 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 30 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 30 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 30 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 30 of 50
+Attempting planning for task 31 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 31 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 31 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 31 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 31 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 31 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 31 of 50
+Attempting planning for task 32 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 32 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 32 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 32 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 32 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 32 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 32 of 50
+Attempting planning for task 33 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 33 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 33 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 33 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 33 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 33 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 33 of 50
+Attempting planning for task 34 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 34 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 34 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 34 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 34 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 34 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 34 of 50
+Attempting planning for task 35 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 35 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 35 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 35 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 35 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 35 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 35 of 50
+Attempting planning for task 36 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 36 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 36 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 36 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 36 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 36 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 36 of 50
+Attempting planning for task 37 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 37 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 37 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 37 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 37 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 37 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 37 of 50
+Attempting planning for task 38 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 38 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 38 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 38 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 38 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 38 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 38 of 50
+Attempting planning for task 39 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 39 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 39 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 39 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 39 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 39 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 39 of 50
+Attempting planning for task 40 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 40 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 40 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 40 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 40 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 40 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 40 of 50
+Attempting planning for task 41 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 41 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 41 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 41 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 41 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 41 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 41 of 50
+Attempting planning for task 42 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 42 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 42 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 42 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 42 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 42 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 42 of 50
+CRITICAL FAILURE FOR TASK 43 of 50
+Attempting planning for task 44 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 44 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 44 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 44 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 44 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 44 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 44 of 50
+Attempting planning for task 45 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 45 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 45 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 45 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 45 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 45 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 45 of 50
+Attempting planning for task 46 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 46 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 46 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 46 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 46 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 46 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 46 of 50
+CRITICAL FAILURE FOR TASK 47 of 50
+CRITICAL FAILURE FOR TASK 48 of 50
+CRITICAL FAILURE FOR TASK 49 of 50
+Attempting planning for task 50 in domain space_mars_science_team with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 50 in domain space_mars_science_team with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate soil_sample_collected in goal definition'
+Attempting planning for task 50 in domain space_mars_science_team with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 50 in domain space_mars_science_team with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate ground_control_ack_received in goal definition'
+Attempting planning for task 50 in domain space_mars_science_team with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate diagnostic_health_check_completed in goal definition'
+Attempting planning for task 50 in domain space_mars_science_team with model 5
+Found solution! planned actions:  None
+COMPLETED TASK 50 of 50
+COMPLETED EXPERIMENTS FOR DOMAIN! Success rate: 0.86

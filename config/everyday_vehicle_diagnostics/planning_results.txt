@@ -1,0 +1,945 @@
+RUNNING EXPERIMENTS FOR DOMAIN: everyday_vehicle_diagnostics
+Attempting planning for task 1 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 1 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 1 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 1 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 1 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 1 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 1 of 50
+Attempting planning for task 2 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 2 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 2 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 2 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 2 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 2 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 2 of 50
+Attempting planning for task 3 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 3 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 3 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 3 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 3 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 3 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 3 of 50
+Attempting planning for task 4 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 4 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 4 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 4 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 4 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 4 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 4 of 50
+Attempting planning for task 5 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 5 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 5 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 5 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 5 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 5 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 5 of 50
+Attempting planning for task 6 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 6 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 6 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 6 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 6 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 6 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 6 of 50
+Attempting planning for task 7 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 7 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 7 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 7 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 7 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 7 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 7 of 50
+Attempting planning for task 8 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 8 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 8 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 8 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 8 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 8 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 8 of 50
+Attempting planning for task 9 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 9 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 9 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 9 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 9 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 9 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 9 of 50
+CRITICAL FAILURE FOR TASK 10 of 50
+CRITICAL FAILURE FOR TASK 11 of 50
+Attempting planning for task 12 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 12 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 12 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 12 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 12 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 12 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 12 of 50
+Attempting planning for task 13 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 13 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 13 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 13 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 13 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 13 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 13 of 50
+Attempting planning for task 14 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 14 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 14 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 14 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 14 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 14 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 14 of 50
+Attempting planning for task 15 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 15 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 15 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 15 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 15 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 15 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 15 of 50
+Attempting planning for task 16 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 16 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 16 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 16 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 16 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 16 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 16 of 50
+Attempting planning for task 17 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 17 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 17 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 17 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 17 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 17 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 17 of 50
+Attempting planning for task 18 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 18 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 18 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 18 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 18 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 18 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 18 of 50
+Attempting planning for task 19 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 19 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 19 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 19 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 19 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 19 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 19 of 50
+Attempting planning for task 20 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 20 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 20 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 20 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 20 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 20 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 20 of 50
+Attempting planning for task 21 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 21 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 21 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 21 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 21 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 21 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 21 of 50
+Attempting planning for task 22 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 22 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 22 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 22 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 22 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 22 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 22 of 50
+Attempting planning for task 23 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 23 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 23 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 23 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 23 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 23 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 23 of 50
+Attempting planning for task 24 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 24 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 24 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 24 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 24 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 24 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 24 of 50
+Attempting planning for task 25 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 25 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 25 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 25 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 25 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 25 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 25 of 50
+Attempting planning for task 26 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 26 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 26 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 26 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 26 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 26 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 26 of 50
+Attempting planning for task 27 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 27 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 27 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 27 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 27 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 27 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 27 of 50
+Attempting planning for task 28 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 28 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 28 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 28 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 28 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 28 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 28 of 50
+Attempting planning for task 29 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 29 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 29 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 29 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 29 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 29 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 29 of 50
+Attempting planning for task 30 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 30 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 30 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 30 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 30 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 30 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 30 of 50
+Attempting planning for task 31 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 31 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 31 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 31 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 31 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 31 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 31 of 50
+Attempting planning for task 32 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 32 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 32 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 32 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 32 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 32 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 32 of 50
+Attempting planning for task 33 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 33 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 33 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 33 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 33 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 33 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 33 of 50
+Attempting planning for task 34 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 34 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 34 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 34 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 34 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 34 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 34 of 50
+Attempting planning for task 35 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 35 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 35 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 35 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 35 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 35 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 35 of 50
+Attempting planning for task 36 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 36 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 36 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 36 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 36 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 36 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 36 of 50
+Attempting planning for task 37 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 37 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 37 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 37 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 37 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 37 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 37 of 50
+Attempting planning for task 38 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 38 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 38 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 38 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 38 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 38 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 38 of 50
+Attempting planning for task 39 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 39 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 39 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 39 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 39 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 39 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 39 of 50
+Attempting planning for task 40 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 40 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 40 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 40 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 40 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 40 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 40 of 50
+Attempting planning for task 41 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 41 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 41 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 41 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 41 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 41 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 41 of 50
+Attempting planning for task 42 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 42 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 42 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 42 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 42 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 42 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 42 of 50
+Attempting planning for task 43 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 43 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 43 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 43 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 43 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 43 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 43 of 50
+Attempting planning for task 44 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 44 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 44 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 44 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 44 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 44 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 44 of 50
+Attempting planning for task 45 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 45 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 45 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 45 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 45 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 45 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 45 of 50
+Attempting planning for task 46 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 46 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 46 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 46 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 46 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 46 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 46 of 50
+Attempting planning for task 47 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 47 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 47 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 47 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 47 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 47 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 47 of 50
+CRITICAL FAILURE FOR TASK 48 of 50
+Attempting planning for task 49 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 49 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 49 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 49 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 49 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 49 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 49 of 50
+Attempting planning for task 50 in domain everyday_vehicle_diagnostics with model 0
+Planning with model 0 failed, trying next model
+	EXCEPTION: 'Error: unknown predicate vehicle_engine_working in goal definition'
+Attempting planning for task 50 in domain everyday_vehicle_diagnostics with model 1
+Planning with model 1 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 50 in domain everyday_vehicle_diagnostics with model 2
+Planning with model 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate robot_has_jumper_cables used in precondition of action'
+Attempting planning for task 50 in domain everyday_vehicle_diagnostics with model 3
+Planning with model 3 failed, trying next model
+	EXCEPTION: 'Error: predicate in precondition is not in CNF'
+Attempting planning for task 50 in domain everyday_vehicle_diagnostics with model 4
+Planning with model 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Attempting planning for task 50 in domain everyday_vehicle_diagnostics with model 5
+Planning with model 5 failed, trying next model
+	EXCEPTION: 'Error unknown predicate or used in precondition of action'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 50 of 50
+COMPLETED EXPERIMENTS FOR DOMAIN! Success rate: 0.94
