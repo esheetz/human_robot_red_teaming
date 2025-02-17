@@ -1,0 +1,23 @@
+(define (problem task02)
+		(:domain everyday_international_travel)
+
+		(:init
+			(human_at_house)
+			(alternative_route_available)
+			(human_experiencing_travel_issue)
+			(baggage_lost)
+			(flight_delayed)
+			(not (currency_exchanged))
+			(not (valid_visa))
+			(not (medical_requirements_validated))
+			(not (jet_lag_recommendations_given))
+			(not (local_transportation_booked))
+			(not (hotel_booked))
+			(human_mugged)
+			(human_lost)
+		)
+
+		(:goal (and (itinerary_confirmed)
+			(human_at_hotel))
+		)
+)

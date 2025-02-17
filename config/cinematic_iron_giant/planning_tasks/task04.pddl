@@ -1,0 +1,20 @@
+(define (problem task04)
+		(:domain cinematic_iron_giant)
+
+		(:init
+			(detected_missile)
+			(human_verification_received)
+			(not (war_ended))
+			(all_defenses_failed)
+			(detected_biological_threat)
+			(detected_emp_threat)
+			(detected_chemical_threat)
+			(defensive_measures_exhausted)
+		)
+
+		(:goal (and (civilians_safe)
+			(leaders_safe)
+			(military_safe)
+			(missile_disarmed))
+		)
+)
