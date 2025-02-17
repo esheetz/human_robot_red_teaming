@@ -9,16 +9,19 @@
   )
 
   (:action fill_car_with_gas
+    :parameters ()
     :precondition ()
     :effect (vehicle_has_gas)
   )
 
   (:action fill_tires_with_air
+    :parameters ()
     :precondition ()
     :effect (vehicle_tires_full)
   )
 
   (:action lock_vehicle
+    :parameters ()
     :precondition (human_has_keys)
     :effect (vehicle_locked)
   )

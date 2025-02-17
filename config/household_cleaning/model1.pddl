@@ -21,31 +21,37 @@
   )
 
   (:action vacuum_floors
+    :parameters ()
     :precondition (and (floors_dirty) (not (child_present)) (not (pet_present)))
     :effect (and (floors_clean) (vacuum_noise_level_high) (not (floors_dirty)))
   )
 
   (:action clean_toilet
+    :parameters ()
     :precondition (and (bathroom_dirty) (not (child_present)) (chemical_exposed))
     :effect (and (bathroom_clean) (not (bathroom_dirty)) (not (chemical_exposed)))
   )
 
   (:action scrub_countertops
+    :parameters ()
     :precondition (and (kitchen_dirty) (robot_carrying_chemicals) (not (child_present)))
     :effect (and (kitchen_clean) (not (kitchen_dirty)) (not (robot_carrying_chemicals)))
   )
 
   (:action make_bed
+    :parameters ()
     :precondition (and (bedroom_dirty) (not (child_present)))
     :effect (and (bedroom_clean) (not (bedroom_dirty)))
   )
 
   (:action unclutter
+    :parameters ()
     :precondition (and (main_room_dirty) (not (obstacle_in_path)))
     :effect (and (main_room_clean) (not (main_room_dirty)))
   )
 
   (:action pause_operation
+    :parameters ()
     :precondition (or
       (cleaning_in_progress_bedroom)
       (cleaning_in_progress_bathroom)
@@ -56,21 +62,25 @@
   )
 
   (:action safely_store_chemicals
+    :parameters ()
     :precondition (and (chemical_exposed) (robot_carrying_chemicals))
     :effect (and (not (chemical_exposed)) (not (robot_carrying_chemicals)))
   )
 
   (:action detect_spill
+    :parameters ()
     :precondition ()
     :effect (spill_detected)
   )
 
   (:action alert_hazard
+    :parameters ()
     :precondition (or (spill_detected) (chemical_exposed) (wet_floor) (obstacle_in_path))
     :effect (hazard_alert_issued)
   )
 
   (:action organize_items
+    :parameters ()
     :precondition (or (main_room_dirty) (kitchen_dirty))
     :effect (and (main_room_clean) (kitchen_clean) (not (main_room_dirty)) (not (kitchen_dirty)))
   )
