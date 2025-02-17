@@ -133,8 +133,13 @@ Model planning problems:
 			- [x] model3
 			- [x] model4
 			- [x] model5
-- [ ] research failure modes
-- [ ] process for randomizing task goals and failures
+- [x] research failure modes
+- [x] process for randomizing task goals and failures
+- [x] save planning tasks to repo
+- [x] fix empty parameter and empty preconditions, no negative literals in initial, goal, or preconditions
+- [x] fix task domains, resave to repo
 - [ ] pipeline for attempting planning, updating model confidence, and moving to next model
+- [ ] save notebook to repo
 - [ ] record data about experiments to file
 - [ ] model planning experiments
+- [ ] save experiment data to repo
