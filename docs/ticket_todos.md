@@ -146,10 +146,12 @@ Model planning problems:
 - [x] save final planning tasks and experiment notebook to repo
 
 Ablation and Saturation Experiments:
-- [ ] new notebook for experiments
-- [ ] space environment until saturation
-	- [ ] save models after every level, not just iteration
-- [ ] convert model files to STRIPS files
+- [x] new notebook for experiments
+- [x] space environment until saturation
+	- [x] save models after every level, not just iteration
+	- [x] suggestions became very repetitive around iteration 6/7
+	- [x] model7, level 4 dumped a bunch of info out of the model
+- [x] convert model files to STRIPS files
 	- [ ] consistent domain name across all models
 	- [ ] assume models are supersets of each other, so if ChatGPT removed something from one level/iteration to the next, include it
 - [ ] randomized task goals and failures

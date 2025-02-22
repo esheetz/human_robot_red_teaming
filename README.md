@@ -38,3 +38,8 @@ Package for human-robot red teaming project.  Captures example domains and human
     - https://www.nasa.gov/hrp/hazards/
 - Mars Science Team
     - https://www.nasa.gov/hrp/hazards/
+
+## Useful Command for Renaming Files with Similar Pattern
+```
+for f in <original-pattern>*; do mv "$f" "${f/<original-pattern>/<new-pattern>}"; done
+```
