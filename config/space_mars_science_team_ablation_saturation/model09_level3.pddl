@@ -1,4 +1,4 @@
-(define (domain space_mars_risk_mitigation)
+(define (domain space_mars_science_team)
   (:requirements :strips :typing :quantified-preconditions)
   (:types robot sample level)
 
