@@ -1,0 +1,65 @@
+### **Severe Failure Modes and Risk Mitigation Strategies**
+
+#### **1. Complete Communication Blackout (Including Backup Channels)**
+- **Failure Mode:** The robot loses contact with the entire communication network, including backups.
+- **Mitigation Actions:**
+  - Enter an extended **Safe Mode** immediately to conserve energy.
+  - Periodically attempt to reboot communication systems.
+  - Use **signal triangulation** with nearby robots to establish a relay system for indirect communication.
+
+#### **2. Environmental Hazard Overload (Unrecognized Radiation/Dust Storm)**
+- **Failure Mode:** The robot fails to detect or react to extreme radiation levels or dust storms.
+- **Mitigation Actions:**
+  - Implement a **proactive environmental scan** that periodically checks for rapid environmental changes.
+  - Add an action to **seek shelter** automatically based on real-time environmental hazard levels.
+  - Create a system state for **critical environmental alert**, where the robot halts all non-essential operations until conditions stabilize.
+
+#### **3. Energy Depletion / Battery Failure**
+- **Failure Mode:** A robot depletes its energy reserves, becoming non-operational.
+- **Mitigation Actions:**
+  - Introduce **energy conservation mode** that limits actions to essential operations.
+  - Enable **energy redistribution** between robots, allowing better-charged units to transfer power wirelessly.
+  - Prioritize high-energy-consuming actions based on remaining power levels.
+
+#### **4. Distributed Consensus Breakdown**
+- **Failure Mode:** Leader election or consensus-building fails, causing team-wide coordination loss.
+- **Mitigation Actions:**
+  - Implement a **fallback leader election mechanism** if consensus isn’t reached within a specific timeframe.
+  - Allow for **decentralized coordination** where robots act independently with a shared mission goal during leader unavailability.
+
+#### **5. Hardware or Sensor Failures**
+- **Failure Mode:** A critical sensor or actuator fails, reducing the robot's capability to perform tasks.
+- **Mitigation Actions:**
+  - Trigger an **automatic diagnostic routine** to isolate and attempt to recover from the failure.
+  - Notify nearby robots or ground control to assist with the repair.
+  - Add an action to switch to **backup sensors or hardware systems**.
+
+---
+
+### **Updated PDDL Model with Risk Mitigation Actions**
+
+The updated model will include:
+
+- **New Predicates:**
+  - `(communication_blackout ?r - robot)`
+  - `(environmental_alert_active ?r - robot)`
+  - `(battery_critical ?r - robot)`
+  - `(fallback_leader_election_in_progress)`
+  - `(hardware_fault_detected ?r - robot)`
+
+- **New Actions:**
+  - `attempt_reconnect`
+  - `seek_shelter`
+  - `enter_energy_conservation`
+  - `redistribute_energy`
+  - `initiate_fallback_leader_election`
+  - `trigger_hardware_diagnostics`
+  - `switch_to_backup_system`
+
+---
+
+I’ll now update the model to integrate these mitigation actions.
+
+I've updated the model to include mitigation actions for severe failure modes such as communication blackouts, environmental hazards, energy depletion, consensus breakdowns, and hardware failures. This version includes proactive actions like energy redistribution, fallback leader elections, shelter-seeking, and switching to backup systems to improve the robot team's resilience.
+
+Let me know if you’d like to dive deeper into specific failure modes or refine the existing risk mitigation strategies.

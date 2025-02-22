@@ -1,0 +1,74 @@
+Here are some **invalid state combinations** that are allowed in the current revised model but should be prevented:
+
+### **1. Communication Blackout with Active Team Synchronization**
+- **Issue:**
+  A robot can be in a state where `(communication_blackout ?r)` is true, but the team is still marked as synchronized `(team_synced)`.
+- **Why It’s Invalid:**
+  If communication is fully lost, the team cannot be considered synchronized.
+- **Mitigation:**
+  Add a condition where, if a robot enters a communication blackout, it automatically triggers `(not team_synced)` for itself and the team consensus.
+
+---
+
+### **2. Environmental Shelter and Active Operations**
+- **Issue:**
+  A robot can simultaneously be in a sheltered state `(sheltered ?r)` and still perform operations like `(update_operational_state ?r)` or `(perform_environmental_scan ?r)`.
+- **Why It’s Invalid:**
+  When in shelter, the robot should pause all non-essential operations until the environmental threat passes.
+- **Mitigation:**
+  Add preconditions to block all non-essential operations when `(sheltered ?r)` is true.
+
+---
+
+### **3. Critical Battery Level While Performing Energy-Intensive Actions**
+- **Issue:**
+  A robot with `(battery_critical ?r)` could still perform high-energy actions like `(redistribute_energy ?r1 ?r2)` or `(perform_environmental_scan ?r)`.
+- **Why It’s Invalid:**
+  A critically low battery should prevent any non-emergency tasks.
+- **Mitigation:**
+  Set a condition to disable non-essential operations when `(battery_critical ?r)` is true.
+
+---
+
+### **4. Hardware Fault Detected with Active Backup System**
+- **Issue:**
+  A robot can have both `(hardware_fault_detected ?r)` and `(backup_system_active ?r)` set simultaneously without resolving the hardware issue.
+- **Why It’s Invalid:**
+  A backup system should only be activated if a hardware fault is resolved or temporarily bypassed.
+- **Mitigation:**
+  Ensure that activating a backup system also resolves or neutralizes the hardware fault predicate.
+
+---
+
+### **5. Fallback Leader Election with Existing Leader Present**
+- **Issue:**
+  A robot could initiate `(fallback_leader_election_in_progress)` even if a valid leader `(elected_leader ?r)` still exists.
+- **Why It’s Invalid:**
+  Having two leader election processes running simultaneously could cause conflicting instructions.
+- **Mitigation:**
+  Add a condition that prevents fallback elections if `(leader_exists)` is true.
+
+---
+
+### **6. Performing Diagnostics Without Detecting Faults**
+- **Issue:**
+  The action `(trigger_hardware_diagnostics ?r)` could be called even when no fault `(hardware_fault_detected ?r)` is present.
+- **Why It’s Invalid:**
+  Running unnecessary diagnostics wastes energy and time.
+- **Mitigation:**
+  Require `(hardware_fault_detected ?r)` as a precondition for initiating diagnostics.
+
+---
+
+### **7. Environmental Scan While Environmental Alert Is Active**
+- **Issue:**
+  A robot could attempt `(perform_environmental_scan ?r)` while `(environmental_alert_active ?r)` is true.
+- **Why It’s Invalid:**
+  Active environmental hazards should halt scans until the environment stabilizes.
+- **Mitigation:**
+  Prevent scans if an environmental alert is active.
+
+---
+
+### **Next Steps**
+Would you like me to update the PDDL model to explicitly prevent these invalid state combinations? I can implement constraints and new conditions to ensure these situations are addressed properly.

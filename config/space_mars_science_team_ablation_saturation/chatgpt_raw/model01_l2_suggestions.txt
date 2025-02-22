@@ -1,0 +1,108 @@
+Below is one set of improvements to the model. In our original STRIPS domain, the robot only tracks sample-related states, so it doesn’t capture factors critical for long‐term safe operation in a time-delayed, multi-robot team environment. Some enhancements include:
+
+1. **Communication Status:**
+   Introduce predicates for communication states such as whether the comm link is active, if a message has been sent, and if an acknowledgment has been received. This helps model the time-delayed link between Mars and Earth.
+
+2. **Team Coordination:**
+   Add predicates to indicate when team robots are synchronized (e.g., (team_synced)). This is useful for coordinated actions or redundancy if one robot loses communication.
+
+3. **Environmental and System Safety:**
+   Include predicates such as (hazard_detected) and (system_nominal) to ensure that sample handling actions are only executed when conditions are safe.
+
+4. **Temporal Considerations:**
+   Although STRIPS can’t naturally model durations or delays, noting that a richer temporal model (for example, using :durative-actions) may be needed to capture the dynamics of communication delays and asynchronous team coordination.
+
+Here’s an updated version of the PDDL domain incorporating these ideas:
+
+```lisp
+(define (domain space_mars_science_team)
+  (:requirements :strips :typing)
+
+  (:predicates
+    ;; Sample and analysis status
+    (robot_has_sample)
+    (sample_detected)
+    (sample_analyzed)
+    (findings_ready)
+
+    ;; Communication status
+    (comm_link_active)
+    (message_sent)
+    (message_acknowledged)
+
+    ;; Team coordination and safety status
+    (team_synced)
+    (hazard_detected)
+    (system_nominal)
+  )
+
+  (:action pick_up_sample
+    :precondition (and sample_detected system_nominal (not hazard_detected))
+    :effect (and robot_has_sample (not sample_detected))
+  )
+
+  (:action analyze_sample
+    :precondition (and robot_has_sample system_nominal (not hazard_detected))
+    :effect (and sample_analyzed findings_ready)
+  )
+
+  (:action report_findings
+    :precondition (and findings_ready comm_link_active)
+    :effect (and (not sample_analyzed)
+                 (not findings_ready)
+                 message_sent)
+  )
+
+  (:action receive_acknowledgment
+    :precondition message_sent
+    :effect (message_acknowledged)
+  )
+
+  (:action drop_sample
+    :precondition robot_has_sample
+    :effect (not robot_has_sample)
+  )
+)
+```
+
+### Explanation
+
+- **Communication Handling:**
+  The new predicates `(comm_link_active)`, `(message_sent)`, and `(message_acknowledged)` let the model represent the state of communications. The action `report_findings` now checks that the communication link is active before sending data, and a separate action `receive_acknowledgment` models the delayed acknowledgment from ground control.
+
+- **Safety Conditions:**
+  Actions such as `pick_up_sample` and `analyze_sample` now require that the system is nominal and that no hazard is detected, ensuring the robot operates safely in a potentially unpredictable Mars environment.
+
+- **Team Coordination:**
+  Although not used directly in the actions above, the predicate `(team_synced)` is added to allow further extension of the model. For example, actions involving coordinated experiments among multiple robots could require that all team members are synchronized.
+
+- **Temporal and Delay Aspects:**
+  Note that while the above enhancements improve the representation of communication and safety, they do not fully capture time-delayed effects. For a richer model, consider extending the domain with durative actions or additional temporal predicates.
+
+These modifications lead to a more robust model that helps the robot decide when to act autonomously (e.g., picking up or analyzing samples) and when to wait for or verify communications from Earth, which is key in a long-term space mission with time-delayed interactions.
+
+
+
+In our revised model, some combinations of predicates are intended never to occur because they conflict with the designed progression of states or represent unsafe conditions. Here are key examples of such invalid state combinations:
+
+1. **Carrying a Sample vs. Detection:**
+   - **(robot_has_sample) and (sample_detected):**
+     Once the robot picks up a sample, the action’s effects remove the detection predicate. If both were true simultaneously, it would imply that the robot is carrying a sample while it is still being detected in the environment, which contradicts the intended state transition.
+
+2. **Incomplete Analysis Results:**
+   - **(sample_analyzed) without (findings_ready) or vice versa:**
+     The action for analyzing a sample sets both predicates together. A state where one is true without the other would indicate an incomplete or inconsistent analysis process.
+
+3. **Communication Protocol Breaches:**  
+   - **(message_acknowledged) without (message_sent):**
+     The model requires that an acknowledgment can only follow after a message has been sent. An acknowledgment appearing in the absence of a sent message indicates a breakdown in the expected communication sequence.
+
+4. **Safety Status Inconsistency:**
+   - **(hazard_detected) and (system_nominal):**
+     Although not explicitly ruled out by an action, these predicates are conceptually mutually exclusive. A system that is nominal (operating safely) should not be in a state where a hazard is detected.
+
+5. **Reporting Deadlock Scenario:**
+   - **(findings_ready) without (comm_link_active):**
+     The action to report findings requires an active communication link. If findings are ready but the comm link is inactive, the robot is in a state that prevents it from safely reporting, which could lead to operational deadlock.
+
+These invalid combinations help highlight the assumptions and safety checks built into the model. Ensuring that such contradictory states cannot occur is crucial for safe and reliable long-term operation, especially in scenarios with time-delayed communications and multi-robot coordination.

@@ -1,0 +1,21 @@
+Below are several examples of invalid state combinations in the revised model—situations that should never occur because they would indicate inconsistencies in safety, communication, or robot status:
+
+1. **Operational State vs. Underlying Conditions:**
+   - It is invalid for a robot to have the composite predicate *(operational_state ?r)* true while any of its required underlying conditions is false. For example, if *(temperature_normal)*, *(radiation_normal)*, or *(dust_normal)* is false, or if the robot is not healthy, calibrated, or lacks sufficient resources, then *(operational_state ?r)* must not be true. Any instance where the composite state remains true despite a failure in one of these conditions would be an invalid combination.
+
+2. **Communication Status Inconsistencies:**
+   - The model requires that *(communication_ok)* be true only when at least one communication channel is active. Therefore, it is invalid to have *(communication_ok)* true while all of *(comm_link_active)*, *(backup_comm_active)*, *(backup_comm_active2)*, and *(backup_comm_active3)* are false. Similarly, if the primary channel *(comm_link_active)* is active, the backup channels should be deactivated—having them remain active would be contradictory.
+
+3. **Robot Availability vs. Task Engagement:**
+   - A robot should never be both marked as *free* and simultaneously holding a sample (i.e., having *(has_sample ?r ?s)* true). The moment a sample is picked up, the *(free ?r)* flag is removed. Any state where both hold true indicates an inconsistency in tracking robot availability.
+
+4. **Team Coordination vs. Operational Actions:**
+   - Actions such as picking up or analyzing a sample require the team to be synchronized *(team_synced)*. It is invalid for a robot to attempt these tasks if the team is not synchronized, yet the model state erroneously reflects team coordination.
+
+5. **Logging and Verification Mismatches:**
+   - It would be inconsistent if, for instance, a robot’s diagnostic log has not been sent *(diagnostic_log_sent ?r)* but ground control is shown as having verified the hardware status *(hardware_status_verified)*. Similarly, if environmental logs have not been sent *(environment_log_sent)*, then ground control confirmation of environmental status would be an invalid state.
+
+6. **Emergency Communication Transition Issues:**
+   - The model enforces that when the primary communication channel becomes available, all backup channels should be deactivated. Therefore, a state where *(comm_link_active)* is true and any backup channel (such as *(backup_comm_active2)* or *(backup_comm_active3)*) remains active is invalid.
+
+In summary, the model is designed so that each composite or derived predicate (like *(operational_state ?r)* or *(communication_ok)*) is only true when all of its underlying conditions are met. Any deviation—such as a composite state persisting while one or more required conditions have failed, or conflicting flags in communication and availability—would signal an invalid state combination that could lead to unsafe or unintended behavior during operations.

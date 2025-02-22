@@ -1,0 +1,73 @@
+Here are some **invalid state combinations** that are currently allowed in your revised model but should be prevented:
+
+### **1. Redundancy System Active Without Predictive Fault Detection**
+- **Issue:**
+  A robot could activate the redundancy system `(redundancy_system_active ?r)` without first detecting a predictive fault `(predictive_fault_detected ?r)`.
+- **Why It’s Invalid:**
+  Redundancy systems should only be active in response to a known potential failure.
+- **Solution:**
+  Add a constraint that requires a predictive fault detection before activating the redundancy system.
+
+---
+
+### **2. Communication Blackout With Active Team Synchronization**
+- **Issue:**
+  A robot may remain marked as `(team_synced)` even while experiencing a `(communication_blackout ?r)`.
+- **Why It’s Invalid:**
+  Active synchronization requires functional communication.
+- **Solution:**
+  Automatically invalidate team synchronization upon entering a communication blackout.
+
+---
+
+### **3. Energy Redistribution Below Minimum Threshold**
+- **Issue:**
+  The action `redistribute_energy` checks for energy sufficiency, but it doesn’t explicitly prevent redistribution if the donor robot is at or below the minimum energy threshold.
+- **Why It’s Invalid:**
+  A robot distributing energy below its threshold risks critical battery failure.
+- **Solution:**
+  Add a condition that blocks redistribution if `(minimum_energy_threshold ?r1)` is not met.
+
+---
+
+### **4. Operational State Active During Environmental Alert**
+- **Issue:**
+  A robot could remain in `(operational_state ?r)` even while an environmental alert `(environmental_alert_active ?r)` is active.
+- **Why It’s Invalid:**
+  Active operations should pause during hazardous environmental conditions.
+- **Solution:**
+  Add an automatic transition to deactivate operational state during alerts.
+
+---
+
+### **5. Hardware Diagnostics Running Without Fault Detection**
+- **Issue:**
+  The robot could run diagnostics `(trigger_hardware_diagnostics ?r)` even if `(hardware_fault_detected ?r)` is false.
+- **Why It’s Invalid:**
+  Diagnostics should only run when a fault is detected or for scheduled maintenance.
+- **Solution:**
+  Add preconditions requiring a detected fault or a scheduled maintenance signal.
+
+---
+
+### **6. Fallback Leader Election When a Leader Exists**
+- **Issue:**
+  A robot might initiate a fallback leader election even if `(leader_exists)` is true.
+- **Why It’s Invalid:**
+  Leader elections should only occur when no valid leader exists.
+- **Solution:**
+  Prevent fallback leader elections unless `(not leader_exists)`.
+
+---
+
+### **7. Redundancy Activation With No Hardware Fault**
+- **Issue:**
+  A robot could activate its redundancy system `(redundancy_system_active ?r)` without detecting any hardware fault `(hardware_fault_detected ?r)`.
+- **Why It’s Invalid:**
+  Redundancy systems should only be activated to handle faults.
+- **Solution:**
+  Add a precondition requiring an active hardware fault for redundancy activation.
+
+---
+
+Would you like me to update the model to include constraints and actions that explicitly prevent these invalid state combinations?
