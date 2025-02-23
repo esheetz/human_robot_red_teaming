@@ -1,0 +1,21 @@
+Below are some examples of invalid state combinations that our revised model might still allow transiently or due to asynchrony—even though ideally they should never occur:
+
+1. **Safe Mode and Operational State:**
+   - In an ideal situation, once a robot enters safe mode (i.e. *(safe_mode ?r)* is true), its composite operational state *(operational_state ?r)* should immediately be invalidated. However, due to update delays or asynchronous invalidation, there could be a brief period where both are true. This overlap is dangerous because safe mode indicates that the robot must pause mission-critical operations, yet an operational state would suggest it can proceed.
+
+2. **Safe Mode with Extended Grace Period:**
+   - Our design intends for the extended grace period *(extended_grace_period ?r)* to signal that a persistent fault is present and that a recovery (such as emergency reboot) should eventually occur once safe mode clears. If a robot remains marked as both in safe mode and in an extended grace period, it may indicate that the system reset or recovery process is not proceeding properly.
+
+3. **Failure Notification Remaining Active:**
+   - The predicate *(failure_notified ?r)* should be cleared after a successful system reset. If a robot’s failure notification persists alongside a recovered state (or even an operational state), that is an inconsistent condition that might mislead team coordination or further recovery actions.
+
+4. **Buffered Log Overlap:**
+   - Although our model uses buffering and retry actions for logs, there is a risk that a diagnostic log could be flagged as both buffered *(buffered_diagnostic_log ?r)* and sent *(diagnostic_log_sent ?r)* simultaneously if the retry action is not perfectly synchronized. Such an overlap could lead to inconsistent verification results.
+
+5. **Inconsistent Sensor Adaptation:**
+   - The adaptive sensor adjustment predicate *(adaptive_sensor_adjusted ?r)* should ideally only be true when sensor readings are out of normal range. If a robot’s temperature has recovered to normal but the adaptive adjustment flag remains set, this would be an inconsistency that might affect which operational state update action is used.
+
+6. **Backup Data Sharing During Recovery:**
+   - The predicate *(backup_data_shared ?r)* is intended to signal that backup logs have been broadcast. It would be invalid for a robot to share backup data while it is in safe mode or while its communication channels are down, yet asynchronous updates might briefly allow that state.
+
+In summary, while our revised model introduces adaptive thresholds, grace periods, and additional risk mitigation actions to smooth over transient errors, delays in state propagation or asynchronous execution may still produce brief, invalid state overlaps. These transient inconsistencies should ideally be minimized by further refining the timing and buffering mechanisms in a real system.

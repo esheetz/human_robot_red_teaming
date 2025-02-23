@@ -1,0 +1,39 @@
+Below are some examples of state combinations that our model—despite its many safeguards—may still allow (but ideally should never occur):
+
+1. **Safe Mode vs. Operational State:**
+   A robot might have the predicate
+   > (safe_mode ?r)
+   true at the same time as
+   > (operational_state ?r)
+   if the transition out of safe mode or the invalidation of the operational state isn’t triggered immediately. In our design, safe mode should preclude any operational tasks, but without an automatic tie‐in, both predicates could temporarily coexist.
+
+2. **Buffered Log and Sent Log Overlap:**
+   If a diagnostic log fails to send, the robot buffers it (via
+   > (buffered_diagnostic_log ?r)),
+   but it’s possible—if the retry mechanism hasn’t run properly—that the same robot also has
+   > (diagnostic_log_sent ?r)
+   true. Ideally, once a log is sent, it shouldn’t remain buffered; this overlap indicates a temporary inconsistency.
+
+3. **Communication Discrepancy:**
+   The model relies on the action
+   > update_communication_not_ok
+   to set
+   > (communication_ok)
+   to false when no communication channels (primary or backups) are active. However, if there is a delay in executing this update, the state may show (communication_ok) as true even though all channels are down.
+
+4. **Hardware/Environment Verification Mismatches:**
+   – A state where
+     > (hardware_status_verified ?r)
+     is true without a corresponding
+     > (diagnostic_log_sent ?r)
+     (if, for example, the invalidation action hasn’t yet run).
+   – Similarly, (environment_verified) might be true even if (environment_log_sent) is false.
+
+   These combinations mean that the system appears verified while the necessary log data is missing.
+
+5. **Stale Status Sharing:**
+   A robot that is currently engaged in repair or is in an error state might still have its status shared (via
+   > (status_shared ?r))
+   with teammates. While not strictly “invalid,” it could mislead other agents if the shared status isn’t current or reflective of an ongoing fault.
+
+In summary, while our model uses invalidation and contingency actions to maintain consistency, it still permits transient overlaps or mismatches (due to delays, asynchronous updates, or lack of automatic retraction) that ideally should be prevented by tighter integration of state updates and error handling.

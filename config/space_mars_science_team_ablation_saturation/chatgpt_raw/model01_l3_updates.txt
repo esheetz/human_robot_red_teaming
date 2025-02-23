@@ -1,0 +1,134 @@
+Below is the updated PDDL domain that incorporates multiple samples, explicit team coordination, and built‐in safety rules. In this version:
+
+- **Multiple Samples:**
+  Sample‐related predicates (such as detection, analysis, and findings) now take a sample parameter. A robot’s possession of a sample is tracked with a predicate parameterized by both the robot and the sample. We also add a predicate `(free ?r)` to indicate that a robot is available to pick up a new sample.
+
+- **Team Coordination:**
+  The predicate `(team_synced)` is required as a precondition for sample handling actions. Two actions—`sync_team` and `unsync_team`—are added to model team coordination, with synchronization assumed to occur over an active communications link.
+
+- **Safety Conditions:**
+  The global predicates `(system_nominal)` and `(hazard_detected)` are now managed by two actions: `detect_hazard` (which marks a hazard and removes the nominal status) and `clear_hazard` (which restores a nominal system state once hazards are cleared). In addition, sample-related actions require the system to be nominal and free of hazards.
+
+Below is the complete updated model:
+
+```lisp
+(define (domain space_mars_science_team)
+  (:requirements :strips :typing)
+  (:types robot sample)
+
+  (:predicates
+    ;; Sample status and analysis (parameterized by sample)
+    (sample_detected ?s - sample)
+    (has_sample ?r - robot ?s - sample)
+    (sample_analyzed ?s - sample)
+    (findings_ready ?r - robot ?s - sample)
+
+    ;; Communication status (per robot)
+    (comm_link_active)
+    (message_sent ?r - robot)
+    (message_acknowledged ?r - robot)
+
+    ;; Team coordination and robot availability
+    (team_synced)
+    (free ?r - robot)
+
+    ;; Safety conditions
+    (hazard_detected)
+    (system_nominal)
+  )
+
+  ;; Team coordination actions
+  (:action sync_team
+    :parameters ()
+    :precondition comm_link_active
+    :effect team_synced
+  )
+
+  (:action unsync_team
+    :parameters ()
+    :precondition team_synced
+    :effect (not team_synced)
+  )
+
+  ;; Safety update actions
+  (:action detect_hazard
+    :parameters ()
+    :precondition system_nominal
+    :effect (and hazard_detected (not system_nominal))
+  )
+
+  (:action clear_hazard
+    :parameters ()
+    :precondition hazard_detected
+    :effect (and system_nominal (not hazard_detected))
+  )
+
+  ;; Pick up a sample (only if the robot is free, team is synced, and safety is ensured)
+  (:action pick_up_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (sample_detected ?s)
+                       system_nominal
+                       (not hazard_detected)
+                       (free ?r)
+                       team_synced)
+    :effect (and (has_sample ?r ?s)
+                 (not (sample_detected ?s))
+                 (not (free ?r)))
+  )
+
+  ;; Analyze the sample (the robot must be holding the sample and conditions must be safe)
+  (:action analyze_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s)
+                       system_nominal
+                       (not hazard_detected)
+                       team_synced
+                       (not (sample_analyzed ?s)))
+    :effect (and (sample_analyzed ?s)
+                 (findings_ready ?r ?s))
+  )
+
+  ;; Report findings (requires an active comm link and team coordination)
+  (:action report_findings
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s)
+                       (findings_ready ?r ?s)
+                       comm_link_active
+                       team_synced)
+    :effect (and (not (sample_analyzed ?s))
+                 (not (findings_ready ?r ?s))
+                 (message_sent ?r))
+  )
+
+  ;; Receive acknowledgment for the reported findings
+  (:action receive_acknowledgment
+    :parameters (?r - robot)
+    :precondition (message_sent ?r)
+    :effect (and (message_acknowledged ?r)
+                 (not (message_sent ?r)))
+  )
+
+  ;; Drop the sample (resetting analysis and freeing the robot)
+  (:action drop_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (has_sample ?r ?s)
+    :effect (and (not (has_sample ?r ?s))
+                 (free ?r)
+                 (not (sample_analyzed ?s))
+                 (not (findings_ready ?r ?s)))
+  )
+)
+```
+
+### Explanation
+
+- **Multiple Samples:**
+  Each sample is uniquely identified, and the predicates ensure that the robot’s interaction with samples is managed on a per-sample basis. The `(free ?r)` predicate guarantees that a robot can handle only one sample at a time.
+
+- **Team Coordination:**
+  Actions such as picking up, analyzing, and reporting a sample all require that the team is synchronized (i.e. `(team_synced)` is true). The `sync_team` action provides a mechanism to establish that synchronization, assuming an active communication link.
+
+- **Safety Conditions:**
+  The `detect_hazard` and `clear_hazard` actions allow the model to enforce that `(system_nominal)` and `(hazard_detected)` remain mutually exclusive. All sample-related actions require the system to be nominal and free of hazards.
+
+This updated model better reflects a complex operational environment where multiple samples, coordinated teamwork, and dynamic safety conditions must be managed reliably.

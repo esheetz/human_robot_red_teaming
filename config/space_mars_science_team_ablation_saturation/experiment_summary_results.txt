@@ -1,0 +1,5 @@
+*** SUMMARY EXPERIMENT INFO ***
+
+SUCCESSES: 191 / 200
+SUCCESS RATE: 0.955
+double checking computed rate: 0.955

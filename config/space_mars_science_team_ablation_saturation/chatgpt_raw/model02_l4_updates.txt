@@ -1,0 +1,306 @@
+Below is the updated PDDL model that now includes:
+
+- **Routine Self‐Calibration and Diagnostics:**
+  A new predicate `(calibrated ?r)` is added along with the action `self_calibrate` to ensure each robot periodically calibrates its sensors and systems.
+  In addition, resource status is tracked via the predicate `(sufficient_resources ?r)` with an action `check_resources`.
+
+- **Detailed Environmental Monitoring:**
+  Three new predicates—`(temperature_normal)`, `(radiation_normal)`, and `(dust_normal)`—capture key environmental parameters. These must be satisfied (in addition to other conditions) for safe operations.
+
+- **Ground Control Verification:**
+  Two new actions, `verify_sample_readings` and `verify_environment_readings`, model requests to ground control for verifying critical sample data and environmental conditions.
+
+- **Composite Operational State:**
+  The composite predicate `(operational_state ?r)` now requires that the robot is healthy, calibrated, has sufficient resources, and that the system, mission, communication, and detailed environmental conditions are nominal. This helps reduce over-constrained preconditions in other actions.
+
+The complete updated model is shown below:
+
+```lisp
+(define (domain space_mars_science_team)
+  (:requirements :strips :typing)
+  (:types robot sample)
+
+  (:predicates
+    ;; Sample status and analysis (parameterized by sample)
+    (sample_detected ?s - sample)
+    (has_sample ?r - robot ?s - sample)
+    (sample_analyzed ?s - sample)
+    (findings_ready ?r - robot ?s - sample)
+    (sample_verified ?r - robot ?s - sample) ; ground control verified sample reading
+
+    ;; Communication status (global and per robot)
+    (comm_link_active)
+    (message_sent ?r - robot)
+    (message_acknowledged ?r - robot)
+
+    ;; Backup communication and mission status
+    (backup_comm_active)
+    (mission_active)
+
+    ;; Communication availability: true if at least one channel is active
+    (communication_ok)
+
+    ;; Team coordination and robot availability
+    (team_synced)
+    (free ?r - robot)
+
+    ;; Safety conditions
+    (hazard_detected)
+    (system_nominal)
+
+    ;; Detailed environmental conditions
+    (temperature_normal)
+    (radiation_normal)
+    (dust_normal)
+
+    ;; Robot self-diagnosis and calibration
+    (robot_healthy ?r - robot)
+    (calibrated ?r - robot)
+
+    ;; Resource status (e.g., sufficient battery, power, etc.)
+    (sufficient_resources ?r - robot)
+
+    ;; Ground control verification for environment readings
+    (environment_verified)
+
+    ;; Composite operational state: encapsulates the conditions for safe operation.
+    (operational_state ?r - robot)
+  )
+
+  ;;--------------------------------------------------
+  ;; Composite Operational State Update
+  (:action update_operational_state
+    :parameters (?r - robot)
+    :precondition (and (robot_healthy ?r)
+                        system_nominal
+                        mission_active
+                        communication_ok
+                        (calibrated ?r)
+                        (sufficient_resources ?r)
+                        temperature_normal
+                        radiation_normal
+                        dust_normal)
+    :effect (operational_state ?r)
+  )
+
+  (:action invalidate_operational_state
+    :parameters (?r - robot)
+    :precondition (operational_state ?r)
+    :effect (not (operational_state ?r))
+  )
+
+  ;;--------------------------------------------------
+  ;; Team Coordination Actions
+  (:action sync_team
+    :parameters ()
+    :precondition comm_link_active
+    :effect team_synced
+  )
+
+  (:action unsync_team
+    :parameters ()
+    :precondition team_synced
+    :effect (not team_synced)
+  )
+
+  ;;--------------------------------------------------
+  ;; Safety Update Actions
+  (:action detect_hazard
+    :parameters ()
+    :precondition system_nominal
+    :effect (and hazard_detected (not system_nominal))
+  )
+
+  (:action clear_hazard
+    :parameters ()
+    :precondition hazard_detected
+    :effect (and system_nominal (not hazard_detected))
+  )
+
+  ;;--------------------------------------------------
+  ;; Self-Diagnosis, Calibration, and Resource Checks
+  (:action self_diagnose
+    :parameters (?r - robot)
+    :precondition (free ?r)
+    :effect (robot_healthy ?r)
+  )
+
+  (:action self_calibrate
+    :parameters (?r - robot)
+    :precondition (free ?r)
+    :effect (calibrated ?r)
+  )
+
+  (:action check_resources
+    :parameters (?r - robot)
+    :precondition (free ?r)
+    :effect (sufficient_resources ?r)
+  )
+
+  (:action perform_maintenance
+    :parameters (?r - robot)
+    :precondition (and (free ?r) (not (robot_healthy ?r)))
+    :effect (robot_healthy ?r)
+  )
+
+  ;;--------------------------------------------------
+  ;; Detailed Environmental Condition Updates
+  (:action update_temperature_normal
+    :parameters ()
+    :precondition (not temperature_normal)
+    :effect temperature_normal
+  )
+
+  (:action update_temperature_extreme
+    :parameters ()
+    :precondition temperature_normal
+    :effect (not temperature_normal)
+  )
+
+  (:action update_radiation_normal
+    :parameters ()
+    :precondition (not radiation_normal)
+    :effect radiation_normal
+  )
+
+  (:action update_radiation_extreme
+    :parameters ()
+    :precondition radiation_normal
+    :effect (not radiation_normal)
+  )
+
+  (:action update_dust_normal
+    :parameters ()
+    :precondition (not dust_normal)
+    :effect dust_normal
+  )
+
+  (:action update_dust_extreme
+    :parameters ()
+    :precondition dust_normal
+    :effect (not dust_normal)
+  )
+
+  ;; Automatically pause the mission if any environmental parameter becomes unsafe.
+  (:action pause_mission_due_to_environment
+    :parameters ()
+    :precondition (and (or (not temperature_normal) (not radiation_normal) (not dust_normal)) mission_active)
+    :effect (not mission_active)
+  )
+
+  ;;--------------------------------------------------
+  ;; Communication Blackout Protocols
+  (:action activate_backup_comm
+    :parameters ()
+    :precondition (not comm_link_active)
+    :effect (and backup_comm_active communication_ok)
+  )
+
+  (:action deactivate_backup_comm
+    :parameters ()
+    :precondition backup_comm_active
+    :effect (not backup_comm_active)
+  )
+
+  (:action pause_mission
+    :parameters ()
+    :precondition (and (not comm_link_active) (not backup_comm_active) mission_active)
+    :effect (and (not mission_active) (not communication_ok))
+  )
+
+  (:action resume_mission
+    :parameters ()
+    :precondition comm_link_active
+    :effect (and mission_active communication_ok)
+  )
+
+  (:action update_communication_not_ok
+    :parameters ()
+    :precondition (and (not comm_link_active) (not backup_comm_active) communication_ok)
+    :effect (not communication_ok)
+  )
+
+  ;;--------------------------------------------------
+  ;; Ground Control Verification Actions
+  (:action verify_sample_readings
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s) comm_link_active team_synced)
+    :effect (sample_verified ?r ?s)
+  )
+
+  (:action verify_environment_readings
+    :parameters (?r - robot)
+    :precondition (and comm_link_active team_synced)
+    :effect environment_verified
+  )
+
+  ;;--------------------------------------------------
+  ;; Sample Handling Actions (using composite operational_state)
+  (:action pick_up_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (sample_detected ?s)
+                       free ?r
+                       team_synced
+                       (operational_state ?r))
+    :effect (and (has_sample ?r ?s)
+                 (not (sample_detected ?s))
+                 (not (free ?r)))
+  )
+
+  (:action analyze_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s)
+                       team_synced
+                       (operational_state ?r)
+                       (not (sample_analyzed ?s)))
+    :effect (and (sample_analyzed ?s)
+                 (findings_ready ?r ?s))
+  )
+
+  (:action report_findings
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s)
+                       (findings_ready ?r ?s)
+                       comm_link_active   ; reporting requires primary channel
+                       team_synced
+                       (operational_state ?r))
+    :effect (and (not (sample_analyzed ?s))
+                 (not (findings_ready ?r ?s))
+                 (message_sent ?r))
+  )
+
+  (:action receive_acknowledgment
+    :parameters (?r - robot)
+    :precondition (message_sent ?r)
+    :effect (and (message_acknowledged ?r)
+                 (not (message_sent ?r)))
+  )
+
+  (:action drop_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (has_sample ?r ?s)
+    :effect (and (not (has_sample ?r ?s))
+                 (free ?r)
+                 (not (sample_analyzed ?s))
+                 (not (findings_ready ?r ?s)))
+  )
+)
+```
+
+---
+
+### Explanation
+
+- **Self‑Calibration, Diagnostics, and Resource Status:**
+  The actions `self_calibrate` and `check_resources` (available when the robot is free) update the new predicates `(calibrated ?r)` and `(sufficient_resources ?r)`. These, together with `self_diagnose` and `perform_maintenance`, ensure that a robot’s internal state is current before it is marked as operational.
+
+- **Detailed Environmental Monitoring:**
+  Instead of a single flag, the model now monitors temperature, radiation, and dust through individual predicates. Actions are provided to update each condition, and the mission is paused if any parameter becomes unsafe.
+
+- **Composite Operational State:**
+  The `update_operational_state` action now requires the robot to be healthy, calibrated, resource-sufficient, and that all detailed environmental and communication conditions are met. This composite predicate simplifies the preconditions in sample handling actions.
+
+- **Ground Control Verification:**
+  The actions `verify_sample_readings` and `verify_environment_readings` model the process of asking ground control to confirm critical sample and environmental readings. They require an active communication link and team synchronization to effect verification.
+
+This updated model aims to better represent the complexity of long‑term autonomous operations on Mars by including routine self‑maintenance, granular environmental monitoring, resource management, and mechanisms for ground control verification.

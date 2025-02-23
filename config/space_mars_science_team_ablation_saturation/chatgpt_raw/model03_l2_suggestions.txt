@@ -1,0 +1,32 @@
+Below are some examples of invalid state combinations in the revised model—states that should never simultaneously hold because they contradict the intended safety or operational logic:
+
+1. **Safety and System Conditions:**
+   - **(system_nominal)** and **(hazard_detected):**
+     The model is designed so that when a hazard is detected, the system is no longer nominal. If both predicates are true at once, it creates ambiguity about the safety of operations.
+
+2. **Environmental Conditions vs. Operational State:**
+   - **(operational_state ?r)** is defined to require that **(temperature_normal)**, **(radiation_normal)**, and **(dust_normal)** all hold. If any one of these environmental predicates is false while **(operational_state ?r)** is still true, the robot is assumed to be operating under safe conditions when it is not.
+   - Similarly, if **(environment_verified)** is false (meaning ground control has not confirmed safe environmental readings) yet the system continues to operate as if conditions are safe, that is an inconsistency.
+
+3. **Communication Status Inconsistencies:**
+   - A robot should not have **(communication_ok)** true if neither **(comm_link_active)** nor **(backup_comm_active)** holds. In other words, if all communication channels are down, **(communication_ok)** must be false.
+   - The reporting cycle should ensure that **(message_sent ?r)** is cleared once **(message_acknowledged ?r)** is set. Having both true or an acknowledgment without a prior message indicates a breakdown in the communication protocol.
+
+4. **Robot Availability and Sample Handling:**
+   - A robot cannot simultaneously be **(free ?r)** and hold a sample via **(has_sample ?r ?s)**. Once a sample is picked up, the robot’s availability flag should be removed.
+   - Additionally, if **(sample_detected ?s)** is still true while **(has_sample ?r ?s)** is also true, it implies that the same sample is both uncollected (detected in the environment) and already in possession, which is contradictory.
+
+5. **Robot Health, Calibration, and Resource Status:**
+   - The composite **(operational_state ?r)** requires that the robot is healthy, calibrated, and has sufficient resources. If any of these conditions (e.g., **(robot_healthy ?r)**, **(calibrated ?r)**, or **(sufficient_resources ?r)**) is false while **(operational_state ?r)** remains true, that is an invalid combination.
+   - Such inconsistencies would allow a robot to undertake mission-critical actions despite being unfit or under-resourced.
+
+6. **Analysis and Findings Consistency:**
+   - The model couples **(sample_analyzed ?s)** with **(findings_ready ?r ?s)** during analysis. If one is true without the other, it suggests an incomplete or inconsistent analysis process.
+   - Similarly, if a sample has been verified by ground control (via **(sample_verified ?r ?s)**) without proper analysis or if it’s verified when the sample is no longer in the correct state (e.g., after being dropped), that state combination would be logically inconsistent.
+
+In summary, the model is structured to prevent these contradictory states by ensuring that:
+- Safety predicates are mutually exclusive.
+- The composite **operational_state** reflects a holistic set of necessary conditions.
+- Communication, robot availability, and sample status are managed such that a robot is never marked as both free and busy or as operating under safe conditions when key metrics indicate otherwise.
+
+These invalid state combinations, if present, would signal an error in state transition management or a failure in external updates, and they must be detected and resolved to ensure mission safety.

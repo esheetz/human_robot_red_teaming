@@ -1,0 +1,21 @@
+Below are some examples of invalid state combinations that our revised model might still allow—although ideally, they should never occur:
+
+1. **Safe Mode and Operational State Coexistence:**
+   Even though our model is designed so that entering safe mode should immediately invalidate the composite operational state, transient timing delays (or asynchronous updates) could allow a robot to be marked as both in safe mode and having an operational state simultaneously. This overlap is dangerous because safe mode indicates that no mission-critical actions should be executed.
+
+2. **Grace Period and Extended Grace Period Conflicts:**
+   The model distinguishes between a normal grace period and an extended grace period (used to signal persistent issues). However, if the transition between these states is not perfectly synchronized, a robot might be recorded as being in both a grace period and an extended grace period, or exit one while still retaining the other. Such inconsistencies could lead to premature triggering of recovery actions (or delayed recovery) and unreliable state updates.
+
+3. **Leader Election and Global Consensus Inconsistencies:**
+   Our distributed reasoning mechanism depends on leader election and a global operational consensus. In practice, if multiple robots are erroneously elected as leaders or if some robots update their status while others do not, the predicate for global consensus might be set even when the team’s states are contradictory. This could result in local state updates being made on a faulty global assumption.
+
+4. **Buffered Log Overlaps:**
+   Although we introduced timer predicates and forced retry actions to manage buffered logs, there is still the possibility that a diagnostic log could be simultaneously flagged as both buffered and sent. Such overlap might occur if the forced retry action is triggered before the buffered flag is cleared, leading to inconsistent log verification.
+
+5. **Adaptive Sensor Adjustment Conflicts:**
+   The predicate *(adaptive_sensor_adjusted ?r)* should only be true when a sensor reading is out of the normal range and an adjustment has been made. However, if a sensor recovers and the reset action is delayed, the adaptive flag might remain set even though the sensor now reads as normal. This could cause the robot to update its operational state via the adaptive path even when it would otherwise qualify for the normal update, leading to potential confusion in decision-making.
+
+6. **Timer Predicate Staleness:**
+   The new timer predicates (such as *(buffer_timer_expired ?r)* and *(state_update_timer_expired ?r)*) are abstractions meant to simulate delays. If these timers are not updated or cleared promptly, forced actions like *force_retry_send_diagnostic_log* or *force_state_update* might be triggered based on outdated conditions, thereby causing a mismatch between the current state and the forced update.
+
+In summary, while our revised model introduces numerous risk mitigation, buffering, and distributed reasoning mechanisms, the inherent asynchrony of a distributed system means that transient overlaps (e.g., safe mode coexisting with an operational state, conflicting grace period flags, or inconsistent leader elections) might still occur. Further refinements—such as more robust fuzzy logic or explicit feedback loops—would be required to reduce these transient invalid states in a real-world implementation.

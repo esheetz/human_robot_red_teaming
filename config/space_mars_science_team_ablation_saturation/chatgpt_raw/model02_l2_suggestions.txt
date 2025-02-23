@@ -1,0 +1,227 @@
+Below is the revised PDDL model that incorporates self‐diagnosis and maintenance, environmental condition monitoring, and protocols for communication blackouts (including backup communication and pausing/resuming the mission):
+
+```lisp
+(define (domain space_mars_science_team)
+  (:requirements :strips :typing)
+  (:types robot sample)
+
+  (:predicates
+    ;; Sample status and analysis (parameterized by sample)
+    (sample_detected ?s - sample)
+    (has_sample ?r - robot ?s - sample)
+    (sample_analyzed ?s - sample)
+    (findings_ready ?r - robot ?s - sample)
+
+    ;; Communication status (global and per robot)
+    (comm_link_active)
+    (message_sent ?r - robot)
+    (message_acknowledged ?r - robot)
+
+    ;; Backup communication and mission status
+    (backup_comm_active)
+    (mission_active)
+
+    ;; Team coordination and robot availability
+    (team_synced)
+    (free ?r - robot)
+
+    ;; Safety conditions
+    (hazard_detected)
+    (system_nominal)
+
+    ;; Environmental conditions
+    (environment_normal)
+
+    ;; Robot self-diagnosis
+    (robot_healthy ?r - robot)
+  )
+
+  ;;------------------------------
+  ;; Team Coordination Actions
+  (:action sync_team
+    :parameters ()
+    :precondition comm_link_active
+    :effect team_synced
+  )
+
+  (:action unsync_team
+    :parameters ()
+    :precondition team_synced
+    :effect (not team_synced)
+  )
+
+  ;;------------------------------
+  ;; Safety Update Actions
+  (:action detect_hazard
+    :parameters ()
+    :precondition system_nominal
+    :effect (and hazard_detected (not system_nominal))
+  )
+
+  (:action clear_hazard
+    :parameters ()
+    :precondition hazard_detected
+    :effect (and system_nominal (not hazard_detected))
+  )
+
+  ;;------------------------------
+  ;; Self-Diagnosis and Maintenance
+  (:action self_diagnosis
+    :parameters (?r - robot)
+    :precondition (free ?r)
+    :effect robot_healthy ?r
+  )
+
+  (:action perform_maintenance
+    :parameters (?r - robot)
+    :precondition (not (robot_healthy ?r))
+    :effect robot_healthy ?r
+  )
+
+  ;;------------------------------
+  ;; Environmental Condition Updates
+  (:action update_environment_normal
+    :parameters ()
+    :precondition (not environment_normal)
+    :effect environment_normal
+  )
+
+  (:action update_environment_extreme
+    :parameters ()
+    :precondition environment_normal
+    :effect (not environment_normal)
+  )
+
+  ;;------------------------------
+  ;; Communication Blackout Protocols
+  (:action activate_backup_comm
+    :parameters ()
+    :precondition (not comm_link_active)
+    :effect backup_comm_active
+  )
+
+  (:action deactivate_backup_comm
+    :parameters ()
+    :precondition backup_comm_active
+    :effect (not backup_comm_active)
+  )
+
+  (:action pause_mission
+    :parameters ()
+    :precondition (and (not comm_link_active) (not backup_comm_active) mission_active)
+    :effect (not mission_active)
+  )
+
+  (:action resume_mission
+    :parameters ()
+    :precondition comm_link_active
+    :effect mission_active
+  )
+
+  ;;------------------------------
+  ;; Sample Handling Actions
+  (:action pick_up_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (sample_detected ?s)
+                       system_nominal
+                       (not hazard_detected)
+                       (free ?r)
+                       team_synced
+                       (robot_healthy ?r)
+                       environment_normal
+                       mission_active)
+    :effect (and (has_sample ?r ?s)
+                 (not (sample_detected ?s))
+                 (not (free ?r)))
+  )
+
+  (:action analyze_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s)
+                       system_nominal
+                       (not hazard_detected)
+                       team_synced
+                       (robot_healthy ?r)
+                       environment_normal
+                       mission_active
+                       (not (sample_analyzed ?s)))
+    :effect (and (sample_analyzed ?s)
+                 (findings_ready ?r ?s))
+  )
+
+  (:action report_findings
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s)
+                       (findings_ready ?r ?s)
+                       comm_link_active
+                       team_synced
+                       (robot_healthy ?r)
+                       environment_normal
+                       mission_active)
+    :effect (and (not (sample_analyzed ?s))
+                 (not (findings_ready ?r ?s))
+                 (message_sent ?r))
+  )
+
+  (:action receive_acknowledgment
+    :parameters (?r - robot)
+    :precondition (message_sent ?r)
+    :effect (and (message_acknowledged ?r)
+                 (not (message_sent ?r)))
+  )
+
+  (:action drop_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (has_sample ?r ?s)
+    :effect (and (not (has_sample ?r ?s))
+                 (free ?r)
+                 (not (sample_analyzed ?s))
+                 (not (findings_ready ?r ?s)))
+  )
+)
+```
+
+### Explanation
+
+- **Self-Diagnosis and Maintenance:**
+  The actions `self_diagnosis` and `perform_maintenance` ensure that each robot verifies and restores its health status (tracked by `robot_healthy ?r`) before undertaking critical tasks.
+
+- **Environmental Conditions:**
+  The predicate `environment_normal` models acceptable environmental conditions. Two actions (`update_environment_normal` and `update_environment_extreme`) update this predicate based on the current environmental status, ensuring that operations proceed only under safe conditions.
+
+- **Communication Blackout Protocols:**
+  The model now includes actions to activate/deactivate backup communication (`activate_backup_comm`, `deactivate_backup_comm`), pause the mission (`pause_mission`) when both primary and backup communications are down, and resume the mission (`resume_mission`) when the communication link is re-established. The predicate `mission_active` ensures that critical operations (such as sample handling) are only performed when the mission is active.
+
+This comprehensive model supports safe, coordinated, and resilient operations for long-term scientific missions on Mars.
+
+
+
+Below are several examples of invalid state combinations in the revised model—sets of predicates that should not simultaneously hold because they represent contradictory or unsafe system conditions:
+
+1. **Conflicting Safety States:**
+   - **(system_nominal)** and **(hazard_detected):**
+     These are intended to be mutually exclusive. The model’s safety actions ensure that if a hazard is detected, the system can no longer be considered nominal. If both predicates are true at once, it creates ambiguity about the system’s safety, leading to unsafe decision-making.
+
+2. **Environmental Mismatch:**
+   - **(environment_normal) is false** while mission-critical actions (like picking up, analyzing, or reporting a sample) are executed.
+     Running these tasks in extreme conditions (i.e. when the environment is not normal) violates operational safety, even though the model’s preconditions should prevent such actions from starting.
+
+3. **Communication Inconsistencies:**
+   - **(mission_active)** is true when neither **(comm_link_active)** nor **(backup_comm_active)** is true.
+     The protocol is designed so that if both primary and backup communications are down, the mission should be paused. Having the mission active without any active communications is inconsistent and potentially dangerous.
+   - **(message_sent ?r)** and **(message_acknowledged ?r)** both being true simultaneously or having an acknowledgment without a preceding sent message.
+     The communication protocol expects that once an acknowledgment is received, the message_sent flag is cleared. A persistent overlap or a lone acknowledgment indicates a breakdown in the communication sequence.
+
+4. **Robot Availability vs. Possession:**
+   - A robot cannot be both **(free ?r)** and simultaneously in possession of a sample via **(has_sample ?r ?s)**.
+     After a successful pick-up, the robot’s availability status is revoked. If both predicates are true for a given robot, it would contradict the intended model of single-sample handling.
+
+5. **Sample Detection and Possession Conflict:**
+   - A sample should not be both **(sample_detected ?s)** and held by a robot (i.e. **(has_sample ?r ?s)**).
+     When a robot picks up a sample, the detection flag is removed. If both predicates hold, it implies that the sample is both in the environment and in possession, which is inconsistent.
+
+6. **Robot Health vs. Task Execution:**
+   - If **(robot_healthy ?r)** is false, the robot should not be engaging in mission-critical tasks such as sample handling or analysis.
+     Critical actions include a precondition for the robot to be healthy, so a failure here would be an invalid state for task execution.
+
+These invalid state combinations are avoided by the careful design of preconditions and effects in the action definitions. Their presence in a state would indicate either an error in state transition management or an external fault that requires immediate attention (such as pausing the mission or triggering maintenance protocols).

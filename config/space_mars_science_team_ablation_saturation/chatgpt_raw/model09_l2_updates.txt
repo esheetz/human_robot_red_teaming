@@ -1,0 +1,9 @@
+The model has been updated to prevent invalid state combinations by adding constraints and preconditions that block conflicting states. These changes ensure:
+- Robots in communication blackout cannot synchronize with the team.
+- Operations pause automatically when a robot seeks shelter.
+- High-energy tasks are restricted during critical battery levels.
+- Backup systems won't activate without resolving hardware faults first.
+- Leader elections won’t overlap if a valid leader already exists.
+- Environmental scans are paused during active environmental alerts.
+
+Let me know if you need any further refinements or additions to the model!

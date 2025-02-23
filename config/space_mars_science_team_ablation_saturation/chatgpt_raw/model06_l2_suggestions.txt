@@ -1,0 +1,21 @@
+Below are some examples of invalid state combinations that—while our revised model has improved safeguards—may still occur transiently or due to asynchrony, even though they ideally should not:
+
+- **Safe Mode and Grace Period Coexistence:**
+  A robot might briefly have both *(safe_mode ?r)* and *(grace_period_active ?r)* true. Ideally, entering safe mode should preclude the grace period state, but delays in state updates could result in both being active concurrently.
+
+- **Operational State with Outdated Conditions:**
+  The composite *(operational_state ?r)* predicate is meant to require that all underlying conditions (e.g., communication, sensor normals, gc_status_updated) are met. However, if one of these conditions (like *(communication_ok)* or *(gc_status_updated)*) fails and the corresponding invalidation action has not yet executed, the robot may temporarily retain *(operational_state ?r)* even though one or more required conditions are now false.
+
+- **Overlapping Log States:**
+  There could be a transient state where a diagnostic log is marked as both sent *(diagnostic_log_sent ?r)* and buffered *(buffered_diagnostic_log ?r)* if the retry mechanism has been initiated but not yet completed. This overlap should not occur but might briefly happen due to asynchronous log handling.
+
+- **Conflicting Communication Channel States:**
+  Although our model attempts to switch to primary communication and deactivate backup channels, there might be a window where *(comm_link_active)* is true and one or more backup channels (e.g., *(backup_comm_active2)*) remain active before the transition is complete.
+
+- **Emergency Reboot Overlap:**
+  If the *emergency_reboot* action is triggered while the robot is still marked as being in safe mode or within a grace period, there may be a brief overlap where the robot’s internal state is being reset but the *(safe_mode ?r)* predicate has not yet been cleared.
+
+- **Stale Shared Status:**
+  Even though there is an action to retract shared status when safe mode is active, a robot’s status *(status_shared ?r)* might remain visible for a short time after entering safe mode, potentially misleading other agents until the retraction action completes.
+
+These transient or asynchronous state overlaps are inherent in complex, distributed systems and highlight the challenge of ensuring perfect consistency in real-world operations.

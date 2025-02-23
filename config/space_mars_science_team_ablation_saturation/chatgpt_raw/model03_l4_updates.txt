@@ -1,0 +1,403 @@
+Below is the updated PDDL domain. In this version we’ve added:
+
+- **Proactive Communication Management:**
+  • Additional backup communication channels via the new predicates `(backup_comm_active2)` and `(backup_comm_active3)`.
+  • Actions to activate these backup channels as needed and a revised action `switch_to_primary_comm` that deactivates all backups when the primary link becomes available.
+  • An action `send_team_status` that proactively communicates team-wide, real‑time status to ground control while waiting for confirmation or instructions.
+
+- **Logging and Ground Control Confirmation:**
+  • New predicates for logging and confirmation: `(diagnostic_log_sent ?r)`, `(environment_log_sent)`, `(team_status_logged)`, and `(hardware_status_verified)`.
+  • Actions `send_diagnostic_log` and `send_environment_log` that log internal diagnostics and environmental information to ground control.
+  • An action `verify_hardware_status` that models ground control confirmation of a robot’s hardware/software status.
+
+- **Real-Time Operational Status:**
+  • The composite predicate `(operational_state ?r)` is maintained as before, and actions update or invalidate it based on real‑time sensor and communication conditions.
+
+The complete updated model is shown below:
+
+```lisp
+(define (domain space_mars_science_team)
+  (:requirements :strips :typing)
+  (:types robot sample)
+
+  (:predicates
+    ;; Sample status and analysis (parameterized by sample)
+    (sample_detected ?s - sample)
+    (has_sample ?r - robot ?s - sample)
+    (sample_analyzed ?s - sample)
+    (findings_ready ?r - robot ?s - sample)
+    (sample_verified ?r - robot ?s - sample)
+
+    ;; Communication status (global and per robot)
+    (comm_link_active)
+    (message_sent ?r - robot)
+    (message_acknowledged ?r - robot)
+
+    ;; Backup communication and mission status (multiple backups)
+    (backup_comm_active)
+    (backup_comm_active2)
+    (backup_comm_active3)
+    (mission_active)
+
+    ;; Communication availability: true if at least one channel is active
+    (communication_ok)
+
+    ;; Team coordination and robot availability
+    (team_synced)
+    (free ?r - robot)
+
+    ;; Safety conditions
+    (hazard_detected)
+    (system_nominal)
+
+    ;; Detailed environmental conditions
+    (temperature_normal)
+    (radiation_normal)
+    (dust_normal)
+
+    ;; Robot self-diagnosis and calibration
+    (robot_healthy ?r - robot)
+    (calibrated ?r - robot)
+
+    ;; Resource status (e.g., battery level, power)
+    (sufficient_resources ?r - robot)
+
+    ;; Logging and verification predicates
+    (diagnostic_log_sent ?r - robot)
+    (environment_log_sent)
+    (team_status_logged)
+    (hardware_status_verified)
+
+    ;; Composite operational state: true when all conditions for safe operation hold
+    (operational_state ?r - robot)
+  )
+
+  ;;--------------------------------------------------
+  ;; Composite Operational State Update
+  (:action update_operational_state
+    :parameters (?r - robot)
+    :precondition (and (robot_healthy ?r)
+                        system_nominal
+                        mission_active
+                        communication_ok
+                        (calibrated ?r)
+                        (sufficient_resources ?r)
+                        temperature_normal
+                        radiation_normal
+                        dust_normal)
+    :effect (operational_state ?r)
+  )
+
+  (:action invalidate_operational_state
+    :parameters (?r - robot)
+    :precondition (operational_state ?r)
+    :effect (not (operational_state ?r))
+  )
+
+  ;; Invalidation actions due to individual condition failures (as before)
+  (:action invalidate_operational_state_due_to_temperature
+    :parameters (?r - robot)
+    :precondition (and (operational_state ?r) (not temperature_normal))
+    :effect (not (operational_state ?r))
+  )
+
+  (:action invalidate_operational_state_due_to_radiation
+    :parameters (?r - robot)
+    :precondition (and (operational_state ?r) (not radiation_normal))
+    :effect (not (operational_state ?r))
+  )
+
+  (:action invalidate_operational_state_due_to_dust
+    :parameters (?r - robot)
+    :precondition (and (operational_state ?r) (not dust_normal))
+    :effect (not (operational_state ?r))
+  )
+
+  (:action invalidate_operational_state_due_to_communication
+    :parameters (?r - robot)
+    :precondition (and (operational_state ?r) (not communication_ok))
+    :effect (not (operational_state ?r))
+  )
+
+  (:action invalidate_operational_state_due_to_health
+    :parameters (?r - robot)
+    :precondition (and (operational_state ?r) (not (robot_healthy ?r)))
+    :effect (not (operational_state ?r))
+  )
+
+  (:action invalidate_operational_state_due_to_calibration
+    :parameters (?r - robot)
+    :precondition (and (operational_state ?r) (not (calibrated ?r)))
+    :effect (not (operational_state ?r))
+  )
+
+  (:action invalidate_operational_state_due_to_resources
+    :parameters (?r - robot)
+    :precondition (and (operational_state ?r) (not (sufficient_resources ?r)))
+    :effect (not (operational_state ?r))
+  )
+
+  ;;--------------------------------------------------
+  ;; Team Coordination Actions
+  (:action sync_team
+    :parameters ()
+    :precondition comm_link_active
+    :effect team_synced
+  )
+
+  (:action unsync_team
+    :parameters ()
+    :precondition team_synced
+    :effect (not team_synced)
+  )
+
+  (:action send_team_status
+    :parameters ()
+    :precondition (and comm_link_active team_synced)
+    :effect team_status_logged
+  )
+
+  ;;--------------------------------------------------
+  ;; Safety Update Actions
+  (:action detect_hazard
+    :parameters ()
+    :precondition system_nominal
+    :effect (and hazard_detected (not system_nominal))
+  )
+
+  (:action clear_hazard
+    :parameters ()
+    :precondition hazard_detected
+    :effect (and system_nominal (not hazard_detected))
+  )
+
+  ;;--------------------------------------------------
+  ;; Self-Diagnosis, Calibration, and Resource Checks
+  (:action self_diagnose
+    :parameters (?r - robot)
+    :precondition (free ?r)
+    :effect (robot_healthy ?r)
+  )
+
+  (:action self_calibrate
+    :parameters (?r - robot)
+    :precondition (free ?r)
+    :effect (calibrated ?r)
+  )
+
+  (:action check_resources
+    :parameters (?r - robot)
+    :precondition (free ?r)
+    :effect (sufficient_resources ?r)
+  )
+
+  (:action perform_maintenance
+    :parameters (?r - robot)
+    :precondition (and (free ?r) (not (robot_healthy ?r)))
+    :effect (robot_healthy ?r)
+  )
+
+  ;;--------------------------------------------------
+  ;; Detailed Environmental Condition Updates
+  (:action update_temperature_normal
+    :parameters ()
+    :precondition (not temperature_normal)
+    :effect temperature_normal
+  )
+
+  (:action update_temperature_extreme
+    :parameters ()
+    :precondition temperature_normal
+    :effect (not temperature_normal)
+  )
+
+  (:action update_radiation_normal
+    :parameters ()
+    :precondition (not radiation_normal)
+    :effect radiation_normal
+  )
+
+  (:action update_radiation_extreme
+    :parameters ()
+    :precondition radiation_normal
+    :effect (not radiation_normal)
+  )
+
+  (:action update_dust_normal
+    :parameters ()
+    :precondition (not dust_normal)
+    :effect dust_normal
+  )
+
+  (:action update_dust_extreme
+    :parameters ()
+    :precondition dust_normal
+    :effect (not dust_normal)
+  )
+
+  (:action pause_mission_due_to_environment
+    :parameters ()
+    :precondition (and (or (not temperature_normal) (not radiation_normal) (not dust_normal)) mission_active)
+    :effect (not mission_active)
+  )
+
+  ;;--------------------------------------------------
+  ;; Communication Blackout and Backup Protocols
+  (:action activate_backup_comm
+    :parameters ()
+    :precondition (not comm_link_active)
+    :effect (and backup_comm_active communication_ok)
+  )
+
+  (:action activate_backup_comm2
+    :parameters ()
+    :precondition (and (not comm_link_active) (not backup_comm_active2))
+    :effect backup_comm_active2
+  )
+
+  (:action activate_backup_comm3
+    :parameters ()
+    :precondition (and (not comm_link_active) (not backup_comm_active3))
+    :effect backup_comm_active3
+  )
+
+  (:action deactivate_backup_comm
+    :parameters ()
+    :precondition backup_comm_active
+    :effect (not backup_comm_active)
+  )
+
+  (:action pause_mission
+    :parameters ()
+    :precondition (and (not comm_link_active)
+                       (not backup_comm_active)
+                       (not backup_comm_active2)
+                       (not backup_comm_active3)
+                       mission_active)
+    :effect (and (not mission_active) (not communication_ok))
+  )
+
+  (:action resume_mission
+    :parameters ()
+    :precondition comm_link_active
+    :effect (and mission_active communication_ok)
+  )
+
+  (:action update_communication_not_ok
+    :parameters ()
+    :precondition (and (not comm_link_active)
+                       (not backup_comm_active)
+                       (not backup_comm_active2)
+                       (not backup_comm_active3)
+                       communication_ok)
+    :effect (not communication_ok)
+  )
+
+  ;; New: When primary becomes available, switch off all backup channels.
+  (:action switch_to_primary_comm
+    :parameters ()
+    :precondition (and comm_link_active (or backup_comm_active backup_comm_active2 backup_comm_active3))
+    :effect (and (not backup_comm_active)
+                 (not backup_comm_active2)
+                 (not backup_comm_active3))
+  )
+
+  ;;--------------------------------------------------
+  ;; Logging and Ground Control Verification Actions
+  (:action send_diagnostic_log
+    :parameters (?r - robot)
+    :precondition (and (operational_state ?r) comm_link_active team_synced)
+    :effect (diagnostic_log_sent ?r)
+  )
+
+  (:action send_environment_log
+    :parameters ()
+    :precondition (and comm_link_active team_synced)
+    :effect environment_log_sent
+  )
+
+  (:action verify_hardware_status
+    :parameters (?r - robot)
+    :precondition (and (diagnostic_log_sent ?r) comm_link_active team_synced)
+    :effect hardware_status_verified
+  )
+
+  ;;--------------------------------------------------
+  ;; Sample Handling Actions (using composite operational_state)
+  (:action pick_up_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (sample_detected ?s)
+                       free ?r
+                       team_synced
+                       (operational_state ?r))
+    :effect (and (has_sample ?r ?s)
+                 (not (sample_detected ?s))
+                 (not (free ?r)))
+  )
+
+  (:action analyze_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s)
+                       team_synced
+                       (operational_state ?r)
+                       (not (sample_analyzed ?s)))
+    :effect (and (sample_analyzed ?s)
+                 (findings_ready ?r ?s))
+  )
+
+  (:action report_findings
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s)
+                       (findings_ready ?r ?s)
+                       comm_link_active   ; reporting requires primary channel.
+                       team_synced
+                       (operational_state ?r))
+    :effect (and (not (sample_analyzed ?s))
+                 (not (findings_ready ?r ?s))
+                 (message_sent ?r))
+  )
+
+  (:action receive_acknowledgment
+    :parameters (?r - robot)
+    :precondition (message_sent ?r)
+    :effect (and (message_acknowledged ?r)
+                 (not (message_sent ?r)))
+  )
+
+  ;; Revised: Emergency abort action allows a busy robot to interrupt its current task.
+  (:action emergency_abort
+    :parameters (?r - robot ?s - sample)
+    :precondition (has_sample ?r ?s)
+    :effect (and (not (has_sample ?r ?s))
+                 (free ?r)
+                 (not (sample_analyzed ?s))
+                 (not (findings_ready ?r ?s)))
+  )
+)
+```
+
+---
+
+### Explanation of Updates
+
+1. **Proactive Communication Management:**
+   - **Multiple Backups:**
+     New predicates `(backup_comm_active2)` and `(backup_comm_active3)` represent additional backup channels. Actions `activate_backup_comm2` and `activate_backup_comm3` enable these channels when the primary link is down.
+   - **Channel Prioritization:**
+     The updated `switch_to_primary_comm` deactivates all backup channels when the primary channel becomes available, ensuring consistency.
+   - **Team Communication:**
+     The action `send_team_status` proactively logs the team’s real‑time status for ground control.
+
+2. **Logging and Ground Control Confirmation:**
+   - **Diagnostic Logging:**
+     The action `send_diagnostic_log` logs the robot’s diagnostic information (including self-diagnosis and calibration data) to ground control.
+   - **Environmental Logging:**
+     The action `send_environment_log` logs environmental data such as temperature, radiation, and dust levels.
+   - **Hardware/Software Verification:**
+     The action `verify_hardware_status` models ground control’s confirmation of a robot’s internal status, using logged diagnostic data.
+
+3. **Real-Time Operational Status:**
+   - The composite predicate `(operational_state ?r)` is updated and invalidated in real time as conditions change, ensuring that mission-critical actions are executed only when all safety, health, resource, and communication parameters are met.
+   - An emergency abort action (`emergency_abort`) is provided to immediately free a robot from a task if conditions worsen.
+
+This updated model enhances proactive communication, continuous logging, and real‑time status updates—improving resilience and coordination during long‑term Mars operations.

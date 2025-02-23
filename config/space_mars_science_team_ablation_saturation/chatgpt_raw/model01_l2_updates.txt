@@ -1,0 +1,85 @@
+Below is the updated PDDL domain that refines the state transitions to avoid the inconsistent state combinations:
+
+- **Avoiding Sample-Detection Conflicts:**
+  The precondition for picking up a sample now also requires that the robot isn’t already carrying one. In addition, picking up a sample explicitly removes the sample’s detection state.
+
+- **Coupling Analysis and Findings:**
+  The analyze_sample action sets both the analyzed and findings states together, and both are cleared together by report_findings. Furthermore, if the robot drops a sample, any analysis or findings information is also cleared.
+
+- **Maintaining Communication Protocol Order:**
+  The receive_acknowledgment action now removes the message_sent flag when it sets message_acknowledged, ensuring that an acknowledgment always follows a sent message.
+
+- **Enforcing Safety Conditions:**
+  Actions that rely on system_nominal now also check that no hazard is detected, ensuring that the system’s safety status remains consistent.
+
+Below is the complete updated model:
+
+```lisp
+(define (domain space_mars_science_team)
+  (:requirements :strips :typing)
+
+  (:predicates
+    ;; Sample and analysis status
+    (robot_has_sample)
+    (sample_detected)
+    (sample_analyzed)
+    (findings_ready)
+
+    ;; Communication status
+    (comm_link_active)
+    (message_sent)
+    (message_acknowledged)
+
+    ;; Team coordination and safety status
+    (team_synced)
+    (hazard_detected)
+    (system_nominal)
+  )
+
+  (:action pick_up_sample
+    :precondition (and sample_detected system_nominal (not hazard_detected) (not robot_has_sample))
+    :effect (and robot_has_sample
+                 (not sample_detected))
+  )
+
+  (:action analyze_sample
+    :precondition (and robot_has_sample system_nominal (not hazard_detected) (not sample_analyzed))
+    :effect (and sample_analyzed findings_ready)
+  )
+
+  (:action report_findings
+    :precondition (and findings_ready comm_link_active)
+    :effect (and (not sample_analyzed)
+                 (not findings_ready)
+                 message_sent)
+  )
+
+  (:action receive_acknowledgment
+    :precondition message_sent
+    :effect (and message_acknowledged (not message_sent))
+  )
+
+  (:action drop_sample
+    :precondition robot_has_sample
+    :effect (and (not robot_has_sample)
+                 (not sample_analyzed)
+                 (not findings_ready))
+  )
+)
+```
+
+### Explanation
+
+- **Pick-Up Action:**
+  By requiring `(not robot_has_sample)` and removing `(sample_detected)`, we avoid having the sample appear both detected and held.
+
+- **Analyze and Report Actions:**
+  Analysis always produces findings as a coupled pair. Reporting findings clears both, ensuring no partial analysis state remains.
+
+- **Communication Actions:**
+  Acknowledgment can only occur if a message has been sent, and it clears the `message_sent` flag, maintaining the proper order.
+
+- **Drop Action:**
+  Dropping a sample also clears any analysis or findings status to keep the state consistent.
+
+These updates ensure that the robot’s state transitions remain valid and safe, even in the complex environment of Mars operations with delayed communications and team coordination.

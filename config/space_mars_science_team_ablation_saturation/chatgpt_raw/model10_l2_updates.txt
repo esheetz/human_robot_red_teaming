@@ -1,0 +1,9 @@
+I've updated the model to include constraints that prevent the previously identified invalid state combinations. These additions ensure:
+- Redundancy systems only activate after predictive fault detection.
+- Team synchronization is invalidated during communication blackouts.
+- Energy redistribution is blocked if the donor robot's energy falls below the minimum threshold.
+- Operational state deactivates during environmental alerts.
+- Diagnostics and redundancy systems require a detected fault before activation.
+- Fallback leader elections won’t initiate if a leader already exists.
+
+Let me know if there are further adjustments or refinements you need!
