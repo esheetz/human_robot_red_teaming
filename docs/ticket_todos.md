@@ -152,8 +152,8 @@ Ablation and Saturation Experiments:
 	- [x] suggestions became very repetitive around iteration 6/7
 	- [x] model7, level 4 dumped a bunch of info out of the model
 - [x] convert model files to STRIPS files
-	- [ ] consistent domain name across all models
-	- [ ] assume models are supersets of each other, so if ChatGPT removed something from one level/iteration to the next, include it
+	- [x] consistent domain name across all models
+	- [x] assume models are supersets of each other, so if ChatGPT removed something from one level/iteration to the next, include it
 - [ ] randomized task goals and failures
 - [ ] save planning tasks to repo
 - [ ] pipeline for planning after each level

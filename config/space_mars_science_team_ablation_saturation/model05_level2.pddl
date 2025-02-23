@@ -340,6 +340,12 @@
   )
 
   ;; --- Logging and Ground Control Verification Actions ---
+  (:action verify_sample_readings
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s) comm_link_active team_synced)
+    :effect (sample_verified ?r ?s)
+  )
+  
   (:action send_diagnostic_log
     :parameters (?r - robot)
     :precondition (and (operational_state ?r) comm_link_active team_synced (not (safe_mode ?r)))

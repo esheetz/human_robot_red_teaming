@@ -311,6 +311,16 @@
     :effect (update_operational_state ?r)
   )
 
+  (:action update_communication_not_ok
+    :parameters ()
+    :precondition (and (not comm_link_active)
+                       (not backup_comm_active)
+                       (not backup_comm_active2)
+                       (not backup_comm_active3)
+                       communication_ok)
+    :effect (not communication_ok)
+  )
+
   ;; --- Distributed Reasoning: Team Coordination and Consensus ---
   (:action sync_team
     :parameters ()
@@ -474,6 +484,12 @@
   )
 
   ;; --- Logging and Ground Control Verification Actions ---
+  (:action verify_sample_readings
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s) comm_link_active team_synced)
+    :effect (sample_verified ?r ?s)
+  )
+
   (:action send_diagnostic_log
     :parameters (?r - robot)
     :precondition (and (operational_state ?r) comm_link_active team_synced (not (safe_mode ?r)))
@@ -680,6 +696,75 @@
                        (or buffered_diagnostic_log ?r buffered_environment_log)
                        (not (safe_mode ?r)))
     :effect (backup_data_shared ?r)
+  )
+
+  ;; --- Sample Handling Actions ---
+  (:action pick_up_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (sample_detected ?s)
+                       free ?r
+                       team_synced
+                       (operational_state ?r)
+                       (not (safe_mode ?r))
+                       (not (grace_period_active ?r)))
+    :effect (and (has_sample ?r ?s)
+                 (not (sample_detected ?s))
+                 (not (free ?r)))
+  )
+
+  (:action analyze_sample
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s)
+                       team_synced
+                       (operational_state ?r)
+                       (not (sample_analyzed ?s))
+                       (not (safe_mode ?r))
+                       (not (grace_period_active ?r)))
+    :effect (and (sample_analyzed ?s)
+                 (findings_ready ?r ?s))
+  )
+
+  (:action report_findings
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s)
+                       (findings_ready ?r ?s)
+                       comm_link_active
+                       team_synced
+                       (operational_state ?r)
+                       (not (safe_mode ?r))
+                       (not (grace_period_active ?r)))
+    :effect (and (not (sample_analyzed ?s))
+                 (not (findings_ready ?r ?s))
+                 (message_sent ?r))
+  )
+
+  (:action receive_acknowledgment
+    :parameters (?r - robot)
+    :precondition (message_sent ?r)
+    :effect (and (message_acknowledged ?r)
+                 (not (message_sent ?r)))
+  )
+
+  (:action emergency_abort
+    :parameters (?r - robot ?s - sample)
+    :precondition (has_sample ?r ?s)
+    :effect (and (not (has_sample ?r ?s))
+                 (free ?r)
+                 (not (sample_analyzed ?s))
+                 (not (findings_ready ?r ?s)))
+  )
+
+  ;; --- Fault Correction Actions ---
+  (:action human_repair_robot
+    :parameters (?r - robot)
+    :precondition (and (not (robot_healthy ?r)) comm_link_active)
+    :effect (robot_healthy ?r)
+  )
+
+  (:action robot_repair_robot
+    :parameters (?r1 - robot ?r2 - robot)
+    :precondition (and (operational_state ?r1) team_synced (not (robot_healthy ?r2)))
+    :effect (robot_healthy ?r2)
   )
 
   ;; --- Timing and Buffering Actions ---

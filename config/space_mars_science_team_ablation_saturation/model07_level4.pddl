@@ -303,6 +303,315 @@
     :effect (update_operational_state ?r)
   )
 
+  ;; --- Communication Update ---
+  (:action update_communication_not_ok
+    :parameters ()
+    :precondition (and (not comm_link_active)
+                       (not backup_comm_active)
+                       (not backup_comm_active2)
+                       (not backup_comm_active3)
+                       communication_ok)
+    :effect (not communication_ok)
+  )
+
+  ;; --- Team Coordination and Inter-Agent Status Sharing ---
+  (:action sync_team
+    :parameters ()
+    :precondition comm_link_active
+    :effect team_synced
+  )
+
+  (:action unsync_team
+    :parameters ()
+    :precondition team_synced
+    :effect (not team_synced)
+  )
+
+  (:action share_status
+    :parameters (?r - robot)
+    :precondition (and comm_link_active team_synced)
+    :effect (status_shared ?r)
+  )
+
+  (:action send_team_status
+    :parameters ()
+    :precondition (and comm_link_active team_synced)
+    :effect team_status_logged
+  )
+
+  ;; --- Ground Control Status Update ---
+  (:action ground_control_status_update
+    :parameters ()
+    :precondition comm_link_active
+    :effect gc_status_updated
+  )
+
+  ;; --- Safety Update Actions ---
+  (:action detect_hazard
+    :parameters ()
+    :precondition system_nominal
+    :effect (and hazard_detected (not system_nominal))
+  )
+
+  (:action clear_hazard
+    :parameters ()
+    :precondition hazard_detected
+    :effect (and system_nominal (not hazard_detected))
+  )
+
+  ;; --- Self-Diagnosis, Calibration, and Resource Checks ---
+  (:action self_diagnose
+    :parameters (?r - robot)
+    :precondition (free ?r)
+    :effect (robot_healthy ?r)
+  )
+
+  (:action self_calibrate
+    :parameters (?r - robot)
+    :precondition (free ?r)
+    :effect (calibrated ?r)
+  )
+
+  (:action check_resources
+    :parameters (?r - robot)
+    :precondition (free ?r)
+    :effect (sufficient_resources ?r)
+  )
+
+  (:action perform_maintenance
+    :parameters (?r - robot)
+    :precondition (and (free ?r) (not (robot_healthy ?r)))
+    :effect (robot_healthy ?r)
+  )
+
+  ;; --- Detailed Environmental Condition Updates ---
+  (:action update_temperature_normal
+    :parameters ()
+    :precondition (not temperature_normal)
+    :effect temperature_normal
+  )
+
+  (:action update_temperature_extreme
+    :parameters ()
+    :precondition temperature_normal
+    :effect (not temperature_normal)
+  )
+
+  (:action update_radiation_normal
+    :parameters ()
+    :precondition (not radiation_normal)
+    :effect radiation_normal
+  )
+
+  (:action update_radiation_extreme
+    :parameters ()
+    :precondition radiation_normal
+    :effect (not radiation_normal)
+  )
+
+  (:action update_dust_normal
+    :parameters ()
+    :precondition (not dust_normal)
+    :effect dust_normal
+  )
+
+  (:action update_dust_extreme
+    :parameters ()
+    :precondition dust_normal
+    :effect (not dust_normal)
+  )
+
+  (:action pause_mission_due_to_environment
+    :parameters ()
+    :precondition (and (or (not temperature_normal) (not radiation_normal) (not dust_normal)) mission_active)
+    :effect (not mission_active)
+  )
+
+  ;; --- Communication Blackout and Backup Protocols ---
+  (:action activate_backup_comm
+    :parameters ()
+    :precondition (not comm_link_active)
+    :effect (and backup_comm_active communication_ok)
+  )
+
+  (:action activate_backup_comm2
+    :parameters ()
+    :precondition (and (not comm_link_active) (not backup_comm_active2))
+    :effect backup_comm_active2
+  )
+
+  (:action activate_backup_comm3
+    :parameters ()
+    :precondition (and (not comm_link_active) (not backup_comm_active3))
+    :effect backup_comm_active3
+  )
+
+  (:action deactivate_backup_comm
+    :parameters ()
+    :precondition backup_comm_active
+    :effect (not backup_comm_active)
+  )
+
+  (:action pause_mission
+    :parameters ()
+    :precondition (and (not comm_link_active)
+                       (not backup_comm_active)
+                       (not backup_comm_active2)
+                       (not backup_comm_active3)
+                       mission_active)
+    :effect (and (not mission_active) (not communication_ok))
+  )
+
+  (:action resume_mission
+    :parameters ()
+    :precondition comm_link_active
+    :effect (and mission_active communication_ok)
+  )
+
+  (:action switch_to_primary_comm
+    :parameters ()
+    :precondition (and comm_link_active (or backup_comm_active backup_comm_active2 backup_comm_active3))
+    :effect (and (not backup_comm_active)
+                 (not backup_comm_active2)
+                 (not backup_comm_active3))
+  )
+
+  ;; --- Logging and Ground Control Verification Actions ---
+  (:action verify_sample_readings
+    :parameters (?r - robot ?s - sample)
+    :precondition (and (has_sample ?r ?s) comm_link_active team_synced)
+    :effect (sample_verified ?r ?s)
+  )
+
+  (:action send_diagnostic_log
+    :parameters (?r - robot)
+    :precondition (and (operational_state ?r) comm_link_active team_synced (not (safe_mode ?r)))
+    :effect (diagnostic_log_sent ?r)
+  )
+
+  (:action send_environment_log
+    :parameters ()
+    :precondition (and comm_link_active team_synced (not (exists (?r - robot) (safe_mode ?r))))
+    :effect environment_log_sent
+  )
+
+  (:action verify_hardware_status
+    :parameters (?r - robot)
+    :precondition (and (diagnostic_log_sent ?r) comm_link_active team_synced)
+    :effect (hardware_status_verified ?r)
+  )
+
+  (:action verify_environment_readings
+    :parameters ()
+    :precondition (and environment_log_sent comm_link_active team_synced)
+    :effect environment_verified
+  )
+
+  (:action invalidate_hardware_status_verification
+    :parameters (?r - robot)
+    :precondition (and (hardware_status_verified ?r) (not (diagnostic_log_sent ?r)))
+    :effect (not (hardware_status_verified ?r))
+  )
+
+  (:action invalidate_environment_verification
+    :parameters ()
+    :precondition (and environment_verified (not environment_log_sent))
+    :effect (not environment_verified)
+  )
+
+  ;; --- Contingency Actions for Communication and Logging ---
+  (:action enter_safe_mode
+    :parameters (?r - robot)
+    :precondition (not communication_ok)
+    :effect (safe_mode ?r)
+  )
+
+  (:action exit_safe_mode
+    :parameters (?r - robot)
+    :precondition communication_ok
+    :effect (not (safe_mode ?r))
+  )
+
+  (:action buffer_diagnostic_log
+    :parameters (?r - robot)
+    :precondition (and (operational_state ?r) (not diagnostic_log_sent ?r))
+    :effect (buffered_diagnostic_log ?r)
+  )
+
+  (:action retry_send_diagnostic_log
+    :parameters (?r - robot)
+    :precondition (and buffered_diagnostic_log ?r comm_link_active team_synced)
+    :effect (and diagnostic_log_sent ?r (not buffered_diagnostic_log ?r))
+  )
+
+  (:action buffer_environment_log
+    :parameters ()
+    :precondition (and environment_verified (not environment_log_sent))
+    :effect buffered_environment_log
+  )
+
+  (:action retry_send_environment_log
+    :parameters ()
+    :precondition (and buffered_environment_log comm_link_active team_synced)
+    :effect (and environment_log_sent (not buffered_environment_log))
+  )
+
+  (:action retract_status_shared_due_to_safe_mode
+    :parameters (?r - robot)
+    :precondition (and (safe_mode ?r) (status_shared ?r))
+    :effect (not (status_shared ?r))
+  )
+
+  (:action invalidate_hardware_status_due_to_safe_mode
+    :parameters (?r - robot)
+    :precondition (and (hardware_status_verified ?r) (safe_mode ?r))
+    :effect (not (hardware_status_verified ?r))
+  )
+
+  (:action invalidate_environment_verification_due_to_comm_loss
+    :parameters ()
+    :precondition (and environment_verified (not communication_ok))
+    :effect (not environment_verified)
+  )
+
+  ;; --- Grace Period Management Actions ---
+  (:action enter_grace_period
+    :parameters (?r - robot)
+    :precondition (and (operational_state ?r) (not (grace_period_active ?r)))
+    :effect (grace_period_active ?r)
+  )
+
+  (:action exit_grace_period
+    :parameters (?r - robot)
+    :precondition (and (grace_period_active ?r) communication_ok)
+    :effect (not (grace_period_active ?r))
+  )
+
+  (:action end_grace_period_due_to_comm_failure
+    :parameters (?r - robot)
+    :precondition (and (grace_period_active ?r) (not communication_ok))
+    :effect (and (not (grace_period_active ?r)) (not (operational_state ?r)))
+  )
+
+  (:action end_grace_period_due_to_sensor_failure
+    :parameters (?r - robot)
+    :precondition (and (grace_period_active ?r) (not temperature_normal))
+    :effect (and (not (grace_period_active ?r)) (not (operational_state ?r)))
+  )
+
+  ;; --- Extended Grace Period (Adaptive Threshold Contingency) ---
+  (:action extend_grace_period
+    :parameters (?r - robot)
+    :precondition (grace_period_active ?r)
+    :effect (extended_grace_period ?r)
+  )
+
+  (:action exit_extended_grace_period
+    :parameters (?r - robot)
+    :precondition (and (extended_grace_period ?r) communication_ok)
+    :effect (not (extended_grace_period ?r))
+  )
+
   ;; --- Risk Mitigation Actions for Severe Failures ---
   (:action notify_ground_control_of_failure
     :parameters (?r - robot)
