@@ -154,10 +154,10 @@ Ablation and Saturation Experiments:
 - [x] convert model files to STRIPS files
 	- [x] consistent domain name across all models
 	- [x] assume models are supersets of each other, so if ChatGPT removed something from one level/iteration to the next, include it
-- [ ] randomized task goals and failures
-- [ ] save planning tasks to repo
-- [ ] pipeline for planning after each level
-- [ ] record data about experiments to file
-- [ ] model planning experiments
-- [ ] save experiment data to repo
-- [ ] save experiment notebook to repo
+- [x] randomized task goals and failures
+- [x] save planning tasks to repo
+- [x] pipeline for planning after each level
+- [x] record data about experiments to file
+- [x] model planning experiments
+- [x] save experiment analysis data to repo
+- [x] save experiment notebook to repo
