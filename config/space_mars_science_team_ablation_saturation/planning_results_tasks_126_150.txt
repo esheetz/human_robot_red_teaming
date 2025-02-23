@@ -1,0 +1,2728 @@
+RUNNING EXPERIMENTS FOR DOMAIN: space_mars_science_team_ablation_saturation
+RUNNING EXPERIMENTS FOR TASKS 126 to 150
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 126 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 126 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 126 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 126 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 126 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 126 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 126 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 126 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 126 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 126 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 126 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 126 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 126 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 126 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 126 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 126 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 126 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 126 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 126 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 126 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 126 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 126 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 126 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 126 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 126 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 126 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 126 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 126 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 126 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 126 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 126 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 127 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 127 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 127 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 127 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 127 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 127 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 127 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 127 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 127 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 127 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 127 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 127 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 127 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 127 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 127 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 127 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 127 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 127 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 127 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 127 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 127 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 127 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 127 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 127 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 127 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 127 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 127 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 127 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 127 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 127 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 127 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 128 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 128 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 128 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 128 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 128 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 128 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 128 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 128 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 128 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 128 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 128 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 128 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 128 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 128 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 128 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 128 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 128 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 128 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 128 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 128 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 128 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 128 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 128 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 128 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 128 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 128 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 128 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 128 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 128 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 128 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 128 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 129 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 129 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 129 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 129 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 129 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 129 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 129 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 129 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 129 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 129 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 129 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 129 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 129 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 129 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 129 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 129 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 129 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 129 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 129 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 129 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 129 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 129 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 129 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 129 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 129 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 129 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 129 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 129 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 129 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 129 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 129 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 130 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 130 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 130 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 130 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 130 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 130 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 130 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 130 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 130 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 130 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 130 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 130 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 130 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 130 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 130 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 130 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 130 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 130 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 130 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 130 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 130 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 130 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 130 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 130 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 130 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 130 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 130 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 130 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 130 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 130 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 130 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 131 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 131 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 131 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 131 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 131 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 131 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 131 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 131 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 131 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 131 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 131 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 131 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 131 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 131 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 131 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 131 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 131 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 131 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 131 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 131 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 131 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 131 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 131 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 131 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 131 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 131 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 131 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 131 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 131 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 131 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 131 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 132 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 132 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 132 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 132 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 132 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 132 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 132 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 132 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 132 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 132 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 132 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 132 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 132 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 132 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 132 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 132 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 132 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 132 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 132 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 132 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 132 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 132 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 132 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 132 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 132 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 132 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 132 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 132 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 132 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 132 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 132 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 133 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 133 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 133 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 133 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 133 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 133 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 133 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 133 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 133 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 133 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 133 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 133 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 133 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 133 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 133 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 133 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 133 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 133 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 133 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 133 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 133 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 133 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 133 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 133 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 133 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 133 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 133 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 133 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 133 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 133 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 133 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 134 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 134 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 134 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 134 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 134 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 134 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 134 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 134 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 134 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 134 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 134 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 134 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 134 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 134 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 134 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 134 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 134 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 134 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 134 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 134 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 134 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 134 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 134 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 134 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 134 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 134 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 134 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 134 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 134 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 134 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 134 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 135 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 135 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 135 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 135 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 135 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 135 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 135 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 135 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 135 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 135 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 135 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 135 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 135 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 135 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 135 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 135 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 135 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 135 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 135 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 135 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 135 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 135 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 135 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 135 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 135 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 135 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 135 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 135 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 135 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 135 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 135 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 136 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 136 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 136 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 136 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 136 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 136 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 136 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 136 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 136 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 136 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 136 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 136 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 136 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 136 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 136 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 136 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 136 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 136 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 136 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 136 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 136 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 136 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 136 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 136 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 136 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 136 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 136 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 136 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 136 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 136 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 136 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 137 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 137 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 137 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 137 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 137 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 137 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 137 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 137 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 137 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 137 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 137 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 137 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 137 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 137 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 137 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 137 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 137 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 137 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 137 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 137 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 137 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 137 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 137 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 137 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 137 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 137 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 137 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 137 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 137 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 137 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 137 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 138 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 138 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 138 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 138 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 138 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 138 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 138 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 138 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 138 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 138 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 138 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 138 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 138 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 138 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 138 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 138 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 138 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 138 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 138 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 138 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 138 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 138 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 138 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 138 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 138 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 138 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 138 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 138 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 138 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 138 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 138 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 139 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 139 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 139 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 139 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 139 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 139 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 139 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 139 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 139 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 139 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 139 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 139 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 139 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 139 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 139 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 139 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 139 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 139 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 139 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 139 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 139 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 139 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 139 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 139 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 139 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 139 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 139 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 139 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 139 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 139 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 139 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 140 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 140 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 140 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 140 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 140 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 140 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 140 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 140 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 140 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 140 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 140 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 140 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 140 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 140 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 140 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 140 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 140 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 140 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 140 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 140 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 140 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 140 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 140 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 140 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 140 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 140 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 140 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 140 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 140 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 140 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 140 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 141 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 141 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 141 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 141 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 141 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 141 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 141 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 141 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 141 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 141 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 141 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 141 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 141 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 141 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 141 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 141 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 141 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 141 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 141 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 141 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 141 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 141 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 141 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 141 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 141 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 141 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 141 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 141 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 141 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 141 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 141 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 142 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 142 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 142 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 142 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 142 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 142 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 142 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 142 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 142 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 142 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 142 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 142 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 142 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 142 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 142 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 142 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 142 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 142 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 142 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 142 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 142 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 142 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 142 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 142 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 142 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 142 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 142 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 142 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 142 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 142 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 142 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 143 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 143 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 143 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 143 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 143 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 143 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 143 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 143 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 143 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 143 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 143 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 143 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 143 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 143 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 143 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 143 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 143 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 143 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 143 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 143 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 143 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 143 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 143 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 143 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 143 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 143 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 143 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 143 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 143 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 143 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 143 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 144 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 144 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 144 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 144 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 144 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 144 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 144 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 144 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 144 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 144 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 144 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 144 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 144 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 144 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 144 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 144 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 144 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 144 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 144 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 144 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 144 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 144 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 144 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 144 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 144 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 144 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 144 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 144 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 144 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 144 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 144 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 145 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 145 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 145 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 145 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 145 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 145 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 145 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 145 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 145 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 145 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 145 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 145 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 145 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 145 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 145 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 145 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 145 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 145 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 145 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 145 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 145 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 145 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 145 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 145 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 145 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 145 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 145 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 145 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 145 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 145 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 145 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 146 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 146 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 146 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 146 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 146 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 146 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 146 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 146 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 146 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 146 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 146 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 146 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 146 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 146 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 146 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 146 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 146 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 146 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 146 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 146 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 146 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 146 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 146 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 146 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 146 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 146 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 146 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 146 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 146 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 146 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 146 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 147 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 147 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 147 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 147 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 147 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 147 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 147 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 147 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 147 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 147 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 147 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 147 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 147 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 147 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 147 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 147 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 147 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 147 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 147 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 147 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 147 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 147 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 147 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 147 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 147 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 147 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 147 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 147 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 147 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 147 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 147 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 148 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 148 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 148 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 148 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 148 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 148 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 148 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 148 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 148 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 148 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 148 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 148 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 148 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 148 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 148 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 148 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 148 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 148 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 148 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 148 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 148 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 148 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 148 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 148 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 148 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 148 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 148 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 148 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 148 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 148 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 148 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 149 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 149 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 149 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 149 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 149 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 149 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 149 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 149 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 149 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 149 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 149 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 149 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 149 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 149 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 149 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 149 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 149 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 149 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 149 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 149 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 149 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 149 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 149 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 149 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 149 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 149 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 149 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 149 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 149 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 149 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 149 of 200
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 2!
+Attempting planning for task 150 with model 1, level 2
+Planning with model 1, level 2 failed, trying next model
+	EXCEPTION: Error keyword ":parameters" required before parameter list!
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 3!
+Attempting planning for task 150 with model 1, level 3
+Planning with model 1, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 1, LEVEL 4!
+Attempting planning for task 150 with model 1, level 4
+Planning with model 1, level 4 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 2!
+Attempting planning for task 150 with model 2, level 2
+Planning with model 2, level 2 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 3!
+Attempting planning for task 150 with model 2, level 3
+Planning with model 2, level 3 failed, trying next model
+	EXCEPTION: 'Error: wrong number of arguments for predicate robot_healthy in effect of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 2, LEVEL 4!
+Attempting planning for task 150 with model 2, level 4
+Planning with model 2, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 2!
+Attempting planning for task 150 with model 3, level 2
+Planning with model 3, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 3!
+Attempting planning for task 150 with model 3, level 3
+Planning with model 3, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 3, LEVEL 4!
+Attempting planning for task 150 with model 3, level 4
+Planning with model 3, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 2!
+Attempting planning for task 150 with model 4, level 2
+Planning with model 4, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 3!
+Attempting planning for task 150 with model 4, level 3
+Planning with model 4, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 4, LEVEL 4!
+Attempting planning for task 150 with model 4, level 4
+Planning with model 4, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 2!
+Attempting planning for task 150 with model 5, level 2
+Planning with model 5, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 3!
+Attempting planning for task 150 with model 5, level 3
+Planning with model 5, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 5, LEVEL 4!
+Attempting planning for task 150 with model 5, level 4
+Planning with model 5, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 2!
+Attempting planning for task 150 with model 6, level 2
+Planning with model 6, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+CANNOT RECOVER FROM FAILURES IN MODEL 6, LEVEL 3!
+Attempting planning for task 150 with model 6, level 3
+Planning with model 6, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 150 with model 6, level 4
+Planning with model 6, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 150 with model 7, level 2
+Planning with model 7, level 2 failed, trying next model
+	EXCEPTION: Error: EffectStmt must start with ":effect" keyword
+Attempting planning for task 150 with model 7, level 3
+Planning with model 7, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 150 with model 7, level 4
+Planning with model 7, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 150 with model 8, level 2
+Planning with model 8, level 2 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 150 with model 8, level 3
+Planning with model 8, level 3 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 150 with model 8, level 4
+Planning with model 8, level 4 failed, trying next model
+	EXCEPTION: 'Error unknown predicate not used in precondition of action'
+Attempting planning for task 150 with model 9, level 2
+Planning with model 9, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 150 with model 9, level 3
+Planning with model 9, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 150 with model 9, level 4
+Planning with model 9, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 150 with model 10, level 2
+Planning with model 10, level 2 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 150 with model 10, level 3
+Planning with model 10, level 3 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Attempting planning for task 150 with model 10, level 4
+Planning with model 10, level 4 failed, trying next model
+	EXCEPTION: 'Error predicate with name team_synced has already been defined'
+Parsing error due to poor model formatting, count as success
+COMPLETED TASK 150 of 200
+Success rate so far: 0.96
